@@ -7,20 +7,12 @@
       "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\page\\custumer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\css\\page\\custumer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango\\css\\page\\custumer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\css\\page\\custumer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\nomango.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\nomango.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
@@ -40,11 +32,30 @@
               "RelativeDocumentMoniker": "NoMango\\Css\\Page\\Custumer.css",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Custumer.css",
               "RelativeToolTip": "NoMango\\Css\\Page\\Custumer.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-07-17T08:36:49.51Z",
               "EditorCaption": ""
             },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Program.cs",
+              "RelativeDocumentMoniker": "NoMango\\Program.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Program.cs",
+              "RelativeToolTip": "NoMango\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T09:58:44.768Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -53,47 +64,10 @@
               "RelativeDocumentMoniker": "NoMango\\Page\\Custumer.html",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Custumer.html",
               "RelativeToolTip": "NoMango\\Page\\Custumer.html",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-07-17T08:35:00.6Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NoMango.csproj",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\NoMango.csproj",
-              "RelativeDocumentMoniker": "NoMango\\NoMango.csproj",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\NoMango.csproj",
-              "RelativeToolTip": "NoMango\\NoMango.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-16T10:00:41.005Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Program.cs",
-              "RelativeDocumentMoniker": "NoMango\\Program.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Program.cs",
-              "RelativeToolTip": "NoMango\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T09:58:44.768Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "NoMango\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "NoMango\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T09:58:20.735Z"
             }
           ]
         }
