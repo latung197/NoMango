@@ -30,20 +30,20 @@ body {
     display: flex;
 }
 
-    #logo .iconbar {
+#logo .iconbar {
         width: 50px;
         height: 100%;
         background-color: #d0e49f;
         background-image: url('../img/images/icon-left-header.png');
         background-repeat: no-repeat;
         background-position: center;
-    }
+}
 
-    #logo .logo-text {
+#logo .logo-text {
         background-color: #cce294;
         width: 100%;
         height: 100%;
         background-image: url('../img/images/logo-text.png');
         background-position: 0px 13px;
         background-repeat: no-repeat;
-    }
+}

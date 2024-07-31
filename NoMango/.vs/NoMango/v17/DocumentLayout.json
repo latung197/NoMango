@@ -21,7 +21,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 214,
+          "DockedWidth": 221,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "NoMango\\Css\\Page\\Custumer.css",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Custumer.css",
               "RelativeToolTip": "NoMango\\Css\\Page\\Custumer.css",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB4AAAABAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAADEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-07-17T08:36:49.51Z",
               "EditorCaption": ""
@@ -52,7 +52,7 @@
           ]
         },
         {
-          "DockedWidth": 186,
+          "DockedWidth": 179,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -63,7 +63,7 @@
               "RelativeDocumentMoniker": "NoMango\\Page\\Custumer.html",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Custumer.html",
               "RelativeToolTip": "NoMango\\Page\\Custumer.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-07-17T08:35:00.6Z",
               "EditorCaption": ""
