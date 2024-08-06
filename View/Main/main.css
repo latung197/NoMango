@@ -1,6 +1,5 @@
 
 body{
-    
     margin: 0px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
@@ -11,28 +10,14 @@ body{
     font-family: TungFonts;
     src: url("../");
 }
+
 .menu{
-    border:1px solid #a0d3fd;
+   
     float: left;
     width: 250px;
     height: 100vh;
-    background: #a6cff0;
+    background: #c6dff3;
 }
-
-
-
-.content .menu-header{
-    margin-left: 250px;
-    width: calc(100% - 250PX);
-    height: 50px;
-    background-color: #b3d7f5;
-}
-
-#menu-content{
-    width: 100%;
-    border: 1px solid #b9ddfa;
-    height: 100%;
-}   
 
 #logo {
     width: 100%;
@@ -43,7 +28,7 @@ body{
 #logo .iconbar{
     width: 50px;
     height: 100%;
-    background-color:#bbd8f0;
+    background-color:#cbe1f5;
     background-image: url('../img/images/icon-left-header.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -58,10 +43,16 @@ body{
     background-repeat: no-repeat;
 }
 
+#menu-content{
+    width: 100%;
+    border: 1px solid #ccdfee;
+    height: calc(100%-50px);
+}   
+
 .menu-item{
     color: #fff;
     display: flex;
-    border: 1px solid #bbdaf3;
+    border: 1px solid #cee2f3;
 }
 
 .menu-item:hover{
@@ -74,13 +65,11 @@ body{
     height: 40px;
     background-image: url('../img/images/iconMenu.png');
     background-repeat: no-repeat;
-
 }
 
 .menu-item .menu-item-text{
     line-height: 40px;
 }
-
 
 .icon-board{
     background-position: 4px 6px;
@@ -89,50 +78,107 @@ body{
     background-position:4px -185px;
 }
 
-#menu-unit{
-    border-radius: 5%;
-    margin-top: 4px;
-    margin-left: 40px;
-    float: left;
-    width: 120px;
-    height: 40px;
-    border: 1px solid #000;
-    background-color: #ebece8;
-}
-
-#menu-notification{
-    float: right;
-    margin-right: 200px;
-    margin-top: 4px;
-    border: 1px solid #000;
-    width: 50px;
-    height: 40px;
-}
-
 .content{
+    position: relative;
     float: left;
-    display: block;
-    width: calc(100%-250px);
     height: 100vh;
-    background: #e3e6db
+    width: calc(100% - 250px);
+
 }
 
-.content-header {
+.content-header{
     height: 50px;
-    background-color: #b3d7f5;
-}
-.content-body{
-    border: 1px solid #000;
-    height: calc(100vh-70px);
+    width: 100%;
+    background-color: #c6dff3;
 }
 
-.content-body{
-    padding: 10px;
-    border: 1px solid #000;
-    height: calc(100vh - 70px);
-    background-color: #c8f0cb;
+.content .content-body{
+    position: relative;
+    height: calc(100vh - 50px);
 }
 
-.page-title{
+ .content-body .body-title{
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 10px;
+
+}
+
+.content .content-body .grid-content{
+  
     border: 1px solid #000;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px; 
+}
+
+.grid-content .toolbar{
+    display: flex;
+    height: 25px;
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+}
+
+.grid-content .grid{
+    border: 1px solid #000;
+    height: calc(100% - 50px);
+    width: 100%;
+}
+
+.grid-content .paging{
+    border: 1px solid #000;
+    height: 25px;
+    width: 100%;
+}
+
+.toolbar button{
+    height: 100%;
+    display: flex;
+    border: none;
+    cursor: pointer;
+}
+.toolbar button:hover{
+    background-color: #c6dff3;
+}
+
+.toolbar .icon{
+    display: block;
+    background-image: url('../img/images/IconSprite.png');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.icon.icon-add{
+    background-position: 0 -48px;
+}
+
+.icon.icon-edit{
+    background-image: url('../img/images/Edit16.png');
+}
+
+.icon.icon-delete{
+    background-image: url('../img/images/Edit16.png');
+}
+
+.grid table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+table td,th{
+    padding: 4px;
+}
+
+table thead{
+    background-color: #ccdfee;
+}
+
+table tbody tr:hover{
+    background-color: #dfe0e0;
+    cursor: pointer;
 }
