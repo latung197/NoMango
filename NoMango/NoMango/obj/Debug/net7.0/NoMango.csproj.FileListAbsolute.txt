@@ -28,3 +28,4 @@ D:\TungLV\Project\NoMango\NoMango\NoMango\obj\Debug\net7.0\refint\NoMango.dll
 D:\TungLV\Project\NoMango\NoMango\NoMango\obj\Debug\net7.0\NoMango.pdb
 D:\TungLV\Project\NoMango\NoMango\NoMango\obj\Debug\net7.0\NoMango.genruntimeconfig.cache
 D:\TungLV\Project\NoMango\NoMango\NoMango\obj\Debug\net7.0\ref\NoMango.dll
+D:\TungLV\Project\NoMango\NoMango\NoMango\obj\Debug\net7.0\NoMango.sourcelink.json

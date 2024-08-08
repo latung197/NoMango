@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Content\Font\" />
-    <Folder Include="Content\Imges\" />
     <Folder Include="Css\Common\" />
-    <Folder Include="Js\" />
   </ItemGroup>
 
 </Project>
