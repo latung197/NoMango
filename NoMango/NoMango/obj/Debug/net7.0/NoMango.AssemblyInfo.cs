@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NoMango")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ea899d654e6877a6e2e7480fd84efbcad7e9d8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f94688fbe062ab0c4a4dc818ce1507288c540a0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("NoMango")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NoMango")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
