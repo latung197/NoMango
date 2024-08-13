@@ -1,0 +1,33 @@
+﻿.dialog-model{
+position:absolute;
+opacity:40%;
+top:0px;
+left:0px;
+right:0px;
+bottom:0px;
+}
+
+.dialog {
+    width: 600px;
+    height: 400px;
+    border: 1px solid #000;
+    border: 1px solid #000;
+    border: 1px solid #000;
+    background-color: aliceblue;
+    position:absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    border: 3px solid #b6ff00;
+    border-radius:20pxl;
+}
+
+.dialog-title{
+    height: 200px;
+    background: #b6ff00;
+}
+
+.dialog-body{
+    height:calc(100% - 25px);
+    background-color:#fff;
+}
+
