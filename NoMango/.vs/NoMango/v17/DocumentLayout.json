@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\NoMango\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\js\\employee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\js\\employee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\page\\employee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\page\\employee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\css\\page\\employee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango\\css\\page\\employee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\css\\page\\employee.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\css\\page\\custumer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\css\\page\\custumer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,64 @@
       "DocumentGroups": [
         {
           "DockedWidth": 220,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Employee.css",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Employee.css",
-              "RelativeDocumentMoniker": "NoMango\\Css\\Page\\Employee.css",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Employee.css",
-              "RelativeToolTip": "NoMango\\Css\\Page\\Employee.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-13T08:52:36.84Z",
+              "DocumentIndex": 0,
+              "Title": "Employee.js",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Employee.js",
+              "RelativeDocumentMoniker": "NoMango\\Js\\Employee.js",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Employee.js",
+              "RelativeToolTip": "NoMango\\Js\\Employee.js",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAcwFwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-14T09:04:12.509Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Employee.html",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Employee.html",
               "RelativeDocumentMoniker": "NoMango\\Page\\Employee.html",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Employee.html",
               "RelativeToolTip": "NoMango\\Page\\Employee.html",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAF4AAAAWAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAF4AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-08-13T08:07:45.692Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 220,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Custumer.css",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Custumer.css",
+              "RelativeDocumentMoniker": "NoMango\\Css\\Page\\Custumer.css",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Custumer.css",
+              "RelativeToolTip": "NoMango\\Css\\Page\\Custumer.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-14T09:28:37.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Employee.css",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Employee.css",
+              "RelativeDocumentMoniker": "NoMango\\Css\\Page\\Employee.css",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Css\\Page\\Employee.css",
+              "RelativeToolTip": "NoMango\\Css\\Page\\Employee.css",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAACYAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-13T08:52:36.84Z",
               "EditorCaption": ""
             }
           ]

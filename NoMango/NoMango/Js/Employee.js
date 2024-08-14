@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    loadData(3);
+    var custumerJS = new CustumerJS();
 })
 loadData(1);
 function loadData(msg) {
@@ -47,3 +47,46 @@ var data = [
     }
 ]
 
+class CustumerJS {
+    constructor() { // Thực thi ngay khi đối tượng được khởi tạo
+        this.loadData("xin chao");
+        this.initEvents();
+    }
+    loadData(msg) {
+        $.each(data, function (index, item) {
+            var trHTML = $(`<tr>
+        <td>`+ item.EmployeeCode + `</td>
+        <td>`+ item.EmpooyeeName + `</td>
+        <td>`+ item.Mobile + `</td>  
+        <td>`+ item.Email + `</td>
+        <td>`+ item.Address + `</td>
+    </tr>`);
+            $('.grid tbody').append(trHTML);
+        });
+
+
+    }
+
+    initEvents() {
+        $('#btnAdd').click(this.btnAddOnClick);
+        $('#btncancel').click(this.btncancel);
+        $('#btncancel').click(this.btncancel);
+        $('.dialog-button-close').click(this.btncancel);
+    }
+
+    btnAddOnClick() {
+        $('.dialog-model').show();
+    }
+
+    btncancel() {
+        $('.dialog-model').hide();
+    }
+
+    edit() {
+
+    }
+
+    delete() {
+
+    }
+}

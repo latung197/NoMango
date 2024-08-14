@@ -39,35 +39,4 @@ var data = [
 
 
 
-class CustumerJS {
-    constructor() { // Thực thi ngay khi đối tượng được khởi tạo
-        //this.loadData("xin chao");
-    }
-     loadData(msg) {
-    $.each(data, function (index, item) {
-        var trHTML = $(`<tr>
-        <td>`+ item.EmployeeCode + `</td>
-        <td>`+ item.EmpooyeeName + `</td>
-        <td>`+ item.Mobile + `</td>  
-        <td>`+ item.Email + `</td>
-        <td>`+ item.Address + `</td>
-    </tr>`);
-        $('.grid tbody').append(trHTML);
-    });
 
-
-}
-
-    add() {
-
-    }
-
-    edit() {
-
-    }
-
-    delete() {
-
-    }
-
-}

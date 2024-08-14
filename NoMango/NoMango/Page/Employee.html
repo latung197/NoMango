@@ -36,9 +36,9 @@
             <div class="body-title">Danh mục nhân viên</div>
             <div class="grid-content">
                 <div class="toolbar">
-                    <button><i class="icon icon-add"></i>Thêm</button>
-                    <button><i class="icon icon-edit"></i>Sửa</button>
-                    <button><i class="icon icon-delete"></i>Xóa</button>
+                    <button id="btnAdd"><i class="icon icon-add"></i>Thêm</button>
+                    <button id="btnEdit"><i class="icon icon-edit"></i>Sửa</button>
+                    <button id="btnDelete"><i class="icon icon-delete"></i>Xóa</button>
                 </div>
                 <div class="grid">
                     <table border="1" cellpading="0">
@@ -77,7 +77,6 @@
                                 <td>tunglv@gmail.com</td>
                                 <td>Hà Nội</td>
                                 <td>Robotcom FA</td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -93,13 +92,40 @@
                 <div class="title-text">
                     Thông tin nhân viên
                 </div>
+                <div class="dialog-button-close">
 
+                </div>
             </div>
             <div class="dialog-body">
+                <div class="row">
+                    <label>Mã nhân viên</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Tên nhân viên</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Email</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Số điện thoại</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Công Ty</label>
+                    <input type="text" />
+                </div>
+            </div>
 
+            <div class="dialog-footer">
+                <button id="btnSave">Save</button>
+                <button id="btncancel">Cancel</button>
             </div>
         </div>
     </div>
+
 
 
     <script src="D:\TungLV\Project\NoMango\NoMango\NoMango\Js\Common\jquery-3.7.1.js"></script>
