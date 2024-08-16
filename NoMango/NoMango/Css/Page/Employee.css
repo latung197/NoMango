@@ -96,3 +96,8 @@ button #btnSave {
     padding-right:10px;
     margin-right:10xp;
 }
+
+
+.requirederror, .requirederror:focus {
+    border: 1px solid #ff0000;
+}
