@@ -28,7 +28,7 @@ body {
         width: 50px;
         height: 100%;
         background-color: #cbe1f5;
-        background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/icon-left-header.png');
+        background-image: url('../../content/imges/icon-left-header.png');
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -37,7 +37,7 @@ body {
         background-color: #bcdcf7;
         width: 100%;
         height: 100%;
-        background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/logo-text.png');
+        background-image: url('../../content/imges/logo-text.png');
         background-position: 0px 13px;
         background-repeat: no-repeat;
     }
@@ -62,7 +62,7 @@ body {
     .menu-item .menu-item-icon {
         width: 40px;
         height: 40px;
-        background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/iconmenu.png');
+        background-image: url('../../content/imges/iconmenu.png');
         background-repeat: no-repeat;
     }
 
@@ -147,7 +147,7 @@ body {
 
 .toolbar .icon {
     display: block;
-    background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/iconsprite.png');
+    background-image: url('../../content/imges/iconsprite.png');
     background-repeat: no-repeat;
     width: 16px;
     height: 16px;
@@ -158,11 +158,11 @@ body {
 }
 
 .icon.icon-edit {
-    background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/edit16.png');
+    background-image: url('../../content/imges/edit16.png');
 }
 
 .icon.icon-delete {
-    background-image: url('d:/tunglv/project/nomango/nomango/nomango/content/imges/edit16.png');
+    background-image: url('../../content/imges/edit16.png');
 }
 
 .grid table {

@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Css\Common\**" />
+    <Content Remove="Css\Common\**" />
+    <EmbeddedResource Remove="Css\Common\**" />
+    <None Remove="Css\Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Content\Font\" />
-    <Folder Include="Css\Common\" />
   </ItemGroup>
 
 </Project>
