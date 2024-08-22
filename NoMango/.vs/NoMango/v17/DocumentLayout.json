@@ -7,19 +7,43 @@
       "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango.api\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\js\\employee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\js\\employee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\page\\employee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\page\\employee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\js\\custumer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\js\\custumer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango\\nomango.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BD99A740-0A33-491E-B8E0-CA86AD0C60D2}|NoMango\\NoMango.csproj|solutionrelative:nomango\\nomango.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B96A26A-B4D4-40D0-AA28-907B43076B68}|WebAPI\\WebAPI.csproj|d:\\tunglv\\project\\nomango\\nomango\\webapi\\webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2B96A26A-B4D4-40D0-AA28-907B43076B68}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango.api\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango.api\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango.api\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango.api\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango.api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango.api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|d:\\tunglv\\project\\nomango\\nomango\\nomango.api\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|D:\\TungLV\\Project\\NoMango\\NoMango\\nomango.api\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{C01F456E-6EA5-46B6-84B4-C5B3E5C37E96}|Nomango.API\\Nomango.API.csproj|solutionrelative:nomango.api\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -30,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 225,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +62,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Custumer.js",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Custumer.js",
+              "RelativeDocumentMoniker": "NoMango\\Js\\Custumer.js",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Custumer.js",
+              "RelativeToolTip": "NoMango\\Js\\Custumer.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-22T10:54:02.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employee.js",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Employee.js",
+              "RelativeDocumentMoniker": "NoMango\\Js\\Employee.js",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Js\\Employee.js",
+              "RelativeToolTip": "NoMango\\Js\\Employee.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-22T10:41:59.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Employee.html",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Employee.html",
+              "RelativeDocumentMoniker": "NoMango\\Page\\Employee.html",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\Page\\Employee.html",
+              "RelativeToolTip": "NoMango\\Page\\Employee.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-08-22T10:41:54.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NoMango",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\NoMango.csproj",
+              "RelativeDocumentMoniker": "NoMango\\NoMango.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango\\NoMango.csproj",
+              "RelativeToolTip": "NoMango\\NoMango.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-22T10:41:47.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WebAPI",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\WebAPI\\WebAPI.csproj",
+              "RelativeDocumentMoniker": "WebAPI\\WebAPI.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\WebAPI\\WebAPI.csproj",
+              "RelativeToolTip": "WebAPI\\WebAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-22T10:41:42.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Nomango.API\\Models\\Employee.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\Models\\Employee.cs",
+              "RelativeToolTip": "Nomango.API\\Models\\Employee.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T07:05:38.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "WebApiConfig.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\App_Start\\WebApiConfig.cs",
               "RelativeDocumentMoniker": "Nomango.API\\App_Start\\WebApiConfig.cs",
@@ -46,8 +148,7 @@
               "RelativeToolTip": "Nomango.API\\App_Start\\WebApiConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T07:26:51.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T07:26:51.929Z"
             },
             {
               "$type": "Document",
@@ -57,14 +158,14 @@
               "RelativeDocumentMoniker": "Nomango.API\\Controllers\\EmployeeController.cs",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "Nomango.API\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-21T07:21:10.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "CustommerController.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\Controllers\\CustommerController.cs",
               "RelativeDocumentMoniker": "Nomango.API\\Controllers\\CustommerController.cs",
@@ -77,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "packages.config",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\packages.config",
               "RelativeDocumentMoniker": "Nomango.API\\packages.config",
@@ -85,12 +186,11 @@
               "RelativeToolTip": "Nomango.API\\packages.config",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-08-21T07:26:48.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T07:26:48.255Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\NoMango\\Nomango.API\\Web.config",
               "RelativeDocumentMoniker": "Nomango.API\\Web.config",

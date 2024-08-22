@@ -3,6 +3,25 @@
 })
 loadData(1);
 function loadData(msg) {
+    debugger;
+    $.ajax({
+        url: "https://localhost:44334/GetStudent/Get",
+        method: "GET",
+        //data: "",
+        contentType: "json",
+        dataType: "",
+        success: function () {
+            debugger;
+
+        },
+        fail() {
+            debugger;
+
+        }
+    }).done(function () {
+        debugger;
+    });
+
     $.each(data, function (index, item) {
         var trHTML = $(`<tr>
             <td>`+ item.EmployeeCode + `</td>

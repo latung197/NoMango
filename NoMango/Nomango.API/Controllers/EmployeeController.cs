@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nomango.API.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,11 +10,13 @@ namespace Nomango.API.Controllers
 {
     public class EmployeeController : ApiController
     {
-        [Route("Get")]
-        public string Get()
+        [HttpGet]
+        [Route("GetStudent/Get")]
+        public IEnumerable <Employee> Get()
         {
-            return "Le Vanw Tung";
+            return Employee.Employees;
         }
+
 
         [HttpPost]
         [Route("PostStudent/{name}")] 
