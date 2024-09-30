@@ -1,0 +1,168 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\loginform.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\loginform.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\view\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\view\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\83616927926d14a9d63ba91b611a12293ac61079cc74be5d9c8aaec5dc9ed161\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|d:\\tunglv\\project\\nomango\\loginwpf\\loginform\\loginform\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E464681-289E-464E-B72E-3A2EFB78B865}|LoginForm\\LoginForm.csproj|solutionrelative:loginform\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\d498bf5cbf016a5efdb400a121800957635e0d0b034e73e35cb6157ee74399c0\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "XamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\83616927926d14a9d63ba91b611a12293ac61079cc74be5d9c8aaec5dc9ed161\\XamlReader.cs",
+              "ToolTip": "C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\83616927926d14a9d63ba91b611a12293ac61079cc74be5d9c8aaec5dc9ed161\\XamlReader.cs [Read Only]",
+              "ViewState": "AQIAAHQBAAAAAAAAAAAcwJABAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T07:45:32.905Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\View\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "LoginForm\\View\\LoginView.xaml.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\View\\LoginView.xaml.cs",
+              "RelativeToolTip": "LoginForm\\View\\LoginView.xaml.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T06:17:20.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\App.xaml",
+              "RelativeDocumentMoniker": "LoginForm\\App.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\App.xaml",
+              "RelativeToolTip": "LoginForm\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-30T06:16:36.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\View\\LoginView.xaml",
+              "RelativeDocumentMoniker": "LoginForm\\View\\LoginView.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\View\\LoginView.xaml",
+              "RelativeToolTip": "LoginForm\\View\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-30T06:16:11.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "LoginForm\\AssemblyInfo.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\AssemblyInfo.cs",
+              "RelativeToolTip": "LoginForm\\AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T06:13:30.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "LoginForm\\MainWindow.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\MainWindow.xaml",
+              "RelativeToolTip": "LoginForm\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-30T06:11:29.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\LoginForm.csproj",
+              "RelativeDocumentMoniker": "LoginForm\\LoginForm.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\LoginForm.csproj",
+              "RelativeToolTip": "LoginForm\\LoginForm.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-30T06:12:13.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResourcePart.cs",
+              "DocumentMoniker": "C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\d498bf5cbf016a5efdb400a121800957635e0d0b034e73e35cb6157ee74399c0\\ResourcePart.cs",
+              "ToolTip": "C:\\Users\\RFVNPC\\AppData\\Local\\Temp\\.vsdbgsrc\\d498bf5cbf016a5efdb400a121800957635e0d0b034e73e35cb6157ee74399c0\\ResourcePart.cs [Read Only]",
+              "ViewState": "AQIAACkAAAAAAAAAAAAcwDMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T06:17:05.274Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "LoginForm\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\LoginWPF\\LoginForm\\LoginForm\\MainWindow.xaml.cs",
+              "RelativeToolTip": "LoginForm\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T06:11:27.887Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

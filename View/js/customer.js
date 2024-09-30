@@ -3,6 +3,17 @@ $(document).ready(function(){
 })
 loadData(1);
 function loadData(msg){
+
+    $.ajax({
+        url: "https://localhost:44334/GetStudent/Get",
+        method: "Get",
+        //data: "",
+        contentType: "application/json",
+        dataType: ""
+    }).done(function(){
+        debugger;
+    });
+
 $.each(data, function(index, item)
 {
     var trHTML = $(`<tr>

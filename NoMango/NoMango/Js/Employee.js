@@ -3,22 +3,15 @@
 })
 loadData(1);
 function loadData(msg) {
-    debugger;
+
+
     $.ajax({
         url: "https://localhost:44334/GetStudent/Get",
-        method: "GET",
+        method: "Get",
         //data: "",
-        contentType: "json",
-        dataType: "",
-        success: function () {
-            debugger;
-
-        },
-        fail() {
-            debugger;
-
-        }
-    }).done(function () {
+        contentType: "application/json",
+        dataType: ""
+    }).done(function(){
         debugger;
     });
 
