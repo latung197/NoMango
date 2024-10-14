@@ -21,3 +21,5 @@ D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\
 D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\LoginForm.pdb
 D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\LoginForm.genruntimeconfig.cache
 D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\ref\LoginForm.dll
+D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\View\E16IValueConverter.g.cs
+D:\TungLV\Project\NoMango\LoginWPF\LoginForm\LoginForm\obj\Debug\net6.0-windows\View\E16IValueConverter.baml
