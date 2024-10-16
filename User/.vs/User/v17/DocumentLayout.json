@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\User\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E7C91F6-F7AD-4B34-9EC2-11CEFE887999}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\user.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{9E7C91F6-F7AD-4B34-9EC2-11CEFE887999}|User\\User.csproj|solutionrelative:user\\user.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\User.csproj",
+              "RelativeDocumentMoniker": "User\\User.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\User.csproj",
+              "RelativeToolTip": "User\\User.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-16T11:06:16.588Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
