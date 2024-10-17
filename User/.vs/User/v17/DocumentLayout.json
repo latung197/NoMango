@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\User\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E7C91F6-F7AD-4B34-9EC2-11CEFE887999}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\user.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{9E7C91F6-F7AD-4B34-9EC2-11CEFE887999}|User\\User.csproj|solutionrelative:user\\user.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,14 +38,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "User\\Models\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\ApplicationDbContext.cs",
+              "RelativeToolTip": "User\\Models\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T09:42:31.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\User.cs",
+              "RelativeDocumentMoniker": "User\\Models\\User.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\User.cs",
+              "RelativeToolTip": "User\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T09:20:14.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\appsettings.json",
+              "RelativeDocumentMoniker": "User\\appsettings.json",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\appsettings.json",
+              "RelativeToolTip": "User\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-17T08:55:42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "User",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\User.csproj",
-              "RelativeDocumentMoniker": "User\\User.csproj",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\User.csproj",
-              "RelativeToolTip": "User\\User.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-16T11:06:16.588Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Program.cs",
+              "RelativeDocumentMoniker": "User\\Program.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Program.cs",
+              "RelativeToolTip": "User\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T08:55:41.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "User\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "User\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-17T08:52:23.739Z",
               "EditorCaption": ""
             }
           ]
