@@ -9,12 +9,31 @@
         Title="LoginView" Height="300" Width="450"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown">
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush></ImageBrush>
+            <ImageBrush ImageSource="/Images/back-image.jpg" Stretch="None"/>
         </Border.Background>
+
+        <Border CornerRadius="10"
+                BorderThickness="2"
+                Opacity="0.5">
+                <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#f2f2f2"/>
+                </LinearGradientBrush>
+                </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#f2f2f2" Offset="0"/>
+                    <GradientStop Color="#f2f2f2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        
     </Border>
         
 </Window>
