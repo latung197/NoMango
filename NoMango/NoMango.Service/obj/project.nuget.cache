@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "DPd9tICEf5R+pxs/US2eLb/lCeGir//xLS+xjJQyV+/MgFusQX42p0e+2uBWO3lSNczSn9dcJP9UWDFiXGOw7A==",
+  "dgSpecHash": "sjzsYu8y37g=",
   "success": true,
-  "projectFilePath": "D:\\TungLV\\Project\\NoMango\\NoMango\\NoMango.Service\\NoMango.Service.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Project\\NoMango\\NoMango\\NoMango.Service\\NoMango.Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.35\\microsoft.windowsdesktop.app.ref.6.0.35.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.35\\microsoft.netcore.app.ref.6.0.35.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.35\\microsoft.aspnetcore.app.ref.6.0.35.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NoMango.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f47c15bc41858499347210543390e5d8d05ae1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72268114d76980ef5cff590dea2f3be4f304d474")]
 [assembly: System.Reflection.AssemblyProductAttribute("NoMango.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NoMango.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
