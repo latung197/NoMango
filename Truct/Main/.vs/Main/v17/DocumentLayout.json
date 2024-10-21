@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\main.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Main\\main\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -81,8 +81,7 @@
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\App.xaml",
               "RelativeToolTip": "Main\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-21T04:25:16.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:25:16.016Z"
             },
             {
               "$type": "Document",
@@ -117,8 +116,7 @@
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\LoginView.xaml",
               "RelativeToolTip": "Main\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-21T04:24:58.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:24:58.107Z"
             },
             {
               "$type": "Document",
