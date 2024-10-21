@@ -1,7 +1,7 @@
-﻿using System.Configuration;
+﻿using Main.Views;
+using System.Configuration;
 using System.Data;
 using System.Windows;
-using Main.Views;
 
 namespace Main
 {
@@ -10,10 +10,11 @@ namespace Main
     /// </summary>
     public partial class App : Application
     {
-        protected void ApplicationStart(object sender, StartupEventArgs e)
+        protected void ApplicationStart(object sender, StartupEventArgs e) 
         {
             var loginView = new LoginView();
             loginView.Show();
+
         }
     }
 

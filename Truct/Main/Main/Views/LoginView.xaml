@@ -6,34 +6,78 @@
         xmlns:local="clr-namespace:Main.Views"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="LoginView" Height="300" Width="450"
-        WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        ResizeMode="NoResize"
-        MouseDown="Window_MouseDown">
-
-    <Border CornerRadius="12">
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        AllowsTransparency="True"
+        Title="LoginView" Height="250" Width="450">
+    <Border CornerRadius="10" >
         <Border.Background>
-            <ImageBrush ImageSource="/Images/back-image.jpg" Stretch="None"/>
+            <ImageBrush ImageSource="/Images/1_emax_logo.png"/>
         </Border.Background>
 
-        <Border CornerRadius="10"
-                BorderThickness="2"
-                Opacity="0.5">
-                <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#f2f2f2"/>
-                </LinearGradientBrush>
-                </Border.BorderBrush>
+        <Border BorderThickness="3" CornerRadius="10" Opacity="1">
 
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#505050" Offset="0"/>
+                    <GradientStop Color="#505050" Offset="0.75"/>
+                    <GradientStop Color="#505050" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#f2f2f2" Offset="0"/>
-                    <GradientStop Color="#f2f2f2" Offset="1"/>
+                    <GradientStop Color="#F2F2F2" Offset="0"/>
+                    <GradientStop Color="#F2F2F2" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <Image Source="/Images/login.png" Stretch="None" Margin="0,10,0,0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="0" FontSize="15" FontWeight="Bold">UserID</Label>
+                        <Label Grid.Column="0" FontSize="15" FontWeight="Bold">PassWord</Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBox Margin="0,0,0,10" FontSize="15"></TextBox>
+                        <TextBox FontSize="15"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
+                        <Button Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center" Background="#42659c" Foreground="White">Đăng nhập</Button>
+                        <Button FontSize="16" HorizontalContentAlignment="Center" Background="#42659c" Foreground="White">Thoát</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Margin="0,20">
+                        <Button Height="60" Width="40"  Background="#42659c">
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White">Cài đặt</TextBlock></Button>
+                    </StackPanel>
+
+
+                </Grid>
+                <StackPanel Grid.Row="3">
+                    <CheckBox Margin="130,0,0,0">Lưu Tài khoản</CheckBox>
+                    <ComboBox Margin="350,0,10,0">Ngôn ngữ</ComboBox>
+                </StackPanel>
+            </Grid>
+            
         </Border>
         
     </Border>
-        
 </Window>
