@@ -61,12 +61,71 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
-                        <Button Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center" Background="#42659c" Foreground="White">Đăng nhập</Button>
-                        <Button FontSize="16" HorizontalContentAlignment="Center" Background="#42659c" Foreground="White">Thoát</Button>
+                        <Button Name="btnLogin" Click="btnLogin_Click" Cursor="Hand" Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center"  Foreground="White" Content="Đăng nhập">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#42659c"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#55acee"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        
+                        <Button Name="btnClose" Click="btnClose_Click" FontSize="16" HorizontalContentAlignment="Center" Foreground="White" Content="Thoát">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#42659c"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#55acee"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                     </StackPanel>
+                    
                     <StackPanel Grid.Column="3" Margin="0,20">
-                        <Button Height="60" Width="40"  Background="#42659c">
-                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White">Cài đặt</TextBlock></Button>
+                        <Button Name="btnSetting" Height="60" Width="40">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#42659c"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#55acee"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White">Cài đặt</TextBlock>
+                        </Button>
                     </StackPanel>
 
 
@@ -76,8 +135,8 @@
                     <ComboBox Margin="350,0,10,0">Ngôn ngữ</ComboBox>
                 </StackPanel>
             </Grid>
-            
+
         </Border>
-        
+
     </Border>
 </Window>
