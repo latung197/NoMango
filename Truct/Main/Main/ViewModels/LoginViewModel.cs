@@ -55,7 +55,7 @@ namespace Main.ViewModels
 
         public LoginViewModel()
         {
-            LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
+           // LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
         }
     }
 }

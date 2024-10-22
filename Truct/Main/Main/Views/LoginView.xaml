@@ -56,8 +56,8 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBox Margin="0,0,0,10" FontSize="15"></TextBox>
-                        <TextBox FontSize="15"></TextBox>
+                        <TextBox Name="txtUser" Margin="0,0,0,10" FontSize="15"></TextBox>
+                        <PasswordBox Name="txtPw" FontSize="15"></PasswordBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
