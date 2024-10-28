@@ -55,7 +55,32 @@ namespace Main.ViewModels
 
         public LoginViewModel()
         {
-           // LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
+           LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
+            RecoverPasswordCommand = new ViewModelCommand(p => ExcuteRecoverPassCommand("", ""));
+        }
+
+        private void ExcuteRecoverPassCommand(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanExecuteloginCommand(object obj)
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(UserName) || UserName.Length < 3 || Password == null || Password.Length < 3) 
+            {
+                validData = false;
+            }
+            else
+            {
+                validData = true;
+            }
+            return validData;
+        }
+
+        private void ExecuteloginCommand(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

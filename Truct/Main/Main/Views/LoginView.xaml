@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main.Views"
-        mc:Ignorable="d"
+        xmlns:viewModel ="clr-namespace:Main.ViewModels"
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
         Title="LoginView" Height="250" Width="450">
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
     <Border CornerRadius="10" >
         <Border.Background>
             <ImageBrush ImageSource="/Images/1_emax_logo.png"/>
