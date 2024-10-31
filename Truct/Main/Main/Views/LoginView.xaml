@@ -14,7 +14,12 @@
     <Window.DataContext>
         <viewModel:LoginViewModel/>
     </Window.DataContext>
-
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </Window.Resources>
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </Window.Visibility>
     <Border CornerRadius="10" >
         <Border.Background>
             <ImageBrush ImageSource="/Images/1_emax_logo.png"/>
@@ -60,7 +65,7 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBox Name="txtUser" Margin="0,0,0,10" FontSize="15"></TextBox>
+                        <TextBox Name="txtUser" Margin="0,0,0,10" FontSize="15" Text="{Binding UserName}"></TextBox>
                         <PasswordBox Name="txtPw" FontSize="15"></PasswordBox>
                     </StackPanel>
 

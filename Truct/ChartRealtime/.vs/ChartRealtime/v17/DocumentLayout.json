@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|d:\\tunglv\\project\\nomango\\truct\\chartrealtime\\chartreatime\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HistoryForm.cs [Design]",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\HistoryForm.cs",
+              "RelativeDocumentMoniker": "ChartReatime\\Views\\HistoryForm.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\HistoryForm.cs [Design]",
+              "RelativeToolTip": "ChartReatime\\Views\\HistoryForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T06:40:36.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs",
+              "RelativeDocumentMoniker": "ChartReatime\\Views\\MainForm.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs*",
+              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs*",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAswLkAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T02:47:07.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs",
+              "RelativeDocumentMoniker": "ChartReatime\\Views\\MainForm.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs [Design]*",
+              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T02:46:26.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SpashForm.cs [Design]",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\SpashForm.cs",
+              "RelativeDocumentMoniker": "ChartReatime\\Views\\SpashForm.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\SpashForm.cs [Design]",
+              "RelativeToolTip": "ChartReatime\\Views\\SpashForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T02:46:25.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Program.cs",
+              "RelativeDocumentMoniker": "ChartReatime\\Program.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Program.cs",
+              "RelativeToolTip": "ChartReatime\\Program.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T02:46:17.407Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

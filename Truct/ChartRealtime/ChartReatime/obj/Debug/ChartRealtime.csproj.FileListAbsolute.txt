@@ -1,0 +1,76 @@
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.exe.config
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.exe
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.pdb
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\MetroProgressBar.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Newtonsoft.Json.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Pipelines.Sockets.Unofficial.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\StackExchange.Redis.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Buffers.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.IO.Pipelines.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Memory.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Numerics.Vectors.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Channels.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Newtonsoft.Json.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\Pipelines.Sockets.Unofficial.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\StackExchange.Redis.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Buffers.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.IO.Pipelines.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Memory.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Numerics.Vectors.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Channels.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.AssemblyReference.cache
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.HistoryForm.resources
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.SpashForm.resources
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.MainForm.resources
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.Properties.Resources.resources
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.GenerateResource.cache
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.CoreCompileInputs.cache
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRea.B64BDEE9.Up2Date
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.exe
+D:\RobotcomFa\02- 1CC Realtime\Project\1cc\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.pdb
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.exe.config
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.exe
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\ChartRealtime.pdb
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\MetroProgressBar.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Newtonsoft.Json.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Pipelines.Sockets.Unofficial.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\StackExchange.Redis.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Buffers.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.IO.Pipelines.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Memory.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Numerics.Vectors.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Channels.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Newtonsoft.Json.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\Pipelines.Sockets.Unofficial.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\StackExchange.Redis.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Buffers.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.IO.Pipelines.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Memory.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Numerics.Vectors.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Channels.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.AssemblyReference.cache
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.HistoryForm.resources
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.SpashForm.resources
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.MainForm.resources
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.Properties.Resources.resources
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.GenerateResource.cache
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.csproj.CoreCompileInputs.cache
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRea.B64BDEE9.Up2Date
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.exe
+D:\TungLV\Project\NoMango\Truct\ChartRealtime\ChartReatime\obj\Debug\ChartRealtime.pdb
