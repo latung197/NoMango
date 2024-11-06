@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Main.Models;
+using Main.Repositories;
+using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Security.Principal;
 
 namespace Main.ViewModels
 {
@@ -14,6 +18,8 @@ namespace Main.ViewModels
         private SecureString _password;
         private string _errorMessage;
         private bool _isViewVisible = true;
+
+        private IUserRepository userRepository;
         public string UserName
         {
             get { return _userName; }
@@ -55,7 +61,8 @@ namespace Main.ViewModels
 
         public LoginViewModel()
         {
-           LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
+            userRepository = new UserRepository();
+            LoginCommand = new ViewModelCommand(ExecuteloginCommand, CanExecuteloginCommand);
             RecoverPasswordCommand = new ViewModelCommand(p => ExcuteRecoverPassCommand("", ""));
         }
 
@@ -67,7 +74,7 @@ namespace Main.ViewModels
         private bool CanExecuteloginCommand(object obj)
         {
             bool validData;
-            if (string.IsNullOrWhiteSpace(UserName) || UserName.Length < 3 || Password == null || Password.Length < 3) 
+            if (string.IsNullOrWhiteSpace(UserName) || UserName.Length < 3 || Password == null || Password.Length < 3)
             {
                 validData = false;
             }
@@ -80,7 +87,18 @@ namespace Main.ViewModels
 
         private void ExecuteloginCommand(object obj)
         {
-            throw new NotImplementedException();
+            var isValuidUser = userRepository.AuthenticationUser(new NetworkCredential(UserName, Password));
+            if (isValuidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(
+                    new GenericIdentity(UserName), null
+                    );
+                isValuidUser = false;
+            }
+            else
+            {
+                ErrorMessage = "* Invalid username or password";
+            }
         }
     }
 }

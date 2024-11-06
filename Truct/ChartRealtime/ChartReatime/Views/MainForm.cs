@@ -17,12 +17,12 @@ namespace ChartRealtime
         /// <summary>
         /// リアタイム表示フラグ
         /// </summary>
-        private bool isTaskRun = false;
+        private bool taskRun = false;
 
         /// <summary>
         /// リアルタイム表示チェックボックス
         /// </summary>
-        private bool isRealTime = true;
+        private bool realTime = true;
 
         /// <summary>
         /// リアルタイム表示周期
@@ -326,15 +326,15 @@ namespace ChartRealtime
         private async void MainRealTime()
         {
             // リアルタイム表示タスク実行されているかチェック
-            if (!isTaskRun)
+            if (!taskRun)
             {
-                isTaskRun = true;
+                taskRun = true;
 
                 Mdlres mdlres = new Mdlres();
                 Mdlvar mdlvar = new Mdlvar();
                 await Task.Run(() =>
                 {
-                    while (isRealTime)
+                    while (realTime)
                     {
                         //グラフデータ取得
                         dsMdlresBO = mdlres.LoadRealTimeBO(dTimeBOE, dTimeBOW, dTimeTrandMelt);
@@ -442,7 +442,7 @@ namespace ChartRealtime
                         Thread.Sleep(timeLoad);
                     }
                 });
-                isTaskRun = false;
+                taskRun = false;
             }
         }
 
@@ -504,13 +504,13 @@ namespace ChartRealtime
                             float t1 = float.Parse(_row["XZ"].ToString());
                             if (t1 > maxAxBO)
                             {
+                                chrEastBO.ChartAreas[0].RecalculateAxesScale();https://www.facebook.com/stories/166064154961571/UzpfSVNDOjEwMDQ3NjAxMDQ3NDExNzA=/?bucket_count=9&source=story_tray
 
 
-                                chrEastBO.ChartAreas[0].AxisX.Maximum = t1+10;
+                                chrEastBO.ChartAreas[0].AxisX.Maximum = t1;
                                 chrEastBO.ChartAreas[0].AxisX.Minimum = 0;
                                 ///chrEastBO.ChartAreas[0].AxisX.Minimum = double.NaN;
-                                chrEastBO.ChartAreas[0].RecalculateAxesScale();
-                                chrEastBO.ChartAreas[0].AxisX.ScaleView.Zoom(t1 - maxAxBO, t1);
+                                chrEastBO.ChartAreas[0].AxisX.ScaleView.Zoom(t1-10000, t1);
 
                                 chrEastBO.Update();
 
@@ -1262,7 +1262,7 @@ namespace ChartRealtime
             chrEastBO.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             chrEastBO.ChartAreas[0].AxisX.LabelStyle.Interval = intervalBO;
             chrEastBO.ChartAreas[0].AxisX.LabelStyle.Angle = 90;
-             chrEastBO.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;
+            chrEastBO.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;
             chrEastBO.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             chrEastBO.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
             chrEastBO.ChartAreas[0].AxisX.ScrollBar.BackColor = Color.White;
@@ -1616,7 +1616,7 @@ namespace ChartRealtime
         /// <param name="e"></param>
         private void btn_loadchart_Click(object sender, EventArgs e)
         {
-            if (isRealTime == false)
+            if (realTime == false)
             {
                 Mdlres mdlres = new Mdlres();
                 DataSet dsMdlresBO = new DataSet();
@@ -1654,14 +1654,14 @@ namespace ChartRealtime
         {
             if (chbRealTime.Checked)
             {
-                isRealTime = true;
+                realTime = true;
                 dtpFrom.Enabled = false;
                 dtpTo.Enabled = false;
                 txtmM.Enabled = false;
             }
             else
             {
-                isRealTime = false;
+                realTime = false;
                 dtpFrom.Enabled = true;
                 dtpTo.Enabled = true;
                 txtmM.Enabled = true;

@@ -3,12 +3,60 @@
   "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\customecontrols\\bindablepasswordbox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\customecontrols\\bindablepasswordbox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\customecontrols\\bindablepasswordbox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\models\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\models\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\viewmodels\\viewmodelcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\viewmodels\\viewmodelcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\app.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\views\\loginview.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\views\\loginview.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Main\\main\\customecontrols\\bindablepasswordbox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\customecontrols\\bindablepasswordbox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|d:\\tunglv\\project\\nomango\\truct\\main\\main\\customecontrols\\bindablepasswordbox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E31C422-4C97-4CDD-9101-CBD4B4F32BA7}|Main\\Main.csproj|solutionrelative:main\\customecontrols\\bindablepasswordbox.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,20 +74,173 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ViewModelCommand.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\ViewModelCommand.cs",
+              "RelativeDocumentMoniker": "Main\\ViewModels\\ViewModelCommand.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\ViewModelCommand.cs",
+              "RelativeToolTip": "Main\\ViewModels\\ViewModelCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:48:05.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ViewModelBase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\ViewModelBase.cs",
+              "RelativeDocumentMoniker": "Main\\ViewModels\\ViewModelBase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\ViewModelBase.cs",
+              "RelativeToolTip": "Main\\ViewModels\\ViewModelBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:48:04.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainView.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\MainView.xaml",
+              "RelativeDocumentMoniker": "Main\\Views\\MainView.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\MainView.xaml",
+              "RelativeToolTip": "Main\\Views\\MainView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-06T10:45:52.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Main\\App.xaml.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\App.xaml.cs",
+              "RelativeToolTip": "Main\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:40:53.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\App.xaml",
+              "RelativeDocumentMoniker": "Main\\App.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\App.xaml",
+              "RelativeToolTip": "Main\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-06T10:39:34.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Main\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Main\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T09:54:18.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RepositoryBase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Repositories\\RepositoryBase.cs",
+              "RelativeDocumentMoniker": "Main\\Repositories\\RepositoryBase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Repositories\\RepositoryBase.cs",
+              "RelativeToolTip": "Main\\Repositories\\RepositoryBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T06:59:05.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Models\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Main\\Models\\IUserRepository.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Models\\IUserRepository.cs",
+              "RelativeToolTip": "Main\\Models\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T06:40:56.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "Main\\Models\\UserModel.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Models\\UserModel.cs",
+              "RelativeToolTip": "Main\\Models\\UserModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T06:38:56.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "Main\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "Main\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T06:37:59.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "Main\\Views\\LoginView.xaml.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\LoginView.xaml.cs",
+              "RelativeToolTip": "Main\\Views\\LoginView.xaml.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T06:37:57.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "Main\\Views\\LoginView.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\Views\\LoginView.xaml",
+              "RelativeToolTip": "Main\\Views\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-06T04:23:13.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "BindablePasswordBox.xaml.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\CustomeControls\\BindablePasswordBox.xaml.cs",
               "RelativeDocumentMoniker": "Main\\CustomeControls\\BindablePasswordBox.xaml.cs",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\CustomeControls\\BindablePasswordBox.xaml.cs",
               "RelativeToolTip": "Main\\CustomeControls\\BindablePasswordBox.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABsAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T10:57:10.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "BindablePasswordBox.xaml",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main\\Main\\CustomeControls\\BindablePasswordBox.xaml",
               "RelativeDocumentMoniker": "Main\\CustomeControls\\BindablePasswordBox.xaml",

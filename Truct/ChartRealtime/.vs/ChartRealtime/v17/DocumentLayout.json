@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E0521552-F4B5-4C83-93C3-3C56BA2787AC}|ChartReatime\\ChartRealtime.csproj|solutionrelative:chartreatime\\views\\spashform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HistoryForm.cs [Design]",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\HistoryForm.cs",
               "RelativeDocumentMoniker": "ChartReatime\\Views\\HistoryForm.cs",
@@ -55,7 +55,7 @@
               "RelativeDocumentMoniker": "ChartReatime\\Views\\MainForm.cs",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs*",
               "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs*",
-              "ViewState": "AQIAAJQAAAAAAAAAAAAswLkAAAATAAAA",
+              "ViewState": "AQIAAMYBAAAAAAAAAAAkwO8BAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T02:47:07.975Z",
               "EditorCaption": ""
@@ -66,14 +66,14 @@
               "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs",
               "RelativeDocumentMoniker": "ChartReatime\\Views\\MainForm.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs [Design]*",
-              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs [Design]*",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs [Design]",
+              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T02:46:26.876Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "SpashForm.cs [Design]",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\SpashForm.cs",
               "RelativeDocumentMoniker": "ChartReatime\\Views\\SpashForm.cs",
@@ -84,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Program.cs",
               "RelativeDocumentMoniker": "ChartReatime\\Program.cs",

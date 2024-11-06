@@ -32,6 +32,12 @@ namespace Main.CustomeControls
         public BindablePasswordBox()
         {
             InitializeComponent();
+            txtPassWord.PasswordChanged += OnPasswordChanged;
+        }
+
+        private void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+             Password = txtPassWord.SecurePassword;
         }
     }
 }
