@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\QLKho\\",
+  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|d:\\project\\nomango\\truct\\qlkho\\qlkho\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|d:\\tunglv\\project\\nomango\\truct\\qlkho\\qlkho\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|solutionrelative:qlkho\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|d:\\project\\nomango\\truct\\qlkho\\qlkho\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\qlkho\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|solutionrelative:qlkho\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|d:\\project\\nomango\\truct\\qlkho\\qlkho\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\qlkho\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A41192E3-7507-42C9-97E0-21571FC8C323}|QLKho\\QLKho.csproj|solutionrelative:qlkho\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,15 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\App.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\App.xaml",
               "RelativeDocumentMoniker": "QLKho\\App.xaml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\App.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\App.xaml",
               "RelativeToolTip": "QLKho\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-10T09:27:45.436Z",
@@ -40,26 +44,24 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml",
               "RelativeDocumentMoniker": "QLKho\\MainWindow.xaml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml",
               "RelativeToolTip": "QLKho\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-10T09:25:47.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T09:25:47.939Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "QLKho\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\QLKho\\QLKho\\MainWindow.xaml.cs",
               "RelativeToolTip": "QLKho\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T09:25:47.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T09:25:47.652Z"
             }
           ]
         }

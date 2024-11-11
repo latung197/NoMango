@@ -1,0 +1,16 @@
+﻿<Window x:Class="Main01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main01"
+        mc:Ignorable="d"
+        Title="" Height="250" Width="450"
+        MouseDown="Window_MouseDown"
+        WindowStyle="None"
+        Background="Transparent"
+        >
+    <Border CornerRadius="10">
+        
+    </Border>
+</Window>

@@ -60,8 +60,8 @@
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Label Grid.Column="0" FontSize="15" FontWeight="Bold">UserID</Label>
-                        <Label Grid.Column="0" FontSize="15" FontWeight="Bold">PassWord</Label>
+                        <Label FontSize="15" FontWeight="Bold">UserID</Label>
+                        <Label FontSize="15" FontWeight="Bold">PassWord</Label>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">

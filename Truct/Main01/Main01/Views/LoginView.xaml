@@ -1,0 +1,86 @@
+﻿<Window x:Class="Main01.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main01.Views"
+        mc:Ignorable="d"
+        Title="LoginView" Height="250" Width="450"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
+
+    <Border CornerRadius="20">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/1_emax_logo.png"/>
+        </Border.Background>
+
+        <Border BorderThickness="3" CornerRadius="20">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="DimGray" Offset="0"/>
+                    <GradientStop Color="DimGray" Offset="0.75"/>
+                    <GradientStop Color="DimGray" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#F2F2F2" Offset="0"/>
+                    <GradientStop Color="#F2F2F2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <Image Source="/Images/login.png" Stretch="None" Margin="0,10,0,0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label FontSize="15" FontWeight="Bold">UserID</Label>
+                        <Label FontSize="15" FontWeight="Bold">PassWord</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBox Name="txtUser" FontSize="15" Margin="0,0,0,10"></TextBox>
+                        <TextBox Name="txtPw" FontSize="15"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <Button Margin="10,0,0,10" FontSize="15">Đăng nhập</Button>
+                        <Button Margin="10,0,0,0" FontSize="15">Thoát</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#42659c"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#55acee"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                                
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White">Cài đặt</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
