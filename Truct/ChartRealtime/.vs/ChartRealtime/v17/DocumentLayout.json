@@ -53,9 +53,9 @@
               "Title": "MainForm.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs",
               "RelativeDocumentMoniker": "ChartReatime\\Views\\MainForm.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs*",
-              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs*",
-              "ViewState": "AQIAAMYBAAAAAAAAAAAkwO8BAAAvAAAA",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs",
+              "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs",
+              "ViewState": "AQIAADoCAAAAAAAAAAAAAFoCAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T02:47:07.975Z",
               "EditorCaption": ""
@@ -69,7 +69,8 @@
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\ChartRealtime\\ChartReatime\\Views\\MainForm.cs [Design]",
               "RelativeToolTip": "ChartReatime\\Views\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T02:46:26.876Z"
+              "WhenOpened": "2024-10-24T02:46:26.876Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
