@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main.Views"
-        xmlns:viewModel ="clr-namespace:Main.ViewModels" xmlns:customecontrols="clr-namespace:Main.CustomeControls"
+        xmlns:viewModel ="clr-namespace:Main.ViewModels" 
+        xmlns:customecontrols="clr-namespace:Main.CustomeControls"
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -66,14 +67,14 @@
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBox Name="txtUser" Margin="0,0,0,10" FontSize="15" Text="{Binding UserName}"></TextBox>
-                        
+
                         <customecontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                            
+
                         </customecontrols:BindablePasswordBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
-                        <Button Name="btnLogin" Click="btnLogin_Click" Cursor="Hand" Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center"  Foreground="White" Content="Đăng nhập"
+                        <Button Name="btnLogin" Cursor="Hand" Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center"  Foreground="White" Content="Đăng nhập"
                                 Command="{Binding LoginCommand}">
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -94,7 +95,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        
+
                         <Button Name="btnClose" Click="btnClose_Click" FontSize="16" HorizontalContentAlignment="Center" Foreground="White" Content="Thoát">
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -116,7 +117,7 @@
                             </Button.Template>
                         </Button>
                     </StackPanel>
-                    
+
                     <StackPanel Grid.Column="3" Margin="0,20">
                         <Button Name="btnSetting" Height="60" Width="40">
                             <Button.Style>

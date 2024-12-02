@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace Main01
 {
@@ -21,9 +22,23 @@ namespace Main01
             InitializeComponent();
         }
 
+        public void CropImg()
+        {
+            string imgFile = "";
+        }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
+        }
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Đẫ thực hiện");
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

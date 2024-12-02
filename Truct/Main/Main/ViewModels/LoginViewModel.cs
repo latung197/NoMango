@@ -15,26 +15,26 @@ namespace Main.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private string _userName;
-        private SecureString _password;
+        private SecureString _passWord;
         private string _errorMessage;
         private bool _isViewVisible = true;
 
         private IUserRepository userRepository;
-        public string UserName
+        public string Username
         {
             get { return _userName; }
             set
             {
                 _userName = value;
-                OnPropertyChanged(nameof(UserName));
+                OnPropertyChanged(nameof(Username));
             }
         }
         public SecureString Password
         {
-            get { return _password; }
+            get { return _passWord; }
             set
             {
-                _password = value;
+                _passWord = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
@@ -74,7 +74,7 @@ namespace Main.ViewModels
         private bool CanExecuteloginCommand(object obj)
         {
             bool validData;
-            if (string.IsNullOrWhiteSpace(UserName) || UserName.Length < 3 || Password == null || Password.Length < 3)
+            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 || Password == null || Password.Length < 3)
             {
                 validData = false;
             }
@@ -87,11 +87,11 @@ namespace Main.ViewModels
 
         private void ExecuteloginCommand(object obj)
         {
-            var isValuidUser = userRepository.AuthenticationUser(new NetworkCredential(UserName, Password));
+            var isValuidUser = userRepository.AuthenticationUser(new NetworkCredential(Username, Password));
             if (isValuidUser)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
-                    new GenericIdentity(UserName), null
+                    new GenericIdentity(Username), null
                     );
                 isValuidUser = false;
             }

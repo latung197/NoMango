@@ -26,12 +26,12 @@ namespace Main.ViewModels
             _canExecuteAction = canExecuteAction;
         }
 
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecuteAction == null ? true : _canExecuteAction(parameter);
         }
 
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
             _executeAction(parameter);
         }

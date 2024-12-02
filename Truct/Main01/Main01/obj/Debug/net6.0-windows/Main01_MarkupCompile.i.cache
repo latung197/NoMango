@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\TungLV\Project\NoMango\Truct\Main01\Main01\App.xaml
-21727942632
+3-482693866
 
-7766197537
+91993534186
 194-1701117732
-MainWindow.xaml;Views\LoginView.xaml;
+MainWindow.xaml;Styles\UIColor.xaml;Views\LoginView.xaml;
 
 True
 
