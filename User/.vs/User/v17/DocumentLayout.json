@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\User\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +42,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "User\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "User\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T06:25:09.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "User\\Models\\ApplicationDbContext.cs",
@@ -50,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\User.cs",
               "RelativeDocumentMoniker": "User\\Models\\User.cs",
@@ -62,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\appsettings.json",
               "RelativeDocumentMoniker": "User\\appsettings.json",
@@ -74,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Program.cs",
               "RelativeDocumentMoniker": "User\\Program.cs",
@@ -87,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "User\\Views\\Home\\Index.cshtml",
