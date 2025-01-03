@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\Warehouse\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Public">
+      <HintPath>..\..\Public\Public\bin\Debug\net8.0\Public.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
