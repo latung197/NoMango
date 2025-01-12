@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Core.Interfaces.IRepositoryBase;
 namespace Core.Interfaces.IUserRepository
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepositoryBase<User>
     {
         Task<User> GetByUsernameAsync(string username);
     }

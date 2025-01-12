@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces.IRepositoryBase
 {
-    public interface IRepository<T> where T : class
+    public interface IRepositoryBase<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
         Task<List<T>> GetAllAsync();

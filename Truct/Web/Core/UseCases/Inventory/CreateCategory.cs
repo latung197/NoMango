@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.UseCases.Inventory
 {
-    internal class CreateCategoryUseCase
+    internal class CreateCategory
     {
     }
 }

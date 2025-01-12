@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Public">
       <HintPath>..\..\Public\Public\bin\Debug\net8.0\Public.dll</HintPath>
     </Reference>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Core.Interfaces.IRepositoryBase;
 namespace Core.Interfaces.IRepositoryBase
 {
-    public interface IRoleRepository : IRepository<Role>
+    public interface IRoleRepository : IRepositoryBase<Role>
     {
 
     }

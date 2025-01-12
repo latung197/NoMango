@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "R+r6Z0CXvDPPGD0ZM8rVHFGzRzod0X7aCUCbAEV5ydy1BASc/AopaiC1aQnNA3JTxpN2Fc2vl77eYDol07K0+A==",
+  "dgSpecHash": "XyJbPVYe35M=",
   "success": true,
-  "projectFilePath": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tung\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

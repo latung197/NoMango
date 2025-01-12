@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities
+namespace Core.UseCases.Inventory
 {
-    public class Product
+    internal class GetCategories
     {
     }
 }

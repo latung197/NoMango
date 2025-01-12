@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\",
+  "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\Public\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\tunglv\\project\\nomango\\truct\\public\\public\\fa.data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\project\\nomango\\truct\\public\\public\\fa.data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|solutionrelative:public\\fa.data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Public\\public\\fa.data\\dbstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\project\\nomango\\truct\\public\\public\\fa.data\\dbstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|solutionrelative:public\\fa.data\\dbstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Public\\public\\fa.global\\public.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\project\\nomango\\truct\\public\\public\\fa.global\\public.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|solutionrelative:public\\fa.global\\public.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Public\\public\\public.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\project\\nomango\\truct\\public\\public\\public.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|solutionrelative:public\\public.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Public\\public\\public.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|d:\\project\\nomango\\truct\\public\\public\\public.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{D4E29D3D-D445-4451-8294-5198172BCC94}|Public\\Public.csproj|solutionrelative:public\\public.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -30,21 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Public.cs",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Global\\Public.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Global\\Public.cs",
               "RelativeDocumentMoniker": "Public\\FA.Global\\Public.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Global\\Public.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Global\\Public.cs",
               "RelativeToolTip": "Public\\FA.Global\\Public.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAiwJAAAABEAAAA",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAiwJAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T04:22:01.762Z",
               "EditorCaption": ""
@@ -53,11 +49,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DatabaseHelper.cs",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DatabaseHelper.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "Public\\FA.Data\\DatabaseHelper.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DatabaseHelper.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DatabaseHelper.cs",
               "RelativeToolTip": "Public\\FA.Data\\DatabaseHelper.cs",
-              "ViewState": "AQIAABQEAAAAAAAAAAAtwAAEAAAnAAAA",
+              "ViewState": "AgIAAEUDAAAAAAAAAAAawJMDAAB0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T04:19:17.946Z",
               "EditorCaption": ""
@@ -66,11 +62,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DbStruct.cs",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DbStruct.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DbStruct.cs",
               "RelativeDocumentMoniker": "Public\\FA.Data\\DbStruct.cs",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DbStruct.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DbStruct.cs",
               "RelativeToolTip": "Public\\FA.Data\\DbStruct.cs",
-              "ViewState": "AQIAAFsAAAAAAAAAAAAUwJEAAAAfAAAA",
+              "ViewState": "AgIAACwAAAAAAAAAAAAQwJEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T04:01:19.836Z",
               "EditorCaption": ""
@@ -79,21 +75,20 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Public",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
               "RelativeDocumentMoniker": "Public\\Public.csproj",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
               "RelativeToolTip": "Public\\Public.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-31T03:55:28.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-31T03:55:28.366Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Public",
-              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
+              "Title": "Public.csproj",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
               "RelativeDocumentMoniker": "Public\\Public.csproj",
-              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
               "RelativeToolTip": "Public\\Public.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
