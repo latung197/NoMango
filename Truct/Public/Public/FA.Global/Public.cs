@@ -19,13 +19,9 @@ namespace Public.FA.Global
         public async void test()
         {
             var connectionString = "Host=localhost;Port=5432;Userna me=postgres;Password=yourpassword;Database=ERPMAX";
-
-
-
             // Hàm ExecuteScalarAsync
             // Tạo CancellationTokenSource bên ngoài
             var cancellationTokenSource = new CancellationTokenSource();
-
             // Ví dụ: Truy vấn có timeout 10 giây
             string sql = "SELECT pg_sleep(15); SELECT COUNT(*) FROM "; // pg_sleep để kiểm tra timeout
 
@@ -59,7 +55,6 @@ namespace Public.FA.Global
         {
             string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=yourpassword;Database=yourdatabase";
             string query = "INSERT INTO your_table (column1, column2) VALUES (@value1, @value2)";
-
             var parameters = new[]
             {
             new NpgsqlParameter("@value1", "Sample Value 1"),
@@ -96,20 +91,20 @@ namespace Public.FA.Global
         public async void TestInsert()
         {
             var jsonData = new List<Dictionary<string, object>>
-{
-    new Dictionary<string, object>
-    {
-        { "id", 1 },
-        { "name", "Alice" },
-        { "age", 25 }
-    },
-    new Dictionary<string, object>
-    {
-        { "id", 2 },
-        { "name", "Bob" },
-        { "age", 30 }
-    }
-};
+            {
+                new Dictionary<string, object>
+                {
+                    { "id", 1 },
+                    { "name", "Alice" },
+                    { "age", 25 }
+                },
+                new Dictionary<string, object>
+                {
+                    { "id", 2 },
+                    { "name", "Bob" },
+                    { "age", 30 }
+                }
+            };
             string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=yourpassword;Database=yourdatabase";
             string tableName = "users";
 
@@ -133,14 +128,14 @@ namespace Public.FA.Global
         public void TestUpdateSomeColumn()
         {
             var jsonData = new List<Dictionary<string, object>>
-{
-    new Dictionary<string, object>
-    {
-        { "id", 1 },
-        { "name", "Alice Updated" },
-        { "age", 26 }
-    }
-};
+            {
+                new Dictionary<string, object>
+                {
+                    { "id", 1 },
+                    { "name", "Alice Updated" },
+                    { "age", 26 }
+                }
+            };
 
             var fieldsToUpdate = new List<string> { "name", "age" };
         }
