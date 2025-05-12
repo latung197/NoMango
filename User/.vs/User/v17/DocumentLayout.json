@@ -7,7 +7,11 @@
       "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|d:\\tunglv\\project\\nomango\\user\\user\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|D:\\TungLV\\Project\\NoMango\\User\\user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9040065-8647-4636-9A5C-15C3FA951DBE}|User\\User.csproj|solutionrelative:user\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "User\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "User\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-06T08:11:46.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -48,14 +65,14 @@
               "RelativeDocumentMoniker": "User\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\TungLV\\Project\\NoMango\\User\\User\\Controllers\\HomeController.cs",
               "RelativeToolTip": "User\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAqwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-02T06:25:09.591Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "User\\Models\\ApplicationDbContext.cs",
@@ -67,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Models\\User.cs",
               "RelativeDocumentMoniker": "User\\Models\\User.cs",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\appsettings.json",
               "RelativeDocumentMoniker": "User\\appsettings.json",
@@ -91,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Program.cs",
               "RelativeDocumentMoniker": "User\\Program.cs",
@@ -99,12 +116,11 @@
               "RelativeToolTip": "User\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T08:55:41.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-17T08:55:41.118Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\User\\User\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "User\\Views\\Home\\Index.cshtml",
