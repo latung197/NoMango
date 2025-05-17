@@ -23,3 +23,5 @@ D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\Main01.ge
 D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\ref\Main01.dll
 D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\Styles\UIColor.baml
 D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\App.baml
+D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\Pain.g.cs
+D:\TungLV\Project\NoMango\Truct\Main01\Main01\obj\Debug\net6.0-windows\Pain.baml

@@ -104,11 +104,11 @@ namespace Public.FA.Data
         /// <param name="cancellationToken">Token để hủy lệnh nếu cần.</param>
         /// <returns>Số dòng đã được chèn vào.</returns>
         public static async Task<int> InsertDataAsync(
-            string connectionString,
-            string tableName,
-            List<Dictionary<string, object>> jsonData,
-            bool useTransaction = true,
-            CancellationToken cancellationToken = default)
+                                    string connectionString,
+                                    string tableName,
+                                    List<Dictionary<string, object>> jsonData,
+                                    bool useTransaction = true,
+                                    CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new ArgumentException("Connection string cannot be null or empty.", nameof(connectionString));
@@ -221,9 +221,9 @@ namespace Public.FA.Data
         /// Sinh câu lệnh INSERT từ dữ liệu JSON và danh sách cột.
         /// </summary>
         private static string GenerateInsertStatement(
-            string tableName,
-            List<string> columns,
-            List<Dictionary<string, object>> jsonData)
+                                    string tableName,
+                                    List<string> columns,
+                                    List<Dictionary<string, object>> jsonData)
         {
             var insertBuilder = new StringBuilder();
             insertBuilder.AppendLine($"INSERT INTO {tableName} ({string.Join(", ", columns)}) VALUES");
@@ -269,9 +269,9 @@ namespace Public.FA.Data
         }
 
         private static async Task<bool> CheckIfRecordExistsAsync(
-    NpgsqlConnection connection,
-    string checkQuery,
-    CancellationToken cancellationToken)
+                                            NpgsqlConnection connection,
+                                            string checkQuery,
+                                            CancellationToken cancellationToken)
         {
             await using var command = new NpgsqlCommand(checkQuery, connection);
             var result = await command.ExecuteScalarAsync(cancellationToken);
@@ -306,7 +306,7 @@ namespace Public.FA.Data
         }
 
 
-        public static async Task<int> UpdateDataAsync( string connectionString, string tableName, List<Dictionary<string, object>> jsonData, bool useTransaction = true, CancellationToken cancellationToken = default)
+        public static async Task<int> UpdateDataAsync(string connectionString, string tableName, List<Dictionary<string, object>> jsonData, bool useTransaction = true, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new ArgumentException("Connection string cannot be null or empty.", nameof(connectionString));
@@ -403,9 +403,9 @@ namespace Public.FA.Data
         /// Sinh câu lệnh SQL để cập nhật bản ghi.
         /// </summary>
         private static string GenerateUpdateStatement(
-            string tableName,
-            List<string> columns,
-            List<Dictionary<string, object>> jsonData)
+                                string tableName,
+                                List<string> columns,
+                                List<Dictionary<string, object>> jsonData)
         {
             var updateClauses = new List<string>();
             var whereClauses = new List<string>();
@@ -448,12 +448,12 @@ namespace Public.FA.Data
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         public static async Task<int> UpdateSomeFieldsAsync(
-    string connectionString,
-    string tableName,
-    List<Dictionary<string, object>> jsonData,
-    List<string> fieldsToUpdate,
-    bool useTransaction = true,
-    CancellationToken cancellationToken = default)
+                                    string connectionString,
+                                    string tableName,
+                                    List<Dictionary<string, object>> jsonData,
+                                    List<string> fieldsToUpdate,
+                                    bool useTransaction = true,
+                                    CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new ArgumentException("Connection string cannot be null or empty.", nameof(connectionString));
@@ -553,9 +553,9 @@ namespace Public.FA.Data
         /// Sinh câu lệnh SQL để cập nhật các trường cụ thể.
         /// </summary>
         private static string GenerateUpdateSomeFieldsStatement(
-            string tableName,
-            List<string> fieldsToUpdate,
-            List<Dictionary<string, object>> jsonData)
+                                    string tableName,
+                                    List<string> fieldsToUpdate,
+                                    List<Dictionary<string, object>> jsonData)
         {
             var updateClauses = new List<string>();
             var whereClauses = new List<string>();

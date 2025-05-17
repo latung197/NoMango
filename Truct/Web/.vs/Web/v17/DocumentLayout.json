@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\Web\\",
+  "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{FF5DD6C2-A5B2-486E-AAEA-0C08A67BAB7D}|WebAPI\\WebAPI.csproj|d:\\project\\nomango\\truct\\web\\webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{FF5DD6C2-A5B2-486E-AAEA-0C08A67BAB7D}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -72,34 +73,77 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|d:\\project\\nomango\\truct\\web\\core\\interfaces\\iuserrepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+=======
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\interfaces\\iuserrepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
       "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iuserrepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|d:\\project\\nomango\\truct\\web\\core\\interfaces\\iuserrepository\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\interfaces\\iuserrepository\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iuserrepository\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|d:\\project\\nomango\\truct\\web\\core\\interfaces\\irepositorybase\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\irepositorybase\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\interfaces\\itockenservice\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\itockenservice\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|d:\\project\\nomango\\truct\\web\\core\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|d:\\project\\nomango\\truct\\web\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|d:\\project\\nomango\\truct\\web\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|d:\\tunglv\\project\\nomango\\truct\\web\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|d:\\project\\nomango\\truct\\web\\infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\product\\productrepositorys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\product\\productrepositorys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\interfaces\\iproductsrepository\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\iproductsrepository\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\authentication\\loginusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\authentication\\loginusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\inventory\\getcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\inventory\\getcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\inventory\\createcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\inventory\\createcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\authentication\\registerusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\authentication\\registerusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\usecases\\authentication\\getuserrolesusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\usecases\\authentication\\getuserrolesusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\interfaces\\irepositorybase\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\interfaces\\irepositorybase\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D6F33B72-0777-45D5-A23A-8902636D8EE9}|Core\\Core.csproj|solutionrelative:core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E211F3D-12CC-4B1E-9997-C31CEBB9F652}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D72C1D37-90B9-48C3-B705-836784A721AB}|Application\\Application.csproj|d:\\project\\nomango\\truct\\web\\application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D72C1D37-90B9-48C3-B705-836784A721AB}|Application\\Application.csproj|D:\\TungLV\\Project\\NoMango\\Truct\\Web\\application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D72C1D37-90B9-48C3-B705-836784A721AB}|Application\\Application.csproj|solutionrelative:application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -110,13 +154,14 @@
       "DocumentGroups": [
         {
           "DockedWidth": 225,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
             },
             {
+<<<<<<< HEAD
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "launchSettings.json",
@@ -204,10 +249,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 8,
+=======
+              "$type": "Document",
+              "DocumentIndex": 5,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "IProductsRepository.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
               "RelativeDocumentMoniker": "Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
               "RelativeToolTip": "Core\\Interfaces\\IProductsRepository\\IProductsRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -215,39 +264,56 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 7,
+=======
+              "DocumentIndex": 4,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "ProductRepositorys.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Product\\ProductRepositorys.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Product\\ProductRepositorys.cs",
               "RelativeDocumentMoniker": "Core\\UseCases\\Product\\ProductRepositorys.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Product\\ProductRepositorys.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Product\\ProductRepositorys.cs",
               "RelativeToolTip": "Core\\UseCases\\Product\\ProductRepositorys.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+=======
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAwAAAA",
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:32:27.372Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 16,
+=======
+              "DocumentIndex": 2,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "ITokenService.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\ITockenService\\ITokenService.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\ITockenService\\ITokenService.cs",
               "RelativeDocumentMoniker": "Core\\Interfaces\\ITockenService\\ITokenService.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\ITockenService\\ITokenService.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\ITockenService\\ITokenService.cs",
               "RelativeToolTip": "Core\\Interfaces\\ITockenService\\ITokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T10:08:20.084Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 15,
+=======
+              "DocumentIndex": 12,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "GetUserRolesUseCase.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
               "RelativeDocumentMoniker": "Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
               "RelativeToolTip": "Core\\UseCases\\Authentication\\GetUserRolesUseCase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T09:00:59.615Z"
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -288,10 +354,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 10,
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RegisterUseCase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\RegisterUseCase.cs",
+              "RelativeDocumentMoniker": "Core\\UseCases\\Authentication\\RegisterUseCase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\RegisterUseCase.cs",
+              "RelativeToolTip": "Core\\UseCases\\Authentication\\RegisterUseCase.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T08:05:10.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\User.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\User.cs",
+              "RelativeToolTip": "Core\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T08:03:01.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginUseCase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\LoginUseCase.cs",
+              "RelativeDocumentMoniker": "Core\\UseCases\\Authentication\\LoginUseCase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Authentication\\LoginUseCase.cs",
+              "RelativeToolTip": "Core\\UseCases\\Authentication\\LoginUseCase.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T08:04:54.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "Products.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Products.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Products.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Products.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Products.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Products.cs",
               "RelativeToolTip": "Core\\Entities\\Products.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -299,23 +407,31 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 17,
+=======
+              "DocumentIndex": 0,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
               "RelativeToolTip": "Core\\Interfaces\\IUserRepository\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA2AAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T09:04:09.063Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 13,
+=======
+              "DocumentIndex": 10,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "CreateCategory.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\CreateCategory.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\CreateCategory.cs",
               "RelativeDocumentMoniker": "Core\\UseCases\\Inventory\\CreateCategory.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\CreateCategory.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\CreateCategory.cs",
               "RelativeToolTip": "Core\\UseCases\\Inventory\\CreateCategory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -323,15 +439,20 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 12,
+=======
+              "DocumentIndex": 9,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "GetCategories.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\GetCategories.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\GetCategories.cs",
               "RelativeDocumentMoniker": "Core\\UseCases\\Inventory\\GetCategories.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\GetCategories.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\UseCases\\Inventory\\GetCategories.cs",
               "RelativeToolTip": "Core\\UseCases\\Inventory\\GetCategories.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T09:02:54.493Z"
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -360,36 +481,73 @@
             {
               "$type": "Document",
               "DocumentIndex": 18,
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IRepositoryBase.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IRepositoryBase\\IRepositoryBase.cs",
+              "RelativeDocumentMoniker": "Core\\Interfaces\\IRepositoryBase\\IRepositoryBase.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IRepositoryBase\\IRepositoryBase.cs",
+              "RelativeToolTip": "Core\\Interfaces\\IRepositoryBase\\IRepositoryBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T09:20:01.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\Role.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Entities\\Role.cs",
+              "RelativeToolTip": "Core\\Entities\\Role.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T08:03:13.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "IRoleRepository.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
               "RelativeDocumentMoniker": "Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
               "RelativeToolTip": "Core\\Interfaces\\IUserRepository\\IRoleRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA2AAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T09:04:30.278Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 22,
+=======
+              "DocumentIndex": 3,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "Infrastructure.csproj",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Infrastructure.csproj",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Infrastructure.csproj",
               "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-01-03T08:03:45.052Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 21,
+=======
+              "DocumentIndex": 15,
+>>>>>>> c3ec78d316ed5ba366dbd6ec73bca189664252a5
               "Title": "Core.csproj",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
               "RelativeDocumentMoniker": "Core\\Core.csproj",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Core\\Core.csproj",
               "RelativeToolTip": "Core\\Core.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-01-03T07:54:11.627Z"
             },
@@ -397,9 +555,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Class1.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Class1.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Class1.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Class1.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Infrastructure\\Class1.cs",
               "RelativeToolTip": "Infrastructure\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -409,9 +567,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\Web\\Application\\Class1.cs",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Application\\Class1.cs",
               "RelativeDocumentMoniker": "Application\\Class1.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\Web\\Application\\Class1.cs",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Web\\Application\\Class1.cs",
               "RelativeToolTip": "Application\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
