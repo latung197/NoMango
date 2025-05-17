@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Company\\Project\\Astemo\\ServerService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AAA54F10-FF2A-4E5F-AEC7-8F040D47F200}|Astemo\\Astemo.csproj|d:\\company\\project\\astemo\\serverservice\\astemo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AAA54F10-FF2A-4E5F-AEC7-8F040D47F200}|Astemo\\Astemo.csproj|solutionrelative:astemo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6EB29F9-0C08-4788-B7D7-C02E2EB0E9E2}|Astemo.WorkerService\\Astemo.WorkerService.csproj|d:\\company\\project\\astemo\\serverservice\\astemo.workerservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B6EB29F9-0C08-4788-B7D7-C02E2EB0E9E2}|Astemo.WorkerService\\Astemo.WorkerService.csproj|solutionrelative:astemo.workerservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E059C7D4-660E-4CE4-BD42-FF2457C53403}|Astemo.Application\\Astemo.Application.csproj|d:\\company\\project\\astemo\\serverservice\\astemo.application\\services\\exportplanserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E059C7D4-660E-4CE4-BD42-FF2457C53403}|Astemo.Application\\Astemo.Application.csproj|solutionrelative:astemo.application\\services\\exportplanserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo.WorkerService\\appsettings.json",
+              "RelativeDocumentMoniker": "Astemo.WorkerService\\appsettings.json",
+              "ToolTip": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo.WorkerService\\appsettings.json",
+              "RelativeToolTip": "Astemo.WorkerService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-27T06:37:08.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo\\appsettings.json",
+              "RelativeDocumentMoniker": "Astemo\\appsettings.json",
+              "ToolTip": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo\\appsettings.json",
+              "RelativeToolTip": "Astemo\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-27T06:36:47.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExportPlanServiceImpl.cs",
+              "DocumentMoniker": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo.Application\\Services\\ExportPlanServiceImpl.cs",
+              "RelativeDocumentMoniker": "Astemo.Application\\Services\\ExportPlanServiceImpl.cs",
+              "ToolTip": "D:\\Company\\Project\\Astemo\\ServerService\\Astemo.Application\\Services\\ExportPlanServiceImpl.cs",
+              "RelativeToolTip": "Astemo.Application\\Services\\ExportPlanServiceImpl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOMJAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T07:15:30.63Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

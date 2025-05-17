@@ -75,7 +75,7 @@
 
                     <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
                         <Button Name="btnLogin" Cursor="Hand" Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center"  Foreground="White" Content="Đăng nhập"
-                                Command="{Binding LoginCommand}">
+                                Command="{Binding LoginCommand}" Click="btnLogin_Click">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="#42659c"/>

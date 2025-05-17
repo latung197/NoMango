@@ -30,8 +30,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -42,8 +46,7 @@
               "RelativeToolTip": "Public\\FA.Global\\Public.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAiwJAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-31T04:22:01.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-31T04:22:01.762Z"
             },
             {
               "$type": "Document",
@@ -53,7 +56,7 @@
               "RelativeDocumentMoniker": "Public\\FA.Data\\DatabaseHelper.cs",
               "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DatabaseHelper.cs",
               "RelativeToolTip": "Public\\FA.Data\\DatabaseHelper.cs",
-              "ViewState": "AgIAAEUDAAAAAAAAAAAawJMDAAB0AAAAAAAAAA==",
+              "ViewState": "AgIAABYDAAAAAAAAAAAEwEIDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T04:19:17.946Z",
               "EditorCaption": ""
@@ -66,7 +69,7 @@
               "RelativeDocumentMoniker": "Public\\FA.Data\\DbStruct.cs",
               "ToolTip": "D:\\Project\\NoMango\\Truct\\Public\\Public\\FA.Data\\DbStruct.cs",
               "RelativeToolTip": "Public\\FA.Data\\DbStruct.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAQwJEAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAwwHcAAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T04:01:19.836Z",
               "EditorCaption": ""
