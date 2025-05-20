@@ -38,10 +38,10 @@ namespace PlastMB
             textBox1 = new TextBox();
             label2 = new Label();
             panel1 = new Panel();
+            label3 = new Label();
             nrd_TimeReadCsv = new NumericUpDown();
             faButton1 = new UserControls.FAButton();
             faButton2 = new UserControls.FAButton();
-            label3 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nrd_TimeReadCsv).BeginInit();
@@ -129,6 +129,17 @@ namespace PlastMB
             panel1.Size = new Size(273, 66);
             panel1.TabIndex = 6;
             // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(172, 20);
+            label3.Name = "label3";
+            label3.Size = new Size(26, 21);
+            label3.TabIndex = 7;
+            label3.Text = "分";
+            // 
             // nrd_TimeReadCsv
             // 
             nrd_TimeReadCsv.Location = new Point(0, 20);
@@ -170,17 +181,6 @@ namespace PlastMB
             faButton2.Text = "保存";
             faButton2.UseVisualStyleBackColor = true;
             faButton2.Click += button2_Click;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(171, 20);
-            label3.Name = "label3";
-            label3.Size = new Size(26, 21);
-            label3.TabIndex = 7;
-            label3.Text = "分";
             // 
             // SettingForm
             // 
