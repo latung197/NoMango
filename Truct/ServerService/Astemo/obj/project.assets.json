@@ -4412,23 +4412,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tung\\.nuget\\packages\\": {},
+    "C:\\Users\\RFVNPC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo\\Astemo.csproj",
+      "projectUniqueName": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo\\Astemo.csproj",
       "projectName": "Astemo",
-      "projectPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo\\Astemo.csproj",
-      "packagesPath": "C:\\Users\\Tung\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo\\obj\\",
+      "projectPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo\\Astemo.csproj",
+      "packagesPath": "C:\\Users\\RFVNPC\\.nuget\\packages\\",
+      "outputPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RFVNPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4437,14 +4437,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo.Application\\Astemo.Application.csproj": {
-              "projectPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo.Application\\Astemo.Application.csproj"
+            "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo.Application\\Astemo.Application.csproj": {
+              "projectPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo.Application\\Astemo.Application.csproj"
             }
           }
         }
@@ -4457,9 +4458,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net6.0": {
@@ -4513,120 +4513,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Azure.Identity' 1.10.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
-      "libraryId": "Azure.Identity",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Azure.Identity' 1.10.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-wvxc-855f-jvrv",
-      "libraryId": "Azure.Identity",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Extensions.Caching.Memory' 6.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
-      "libraryId": "Microsoft.Extensions.Caching.Memory",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Identity.Client' 4.56.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
-      "libraryId": "Microsoft.Identity.Client",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1901",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Identity.Client' 4.56.0 has a known low severity vulnerability, https://github.com/advisories/GHSA-x674-v45j-fwxw",
-      "libraryId": "Microsoft.Identity.Client",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.IdentityModel.JsonWebTokens' 6.24.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
-      "libraryId": "Microsoft.IdentityModel.JsonWebTokens",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Npgsql' 6.0.10 has a known high severity vulnerability, https://github.com/advisories/GHSA-x9vc-6hfv-hg8c",
-      "libraryId": "Npgsql",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Formats.Asn1' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-447r-wph3-92pm",
-      "libraryId": "System.Formats.Asn1",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.IdentityModel.Tokens.Jwt' 6.24.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
-      "libraryId": "System.IdentityModel.Tokens.Jwt",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Security.Cryptography.Pkcs' 6.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-555c-2p6r-68mm",
-      "libraryId": "System.Security.Cryptography.Pkcs",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

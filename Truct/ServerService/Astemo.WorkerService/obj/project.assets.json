@@ -1860,23 +1860,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tung\\.nuget\\packages\\": {},
+    "C:\\Users\\RFVNPC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\Astemo.WorkerService.csproj",
+      "projectUniqueName": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\Astemo.WorkerService.csproj",
       "projectName": "Astemo.WorkerService",
-      "projectPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\Astemo.WorkerService.csproj",
-      "packagesPath": "C:\\Users\\Tung\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\obj\\",
+      "projectPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\Astemo.WorkerService.csproj",
+      "packagesPath": "C:\\Users\\RFVNPC\\.nuget\\packages\\",
+      "outputPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Astemo.WorkerService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RFVNPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1885,14 +1885,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Project\\NoMango\\Truct\\ServerService\\Worker.Application\\Worker.Application.csproj": {
-              "projectPath": "D:\\Project\\NoMango\\Truct\\ServerService\\Worker.Application\\Worker.Application.csproj"
+            "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Worker.Application\\Worker.Application.csproj": {
+              "projectPath": "D:\\TungLV\\Project\\NoMango\\Truct\\ServerService\\Worker.Application\\Worker.Application.csproj"
             }
           }
         }
@@ -1905,9 +1906,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net6.0": {
@@ -1949,20 +1949,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }
