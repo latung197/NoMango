@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "PlastMB",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

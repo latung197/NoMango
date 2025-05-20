@@ -1,0 +1,13 @@
+﻿
+using PlastMB.Application.Interface;
+
+namespace PlastMB.Application.CustomModels.Pagging
+{
+    public class PaggingImpl : IPagging
+    {
+        //Current page result
+        public int PageIndex { get; set; } = 0;
+        //Number record per page
+        public int PageSize { get; set; } = 1000;
+    }
+}

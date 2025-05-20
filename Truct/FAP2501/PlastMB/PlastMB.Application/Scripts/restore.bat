@@ -1,0 +1,1 @@
+psql -w -U postgres -d PlastMB -f "C:\FAcom\backup_PlastMB_2024-03-20_10-26-24.sql"

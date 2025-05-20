@@ -1,0 +1,44 @@
+meta {
+  name: Search History by Machine Name #11297
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/api/TrnImportHistory/search-History
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIiLCJ1c2VybmFtZSI6Ik1pbmhQaHVvbmczMCIsInJvbGVzIjoiMSIsImV4cCI6MTcwNTc0Mjk1MSwiaXNzIjoiaHR0cHM6Ly9yb2JvdGNvbS1mYS5jb20iLCJhdWQiOiJodHRwczovL3JvYm90Y29tLWZhLmNvbSJ9.IZ5sGme43YtqIlmjAOgkCJF_9kNSoJCMRAE6_FXrAxs
+}
+
+body:json {
+  {
+    "FileName": "",
+    "MachineNo": "RoboDrill6",
+    "FactoryCd": "",
+    "Status": "",
+    "FromDate": "2025-05-01T00:00:00+07:00",
+    "ToDate": "2025-05-05T00:00:00+07:00"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.responseTime: lt 1000
+}
+
+tests {
+  test("should receive response data", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(200);
+    //expect(data).to.be.a('string');
+    //expect(data).to.equal('Hệ thống quản lý xuất hàng');
+  });
+}
+
+docs {
+  Hiển thị 100 bản ghi mới nhất lên bảng danh sách tên file.
+}
