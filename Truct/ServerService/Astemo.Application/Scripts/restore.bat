@@ -1,1 +1,0 @@
-psql -w -U postgres -d HitachiAstemo -f "C:\FAcom\backup_HitachiAstemo_2024-03-20_10-26-24.sql"
