@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\TungLV\\Project\\NoMango\\Truct\\Main01\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FD834729-0986-4A62-BBAA-3C5071983834}|Main01\\Main01.csproj|d:\\tunglv\\project\\nomango\\truct\\main01\\main01\\styles\\uicolor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FD834729-0986-4A62-BBAA-3C5071983834}|Main01\\Main01.csproj|solutionrelative:main01\\styles\\uicolor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FD834729-0986-4A62-BBAA-3C5071983834}|Main01\\Main01.csproj|d:\\tunglv\\project\\nomango\\truct\\main01\\main01\\pain.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{FD834729-0986-4A62-BBAA-3C5071983834}|Main01\\Main01.csproj|solutionrelative:main01\\pain.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -23,6 +27,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UIColor.xaml",
+              "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main01\\Main01\\Styles\\UIColor.xaml",
+              "RelativeDocumentMoniker": "Main01\\Styles\\UIColor.xaml",
+              "ToolTip": "D:\\TungLV\\Project\\NoMango\\Truct\\Main01\\Main01\\Styles\\UIColor.xaml",
+              "RelativeToolTip": "Main01\\Styles\\UIColor.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T10:06:26.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Pain.xaml",
               "DocumentMoniker": "D:\\TungLV\\Project\\NoMango\\Truct\\Main01\\Main01\\Pain.xaml",
               "RelativeDocumentMoniker": "Main01\\Pain.xaml",
