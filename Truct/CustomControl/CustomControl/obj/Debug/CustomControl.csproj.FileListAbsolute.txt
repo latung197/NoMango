@@ -1,0 +1,9 @@
+D:\Source\CustomControl\CustomControl\bin\Debug\CustomControl.dll
+D:\Source\CustomControl\CustomControl\bin\Debug\CustomControl.pdb
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.csproj.AssemblyReference.cache
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.CustomControl.RJTextBox.resources
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.Properties.Resources.resources
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.csproj.GenerateResource.cache
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.csproj.CoreCompileInputs.cache
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.dll
+D:\Source\CustomControl\CustomControl\obj\Debug\CustomControl.pdb
