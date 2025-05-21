@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.28" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Astemo.Infrastructure\Astemo.Infrastructure.csproj" />
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<ProjectReference Include="..\Astemo.Utils\Astemo.Utils.csproj" />
+		<PackageReference Include="CsvHelper" Version="30.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Scripts\backup.bat">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

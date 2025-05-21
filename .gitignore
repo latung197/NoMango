@@ -31,3 +31,13 @@ Truct/Web/Infrastructure/obj/
 Truct/Web/WebAPI/bin/
 Truct/Web/WebAPI/obj/
 Truct/Web/Infrastructure/bin/
+Truct/ServerService/Astemo.Application/bin/
+Truct/ServerService/Astemo.Application/obj/
+Truct/ServerService/Astemo.Domain/bin/
+Truct/ServerService/Astemo.Domain/obj/Debug/net6.0/Astemo.Domain.AssemblyInfo.cs
+Truct/ServerService/Astemo.Domain/obj/
+Truct/ServerService/Astemo.Infrastructure/obj/
+Truct/ServerService/Astemo.Utils/obj/
+Truct/ServerService/Astemo.WorkerService/obj/
+Truct/ServerService/Astemo/bin/
+Truct/ServerService/Astemo/obj/
