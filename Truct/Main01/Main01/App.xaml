@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Main01"
              StartupUri="Pain.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/Styles/UIColor.xaml"/>
+        <ResourceDictionary Source="MainWindow.xaml"/>
     </Application.Resources>
 </Application>
