@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Astemo.Utils
+namespace Core.Utils
 {
     public static class CommonUtils
     {

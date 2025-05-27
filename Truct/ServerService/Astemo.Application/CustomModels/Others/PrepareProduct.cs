@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel;
 
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     /// <summary>
     /// Model dùng cho màn hình PC008 - Đơn hàng chuẩn bị xuất

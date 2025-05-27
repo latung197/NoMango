@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Astemo.Domain.Abstractions
+namespace Core.Domain.Abstractions
 {
     public class AuditableImpl : IAuditable
     {

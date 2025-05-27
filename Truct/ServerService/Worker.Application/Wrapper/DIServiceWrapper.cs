@@ -2,7 +2,7 @@
 using Worker.Application.BaseHttp.Interface;
 using Worker.Application.Interface;
 using Worker.Application.Services;
-using Astemo.Utils.LogUtils;
+using Core.Utils.LogUtils;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Worker.Application.Wrapper

@@ -1,9 +1,9 @@
-﻿using Astemo.Domain.Interface;
+﻿using Core.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using EFCore.BulkExtensions;
 
-namespace Astemo.Infrastructure.Repositories
+namespace Core.Infrastructure.Repositories
 {
     public abstract class BaseRepositoryImpl<T> : IBaseRepository<T> where T : class
     {

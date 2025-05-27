@@ -1,7 +1,7 @@
-﻿using Astemo.Application.Constants;
+﻿using Core.Application.Constants;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Astemo.Controllers
+namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

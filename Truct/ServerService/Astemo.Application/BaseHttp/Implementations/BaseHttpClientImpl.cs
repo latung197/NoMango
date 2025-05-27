@@ -1,13 +1,13 @@
 ﻿
-using Astemo.Application.BaseHttp.Interface;
-using Astemo.Application.Enum;
+using Core.Application.BaseHttp.Interface;
+using Core.Application.Enum;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net;
 using System.Text;
 
-namespace Astemo.Application.BaseHttp.Implementations
+namespace Core.Application.BaseHttp.Implementations
 {
     public class BaseHttpClientImpl : IBaseHttpClient
     {

@@ -1,7 +1,7 @@
 ﻿using CsvHelper.Configuration.Attributes;
 using System.ComponentModel;
 
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     /// <summary>
     /// Thông tin ECU get được từ file Csv

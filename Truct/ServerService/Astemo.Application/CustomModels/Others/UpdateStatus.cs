@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel;
 
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     /// <summary>
     /// Update các entity với trạng thái được chỉ định dạng int

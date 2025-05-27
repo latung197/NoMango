@@ -1,7 +1,7 @@
-﻿using Astemo.Application.CustomModels.Dtos;
+﻿using Core.Application.CustomModels.Dtos;
 using System.ComponentModel.DataAnnotations;
 
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     //Thông tin gửi từ máy Handy để check Ok/NG
     public class HandyInfo

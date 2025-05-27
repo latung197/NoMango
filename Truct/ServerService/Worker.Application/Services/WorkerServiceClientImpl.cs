@@ -2,7 +2,7 @@
 using Worker.Application.CustomModels;
 using Worker.Application.CustomModels.Dtos;
 using Worker.Application.Interface;
-using Astemo.Utils.LogUtils;
+using Core.Utils.LogUtils;
 using Microsoft.Extensions.Configuration;
 
 namespace Worker.Application.Services

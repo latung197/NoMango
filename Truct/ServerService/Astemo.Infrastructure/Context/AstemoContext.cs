@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
-using Astemo.Domain.Entity;
-using Astemo.Domain;
-using Astemo.Utils;
+using Core.Domain.Entity;
+using Core.Domain;
+using Core.Utils;
 using System.Reflection;
-using Astemo.Infrastructure.ContextAccessors;
+using Core.Infrastructure.ContextAccessors;
 
-namespace Astemo.Infrastructure.Context
+namespace Core.Infrastructure.Context
 {
     public class AstemoContext : DbContext
     {

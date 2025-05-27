@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Astemo.Application.Enum
+namespace Core.Application.Enum
 {
     //Phân biệt mã  gửi lên từ handy là loại nào
     public static class EnumMasterType

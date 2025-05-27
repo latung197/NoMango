@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Astemo.Pages
+namespace Core.Pages
 {
     public class PrivacyModel : PageModel
     {

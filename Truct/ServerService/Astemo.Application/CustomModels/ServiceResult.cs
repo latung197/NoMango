@@ -1,6 +1,6 @@
-﻿using Astemo.Application.Constants;
+﻿using Core.Application.Constants;
 
-namespace Astemo.Application.CustomModels
+namespace Core.Application.CustomModels
 {
     public class ServiceResult
     {

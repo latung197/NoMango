@@ -1,10 +1,10 @@
 ﻿
-using Astemo.Application.CustomModels.Others;
-using Astemo.Application.CustomModels;
-using Astemo.Application.CustomModels.SearchConditions;
-using Astemo.Application.CustomModels.Dtos;
+using Core.Application.CustomModels.Others;
+using Core.Application.CustomModels;
+using Core.Application.CustomModels.SearchConditions;
+using Core.Application.CustomModels.Dtos;
 
-namespace Astemo.Application.Interface
+namespace Core.Application.Interface
 {
     public interface IMstUserService
     {

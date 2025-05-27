@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Application.Enum
+namespace Core.Application.Enum
 {
     public enum HttpClientMethod
     {

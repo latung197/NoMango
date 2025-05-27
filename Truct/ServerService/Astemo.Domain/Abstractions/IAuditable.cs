@@ -1,4 +1,4 @@
-﻿namespace Astemo.Domain
+﻿namespace Core.Domain
 {
     public interface IAuditable
     {

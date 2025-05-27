@@ -1,9 +1,9 @@
 ﻿
-using Astemo.Application.CustomModels.Dtos;
-using Astemo.Application.CustomModels.SearchConditions;
-using Astemo.Application.CustomModels;
+using Core.Application.CustomModels.Dtos;
+using Core.Application.CustomModels.SearchConditions;
+using Core.Application.CustomModels;
 
-namespace Astemo.Application.Interface
+namespace Core.Application.Interface
 {
     public interface IEcuDataService
     {

@@ -1,15 +1,15 @@
-﻿using Astemo.Application.CustomModels;
-using Astemo.Application.CustomModels.Dtos;
-using Astemo.Application.CustomModels.Others;
-using Astemo.Application.CustomModels.SearchConditions;
-using Astemo.Application.Enum;
-using Astemo.Application.Interface;
-using Astemo.Domain.Entity;
-using Astemo.Domain.Interface;
-using Astemo.Infrastructure.Constants;
-using Astemo.Infrastructure.ContextAccessors;
-using Astemo.Utils;
-using Astemo.Utils.LogUtils;
+﻿using Core.Application.CustomModels;
+using Core.Application.CustomModels.Dtos;
+using Core.Application.CustomModels.Others;
+using Core.Application.CustomModels.SearchConditions;
+using Core.Application.Enum;
+using Core.Application.Interface;
+using Core.Domain.Entity;
+using Core.Domain.Interface;
+using Core.Infrastructure.Constants;
+using Core.Infrastructure.ContextAccessors;
+using Core.Utils;
+using Core.Utils.LogUtils;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -19,7 +19,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Astemo.Application.Services
+namespace Core.Application.Services
 {
     public class MstUserServiceImpl : IMstUserService
     {

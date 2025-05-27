@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Infrastructure.Constants
+namespace Core.Infrastructure.Constants
 {
     public class ClaimTypeConst
     {

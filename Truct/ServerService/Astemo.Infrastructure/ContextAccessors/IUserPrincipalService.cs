@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Astemo.Infrastructure.ContextAccessors
+namespace Core.Infrastructure.ContextAccessors
 {
     public interface IUserPrincipalService
     {

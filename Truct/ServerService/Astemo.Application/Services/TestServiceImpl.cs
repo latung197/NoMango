@@ -1,10 +1,10 @@
-﻿using Astemo.Application.Interface;
-using Astemo.Domain.Interface;
-using Astemo.Utils.LogUtils;
+﻿using Core.Application.Interface;
+using Core.Domain.Interface;
+using Core.Utils.LogUtils;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 
-namespace Astemo.Application.Services
+namespace Core.Application.Services
 {
     public class TestServiceImpl : ITestService
     {

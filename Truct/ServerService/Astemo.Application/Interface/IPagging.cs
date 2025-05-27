@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Application.Interface
+namespace Core.Application.Interface
 {
     public interface IPagging
     {

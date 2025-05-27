@@ -1,10 +1,10 @@
-﻿using Astemo.Infrastructure.Constants;
-using Astemo.Utils;
+﻿using Core.Infrastructure.Constants;
+using Core.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 
-namespace Astemo.Infrastructure.ContextAccessors
+namespace Core.Infrastructure.ContextAccessors
 {
     public class UserPrincipalService : IUserPrincipalService
     {

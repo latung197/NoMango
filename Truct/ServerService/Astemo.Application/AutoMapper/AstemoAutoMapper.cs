@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Astemo.Application.AutoMapper
+namespace Core.Application.AutoMapper
 {
     public class AstemoAutoMapper
     {

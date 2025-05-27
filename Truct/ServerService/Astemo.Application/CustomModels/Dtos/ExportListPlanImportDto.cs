@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace Astemo.Application.CustomModels.Dtos
+namespace Core.Application.CustomModels.Dtos
 {
     [Description("Kế hoạch xuất kho")]
     public class ExportListPlanImportDto

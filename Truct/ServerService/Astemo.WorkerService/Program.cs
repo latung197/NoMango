@@ -1,4 +1,4 @@
-using Astemo.WorkerService;
+using Core.WorkerService;
 using Microsoft.Extensions.Hosting.WindowsServices;
 using Worker.Application.Wrapper;
 using Worker.Application.AutoMapper;

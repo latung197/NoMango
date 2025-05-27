@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Astemo.Application.Enum
+namespace Core.Application.Enum
 {
     /// <summary>
     /// Xuất rời - Xuất ASSY

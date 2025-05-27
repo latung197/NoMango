@@ -1,7 +1,7 @@
-﻿using Astemo.Application.CustomModels;
-using Astemo.Application.CustomModels.Others;
+﻿using Core.Application.CustomModels;
+using Core.Application.CustomModels.Others;
 
-namespace Astemo.Application.Interface
+namespace Core.Application.Interface
 {
     public interface IHandyService
     {

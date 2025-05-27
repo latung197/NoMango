@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Astemo.Utils
+namespace Core.Utils
 {
     public static class DateUtils
     {

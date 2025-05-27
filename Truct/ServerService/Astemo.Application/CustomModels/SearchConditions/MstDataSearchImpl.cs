@@ -1,6 +1,6 @@
-﻿using Astemo.Application.CustomModels.Pagging;
+﻿using Core.Application.CustomModels.Pagging;
 
-namespace Astemo.Application.CustomModels.SearchConditions
+namespace Core.Application.CustomModels.SearchConditions
 {
     public class MstDataSearchImpl : PaggingImpl
     {

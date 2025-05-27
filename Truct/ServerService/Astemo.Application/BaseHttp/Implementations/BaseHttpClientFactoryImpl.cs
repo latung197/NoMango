@@ -1,8 +1,8 @@
 ﻿
-using Astemo.Application.BaseHttp.Interface;
+using Core.Application.BaseHttp.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Astemo.Application.BaseHttp.Implementations
+namespace Core.Application.BaseHttp.Implementations
 {
     public class BaseHttpClientFactoryImpl : IBaseHttpClientFactory
     {

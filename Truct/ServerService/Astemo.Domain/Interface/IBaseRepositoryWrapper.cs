@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Domain.Interface
+namespace Core.Domain.Interface
 {
     public interface IBaseRepositoryWrapper
     {

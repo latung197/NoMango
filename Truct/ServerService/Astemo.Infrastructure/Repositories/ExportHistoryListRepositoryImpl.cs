@@ -1,8 +1,8 @@
-﻿using Astemo.Domain.Interface;
-using Astemo.Infrastructure.Context;
-using Astemo.Domain.Entity;
+﻿using Core.Domain.Interface;
+using Core.Infrastructure.Context;
+using Core.Domain.Entity;
 
-namespace Astemo.Infrastructure.Repositories
+namespace Core.Infrastructure.Repositories
 {
     public class ExportHistoryListRepositoryImpl : AstemoBaseRepositoryImpl<ExportHistoryList>, IExportHistoryListRepository
     {

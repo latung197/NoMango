@@ -1,8 +1,8 @@
-﻿using Astemo.Application.CustomModels.Dtos;
+﻿using Core.Application.CustomModels.Dtos;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     /// <summary>
     /// dữ liệu in ra tem dán lên thùng

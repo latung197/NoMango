@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Astemo.Application.CustomModels.Dtos
+namespace Core.Application.CustomModels.Dtos
 {
     [Description("Ecu Data")]
     public class EcuDataDto

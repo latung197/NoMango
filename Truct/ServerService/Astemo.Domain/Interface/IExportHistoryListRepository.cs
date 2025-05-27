@@ -1,6 +1,6 @@
-﻿using Astemo.Domain.Entity;
+﻿using Core.Domain.Entity;
 
-namespace Astemo.Domain.Interface
+namespace Core.Domain.Interface
 {
     public interface IExportHistoryListRepository : IBaseRepository<ExportHistoryList>
     {

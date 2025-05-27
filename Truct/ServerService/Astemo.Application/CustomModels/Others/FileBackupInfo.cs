@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Application.CustomModels.Others
+namespace Core.Application.CustomModels.Others
 {
     /// <summary>
     /// Danh sách các file backup

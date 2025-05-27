@@ -1,6 +1,6 @@
-﻿using Astemo.Infrastructure.Context;
+﻿using Core.Infrastructure.Context;
 
-namespace Astemo.Infrastructure.Repositories
+namespace Core.Infrastructure.Repositories
 {
     public abstract class AstemoBaseRepositoryImpl<T> : BaseRepositoryImpl<T> where T : class
     {

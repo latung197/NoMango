@@ -1,7 +1,7 @@
 ﻿using NLog;
 using System;
 
-namespace Astemo.Utils.LogUtils
+namespace Core.Utils.LogUtils
 {
     public class LoggerManagerImpl : ILoggerManager
     {

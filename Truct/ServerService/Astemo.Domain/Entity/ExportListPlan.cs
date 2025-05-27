@@ -1,9 +1,9 @@
-﻿using Astemo.Domain.Abstractions;
+﻿using Core.Domain.Abstractions;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace Astemo.Domain.Entity
+namespace Core.Domain.Entity
 {
     [Description("Danh sách kế hoạch xuất kho")]
     [Table(name: "export_list_plan", Schema = "public")]

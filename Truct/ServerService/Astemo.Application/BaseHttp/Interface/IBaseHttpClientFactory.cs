@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Application.BaseHttp.Interface
+namespace Core.Application.BaseHttp.Interface
 {
     public interface IBaseHttpClientFactory
     {

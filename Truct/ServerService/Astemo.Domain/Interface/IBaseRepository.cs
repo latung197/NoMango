@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Astemo.Domain.Interface
+namespace Core.Domain.Interface
 {
     public interface IBaseRepository<T> where T : class
     {

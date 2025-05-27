@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Astemo.Application.CustomModels.Dtos
+namespace Core.Application.CustomModels.Dtos
 {
     public class MstUserDto
     {

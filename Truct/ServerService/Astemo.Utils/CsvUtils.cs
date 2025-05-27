@@ -2,7 +2,7 @@
 using System.Text;
 using CsvHelper;
 
-namespace Astemo.Utils
+namespace Core.Utils
 {
     public static class CsvUtils
     {

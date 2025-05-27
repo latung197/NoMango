@@ -1,14 +1,14 @@
-﻿using Astemo.Application.BaseHttp.Implementations;
-using Astemo.Application.BaseHttp.Interface;
-using Astemo.Application.Interface;
-using Astemo.Application.Services;
-using Astemo.Domain.Interface;
-using Astemo.Infrastructure.ContextAccessors;
-using Astemo.Infrastructure.Repositories;
-using Astemo.Utils.LogUtils;
+﻿using Core.Application.BaseHttp.Implementations;
+using Core.Application.BaseHttp.Interface;
+using Core.Application.Interface;
+using Core.Application.Services;
+using Core.Domain.Interface;
+using Core.Infrastructure.ContextAccessors;
+using Core.Infrastructure.Repositories;
+using Core.Utils.LogUtils;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Astemo.Application.Wrapper
+namespace Core.Application.Wrapper
 {
     public static class DIServiceWrapper
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Astemo.Application.Constants
+namespace Core.Application.Constants
 {
     public static class CommonConstant
     {

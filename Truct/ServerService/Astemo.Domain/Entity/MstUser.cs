@@ -1,8 +1,8 @@
-﻿using Astemo.Domain.Abstractions;
+﻿using Core.Domain.Abstractions;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Astemo.Domain.Entity
+namespace Core.Domain.Entity
 {
     [Table(name: "mst_user", Schema = "public")]
     public class MstUser : AuditableImpl

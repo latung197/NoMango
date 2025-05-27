@@ -1,7 +1,7 @@
 ﻿using Worker.Application.CustomModels.Dtos;
 using Worker.Application.Interface;
-using Astemo.Utils;
-using Astemo.Utils.LogUtils;
+using Core.Utils;
+using Core.Utils.LogUtils;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Worker.Application.CustomModels.Others;

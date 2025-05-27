@@ -1,15 +1,15 @@
 using Microsoft.Extensions.Hosting.WindowsServices;
-using Astemo.Application.Wrapper;
-using Astemo.Infrastructure.Context;
+using Core.Application.Wrapper;
+using Core.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using Astemo.Application.AutoMapper;
+using Core.Application.AutoMapper;
 using NLog;
-using Astemo.Utils;
+using Core.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.CookiePolicy;
-using Astemo.Application.Middleware;
+using Core.Application.Middleware;
 
 WebApplicationOptions options = new WebApplicationOptions
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Astemo.Application.CustomModels
+namespace Core.Application.CustomModels
 {
     [Description("Kết quả phản hồi tìm kiếm API")]
     public class GenericResponseResult<T>

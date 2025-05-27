@@ -1,7 +1,7 @@
 ﻿
-using Astemo.Application.Interface;
+using Core.Application.Interface;
 
-namespace Astemo.Application.CustomModels.Pagging
+namespace Core.Application.CustomModels.Pagging
 {
     public class PaggingImpl : IPagging
     {

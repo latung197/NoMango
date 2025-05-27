@@ -1,4 +1,4 @@
-﻿namespace Astemo.Utils.LogUtils
+﻿namespace Core.Utils.LogUtils
 {
     public interface ILoggerManager
     {

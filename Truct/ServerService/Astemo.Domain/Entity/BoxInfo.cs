@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Astemo.Domain.Abstractions;
+using Core.Domain.Abstractions;
 using System.ComponentModel;
 
-namespace Astemo.Domain.Entity
+namespace Core.Domain.Entity
 {
     [Description("Thông thin thùng hàng")]
     [Table(name: "box_info", Schema = "public")]

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Astemo.Utils
+namespace Core.Utils
 {
     public static class StringUtils
     {

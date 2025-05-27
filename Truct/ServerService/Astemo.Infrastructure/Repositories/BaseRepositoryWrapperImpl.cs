@@ -1,8 +1,8 @@
-﻿using Astemo.Domain.Interface;
-using Astemo.Infrastructure.Context;
+﻿using Core.Domain.Interface;
+using Core.Infrastructure.Context;
 using Microsoft.Extensions.Configuration;
 
-namespace Astemo.Infrastructure.Repositories
+namespace Core.Infrastructure.Repositories
 {
     public class BaseRepositoryWrapperImpl : IBaseRepositoryWrapper
     {

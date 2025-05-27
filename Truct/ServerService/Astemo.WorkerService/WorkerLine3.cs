@@ -1,6 +1,6 @@
 using Worker.Application.Interface;
 
-namespace Astemo.WorkerService
+namespace Core.WorkerService
 {
     /// <summary>
     /// Scan folder line 3

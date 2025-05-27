@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Astemo.Controllers
+namespace Core.Controllers
 {
     [ApiController]
     public class BaseController : ControllerBase

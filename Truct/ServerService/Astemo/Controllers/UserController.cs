@@ -1,11 +1,11 @@
-﻿using Astemo.Application.CustomModels.Dtos;
-using Astemo.Application.CustomModels.Others;
-using Astemo.Application.CustomModels.SearchConditions;
-using Astemo.Application.Interface;
+﻿using Core.Application.CustomModels.Dtos;
+using Core.Application.CustomModels.Others;
+using Core.Application.CustomModels.SearchConditions;
+using Core.Application.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Astemo.Controllers
+namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

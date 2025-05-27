@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo", "Astemo\Astemo.csproj", "{AAA54F10-FF2A-4E5F-AEC7-8F040D47F200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Astemo\Core.csproj", "{AAA54F10-FF2A-4E5F-AEC7-8F040D47F200}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo.Domain", "Astemo.Domain\Astemo.Domain.csproj", "{BC0AE225-7247-46F4-9A75-6D4375B3BBE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain", "Astemo.Domain\Core.Domain.csproj", "{BC0AE225-7247-46F4-9A75-6D4375B3BBE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo.Infrastructure", "Astemo.Infrastructure\Astemo.Infrastructure.csproj", "{EB58862D-9A07-46A4-815E-0912FFD1C721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure", "Astemo.Infrastructure\Core.Infrastructure.csproj", "{EB58862D-9A07-46A4-815E-0912FFD1C721}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo.Application", "Astemo.Application\Astemo.Application.csproj", "{E059C7D4-660E-4CE4-BD42-FF2457C53403}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Application", "Astemo.Application\Core.Application.csproj", "{E059C7D4-660E-4CE4-BD42-FF2457C53403}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo.Utils", "Astemo.Utils\Astemo.Utils.csproj", "{96CA4A67-2722-4A65-808A-A14B0818C3D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Utils", "Astemo.Utils\Core.Utils.csproj", "{96CA4A67-2722-4A65-808A-A14B0818C3D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astemo.WorkerService", "Astemo.WorkerService\Astemo.WorkerService.csproj", "{B6EB29F9-0C08-4788-B7D7-C02E2EB0E9E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.WorkerService", "Astemo.WorkerService\Core.WorkerService.csproj", "{B6EB29F9-0C08-4788-B7D7-C02E2EB0E9E2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worker", "Worker", "{9CF5ADD1-AC37-49CA-B45B-16BCE057D124}"
 EndProject

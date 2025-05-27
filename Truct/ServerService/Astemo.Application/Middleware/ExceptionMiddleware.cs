@@ -1,7 +1,7 @@
-﻿using Astemo.Utils.LogUtils;
+﻿using Core.Utils.LogUtils;
 using Microsoft.AspNetCore.Http;
 
-namespace Astemo.Application.Middleware
+namespace Core.Application.Middleware
 {
     public class ExceptionMiddleware
     {

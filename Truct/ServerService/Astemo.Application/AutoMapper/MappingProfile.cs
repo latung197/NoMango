@@ -1,9 +1,9 @@
-﻿using Astemo.Application.CustomModels.Dtos;
-using Astemo.Application.CustomModels.Others;
-using Astemo.Domain.Entity;
+﻿using Core.Application.CustomModels.Dtos;
+using Core.Application.CustomModels.Others;
+using Core.Domain.Entity;
 using AutoMapper;
 
-namespace Astemo.Application.AutoMapper
+namespace Core.Application.AutoMapper
 {
     public class MappingProfile : Profile
     {
