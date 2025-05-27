@@ -45,3 +45,14 @@ Truct/ServerService/Astemo.Utils/bin/
 Truct/ServerService/Astemo.WorkerService/bin/
 Truct/ServerService/Worker.Application/obj/
 Truct/ServerService/Worker.Application/bin/
+Truct/ServerService/Core.Domain/bin/
+Truct/ServerService/Core.Domain/obj/
+Truct/ServerService/Core.Infrastructure/bin/
+Truct/ServerService/Core.Infrastructure/obj/
+Truct/ServerService/Core.Utils/obj/
+Truct/ServerService/Core.WorkerService/bin/
+Truct/ServerService/Core.WorkerService/obj/
+Truct/ServerService/Core/bin/
+Truct/ServerService/Core/obj/
+Truct/ServerService/Core.Application/obj/
+Truct/ServerService/Core.Application/bin/

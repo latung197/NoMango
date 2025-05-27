@@ -1,0 +1,1 @@
+psql -w -U postgres -d HitachiCore -f "C:\FAcom\backup_HitachiCore_2024-03-20_10-26-24.sql"

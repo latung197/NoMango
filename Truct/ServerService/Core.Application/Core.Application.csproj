@@ -11,12 +11,18 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\Core.Infrastructure\Core.Infrastructure.csproj" />
 		<PackageReference Include="AutoMapper" Version="12.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<ProjectReference Include="..\Core.Utils\Core.Utils.csproj" />
 		<PackageReference Include="CsvHelper" Version="30.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	  <Folder Include="Scripts\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Scripts\backup.bat">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>
