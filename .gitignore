@@ -56,3 +56,7 @@ Truct/ServerService/Core/bin/
 Truct/ServerService/Core/obj/
 Truct/ServerService/Core.Application/obj/
 Truct/ServerService/Core.Application/bin/
+Truct/BlazorChat/BlazorChat/Client/obj/
+Truct/BlazorChat/BlazorChat/Server/obj/
+Truct/BlazorChat/BlazorChat/Shared/obj/
+Truct/BlazorChat/.vs/
