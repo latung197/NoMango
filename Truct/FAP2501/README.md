@@ -47,3 +47,7 @@ dotnet publish -c Release -o .\PlastMB.WinForm\bin\publish
 dotnet publish -c Release -o .\PlastMB.Winform\bin\publish --sc
 dotnet publish -c Release -o .\PlastMB.Winform\bin\publish -r win-x64 --self-contained -p:PublishSingleFile=true
 ```
+
+1: Chạy restore Database postgres
+2: Thay chuỗi kết nối
+3: Chạy phầm mềm

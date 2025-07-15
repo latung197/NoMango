@@ -60,3 +60,6 @@ Truct/BlazorChat/BlazorChat/Client/obj/
 Truct/BlazorChat/BlazorChat/Server/obj/
 Truct/BlazorChat/BlazorChat/Shared/obj/
 Truct/BlazorChat/.vs/
+Truct/CoreMVC/CoreMVC/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+Truct/CoreMVC/CoreMVC/bin/
+Truct/CoreMVC/CoreMVC/obj/
