@@ -30,6 +30,16 @@ namespace CoreMVC.DA.Respository
             return _context.mstLanguages.FirstOrDefault(x => x.item_code.Trim().ToLower() == resourceKey.Trim().ToLower() && x.lang_code == languageCode);
         }
 
+        public MstLanguage  GetLanguageByCode(string code)
+        {
+            return _context.mstLanguages.FirstOrDefault(c => c.lang_code == code);
+        }
+
+        public void AddLanguage(MstLanguage mstLanguage)
+        {
+            _context.mstLanguages.Add(mstLanguage);
+            _context.SaveChanges();
+        }
 
     }
 }
