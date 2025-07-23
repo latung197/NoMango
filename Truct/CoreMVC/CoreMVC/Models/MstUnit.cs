@@ -5,6 +5,8 @@ namespace CoreMVC.Models
     [Table("mst_unit")]
     public class MstUnit: BaseEntity
     {
+        [Key]
+        public int id { get; set; }
         [Column(TypeName = "varchar(20)")]
         public string unit_code { get; set; }
         [Column(TypeName = "varchar(20)")]
@@ -20,5 +22,7 @@ namespace CoreMVC.Models
         public decimal? standard_value { get; set; }
         [Column(TypeName ="varchar(25)")]
         public string baseUnitCode {  get; set; }
+        [Column(TypeName = "varchar(25)")]
+        public string machineId {  get; set; }
     }
 }

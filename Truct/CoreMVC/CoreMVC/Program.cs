@@ -1,6 +1,10 @@
-﻿using CoreMVC.DA;
+﻿using CoreMVC.BL.Interfaces;
+using CoreMVC.BL.Services;
+using CoreMVC.DA;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CoreDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ILanguageService, MstLanguageService>();
+
+CultureInfo[] cultures = { new CultureInfo("ja-JP"), new CultureInfo("vi-VN") };
+builder.Services.Configure(delegate (RequestLocalizationOptions options)
+{
+    options.DefaultRequestCulture = new RequestCulture(cultures.FirstOrDefault((CultureInfo x) => x.Name == "vi-VN")?.Name ?? "vi-VN");
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+});
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -21,29 +36,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 // Add services
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<CoreDbContext>();
-
-    try
-    {
-        if (dbContext.Database.CanConnect())
-        {
-            Console.WriteLine("✅ Kết nối PostgreSQL thành công.");
-        }
-        else
-        {
-            Console.WriteLine("❌ Không thể kết nối PostgreSQL.");
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("❌ Lỗi kết nối PostgreSQL: " + ex.Message);
-    }
-}
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

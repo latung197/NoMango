@@ -34,6 +34,10 @@ namespace CoreMVC.DA.Respository
         {
             return _context.mstLanguages.FirstOrDefault(c => c.lang_code == code);
         }
+        public List<MstLanguage> GetLanguageError()
+        {
+            return _context.mstLanguages.Where(language => language.lang_code == Thread.CurrentThread.CurrentUICulture.Name).ToList();
+        }
 
         public void AddLanguage(MstLanguage mstLanguage)
         {
