@@ -1,0 +1,439 @@
+﻿@{
+    List<MstRobotInfor> robots = (List<MstRobotInfor>)Model.RobotInfors;
+}
+<style>
+    .component-unit .unit-total {
+        top: 4.5%;
+        left: 2%;
+    }
+
+    .component-unit .unit-avg {
+        top: 25.5%;
+        left: 2%;
+    }
+
+    .component-unit .unitAir {
+        top: 4.5%;
+        left: 25%;
+        background-color: #DFBDCF;
+    }
+
+    .component-unit .azone {
+        top: 47%;
+        left: 46%;
+        background-color: #FBF8A1;
+    }
+
+    .component-unit .bzone {
+        top: 31%;
+        left: 63%;
+        background-color: #FBF8A1;
+    }
+
+    .component-unit .czone {
+        top: 6%;
+        left: 74%;
+        background-color: #FBF8A1;
+    }
+
+    .component-unit .unitPac {
+        top: 50%;
+        right: 2%;
+        background-color: #90EFF5;
+    }
+
+    .myLine {
+        position: absolute;
+        width: 6px;
+        height: 100%;
+        background-color: #FCB25B;
+        left: 50%;
+        transform: translateX(-50%);
+        transform: rotate(11deg);
+    }
+
+    .line-air {
+        position: absolute;
+        width: 6px;
+        height: 74px;
+        background-color: #FCB25B;
+        right: -19px;
+        transform: rotate(-22deg);
+        top: 60px;
+    }
+
+    .line-azone {
+        position: absolute;
+        width: 6px;
+        height: 133px;
+        background-color: #FCB25B;
+        left: 82px;
+        transform: rotate(147deg);
+        top: -124px;
+    }
+
+    .line-bzone {
+        position: absolute;
+        width: 6px;
+        height: 230px;
+        background-color: #FCB25B;
+        left: -106px;
+        transform: rotate(120deg);
+        top: -133px;
+    }
+
+    .line-czone {
+        position: absolute;
+        width: 6px;
+        height: 360px;
+        background-color: #FCB25B;
+        left: -181px;
+        transform: rotate(80deg);
+        top: -126px;
+    }
+
+    .outer-div {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .fs-38 {
+        font-size: 36px !important;
+        line-height: 45px;
+    }
+
+    .fs-30 {
+        font-size: 28px !important;
+        line-height: 34px;
+    }
+
+    .Chart {
+        bottom: 5%;
+        right: 2%;
+        background-color: white;
+    }
+
+    .btn-update {
+        bottom: 20px;
+        left: 22px;
+    }
+
+        .btn-update button {
+            background: #80807B;
+            border: 2px solid #80807B;
+            color: #b7b9cc;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: center;
+            width: 183px;
+            height: 47px;
+        }
+
+            .btn-update button:hover {
+                color: white;
+            }
+
+    .min-width-box {
+        min-width: 420px;
+    }
+
+    .robot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 580px); /* 3 cột, mỗi cột rộng 200px */
+        justify-content: center; /* Căn giữa toàn bộ grid */
+        gap: 30px; /* Khoảng cách giữa các cột và hàng là 200px */
+        margin-top: 15px;
+        color: black;
+    }
+
+    .robot-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+</style>
+
+@* <img class=" w-100 h-100 img-visual" src="~/assets/img/factory-overview.jpg" alt="Image" id="logo" /> *@
+
+
+
+<div class="position-absolute start-0 top-0 align-content-left  text-white component-unit fs-18 img-visual-layout">
+
+    @*     <div class=" d-flex flex-column shape-content position-absolute  shape-title outer-div unit-total p-2 min-width-box">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-017") : @DateTime.Now.ToString("yyyy/MM/dd") </span>
+    </div>
+    <div class=" d-flex flex-column ">
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-019") : <span id="index-total"></span> @Localize("DAS-LBL-010")</span>
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-020") : <span id="index-total-co2"></span> @Localize("COM-LBL-024")</span>
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-021") : <span id="index-total-cost"></span> @Localize("COM-LBL-025")</span>
+    </div>
+    </div> *@
+
+
+    <div class="robot-grid">
+        @if (robots is null)
+        {
+            <div class="col-12">
+                <p>Đang tải dữ liệu...</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var robot in robots)
+            {
+                <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails(@robot.id)">
+                    <div class="row">
+                        <div class="col-3"> <img src="~/assets/img/PuduT300_product.png" alt="Image" id="Pudu" class="img-fluid" /></div>
+                        <div class="col-9">
+                            <div class="row text-start">
+                                <div class="col-4 fw-bold">Tên:</div>
+                                <div class="col-8">@robot.name</div>
+
+                                <div class="col-4 fw-bold">Pin:</div>
+                                <div class="col-8">@robot.battery %</div>
+
+                                <div class="col-4 fw-bold">Trạng thái:</div>
+                                <div class="col-8">
+                                    <span class="badge @(robot.status == "Online" ? "bg-success" : "bg-danger")">
+                                        @robot.status
+                                    </span>
+                                </div>
+
+                                <div class="col-4 fw-bold">Vị trí:</div>
+                                <div class="col-8">@robot.location</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+        <div class="card-body">
+        <h5 class="card-title">@robot.name</h5>
+        <p>
+        Trạng thái:
+        <span class="badge @(robot.status == "Online" ? "bg-success" : "bg-danger")">
+        @robot.status
+        </span>
+        </p>
+        <p>Vị trí: @robot.location</p>
+        <p>Pin: @robot.battery %</p>
+        @* <button class="btn btn-primary btn-sm" @onclick="() => ViewDetails(robot.Id)">
+        Xem chi tiết
+        </button>
+        </div>
+        </div>
+        </div> *@
+            }
+        }
+    </div>
+    @*     <div class=" d-flex flex-column shape-content position-absolute shape-title outer-div unit-avg min-width-box">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-018")</span>
+
+    </div>
+    <div class=" d-flex flex-column ">
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-019") : <span id="index-avg"></span> @Localize("DAS-LBL-010")</span>
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-020") : <span id="index-avg-co2"></span> @Localize("COM-LBL-024")</span>
+    <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-021") : <span id="index-avg-cost"></span> @Localize("COM-LBL-025")</span>
+    </div>
+
+    </div> *@
+    @*     <div class="text-center shape-content position-absolute shape-title outer-div unitAir text-black">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-022") </span>
+    </div>
+    <div class=" d-flex flex-column ">
+    <div>
+    <span id="index-Air"></span>
+    <span class="fs-30 fw-normal"> @Localize("DAS-LBL-010")</span>
+    </div>
+    <div>
+    <span id="index-Air-co2"></span>
+    <span class="fs-30 fw-normal"> @Localize("COM-LBL-024")</span>
+    </div>
+    </div>
+
+    </div>
+    <div class="line-air"></div>
+    </div> *@
+    @*     <div class="text-center shape-content position-absolute shape-title outer-div unitPac text-black">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-023") </span>
+
+    </div>
+    <div class=" d-flex flex-column ">
+    <div>
+    <span id="index-Pac"></span>
+    <span class="fs-30 fw-normal"> @Localize("DAS-LBL-010")</span>
+    </div>
+    <div>
+    <span id="index-Pac-co2"></span>
+    <span class="fs-30 fw-normal"> @Localize("COM-LBL-024")</span>
+    </div>
+    </div>
+    </div>
+    </div> *@
+    @*     <div class="text-center  shape-content position-absolute shape-title outer-div azone text-black ">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-009") </span>
+
+    </div>
+    <div class=" d-flex flex-column ">
+    <div>
+    <span id="index-A"></span>
+    <span class="fs-30 fw-normal"> @Localize("DAS-LBL-010")</span>
+    </div>
+    <div>
+    <span id="index-A-co2"></span>
+    <span class="fs-30 fw-normal"> @Localize("COM-LBL-024")</span>
+    </div>
+    </div>
+    </div>
+
+    <div class="line-azone"></div>
+    </div> *@
+    @*     <div class="text-center  shape-content position-absolute shape-title outer-div bzone text-black">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-010") </span>
+
+    </div>
+    <div class=" d-flex flex-column ">
+    <div>
+    <span id="index-B"></span>
+    <span class="fs-30 fw-normal"> @Localize("DAS-LBL-010")</span>
+    </div>
+    <div>
+    <span id="index-B-co2"></span>
+    <span class="fs-30 fw-normal"> @Localize("COM-LBL-024")</span>
+    </div>
+    </div>
+
+    </div>
+    <div class="line-bzone"></div>
+    </div> *@
+    @*     <div class="text-center  shape-content position-absolute   shape-title outer-div czone text-black">
+    <div class="d-flex flex-column justify-content-center align-items-center ">
+    <div>
+    <span class="d-inline-block fw-medium fs-38"> @Localize("COM-LBL-011") </span>
+
+    </div>
+    <div class=" d-flex flex-column ">
+    <div>
+    <span id="index-C"></span>
+    <span class="fs-30 fw-normal"> @Localize("DAS-LBL-010")</span>
+    </div>
+    <div>
+    <span id="index-C-co2"></span>
+    <span class="fs-30 fw-normal"> @Localize("COM-LBL-024")</span>
+    </div>
+    </div>
+    </div>
+    <div class="line-czone"></div>
+    </div> *@
+    @* <div id="visualChart" class="Chart position-absolute"></div> *@
+@*          <div class=" position-absolute btn-update">
+    <button class="fw-700" onclick=" $('#electricInput').val(languageResource['ElectricCost']?languageResource['ElectricCost']:0);  return $('#loginModal').modal('show');">
+    @Localize("COM-LBL-026")
+    </button>
+    </div> 
+    <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="visual-loading">
+        <div class="ldio-cfo3yb5owxe">
+            <div></div>
+        </div>
+    </div> *@
+
+
+</div>
+
+ <div class="modal fade" id="updateElectricCost" tabindex="-1" aria-labelledby="updateElectricCostLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <span class="modal-title fs-16 fw-medium" id="updateElectricCostLabel">@Localize("COM-LBL-027") </span>
+                <button type="button" class="border-0 bg-white position-absolute" data-bs-dismiss="modal" aria-label="Close"><img src="~/assets/svg/Close.svg" id="menuToggleCollapse" alt="SVG Image"></button>
+            </div>
+            <div class="modal-body d-flex">
+                <input type="text" id="electricInput" onpaste="handlePaste(event)" class="form-control" on onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46">
+            </div>
+            <div class="modal-footer align-content-center justify-content-center pt-0 btn-hover">
+                <button type="button" class=" btn-save-change fw-700" data-bs-dismiss="modal" onclick="electricSaveChanges()">
+                    @Localize("DAS-LBL-025")
+                    <img src="~/assets/svg/Checkmark.svg" id="" alt="SVG Image">
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="robotModal" tabindex="-1" aria-labelledby="robotModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="robotModalLabel">Chi tiết robot</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body" id="robotDetailContent">
+                <!-- Nội dung chi tiết sẽ được load ở đây -->
+                <div class="text-center">Đang tải...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    function electricSaveChanges() {
+        var numericValue = document.getElementById('electricInput').value;
+
+        if (numericValue == '')
+            alert(languageResource['E-010'], 'danger');
+        var data = {
+            Key: 'ElectricCost',
+            Value: parseFloat(numericValue)
+        }
+
+        $.ajax({
+            url: "update-electric-cost",
+            type: "POST",
+            data: data,
+            beforeSend: function () {
+            },
+
+            success: function (data) {
+
+                languageResource['ElectricCost'] = parseFloat(numericValue);
+            },
+            error: function (e) {
+                loading.style.display = "none";
+                console.log(e);
+            }
+        });
+
+    }
+
+    function loadRobotDetails(id) {
+        document.getElementById('robotDetailContent').innerHTML = "<div class='text-center'>Đang tải...</div>";
+
+        fetch(`/Home/DetailsPartial/${id}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('robotDetailContent').innerHTML = html;
+            })
+            .catch(err => {
+                document.getElementById('robotDetailContent').innerHTML = "<div class='text-danger'>Lỗi tải dữ liệu</div>";
+            });
+    }
+</script>
+<script src="~/js/visualization.js" asp-appe nd-version="true"></script>

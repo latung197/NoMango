@@ -1,0 +1,289 @@
+﻿<div class="form-chart">
+    <div class="card  p-2 ">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="pb-1 title-chartHour">
+                <div class="card-title text-capitalize">
+
+                    @if (Thread.CurrentThread.CurrentUICulture.Name == "vi-VN")
+                    {
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+
+                        <span class="text-green label-day"> @Localize("DAS-LBL-027")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+                    else
+                    {
+
+                        <span class="text-green label-day"> @Localize("DAS-LBL-027")</span>
+
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/assets/svg/Export Pdf.svg" alt="SVG Image">
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btn-hover" onclick="exportCSV(unitChecked.hourUnit, timeRange.hourChart, '3')">CSV</a></li>
+                    <li><a class="dropdown-item btn-hover" onclick="exportPDF(unitChecked.hourUnit, timeRange.hourChart, '3', hourChartId)"> PDF </a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="chartHour" class="Chart"></div>
+        <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="hour-loading">
+            <div class="ldio-cfo3yb5owxe">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card  p-2 ">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="pb-1 title-chartToday">
+                <div class="card-title text-capitalize">
+
+                    @if (Thread.CurrentThread.CurrentUICulture.Name == "vi-VN")
+                    {
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+
+                        <span class="text-green label-day"> @Localize("DAS-BTN-001")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+                    else
+                    {
+
+                        <span class="text-green label-day"> @Localize("DAS-BTN-001")</span>
+
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/assets/svg/Export Pdf.svg" alt="SVG Image">
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btn-hover" onclick="exportCSV(unitChecked.dayUnit, timeRange.dayChart, '0')">CSV</a></li>
+                    <li><a class="dropdown-item btn-hover" onclick="exportPDF(unitChecked.dayUnit, timeRange.dayChart, '0', dayChartId)"> PDF </a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="chartToday" class="Chart"></div>
+        <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="day-loading">
+            <div class="ldio-cfo3yb5owxe">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card  p-2 ">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="pb-1 title-chartMonth">
+                <div class="card-title text-capitalize">
+
+                    @if (Thread.CurrentThread.CurrentUICulture.Name == "vi-VN")
+                    {
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+
+                        <span class="text-green label-day"> @Localize("DAS-LBL-008")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+                    else
+                    {
+
+                        <span class="text-green label-day"> @Localize("DAS-LBL-008")</span>
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+                </div>
+            </div>
+            <div class="dropdown">
+                <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/assets/svg/Export Pdf.svg" alt="SVG Image">
+
+                </a>
+                <ul class="dropdown-menu w-50">
+                    <li><a class="dropdown-item btn-hover" onclick="exportCSV(unitChecked.monthUnit, timeRange.monthChart, '1')">CSV</a></li>
+                    <li><a class="dropdown-item btn-hover" onclick="exportPDF(unitChecked.monthUnit, timeRange.monthChart, '1', monthChartId)"> PDF </a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="chartMonth" class="Chart"></div>
+        <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="month-loading">
+            <div class="ldio-cfo3yb5owxe">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card  p-2 ">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="pb-1">
+                <span class="card-title text-capitalize">
+                    <span>@Localize("DAS-LBL-013")</span>
+                </span>
+            </div>
+            <div class="d-flex flex-row justify-content-center align-items-center fs-10 fw-normal">
+                <div class="pe-3">
+                    <span class="">0 ~ 79%</span>
+                    <a><img src="~/assets/svg/ArrowGreen.svg" alt="SVG Image"></a>
+                </div>
+                <div class="pe-3">
+                    <span class="">80 ~ 99%</span>
+                    <a><img src="~/assets/svg/ArrowOrange.svg" alt="SVG Image"></a>
+                </div>
+                <div class="pe-3">
+                    <span class="">100%~</span>
+                    <a><img src="~/assets/svg/ArrowRed.svg" alt="SVG Image"></a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="statistical-table" id="container-table">
+            <table class=" text-center text-black " id="statistical-table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="fw-medium">
+                            <div class="border-end">
+                                @Localize("DAS-LBL-014")
+                            </div>
+
+                        </th>
+                        <th scope="col" class="fw-medium">
+                            <div class="border-end d-flex flex-row  justify-content-center align-items-center">
+                                <div class="d-flex flex-column text-wrap justify-content-center align-items-center avg fw-700">
+                                    <div id="time-range" class="d-flex flex-column"></div>
+                                </div>
+                                <div id="title-time-range">
+                                    @Localize("DAS-LBL-015")
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col" class="fw-medium"><div class="border-end">@Localize("DAS-LBL-016")</div></th>
+                        <th scope="col" class="fw-medium"><div class="border-end">@Localize("DAS-LBL-017")</div></th>
+                        <th scope="col" class="fw-medium"><div class="">@Localize("DAS-LBL-018")</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="table-loading">
+                <div class="ldio-cfo3yb5owxe">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card  p-2 ">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="pb-1 title-chartYear">
+                <span class="card-title text-capitalize">
+
+
+
+                    @if (Thread.CurrentThread.CurrentUICulture.Name == "vi-VN")
+                    {
+                        <span>@Localize("DAS-LBL-012")</span>
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+                        <span class="text-green label-day"> @Localize("DAS-LBL-009")</span>
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+                    else
+                    {
+                        <span class="text-green label-day"> @Localize("DAS-LBL-009")</span>
+
+
+                        <span class="text-orange label-change">@Localize("DAS-LBL-004")</span>
+
+                        <span>@Localize("DAS-LBL-012")</span>
+
+
+                        <span>@Localize("DAS-LBL-011")</span>
+                    }
+
+                </span>
+            </div>
+            <div class="dropdown">
+                <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/assets/svg/Export Pdf.svg" alt="SVG Image">
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btn-hover" onclick="exportCSV(unitChecked.yearUnit, timeRange.yearChart, '2')">CSV</a></li>
+                    <li><a class="dropdown-item btn-hover" onclick="exportPDF(unitChecked.yearUnit, timeRange.yearChart, '2', yearChartId)"> PDF </a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="chartYear" class="Chart"></div>
+        <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="year-loading">
+            <div class="ldio-cfo3yb5owxe">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="updateUnitModal" tabindex="-1" aria-labelledby="updateUnitModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <span class="modal-title fs-16 fw-medium" id="updateUnitModalLabel">@Localize("DAS-LBL-024") <span id="unit-title-modal"></span> @Localize("DAS-LBL-011")</span>
+                <button type="button" class="border-0 bg-white position-absolute" data-bs-dismiss="modal" aria-label="Close"><img src="~/assets/svg/Close.svg" id="menuToggleCollapse" alt="SVG Image"></button>
+            </div>
+            <div class="modal-body d-flex">
+
+                <input type="text" id="numericInput" onpaste="handlePaste(event)" class="form-control" on onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46">
+            </div>
+            <div class="modal-footer align-content-center justify-content-center pt-0 btn-hover">
+                <button type="button" class=" btn-save-change fw-700" data-bs-dismiss="modal" onclick="saveChanges(this)">
+                    @Localize("DAS-LBL-025")
+                    <img src="~/assets/svg/Checkmark.svg" id="" alt="SVG Image">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

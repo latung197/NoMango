@@ -1,0 +1,39 @@
+{
+  "profiles": {
+    "HamadenMonitor": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7134;http://localhost:5134"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:7134",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7134;http://localhost:5134"
+      },
+      "distributionName": ""
+    },
+    "iis express": {
+      "commandName": "IISExpress",
+      "launchBrowser": false
+    },
+    "dotnet": {
+      "commandName": "Project",
+      "hotReloadProfile": "aspnetcore"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29970",
+      "sslPort": 44345
+    }
+  }
+}

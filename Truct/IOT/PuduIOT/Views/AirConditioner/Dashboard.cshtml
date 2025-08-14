@@ -1,0 +1,98 @@
+﻿@{
+    List<MstUnit> units = (List<MstUnit>)Model.Units;  //3:  electric cabinet
+}
+<link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+
+<div class="text-black">
+    <div class=" form-group  p-2 card " id="checkbox-group"> 
+        <div class="card-title">
+            <span class="fw-bold text-capitalize">
+
+                @Localize("DAS-LBL-006")
+
+            </span>
+        </div>
+        <div class="d-flex flex-row gap pb-2 ">
+            <div class="form-check">
+                <input class="form-check-input all-zone" type="checkbox" id="selectAll" checked>
+                <label class="form-check-label fw-medium fs-14" for="selectAll">@Localize("DAS-LBL-004")</label>
+            </div>
+            
+        </div>
+
+        <div class="d-flex flex-column flex-wrap form-checkbox" id="checkboxContainer">
+            @{
+                for (int i = 0; i < units.Count; i++)
+                {
+                    <div class="form-check fw-normal">
+                        <input class="form-check-input checkbox-child all-zone" type="checkbox" id="@units[i].unit_code" checked>
+                        <label class="form-check-label label-checkbox-child1" for="@units[i].unit_code">@Localize($"{units[i].item_code}")<span class="value" id="for-@units[i].unit_code"></span><span class="fs-10"> @Localize("DAS-LBL-010")</span></label>
+                    </div>
+                }
+            }
+           
+        </div>
+        <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="checkbox-loading">
+            <div class="ldio-cfo3yb5owxe">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <partial name="_dashboard" />
+
+
+</div>
+<script>
+    var units = @Json.Serialize(units);
+    var checkboxGroup = document.getElementById('checkbox-group')
+    var container = document.getElementById('container')
+    var chartHeight = (container.offsetHeight - 40 - checkboxGroup.offsetHeight - 20 - 11) / 2 - 56;
+    var chartWidth = (container.offsetWidth - 40 - 10) / 2;
+
+    // JavaScript to handle the "Select All" checkbox
+    var selectAll = document.getElementById('selectAll');
+    
+    var checkboxes = document.querySelectorAll('.checkbox-child');
+    
+    var labels = document.querySelectorAll('.label-change');
+
+    selectAll.addEventListener('change', function () {
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = selectAll.checked;
+        });
+
+    });
+
+
+    
+
+   
+
+    
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+
+            var Checked = true;
+            checkboxes.forEach(function (checkbox) {
+                if (!checkbox.checked) {
+                    Checked = false;
+                }
+            });
+        
+
+            if (Checked) selectAll.checked = true;
+            else selectAll.checked = false;
+
+
+
+        });
+    });
+
+
+
+
+
+</script>
+<script src="~/js/dashboard.js" asp-append-version="true"></script>
+<script src="~/js/toolbar_search.js" asp-append-version="true"></script>

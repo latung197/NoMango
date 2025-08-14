@@ -1,0 +1,210 @@
+﻿.card {
+    background-color: #F2F4F7 !important;
+    border-radius: 0;
+    border-width: 0px 0.5px 1px 0px;
+    border-style: solid;
+    border-color: #5F6368;
+    min-width: 50rem;
+    padding: 10px !important;
+}
+
+.form-chart .card {
+    min-height: 256px;
+}
+.form-group {
+    background-color: #f2f4f7;
+    margin-bottom: 20px;
+    color: black;
+    border-width: 0px 0.5px 1px 0px;
+    border-style: solid;
+    border-color: #5F6368;
+    border-radius: 0;
+}
+
+#checkbox-group{
+    min-width: 100.6rem;
+}
+
+
+.label-checkbox-child {
+    font-size: 14px;
+}
+
+.gap {
+    gap: 5% !important;
+}
+
+.form-checkbox {
+    max-height: 160px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.form-check {
+    min-height: 28px;
+    margin-bottom: 0px;
+    margin-right: 60px;
+    margin-left: 3px;
+}
+
+.form-check-air-compressor{
+    width: fit-content;
+    min-width: 25%;
+}
+
+.form-chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 11px;
+}
+
+
+
+.Chart {
+    background-color: #F2F4F7;
+}
+
+.statistical-table {
+    height: 225px;
+    overflow-y: auto;
+    width: 100%;
+    font-family: Roboto !important;
+}
+
+    .statistical-table table {
+        width: 100%;
+    }
+
+    .statistical-table thead {
+        height: 30px;
+        font-size: 14px;
+        position: sticky;
+        top: -1px;
+        background-color: #dae3ea;
+        border-width: 0px 0px 1px 0px;
+        border-style: solid;
+        border-color: #2E4374;
+    }
+
+        .statistical-table thead th {
+            padding: 5px 0px !important;
+        }
+
+    .statistical-table tbody {
+        font-size: 12px;
+        background-color: white !important;
+    }
+
+        .statistical-table tbody tr {
+            border-width: 0px 0.5px 0.5px 0px;
+            border-style: solid;
+            border-color: #2E4374;
+            border-right: none;
+            height: 20px !important;
+            min-height: 20px !important;
+        }
+
+            .statistical-table tbody tr td, th {
+                max-height: 20px;
+                padding: 0px !important;
+            }
+
+    .statistical-table .btn-edit {
+        height: 16px;
+        border: 0.5px solid #2E4374;
+        font-weight: 700;
+        font-size: 10px;
+        background-color: #F2F4F7;
+    }
+
+    .statistical-table .avg {
+        margin-right: 10px;
+        height: 24px;
+    }
+
+    .statistical-table #time-range {
+        font-size: 10px;
+        color: #02A4A6;
+        line-height: 6px;
+    }
+
+.height-14 {
+    height: 14px !important;
+}
+
+.border-end {
+    border-right: 1px solid #5F6368 !important;
+}
+
+.text-orange {
+    color: #DC7F11 !important;
+}
+
+.text-green {
+    color: #02A4A6 !important;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.A-zone:checked[type=checkbox] {
+    background-image: url('../assets//img//check_box_green.jpg') !important;
+    border: none;
+    background-color: white;
+}
+
+.B-zone:checked[type=checkbox] {
+    background-image: url('../assets//img//check_box_orange.jpg') !important;
+    border: none;
+    background-color: white;
+}
+
+.C-zone:checked[type=checkbox] {
+    background-image: url('../assets//img//check_box_purple.jpg') !important;
+    border: none;
+    background-color: white;
+}
+
+.all-zone:checked[type=checkbox] {
+    background-image: url('../assets//img//check_box_blue.jpg') !important;
+    border: none;
+    background-color: white;
+}
+
+
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+    .input-container img {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+    }
+
+
+
+.dropdown-menu {
+    min-width: 105px;
+    padding: 0;
+    border-radius: 0;
+    font-size: 14px !important;
+    transform: translate(10px, 30px) !important;
+}
+.dropdown-item {
+    border-bottom: 1px solid #5F6368;
+    text-align: center;
+    cursor: pointer;
+    color: #000000;
+}
+
