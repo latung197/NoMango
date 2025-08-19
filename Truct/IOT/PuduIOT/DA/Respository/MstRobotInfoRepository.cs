@@ -19,7 +19,7 @@ namespace PuduIOT.DA.Respository
 
         public List<MstRobotInfor> GetById(int id)
         {
-            return _context.MstRobotInfo.Where(x=>x.id == id).ToList();
+            return _context.MstRobotInfo.Where(x=>x.Id == id).ToList();
         }
 
     }

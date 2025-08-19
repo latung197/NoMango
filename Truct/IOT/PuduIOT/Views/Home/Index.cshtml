@@ -170,7 +170,7 @@
     <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-019") : <span id="index-total"></span> @Localize("DAS-LBL-010")</span>
     <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-020") : <span id="index-total-co2"></span> @Localize("COM-LBL-024")</span>
     <span class="d-inline-block fw-normal fs-30"> @Localize("COM-LBL-021") : <span id="index-total-cost"></span> @Localize("COM-LBL-025")</span>
-    </div>
+    </div>  
     </div> *@
 
 
@@ -185,26 +185,26 @@
         {
             @foreach (var robot in robots)
             {
-                <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails(@robot.id)">
+                <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails(@robot.Id)">
                     <div class="row">
                         <div class="col-3"> <img src="~/assets/img/PuduT300_product.png" alt="Image" id="Pudu" class="img-fluid" /></div>
                         <div class="col-9">
                             <div class="row text-start">
                                 <div class="col-4 fw-bold">Tên:</div>
-                                <div class="col-8">@robot.name</div>
+                                <div class="col-8">@robot.Id</div>
 
                                 <div class="col-4 fw-bold">Pin:</div>
-                                <div class="col-8">@robot.battery %</div>
+                                <div class="col-8">@robot.Battery %</div>
 
                                 <div class="col-4 fw-bold">Trạng thái:</div>
                                 <div class="col-8">
-                                    <span class="badge @(robot.status == "Online" ? "bg-success" : "bg-danger")">
-                                        @robot.status
+                                    <span class="badge @(robot.DeviceName == "Online" ? "bg-success" : "bg-danger")">
+                                        @robot.DeviceName
                                     </span>
                                 </div>
 
                                 <div class="col-4 fw-bold">Vị trí:</div>
-                                <div class="col-8">@robot.location</div>
+                                <div class="col-8">@robot.DeviceName</div>
                             </div>
                         </div>
                     </div>

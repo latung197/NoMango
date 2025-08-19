@@ -28,7 +28,7 @@ function reloadData(data) {
         zones.forEach(zone => {
             const element = document.getElementById(`index-${zone}`);
             const elementCo2 = document.getElementById(`index-${zone}-co2`);
-            const elementCost = document.getElementById(`index-${zone}-cost`);
+            const elementCost = document.getElementById(`index-${zone}-cost`);  
          
             const zoneValue = parseFloat(data[zone].replace(',', '.'));
 
@@ -38,7 +38,7 @@ function reloadData(data) {
             if (elementCost)
                 elementCost.innerText = (Math.round(zoneValue * cost / 1000) * 1000).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
         });
-        const chartColumn = ['A', 'B', 'C', 'Air', 'Pac']
+        //const chartColumn = ['A', 'B', 'C', 'Air', 'Pac']
         DrawChart(data, '#visualChart', chartColumn)
     }
     catch (ex) {
@@ -156,15 +156,15 @@ connection.on("ReceiveRealTimeData", (data) => {
     if (window.location.pathname === "/") {
         reloadData(obj.Data);
     }
-    else if (window.location.pathname === "/AirConditioner/Visualization") {
-        reloadDataAirConditioner(obj.Pac, obj.Data);
-    }
-    else if (window.location.pathname === "/Line/Visualization") {
-        reloadDataLine(obj.Line, obj.Data);
-    }
-    else if (window.location.pathname === "/AirCompressor/Visualization") {
-        reloadDataAirCompressor(obj.Air, obj.Data)
-    }
+    //else if (window.location.pathname === "/AirConditioner/Visualization") {
+    //    reloadDataAirConditioner(obj.Pac, obj.Data);
+    //}
+    //else if (window.location.pathname === "/Line/Visualization") {
+    //    reloadDataLine(obj.Line, obj.Data);
+    //}
+    //else if (window.location.pathname === "/AirCompressor/Visualization") {
+    //    reloadDataAirCompressor(obj.Air, obj.Data)
+    //}
 })
 
 
