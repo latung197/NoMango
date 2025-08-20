@@ -12,6 +12,8 @@ namespace PuduIOT.BL.Interfaces
 
         DataTable callFuncPostgre(string func_name);
 
+        DataTable ExecuteFunction(string func_name);
+
         string[] ProcessingParam(List<MstUnit> units);
 
         public byte[] ExportDataTableToPdf(DataTable dataTable, MyData mData, string langcode);

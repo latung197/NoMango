@@ -12,7 +12,7 @@ namespace PuduIOT.DA
         public DbSet<MstLanguage> MstLanguages { get; set; }
         public DbSet<MstUnit> MstUnits { get; set; }
         public DbSet<MstConfiguration> MstConfigurations { get; set; }
-        public DbSet<MstRobotInfor> MstRobotInfo { get; set; }
+        public DbSet<MstRobotStatus> MstRobotInfo { get; set; }
 
     }
 }

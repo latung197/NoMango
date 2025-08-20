@@ -1,5 +1,5 @@
 ﻿@{
-    List<MstRobotInfor> robots = (List<MstRobotInfor>)Model.RobotInfors;
+    List<MstRobotStatus> robots = (List<MstRobotStatus>)Model.RobotInfors;
 }
 <style>
     .component-unit .unit-total {
@@ -174,62 +174,8 @@
     </div> *@
 
 
-    <div class="robot-grid">
-        @if (robots is null)
-        {
-            <div class="col-12">
-                <p>Đang tải dữ liệu...</p>
-            </div>
-        }
-        else
-        {
-            @foreach (var robot in robots)
-            {
-                <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails(@robot.Id)">
-                    <div class="row">
-                        <div class="col-3"> <img src="~/assets/img/PuduT300_product.png" alt="Image" id="Pudu" class="img-fluid" /></div>
-                        <div class="col-9">
-                            <div class="row text-start">
-                                <div class="col-4 fw-bold">Tên:</div>
-                                <div class="col-8">@robot.Id</div>
-
-                                <div class="col-4 fw-bold">Pin:</div>
-                                <div class="col-8">@robot.Battery %</div>
-
-                                <div class="col-4 fw-bold">Trạng thái:</div>
-                                <div class="col-8">
-                                    <span class="badge @(robot.DeviceName == "Online" ? "bg-success" : "bg-danger")">
-                                        @robot.DeviceName
-                                    </span>
-                                </div>
-
-                                <div class="col-4 fw-bold">Vị trí:</div>
-                                <div class="col-8">@robot.DeviceName</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                @* <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
-        <div class="card-body">
-        <h5 class="card-title">@robot.name</h5>
-        <p>
-        Trạng thái:
-        <span class="badge @(robot.status == "Online" ? "bg-success" : "bg-danger")">
-        @robot.status
-        </span>
-        </p>
-        <p>Vị trí: @robot.location</p>
-        <p>Pin: @robot.battery %</p>
-        @* <button class="btn btn-primary btn-sm" @onclick="() => ViewDetails(robot.Id)">
-        Xem chi tiết
-        </button>
-        </div>
-        </div>
-        </div> *@
-            }
-        }
+    <div id="robotGrid" class="robot-grid">
+        
     </div>
     @*     <div class=" d-flex flex-column shape-content position-absolute shape-title outer-div unit-avg min-width-box">
     <div>

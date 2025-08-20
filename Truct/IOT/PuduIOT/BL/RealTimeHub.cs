@@ -13,6 +13,9 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using Newtonsoft.Json;
+using PuduIOT.Models.RobotsT300;
+using PuduIOT.Models;
 
 namespace PuduIOT.BL
 {
@@ -55,8 +58,9 @@ namespace PuduIOT.BL
                     DataTable dtPacPerformance = new DataTable();
                     DataTable dtAirPerformance = new DataTable();
                     DataTable dtLinePerformance = new DataTable();
-
+                    RobotData robotData = null;
                     DataTable dtRobots = new DataTable();
+                    List < RobotData > robotDataList = new List < RobotData >();
                     try
                     {
                         //var unitsAirConditioner = _unitService.GetUnitsByType("1");
@@ -89,21 +93,38 @@ namespace PuduIOT.BL
                         //dtPacSum = _libs.SumData(dtPac, dtPacPerformance);
                         //dtAirSum = _libs.SumData(dtAir, dtAirPerformance);
                         //dtLineSum = _libs.SumData(dtLine, dtLinePerformance);
-                        string a = await GetDataPudu("/open-platform-service/v1/status/get_by_sn?sn=826085513060001");
+                        dtRobots = _libs.ExecuteFunction("SELECT id, sn, name, company_id, company_name, img_name FROM public.mst_robot_infor;");
+                        foreach (DataRow dr in dtRobots.Rows)
+                        {
+                            string json = await GetDataPudu("/open-platform-service/v1/status/get_by_sn?sn=" + dr["sn"].ToString() +"");
+                            if (!string.IsNullOrEmpty(json))
+                            {
+                                var robotResponse = JsonConvert.DeserializeObject<RobotResponse>(json);
+
+                                if (robotResponse != null && robotResponse.Data != null)
+                                {
+                                    robotData = robotResponse.Data;
+                                    robotData.Name = dr["name"].ToString();
+                                    robotData.ImagName = dr["img_name"].ToString();
+                                    robotDataList.Add(robotData);
+                                }
+                            }
+                        }
+
+
 
                     }
                     catch (Exception ex)
                     {
                     }
 
-                    await ClientProxyExtensions.SendAsync(arg1: new
-                    {
-                        Line = dtLineSum,
-                        Pac = dtPacSum,
-                        Air = dtAirSum,
-                        Data = map
-
-                    }.ToJson(), clientProxy: Clients.All, method: "ReceiveRealTimeData");
+                    await Clients.All.SendAsync(
+                        "ReceiveRealTimeData",
+                        new
+                        {
+                            RobotsStatus = robotDataList
+                        }.ToJson()
+                    );
 
                     await Task.Delay(5000);
                 }

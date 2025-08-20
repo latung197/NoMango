@@ -12,12 +12,12 @@ namespace PuduIOT.DA.Respository
             _context = context;
         }
 
-        public List<MstRobotInfor> GetAllRobot()
+        public List<MstRobotStatus> GetAllRobot()
         {
             return _context.MstRobotInfo.ToList();
         }
 
-        public List<MstRobotInfor> GetById(int id)
+        public List<MstRobotStatus> GetById(int id)
         {
             return _context.MstRobotInfo.Where(x=>x.Id == id).ToList();
         }

@@ -13,12 +13,12 @@ namespace PuduIOT.BL.Services
         {
             _repository = new MstRobotInfoRepository(context);
         }
-        public List<MstRobotInfor> GetAll()
+        public List<MstRobotStatus> GetAll()
         {
             return _repository.GetAllRobot();
         }
 
-        public List<MstRobotInfor> GetById(int id)
+        public List<MstRobotStatus> GetById(int id)
         {
             return _repository.GetById(id);
 

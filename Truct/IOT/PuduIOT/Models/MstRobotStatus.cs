@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PuduIOT.Models
 {
-    [Table("mst_robot_infor")]
-    public class MstRobotInfor
+    [Table("mst_robot_status")]
+    public class MstRobotStatus
     {
         [Key]
         [Column("id", TypeName = "bigint")]

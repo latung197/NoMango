@@ -20,26 +20,57 @@ const alert = (message, type) => {
 var electricCost = 0;
 
 function reloadData(data) {
-    const zones = ['Air', 'A', 'B', 'C', 'total', 'avg', 'Pac'];
-
-    var cost = parseFloat(languageResource['ElectricCost'] ? languageResource['ElectricCost']: 0 );
-
     try {
-        zones.forEach(zone => {
-            const element = document.getElementById(`index-${zone}`);
-            const elementCo2 = document.getElementById(`index-${zone}-co2`);
-            const elementCost = document.getElementById(`index-${zone}-cost`);  
-         
-            const zoneValue = parseFloat(data[zone].replace(',', '.'));
+       // var obj = JSON.parse(data);
+        var robots = data;
 
-            element.innerText = zoneValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            if (elementCo2)
-                elementCo2.innerText = (zoneValue * 0.455 / 1000).toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
-            if (elementCost)
-                elementCost.innerText = (Math.round(zoneValue * cost / 1000) * 1000).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        if (!robots || robots.length === 0) {
+            document.getElementById("robotGrid").innerHTML = `
+            <div class="col-12"><p>Không có dữ liệu robot</p></div>
+        `;
+            return;
+        }
+
+        // build HTML động
+        let html = "";
+        robots.forEach(robot => {
+            html += `
+            <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails('${robot.Id}')">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="/assets/img/${robot.img_name}" alt="Image" class="img-fluid" />
+                    </div>
+                    <div class="col-9">
+                        <div class="row text-start">
+                            <div class="col-6 fw-bold">Tên:</div>
+                            <div class="col-6">${robot.name}</div>
+
+                            <div class="col-6 fw-bold">Pin:</div>
+                            <div class="col-6">${robot.battery} %</div>
+
+                            <div class="col-6 fw-bold">Trạng thái:</div>
+                            <div class="col-6">
+                                <span >
+                                   ${robot.is_online === 1 ? "Online" : "Offline"}
+                                </span>
+                            </div>
+                            <div class="col-6 fw-bold">Trạng thái hoạt động:</div>
+                            <div class="col-6">
+                                <span class="badge ${robot.work_msg === "空闲" ? "bg-success" : "bg-danger"}">
+                                    ${robot.work_msg}
+                                </span>
+                            </div>
+
+                            <div class="col-6 fw-bold">Bản đồ:</div>
+                            <div class="col-6">${robot.map_name}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
         });
-        //const chartColumn = ['A', 'B', 'C', 'Air', 'Pac']
-        DrawChart(data, '#visualChart', chartColumn)
+
+        document.getElementById("robotGrid").innerHTML = html;
     }
     catch (ex) {
         console.log(ex);
@@ -143,18 +174,15 @@ function reloadDataAirCompressor(data, totalData) {
     visualLoading.style.display = 'none';
 }
 
-
-
 var connection = new signalR.HubConnectionBuilder()
     .withUrl("/realTimeHub")
     .withAutomaticReconnect()
     .build();
 
-
 connection.on("ReceiveRealTimeData", (data) => {
     var obj = JSON.parse(data);
     if (window.location.pathname === "/") {
-        reloadData(obj.Data);
+        reloadData(obj.RobotsStatus);
     }
     //else if (window.location.pathname === "/AirConditioner/Visualization") {
     //    reloadDataAirConditioner(obj.Pac, obj.Data);
