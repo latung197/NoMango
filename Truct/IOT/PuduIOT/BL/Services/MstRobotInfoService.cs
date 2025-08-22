@@ -9,18 +9,18 @@ namespace PuduIOT.BL.Services
     public class MstRobotInfoService : IMstRobotInfoService
     {
         private readonly MstRobotInfoRepository _repository;
-        public MstRobotInfoService(HamadenDbContext context)
+        public MstRobotInfoService(PuduIotDbContext context)
         {
             _repository = new MstRobotInfoRepository(context);
         }
-        public List<MstRobotStatus> GetAll()
+        public async Task<List<MstRobotInfor>> GetAll()
         {
-            return _repository.GetAllRobot();
+            return await _repository.GetAllRobot();
         }
 
-        public List<MstRobotStatus> GetById(int id)
+        public async Task<List<MstRobotInfor>> GetById(string id)
         {
-            return _repository.GetById(id);
+            return await _repository.GetById(id);
 
         }
     }

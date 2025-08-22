@@ -9,7 +9,7 @@ namespace PuduIOT.BL.Services
     {
         private readonly MstLanguageRespository _repository;
         
-        public MstLanguageService(HamadenDbContext context)
+        public MstLanguageService(PuduIotDbContext context)
         {
             _repository = new MstLanguageRespository(context);
         }

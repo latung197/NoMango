@@ -7,9 +7,9 @@ namespace PuduIOT.DA.Respository
 
     public class MstLanguageRespository
     {
-        private readonly HamadenDbContext _context;
+        private readonly PuduIotDbContext _context;
 
-        public MstLanguageRespository(HamadenDbContext context)
+        public MstLanguageRespository(PuduIotDbContext context)
         {
             _context = context;
         }

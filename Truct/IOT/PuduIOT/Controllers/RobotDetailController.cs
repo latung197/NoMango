@@ -10,9 +10,9 @@ namespace PuduIOT.Controllers
         {
             _mstRobotInfoService = statRobotInfoService;
         }
-        public IActionResult Index(int id)
+        public async Task< IActionResult> Index(string id)
         {
-            var robot = _mstRobotInfoService.GetById(id);
+            var robot = await _mstRobotInfoService.GetById(id);
             return View(robot);
         }
     }

@@ -24,13 +24,13 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 public class Libs : ILibs
 {
-    private readonly HamadenDbContext _dbContext;
+    private readonly PuduIotDbContext _dbContext;
     private readonly ILanguageService _language;
     private readonly ILoggers _logger;
     private readonly IWebHostEnvironment _hostingEnvironment;
     private readonly IMstUnitService _unitService;
 
-    public Libs(HamadenDbContext context, ILoggers loggers, ILanguageService language, IWebHostEnvironment hostingEnvironment, IMstUnitService unitService)
+    public Libs(PuduIotDbContext context, ILoggers loggers, ILanguageService language, IWebHostEnvironment hostingEnvironment, IMstUnitService unitService)
     {
         _logger = loggers;
         _dbContext = context;

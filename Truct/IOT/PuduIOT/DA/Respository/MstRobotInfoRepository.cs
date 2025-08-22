@@ -5,21 +5,21 @@ namespace PuduIOT.DA.Respository
 {
     public class MstRobotInfoRepository
     {
-        private readonly HamadenDbContext _context;
+        private readonly PuduIotDbContext _context;
 
-        public MstRobotInfoRepository(HamadenDbContext context)
+        public MstRobotInfoRepository(PuduIotDbContext context)
         {
             _context = context;
         }
 
-        public List<MstRobotStatus> GetAllRobot()
+        public async Task <List<MstRobotInfor>> GetAllRobot()
         {
-            return _context.MstRobotInfo.ToList();
+            return await _context.MstRobotInfo.ToListAsync();
         }
 
-        public List<MstRobotStatus> GetById(int id)
+        public async Task<List<MstRobotInfor>> GetById(string sn)
         {
-            return _context.MstRobotInfo.Where(x=>x.Id == id).ToList();
+            return await _context.MstRobotInfo.Where(x=>x.Sn == sn).ToListAsync();
         }
 
     }

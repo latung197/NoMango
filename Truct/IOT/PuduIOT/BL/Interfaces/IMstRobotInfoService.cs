@@ -4,7 +4,7 @@ namespace PuduIOT.BL.Interfaces
 {
     public interface IMstRobotInfoService
     {
-        List<MstRobotStatus> GetAll();
-        List<MstRobotStatus> GetById( int id);
+        Task<List<MstRobotInfor>> GetAll();
+        Task<List<MstRobotInfor>> GetById( string id);
     }
 }

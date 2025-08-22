@@ -12,7 +12,7 @@ namespace PuduIOT.BL.Services
     {
         private readonly MstUnitRespository _repository;
 
-        public MstUnitService(HamadenDbContext context)
+        public MstUnitService(PuduIotDbContext context)
         {
             _repository = new MstUnitRespository(context);
         }

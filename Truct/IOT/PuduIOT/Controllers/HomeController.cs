@@ -25,9 +25,9 @@ namespace PuduIOT.Controllers
             _mstRobotInfoService = mstRobotInfoService;
         }
 
-        public IActionResult Index()
+        public async Task <IActionResult> Index()
         {
-            var robotInfors = _mstRobotInfoService.GetAll();
+            var robotInfors = await _mstRobotInfoService.GetAll();
             ViewBag.Resource = "pac-visual";
             var data = new
             {
@@ -36,7 +36,7 @@ namespace PuduIOT.Controllers
             return View(data);
         }
 
-        public IActionResult DetailsPartial(int id)
+        public IActionResult DetailsPartial(string id)
         {
             var robot = _mstRobotInfoService.GetById(id);
             return PartialView("_RobotDetailPartial", robot);

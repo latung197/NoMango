@@ -5,9 +5,9 @@ namespace PuduIOT.DA.Respository
 {
     public class MstConfigurationRespository
     {
-        private readonly HamadenDbContext _context;
+        private readonly PuduIotDbContext _context;
 
-        public MstConfigurationRespository(HamadenDbContext context)
+        public MstConfigurationRespository(PuduIotDbContext context)
         {
             _context = context;
         }

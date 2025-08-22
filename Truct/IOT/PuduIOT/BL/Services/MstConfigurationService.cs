@@ -11,7 +11,7 @@ namespace PuduIOT.BL.Services
     {
         private readonly MstConfigurationRespository _respository;
 
-        public MstConfigurationService(HamadenDbContext context)
+        public MstConfigurationService(PuduIotDbContext context)
         {
             _respository = new MstConfigurationRespository(context);
         }

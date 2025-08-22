@@ -35,7 +35,7 @@ function reloadData(data) {
         let html = "";
         robots.forEach(robot => {
             html += `
-            <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails('${robot.Id}')">
+            <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails('${robot.sn}')">
                 <div class="row">
                     <div class="col-3">
                         <img src="/assets/img/${robot.img_name}" alt="Image" class="img-fluid" />

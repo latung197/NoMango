@@ -4,6 +4,8 @@ namespace PuduIOT.Models.RobotsT300
 {
     public class RobotData
     {
+        [JsonProperty("sn")]
+        public string Sn { get; set; }
         [JsonProperty("name")]
         public string Name {  get; set; }
         [JsonProperty("battery")]

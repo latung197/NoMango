@@ -31,7 +31,7 @@ namespace PuduIOT
             services.AddScoped<ILanguageService, MstLanguageService>();
             services.AddScoped<ILibs, Libs>();
             services.AddScoped<IBreadcrumbService, BreadcrumbService>();
-            services.AddDbContext<HamadenDbContext>(delegate (DbContextOptionsBuilder options)
+            services.AddDbContext<PuduIotDbContext>(delegate (DbContextOptionsBuilder options)
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
