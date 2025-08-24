@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject CoreMVC.BL.Interfaces.ILanguageService _langguage;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,10 +13,7 @@
 <body>
     <header>
         <form id="langForm" method="post" asp-controller="Home" asp-action="SetLanguage">
-            <select name="culture" onchange="document.getElementById('langForm').submit()" class="form-select form-select-sm w-auto">
-@*                 <option value="vi-VN" selected="@(CultureInfo.CurrentUICulture.Name == "vi-VN" ? "selected" : null)">Tiếng Việt</option>
-                <option value="en-US" selected="@(CultureInfo.CurrentUICulture.Name == "en-US" ? "selected" : null)">English</option> *@
-            </select>
+
             <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
         </form>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -27,6 +26,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+                            <span>@Localize("DAS-LBL-022")</span>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">

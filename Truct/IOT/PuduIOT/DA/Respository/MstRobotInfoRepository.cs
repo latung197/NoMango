@@ -19,6 +19,8 @@ namespace PuduIOT.DA.Respository
 
         public async Task<List<MstRobotInfor>> GetById(string sn)
         {
+            List<MstRobotInfor> mstRobotInfor = null;
+            mstRobotInfor = await _context.MstRobotInfo.Where(x => x.Sn == sn).ToListAsync();
             return await _context.MstRobotInfo.Where(x=>x.Sn == sn).ToListAsync();
         }
 
