@@ -123,9 +123,9 @@ function loadRobotDetails(sn) {
     //// Lắng nghe dữ liệu riêng robot này
     connectionDetail.off(`RobotUpdate-${sn}`); // xóa listener cũ nếu có
     connectionDetail.on(`RobotUpdate-${sn}`, data => {
-        document.getElementById('robotName').textContent = data.Name;
+    //    document.getElementById('robotName').textContent = data.Name;
     //    document.getElementById('robotSerial').textContent = data.Sn;
-        document.getElementById('robotBattery').textContent = data.Battery;
+        document.getElementById('rbBattery').textContent = "Ha Noi";
     //    document.getElementById('robotStatus').textContent = data.Status;
     //    document.getElementById('robotBatteryBar').style.width = data.Battery + "%";
     //    document.getElementById('robotImage').src = `/assets/img/${data.ImagName || 'default-robot.png'}`;
@@ -153,11 +153,10 @@ let updateInterval;
 
 // Hàm render dữ liệu vào modal
 function renderRobotDetails(data) {
-    const BASE_IMG_PATH = '/assets/img/';
+    const base_img_path = '/assets/img/';
     const img = document.getElementById('robotImage');
     if (img) {
-        img.src = BASE_IMG_PATH + data.imgName;
-
+        img.src = base_img_path + data.imgName;
         // Nếu ảnh không load được
         img.onerror = () => img.src = basePath + "default-robot.png";
     }
@@ -167,7 +166,6 @@ function renderRobotDetails(data) {
     }
 
 }
-
 
 function removeClassPerformance(element) {
     var classesToRemove = ['bg-data-80', 'bg-data-100', 'bg-data-zero'];
@@ -278,32 +276,7 @@ connection.on("ReceiveRealTimeData", (data) => {
     if (window.location.pathname === "/") {
         reloadData(obj.RobotsStatus);
     }
-    //else if (window.location.pathname === "/AirConditioner/Visualization") {
-    //    reloadDataAirConditioner(obj.Pac, obj.Data);
-    //}
-    //else if (window.location.pathname === "/Line/Visualization") {
-    //    reloadDataLine(obj.Line, obj.Data);
-    //}
-    //else if (window.location.pathname === "/AirCompressor/Visualization") {
-    //    reloadDataAirCompressor(obj.Air, obj.Data)
-    //}
 })
-connection.on("ReceiveRealTimeData", (data) => {
-    var obj = JSON.parse(data);
-    if (window.location.pathname === "/") {
-        reloadData(obj.RobotsStatus);
-    }
-    //else if (window.location.pathname === "/AirConditioner/Visualization") {
-    //    reloadDataAirConditioner(obj.Pac, obj.Data);
-    //}
-    //else if (window.location.pathname === "/Line/Visualization") {
-    //    reloadDataLine(obj.Line, obj.Data);
-    //}
-    //else if (window.location.pathname === "/AirCompressor/Visualization") {
-    //    reloadDataAirCompressor(obj.Air, obj.Data)
-    //}
-})
-
 
 connection.stop().then(() => {
 }).catch((err) => {

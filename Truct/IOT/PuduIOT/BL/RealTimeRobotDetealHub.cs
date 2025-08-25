@@ -81,7 +81,6 @@ namespace PuduIOT.BL
                                     robotData.Sn = sn;
                                 }
                             }
-
                         }
                         catch (Exception ex)
                         {
@@ -92,9 +91,7 @@ namespace PuduIOT.BL
 
                             await Clients.Caller.SendAsync($"RobotUpdate-{sn}", robotData);
                         }
-
                         await Task.Delay(3000, cts.Token);
-
                     }
                 }
                 catch (TaskCanceledException)
