@@ -16,6 +16,7 @@ using System.Web;
 using Newtonsoft.Json;
 using PuduIOT.Models.RobotsT300;
 using PuduIOT.Models;
+using System.Net.Http;
 
 namespace PuduIOT.BL
 {
@@ -50,13 +51,13 @@ namespace PuduIOT.BL
                 {
                     RobotData robotData = null;
                     DataTable dtRobots = new DataTable();
-                    List < RobotData > robotDataList = new List < RobotData >();
+                    List<RobotData> robotDataList = new List<RobotData>();
                     try
                     {
                         dtRobots = _libs.ExecuteFunction("SELECT id, sn, name, company_id, company_name, img_name FROM public.mst_robot_infor;");
                         foreach (DataRow dr in dtRobots.Rows)
                         {
-                            string json = await GetDataPudu("/open-platform-service/v1/status/get_by_sn?sn=" + dr["sn"].ToString() +"");
+                            string json = await GetDataPudu("/open-platform-service/v1/status/get_by_sn?sn=" + dr["sn"].ToString() + "");
                             if (!string.IsNullOrEmpty(json))
                             {
                                 var robotResponse = JsonConvert.DeserializeObject<RobotResponse>(json);
@@ -96,182 +97,179 @@ namespace PuduIOT.BL
             }
 
         }
+        private static readonly Dictionary<string, CancellationTokenSource> _robotTokens = new();
+       
 
-
-        public override async Task OnConnectedAsync()
+    public override async Task OnConnectedAsync()
+    {
+        await base.OnConnectedAsync();
+        _count++;
+        if (_count == 1)
         {
-            await base.OnConnectedAsync();
-            _count++;
-            if (_count == 1)
+            await Task.WhenAll(SendRealTimeData());
+        }
+    }
+
+    public override async Task OnDisconnectedAsync(Exception exception)
+    {
+        _count--;
+        await base.OnDisconnectedAsync(exception);
+    }
+
+    public async Task<string> GetDataPudu(string pathAndQuery)
+    {
+        string HTTPMethod = "GET";
+        string Accept = "application/json";
+        string ContentType = "application/json";
+
+        // 应用 ApiAppKey
+        string ApiAppKey = "APIDdPWPWY2EVEPTKWFOd5NNkEpuHRSb9FPjn3n8h";
+        string ApiAppSecret = "aeipzmPCHWrVthBfbeHDPwnyiNpx32efBB4foCn9Z";
+
+        // string url = "https://css-open-platform.pudutech.com/pudu-entry/data-open-platform-service/v1/api/robot?limit=2&offset=0&shop_id=526150005";
+
+        // Base URL node Mỹ (thay theo khu vực bạn)
+        string baseUrl = "https://css-open-platform.pudutech.com/pudu-entry";
+        // API healthCheck + query string
+
+        string url = baseUrl + pathAndQuery;
+
+        Uri uri = new Uri(url);
+        string host = uri.Host;
+        string path = uri.AbsolutePath;
+        Console.WriteLine("Url:{0}", url);
+        Console.WriteLine("Host:{0}", host);
+
+        // Without environmental information
+        if (path.StartsWith("/release"))
+        {
+            path = path.Substring("/release".Length);
+
+        }
+        else if (path.StartsWith("/test"))
+        {
+            path = path.Substring("/test".Length);
+        }
+        else if (path.StartsWith("/prepub"))
+        {
+            path = path.Substring("/prepub".Length);
+        }
+        if (path == "")
+        {
+            path = "/";
+        }
+        //query sort
+        if (uri.Query.Length > 0)
+        {
+            var queryString = HttpUtility.ParseQueryString(uri.Query);
+            List<string> lstQuery = new List<string>();
+            foreach (var key in queryString.AllKeys)
             {
-                await Task.WhenAll(SendRealTimeData());
+                lstQuery.Add(key);
             }
+            lstQuery.Sort();
+            StringBuilder sbQuery = new StringBuilder();
+            foreach (string q in lstQuery)
+            {
+                if (queryString[q] != "")
+                {
+                    sbQuery = sbQuery.Append("&").Append(q).Append("=").Append(queryString[q]);
+                }
+                else
+                {
+                    sbQuery = sbQuery.Append("&").Append(q);
+
+                }
+            }
+            path += "?" + sbQuery.ToString().TrimStart('&');
         }
 
-        public override async Task OnDisconnectedAsync(Exception exception)
+        var xDate = DateTime.UtcNow.ToUniversalTime().ToString("r");
+        string contentMd5 = "";
+        string bodyStr = "{\"b\":\"2\", \"a\":\"###特殊字符测试\", \"c\": \"3\"}";
+        if (HTTPMethod == "POST")
         {
-            _count--;
-            await base.OnDisconnectedAsync(exception);
+            //Content-MD5
+            byte[] result = Encoding.UTF8.GetBytes(bodyStr);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] output = md5.ComputeHash(result);
+            string hexString = BitConverter.ToString(output).Replace("-", "").ToLower();
+            byte[] bs = System.Text.Encoding.ASCII.GetBytes(hexString);
+            contentMd5 = Convert.ToBase64String(bs);
         }
+        string signingStr = string.Format("x-date: {0}\n{1}\n{2}\n{3}\n{4}\n{5}", xDate, HTTPMethod, Accept, ContentType, contentMd5, path);
 
-        public async Task<string> GetDataPudu(string pathAndQuery)
+        //HMACSHA1
+        HMACSHA1 hmacsha1 = new HMACSHA1();
+        hmacsha1.Key = System.Text.Encoding.UTF8.GetBytes(ApiAppSecret);
+        byte[] dataBuffer = System.Text.Encoding.UTF8.GetBytes(signingStr);
+        byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
+        string signature = Convert.ToBase64String(hashBytes);
+
+        //get authorization
+        string sign = string.Format("hmac id=\"{0}\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"{1}\"", ApiAppKey, signature);
+        Console.WriteLine("sign:" + sign);
+
+
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+        request.Method = HTTPMethod;
+        request.Host = host;
+        request.ContentType = ContentType;
+        request.Accept = Accept;
+        request.Headers.Add("x-date", xDate);
+        request.Headers.Add("Authorization", sign);
+        request.Headers.Add("Content-MD5", contentMd5);
+        try
         {
-            string HTTPMethod = "GET";
-            string Accept = "application/json";
-            string ContentType = "application/json";
-
-            // 应用 ApiAppKey
-            string ApiAppKey = "APIDdPWPWY2EVEPTKWFOd5NNkEpuHRSb9FPjn3n8h";
-            string ApiAppSecret = "aeipzmPCHWrVthBfbeHDPwnyiNpx32efBB4foCn9Z";
-
-            // string url = "https://css-open-platform.pudutech.com/pudu-entry/data-open-platform-service/v1/api/robot?limit=2&offset=0&shop_id=526150005";
-
-            // Base URL node Mỹ (thay theo khu vực bạn)
-            string baseUrl = "https://css-open-platform.pudutech.com/pudu-entry";
-            // API healthCheck + query string
-            //string pathAndQuery = "/data-open-platform-service/v1/api/map?shop_id=526150005&map_name=0#0#fstv3&device_width=1200&device_height=800";
-            //string pathAndQuery = "/data-board/v1/analysis/task/delivery/paging?timezone_offset=8&start_time=1755168000&end_time=1755254399&shop_id=526150005&time_unit=day&group_by=robot";
-           // pathAndQuery = "/open-platform-service/v1/status/get_by_sn?sn=826085513060001";
-
-            string url = baseUrl + pathAndQuery;
-
-            Uri uri = new Uri(url);
-            string host = uri.Host;
-            string path = uri.AbsolutePath;
-            Console.WriteLine("Url:{0}", url);
-            Console.WriteLine("Host:{0}", host);
-
-            // Without environmental information
-            if (path.StartsWith("/release"))
-            {
-                path = path.Substring("/release".Length);
-
-            }
-            else if (path.StartsWith("/test"))
-            {
-                path = path.Substring("/test".Length);
-            }
-            else if (path.StartsWith("/prepub"))
-            {
-                path = path.Substring("/prepub".Length);
-            }
-            if (path == "")
-            {
-                path = "/";
-            }
-            //query sort
-            if (uri.Query.Length > 0)
-            {
-                var queryString = HttpUtility.ParseQueryString(uri.Query);
-                List<string> lstQuery = new List<string>();
-                foreach (var key in queryString.AllKeys)
-                {
-                    lstQuery.Add(key);
-                }
-                lstQuery.Sort();
-                StringBuilder sbQuery = new StringBuilder();
-                foreach (string q in lstQuery)
-                {
-                    if (queryString[q] != "")
-                    {
-                        sbQuery = sbQuery.Append("&").Append(q).Append("=").Append(queryString[q]);
-                    }
-                    else
-                    {
-                        sbQuery = sbQuery.Append("&").Append(q);
-
-                    }
-                }
-                path += "?" + sbQuery.ToString().TrimStart('&');
-            }
-
-            var xDate = DateTime.UtcNow.ToUniversalTime().ToString("r");
-            string contentMd5 = "";
-            string bodyStr = "{\"b\":\"2\", \"a\":\"###特殊字符测试\", \"c\": \"3\"}";
             if (HTTPMethod == "POST")
             {
-                //Content-MD5
-                byte[] result = Encoding.UTF8.GetBytes(bodyStr);
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] output = md5.ComputeHash(result);
-                string hexString = BitConverter.ToString(output).Replace("-", "").ToLower();
-                byte[] bs = System.Text.Encoding.ASCII.GetBytes(hexString);
-                contentMd5 = Convert.ToBase64String(bs);
-            }
-            string signingStr = string.Format("x-date: {0}\n{1}\n{2}\n{3}\n{4}\n{5}", xDate, HTTPMethod, Accept, ContentType, contentMd5, path);
-
-            //HMACSHA1
-            HMACSHA1 hmacsha1 = new HMACSHA1();
-            hmacsha1.Key = System.Text.Encoding.UTF8.GetBytes(ApiAppSecret);
-            byte[] dataBuffer = System.Text.Encoding.UTF8.GetBytes(signingStr);
-            byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
-            string signature = Convert.ToBase64String(hashBytes);
-
-            //get authorization
-            string sign = string.Format("hmac id=\"{0}\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"{1}\"", ApiAppKey, signature);
-            Console.WriteLine("sign:" + sign);
-
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = HTTPMethod;
-            request.Host = host;
-            request.ContentType = ContentType;
-            request.Accept = Accept;
-            request.Headers.Add("x-date", xDate);
-            request.Headers.Add("Authorization", sign);
-            request.Headers.Add("Content-MD5", contentMd5);
-            try
-            {
-                if (HTTPMethod == "POST")
-                {
-                    //post request body
-                    byte[] byteData = Encoding.UTF8.GetBytes(bodyStr);
-                    int length = byteData.Length;
-                    request.ContentLength = length;
-                    Stream writer = request.GetRequestStream();
-                    writer.Close();
-                    return null;
-                }
-                //get response
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                {
-                    Stream myResponseStream = response.GetResponseStream();
-                    StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
-                    string retString = myStreamReader.ReadToEnd();
-                    myStreamReader.Close();
-                    myResponseStream.Close();
-                    return retString;
-                }
-
-            }
-            catch (Exception ex)
-            {
+                //post request body
+                byte[] byteData = Encoding.UTF8.GetBytes(bodyStr);
+                int length = byteData.Length;
+                request.ContentLength = length;
+                Stream writer = request.GetRequestStream();
+                writer.Close();
                 return null;
-                Console.WriteLine("Error:{0}", ex.Message);
             }
-        }
-
-    }
-
-    public class TaskManager
-    {
-        private List<(string clientId, CancellationTokenSource cts)> runningTasks = new List<(string, CancellationTokenSource)>();
-
-        public void AddTask(string clientId, CancellationTokenSource cts)
-        {
-            runningTasks.Add((clientId, cts));
-        }
-
-        public void RemoveTask(string clientId)
-        {
-            var task = runningTasks.FirstOrDefault(t => t.clientId == clientId);
-
-            if (task.cts != null)
+            //get response
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                task.cts.Cancel();
+                Stream myResponseStream = response.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+                return retString;
             }
 
-            runningTasks.RemoveAll(t => t.clientId == clientId);
+        }
+        catch (Exception ex)
+        {
+            return null;
         }
     }
+
+}
+
+public class TaskManager
+{
+    private List<(string clientId, CancellationTokenSource cts)> runningTasks = new List<(string, CancellationTokenSource)>();
+
+    public void AddTask(string clientId, CancellationTokenSource cts)
+    {
+        runningTasks.Add((clientId, cts));
+    }
+
+    public void RemoveTask(string clientId)
+    {
+        var task = runningTasks.FirstOrDefault(t => t.clientId == clientId);
+
+        if (task.cts != null)
+        {
+            task.cts.Cancel();
+        }
+
+        runningTasks.RemoveAll(t => t.clientId == clientId);
+    }
+}
 }

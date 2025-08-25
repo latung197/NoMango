@@ -78,6 +78,7 @@ namespace PuduIOT
                     name: "default",
                     pattern: "{controller=Home}/{action=index}/{id?}");
                 endpoints.MapHub<RealTimeHub>("/realTimeHub");
+                endpoints.MapHub<RealTimeRobotDetealHub>("/realTimeDetailHub");
             });
             
         }

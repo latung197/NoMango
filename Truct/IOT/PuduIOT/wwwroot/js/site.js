@@ -71,6 +71,11 @@ function reloadData(data) {
         });
 
         document.getElementById("robotGrid").innerHTML = html;
+
+        const rbBattery = document.getElementById('rbBattery');
+        if (rbBattery) {
+            rbBattery.textContent = data.battery;
+        }
     }
     catch (ex) {
         console.log(ex);
@@ -79,6 +84,90 @@ function reloadData(data) {
         visualLoading.style.display = 'none';
     }
 }
+
+
+
+// Biến lưu SN đang xem modal
+let currentRobotSN;
+let abortController;
+
+
+function loadRobotDetails(sn) {
+    currentRobotSN = sn;
+    abortController = new AbortController();
+    // Show modal
+    document.getElementById('robotDetailContent').innerHTML = "<div class='text-center'></div>";
+
+    // Lấy dữ liệu JSON
+    fetch(`/Home/GetRobotDetails?sn=${sn}`)
+        .then(response => response.json())
+        .then(data => {
+            renderRobotDetails(data); // Hiển thị lần đầu
+            const modal = new bootstrap.Modal(document.getElementById('robotModal'));
+            modal.show();
+        })
+        .catch(err => {
+            document.getElementById('robotDetailContent').innerHTML = "<div class='text-danger'></div>";
+            console.error('Fetch error:', err);
+        });
+
+    //// Stop old polling if any
+    //if (cancelTokenSource) cancelTokenSource.cancel();
+
+    //cancelTokenSource = new signalR.AbortController();
+
+    // Gọi server để gửi dữ liệu realtime cho robot này
+    connectionDetail.invoke("SendRealTimeDataForRobot", sn)
+        .catch(err => console.error(err));
+
+    //// Lắng nghe dữ liệu riêng robot này
+    connectionDetail.off(`RobotUpdate-${sn}`); // xóa listener cũ nếu có
+    connectionDetail.on(`RobotUpdate-${sn}`, data => {
+        document.getElementById('robotName').textContent = data.Name;
+    //    document.getElementById('robotSerial').textContent = data.Sn;
+        document.getElementById('robotBattery').textContent = data.Battery;
+    //    document.getElementById('robotStatus').textContent = data.Status;
+    //    document.getElementById('robotBatteryBar').style.width = data.Battery + "%";
+    //    document.getElementById('robotImage').src = `/assets/img/${data.ImagName || 'default-robot.png'}`;
+    //    document.getElementById('robotDetailContent').innerHTML = data.DetailHtml || "";
+    });
+
+    // Hủy realtime khi đóng modal
+    // Khi đóng modal → dừng stream
+    // ✅ Khi modal đóng → gọi Stop + gỡ listener
+    const modalElement = document.getElementById('robotModal');
+    modalElement.addEventListener('hidden.bs.modal', () => {
+        connectionDetail.invoke("StopRealTimeData", sn)
+            .then(() => console.log(`Stopped realtime for ${sn}`))
+            .catch(err => console.error(err));
+
+        // Gỡ listener sau khi đóng modal
+        connectionDetail.off(`RobotUpdate-${sn}`);
+    }, { once: true });
+}
+
+
+let updateInterval;
+
+
+
+// Hàm render dữ liệu vào modal
+function renderRobotDetails(data) {
+    const BASE_IMG_PATH = '/assets/img/';
+    const img = document.getElementById('robotImage');
+    if (img) {
+        img.src = BASE_IMG_PATH + data.imgName;
+
+        // Nếu ảnh không load được
+        img.onerror = () => img.src = basePath + "default-robot.png";
+    }
+    const rbName = document.getElementById('robotName');
+    if (rbName) {
+        rbName.textContent = data.name;
+    }
+
+}
+
 
 function removeClassPerformance(element) {
     var classesToRemove = ['bg-data-80', 'bg-data-100', 'bg-data-zero'];
@@ -179,6 +268,26 @@ var connection = new signalR.HubConnectionBuilder()
     .withAutomaticReconnect()
     .build();
 
+var connectionDetail = new signalR.HubConnectionBuilder()
+    .withUrl("/realTimeDetailHub")
+    .withAutomaticReconnect()
+    .build();
+
+connection.on("ReceiveRealTimeData", (data) => {
+    var obj = JSON.parse(data);
+    if (window.location.pathname === "/") {
+        reloadData(obj.RobotsStatus);
+    }
+    //else if (window.location.pathname === "/AirConditioner/Visualization") {
+    //    reloadDataAirConditioner(obj.Pac, obj.Data);
+    //}
+    //else if (window.location.pathname === "/Line/Visualization") {
+    //    reloadDataLine(obj.Line, obj.Data);
+    //}
+    //else if (window.location.pathname === "/AirCompressor/Visualization") {
+    //    reloadDataAirCompressor(obj.Air, obj.Data)
+    //}
+})
 connection.on("ReceiveRealTimeData", (data) => {
     var obj = JSON.parse(data);
     if (window.location.pathname === "/") {
@@ -196,13 +305,23 @@ connection.on("ReceiveRealTimeData", (data) => {
 })
 
 
-
 connection.stop().then(() => {
 }).catch((err) => {
     console.error("SignalR connection error: " + err.toString());
 });
 
 connection.start().then(() => {
+    console.log("Connection established.");
+}).catch((err) => {
+    console.error("SignalR connection error: " + err.toString());
+});
+
+connectionDetail.stop().then(() => {
+}).catch((err) => {
+    console.error("SignalR connection error: " + err.toString());
+});
+
+connectionDetail.start().then(() => {
     console.log("Connection established.");
 }).catch((err) => {
     console.error("SignalR connection error: " + err.toString());

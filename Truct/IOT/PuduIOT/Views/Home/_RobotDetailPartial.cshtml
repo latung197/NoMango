@@ -1,13 +1,35 @@
 ﻿@model PuduIOT.Models.MstRobotInfor
 
-<div class="row p-3">
-    <div class="col-4 text-center">
-        <img src="@Model.ImgName" alt="@Model.Name" class="img-fluid rounded shadow" />
-    </div>
-    <div class="col-8">
-        <h4 class="fw-bold">@Model.Name</h4>
-        <p><strong>Trạng thái:</strong> @Model.Sn</p>
-        <p><strong>Serial:</strong> @Model.Sn</p>
-        <p><strong>Pin:</strong> @Model.Name %</p>
+
+<div class="card shadow-lg border-0 rounded-3">
+    <div class="row g-0">
+        <!-- Hình ảnh robot -->
+        <div class="col-md-4 text-center p-3">
+            <img src="/assets/img/@Model.ImgName" alt="@Model.Name"
+                 class="img-fluid rounded-3 border"
+                 style="max-height: 500px; object-fit: cover;" />
+        </div>
+
+        <!-- Thông tin robot -->
+        <div class="col-md-8 p-3">
+            <h4 class="fw-bold text-primary">@Model.Name</h4>
+            <p class="mb-1"><strong>Serial:</strong> @Model.Sn</p>
+            <p class="mb-1"><strong>Pin:</strong> @Model.Sn %</p>
+            <p>
+                <strong>Trạng thái:</strong>
+                <span class="badge @(Model.Sn == "Online" ? "bg-success" : "bg-danger")">
+                    @Model.Sn
+                </span>
+            </p>
+
+            <!-- Thanh pin -->
+            <div class="progress" style="height: 10px;">
+                <div class="progress-bar @(Model.Name == "" ? "bg-success" : "bg-warning")"
+                     role="progressbar"
+                     style="width: @Model.Sn%">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

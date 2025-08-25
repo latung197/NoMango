@@ -18,7 +18,7 @@ namespace PuduIOT.BL.Services
             return await _repository.GetAllRobot();
         }
 
-        public async Task<List<MstRobotInfor>> GetById(string id)
+        public async Task<MstRobotInfor> GetById(string id)
         {
             return await _repository.GetById(id);
 

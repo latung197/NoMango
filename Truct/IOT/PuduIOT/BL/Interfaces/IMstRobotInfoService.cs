@@ -5,6 +5,6 @@ namespace PuduIOT.BL.Interfaces
     public interface IMstRobotInfoService
     {
         Task<List<MstRobotInfor>> GetAll();
-        Task<List<MstRobotInfor>> GetById( string id);
+        Task<MstRobotInfor> GetById( string id);
     }
 }

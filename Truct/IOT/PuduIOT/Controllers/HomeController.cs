@@ -36,10 +36,34 @@ namespace PuduIOT.Controllers
             return View(data);
         }
 
-        public IActionResult DetailsPartial(string id)
+        //[HttpGet]
+        //public async Task<IActionResult> DetailsPartial(string sn)
+        //{
+        //    if (string.IsNullOrEmpty(sn))
+        //        return BadRequest("SN không hợp lệ");
+
+        //    var robot = await _mstRobotInfoService.GetById(sn); // Lấy robot theo SN
+        //    if (robot == null)
+        //        return NotFound("Không tìm thấy robot");
+
+        //    return PartialView("_RobotDetailPartial", robot);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> GetRobotDetails(string sn)
         {
-            var robot = _mstRobotInfoService.GetById(id);
-            return PartialView("_RobotDetailPartial", robot);
+            var robot = await _mstRobotInfoService.GetById(sn); // Lấy dữ liệu từ DB
+            if (robot == null)
+                return NotFound();
+
+            return Json(new
+            {
+                sn = robot.Sn,
+                name = robot.Name,
+                companyId = robot.CompanyId,
+                companyName = robot.CompanyName,
+                imgName = robot.ImgName
+            });
         }
 
         [HttpPost("/update-electric-cost")]

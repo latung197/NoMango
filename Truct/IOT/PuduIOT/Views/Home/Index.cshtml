@@ -164,7 +164,6 @@
 
 
     <div id="robotGrid" class="robot-grid">
-        
     </div>
     @*     <div class=" d-flex flex-column shape-content position-absolute shape-title outer-div unit-avg min-width-box">
     <div>
@@ -275,7 +274,7 @@
     <div class="line-czone"></div>
     </div> *@
     @* <div id="visualChart" class="Chart position-absolute"></div> *@
-@*          <div class=" position-absolute btn-update">
+    @*          <div class=" position-absolute btn-update">
     <button class="fw-700" onclick=" $('#electricInput').val(languageResource['ElectricCost']?languageResource['ElectricCost']:0);  return $('#loginModal').modal('show');">
     @Localize("COM-LBL-026")
     </button>
@@ -289,7 +288,7 @@
 
 </div>
 
- @* <div class="modal fade" id="updateElectricCost" tabindex="-1" aria-labelledby="updateElectricCostLabel" aria-hidden="true">
+@* <div class="modal fade" id="updateElectricCost" tabindex="-1" aria-labelledby="updateElectricCostLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header pb-0">
@@ -312,19 +311,69 @@
 
 <!-- Modal -->
 <div class="modal fade" id="robotModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Chi tiết Robot</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="modal-dialog modal-content border-0 rounded-4" style="max-height:1200px; max-width:900px; left:30%; top:40%;">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-header pb-0">
+                <span class="modal-title fs-16 fw-medium">@Localize("PUDU-LBL-001") </span>
+                <button type="button" class="border-0 bg-white position-absolute" data-bs-dismiss="modal" aria-label="Close"><img src="~/assets/svg/Close.svg" id="menuToggleCollapse" alt="SVG Image"></button>
+            </div>
+
+
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="row g-0">
+                    <!-- Hình ảnh robot -->
+                    <div class="col-md-4 text-center p-3">
+                        <img id="robotImage" alt="Lỗi tải ảnh"
+                             class="img-fluid rounded-3 border"
+                             style="max-height: 500px; object-fit: cover;" />
+                    </div>
+                    
+                        <!-- Thông tin robot -->
+                        <div class="col-md-8 p-3">
+                            <h4 class="fw-bold text-primary" id="robotName"></h4>
+                            <p class="mb-1"><strong>Serial:</strong> Số Seri</p>
+                        <p class="mb-1" id="rbBattery"><strong>Pin:</strong> pin %</p>
+                            <p>
+                                <strong>Trạng thái:</strong>
+                                <span class="badge">
+                                    Noi dung
+                                </span>
+                            </p>
+
+                            <!-- Thanh pin -->
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar"
+                                     role="progressbar"
+                                     style="width: 20">
+                                </div>
+                             </div> 
+                        </div>
+                    <div class="modal-body" id="robotDetailContent">  </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer align-content-center justify-content-center pt-0 btn-hover">
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <div class="modal fade" id="robotModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
+        <div class="modal-content  border-0 rounded-4">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">
+                     Chi tiết Robot
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body" id="robotDetailContent">
                 <!-- Nội dung load từ Partial -->
             </div>
         </div>
     </div>
-</div>
-
+</div> *@
 
 <script>
 
@@ -358,27 +407,6 @@
 
     }
 
-function loadRobotDetails(sn) {
-    document.getElementById('robotDetailContent').innerHTML = "<div class='text-center'>Đang tải...</div>";
 
-    fetch(`/Home/DetailsPartial/${sn}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(html => {
-            document.getElementById('robotDetailContent').innerHTML = html;
-
-            // Mở modal sau khi nội dung đã load
-            const modal = new bootstrap.Modal(document.getElementById('robotModal'));
-            modal.show();
-        })
-        .catch(err => {
-            document.getElementById('robotDetailContent').innerHTML = "<div class='text-danger'>Lỗi tải dữ liệu</div>";
-            console.error('Fetch error:', err);
-        });
-}
 </script>
 <script src="~/js/visualization.js" asp-appe nd-version="true"></script>
