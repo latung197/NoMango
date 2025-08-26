@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="BL\SystemLog\" />
-    <Folder Include="DA\Middleware\" />
   </ItemGroup>
 
   <ItemGroup>

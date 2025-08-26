@@ -16,6 +16,11 @@
 
             <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
         </form>
+        <div class="d-flex align-items-center language-switch">
+            <a href=""><img src="~/assets/svg/Japan.svg" id="btn-language-jp" class="p-rg-10" alt="SVG Image"></a>
+            <div class="divider  "></div>
+            <a href=""><img src="~/assets/svg/Vietnam.svg" id="btn-language-vn" class="p-l-10" alt="SVG Image"></a>
+        </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoreMVC</a>
@@ -56,4 +61,42 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+<script>
+        // change language to jp
+    $('#btn-language-jp').on("click", function () {
+        $.ajax({
+            url: "/change-language",
+            type: "POST",
+            data: JSON.stringify("ja-JP"),
+            contentType: "application/json",
+            beforeSend: function () {
+            },
+            success: function (data) {
+                window.location.reload();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+    // change language to vi
+    $('#btn-language-vn').on("click", function () {
+        $.ajax({
+            url: "/change-language",
+            type: "POST",
+            data: JSON.stringify("vi-VN"),
+            contentType: "application/json",
+            beforeSend: function () {
+            },
+            success: function (data) {
+                window.location.reload();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+</script>
+
 </html>
