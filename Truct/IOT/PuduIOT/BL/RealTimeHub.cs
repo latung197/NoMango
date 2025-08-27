@@ -27,7 +27,6 @@ namespace PuduIOT.BL
 
 
 
-        private readonly IMstUnitService _unitService;
 
         private static int _count = 0;
 
@@ -37,10 +36,9 @@ namespace PuduIOT.BL
 
         private static TaskManager taskManager = new TaskManager();
 
-        public RealTimeHub(PuduIotDbContext context, ILibs libs, IMstUnitService unitService)
+        public RealTimeHub(PuduIotDbContext context, ILibs libs)
         {
             _libs = libs;
-            _unitService = unitService;
         }
 
         public async Task SendRealTimeData()
@@ -68,6 +66,7 @@ namespace PuduIOT.BL
                                     robotData.Sn = dr["sn"].ToString();
                                     robotData.Name = dr["name"].ToString();
                                     robotData.ImagName = dr["img_name"].ToString();
+                                    robotData.Company_id = dr["company_id"].ToString();
                                     robotDataList.Add(robotData);
                                 }
                             }

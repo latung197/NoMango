@@ -27,8 +27,7 @@ namespace PuduIOT.BL
 
 
 
-        private readonly IMstUnitService _unitService;
-
+        private readonly IPuduApiService _puduApiService;
         private static int _count = 0;
 
         private static CancellationTokenSource _cts = new CancellationTokenSource();
@@ -37,10 +36,9 @@ namespace PuduIOT.BL
 
         private static TaskManager taskManager = new TaskManager();
 
-        public RealTimeRobotDetealHub(PuduIotDbContext context, ILibs libs, IMstUnitService unitService)
+        public RealTimeRobotDetealHub(PuduIotDbContext context, ILibs libs)
         {
             _libs = libs;
-            _unitService = unitService;
         }
 
         private static readonly Dictionary<string, CancellationTokenSource> _robotTokens = new();
@@ -59,6 +57,8 @@ namespace PuduIOT.BL
 
             // Lấy ConnectionId của client hiện tại
             var connectionId = Context.ConnectionId;
+            // ✅ Lưu client reference thay vì connectionId
+            var caller = Clients.Caller;
 
             // Chạy vòng lặp gửi dữ liệu realtime
             _ = Task.Run(async () =>
@@ -67,7 +67,6 @@ namespace PuduIOT.BL
                 {
                     while (!cts.Token.IsCancellationRequested)
                     {
-                        DataTable dt = new DataTable();
                         RobotData robotData = null;
                         try
                         {
@@ -88,10 +87,9 @@ namespace PuduIOT.BL
                         }
                         if (robotData != null)
                         {
-
-                            await Clients.Caller.SendAsync($"RobotUpdate-{sn}", robotData);
+                            await caller.SendAsync($"RobotUpdate-{sn}", robotData, cts.Token);
                         }
-                        await Task.Delay(3000, cts.Token);
+                        await Task.Delay(5000, cts.Token);
                     }
                 }
                 catch (TaskCanceledException)

@@ -35,7 +35,7 @@ function reloadData(data) {
         let html = "";
         robots.forEach(robot => {
             html += `
-            <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails('${robot.sn}')">
+            <div class="robot-card" data-bs-target="#robotModal" onclick="loadRobotDetails('${robot.sn}','${robot.name}','${robot.company_id}','${robot.battery}','${robot.is_online}', '${robot.img_name}','${robot.is_online}','${robot.map_name}')">
                 <div class="row">
                     <div class="col-3">
                         <img src="/assets/img/${robot.img_name}" alt="Image" class="img-fluid" />
@@ -71,11 +71,6 @@ function reloadData(data) {
         });
 
         document.getElementById("robotGrid").innerHTML = html;
-
-        const rbBattery = document.getElementById('rbBattery');
-        if (rbBattery) {
-            rbBattery.textContent = data.battery;
-        }
     }
     catch (ex) {
         console.log(ex);
@@ -92,46 +87,34 @@ let currentRobotSN;
 let abortController;
 
 
-function loadRobotDetails(sn) {
+function loadRobotDetails(sn,name,company_id,battery,is_online, img_name,is_online,map_name) {
     currentRobotSN = sn;
     abortController = new AbortController();
-    // Show modal
-    document.getElementById('robotDetailContent').innerHTML = "<div class='text-center'></div>";
+    //// Show modal
+    //document.getElementById('robotDetailContent').innerHTML = "<div class='text-center'></div>";
 
-    // Lấy dữ liệu JSON
-    fetch(`/Home/GetRobotDetails?sn=${sn}`)
-        .then(response => response.json())
-        .then(data => {
-            renderRobotDetails(data); // Hiển thị lần đầu
-            const modal = new bootstrap.Modal(document.getElementById('robotModal'));
-            modal.show();
-        })
-        .catch(err => {
-            document.getElementById('robotDetailContent').innerHTML = "<div class='text-danger'></div>";
-            console.error('Fetch error:', err);
-        });
-
-    //// Stop old polling if any
-    //if (cancelTokenSource) cancelTokenSource.cancel();
-
-    //cancelTokenSource = new signalR.AbortController();
-
+    const base_img_path = '/assets/img/';
+    const img = document.getElementById('robotImage');
+    if (img) {
+        img.src = base_img_path + img_name;
+        // Nếu ảnh không load được
+    }
+    const rbName = document.getElementById('robotName');
+    if (rbName) {
+        rbName.textContent = name;
+    }
+    const modal = new bootstrap.Modal(document.getElementById('robotModal'));
+    modal.show();
     // Gọi server để gửi dữ liệu realtime cho robot này
     connectionDetail.invoke("SendRealTimeDataForRobot", sn)
         .catch(err => console.error(err));
 
     //// Lắng nghe dữ liệu riêng robot này
     connectionDetail.off(`RobotUpdate-${sn}`); // xóa listener cũ nếu có
-    connectionDetail.on(`RobotUpdate-${sn}`, data => {
-    //    document.getElementById('robotName').textContent = data.Name;
-    //    document.getElementById('robotSerial').textContent = data.Sn;
-        document.getElementById('rbBattery').textContent = "Ha Noi";
-    //    document.getElementById('robotStatus').textContent = data.Status;
-    //    document.getElementById('robotBatteryBar').style.width = data.Battery + "%";
-    //    document.getElementById('robotImage').src = `/assets/img/${data.ImagName || 'default-robot.png'}`;
-    //    document.getElementById('robotDetailContent').innerHTML = data.DetailHtml || "";
+    connectionDetail.on(`RobotUpdate-${sn}`, (data) => {
+        reloadDataDetail(data);
     });
-
+    1
     // Hủy realtime khi đóng modal
     // Khi đóng modal → dừng stream
     // ✅ Khi modal đóng → gọi Stop + gỡ listener
@@ -146,8 +129,56 @@ function loadRobotDetails(sn) {
     }, { once: true });
 }
 
+function reloadDataDetail(data) {
+    try {
+        // var obj = JSON.parse(data);
+        var robots = data;
 
-let updateInterval;
+
+        const robotBattery = document.getElementById('robotBattery');
+        const robotIs_online = document.getElementById('robotIs_online');
+        const robotMap = document.getElementById('robotMap');
+        const robotWorkMes = document.getElementById('robotWorkMes');
+        const robotMac = document.getElementById('robotMac');
+
+
+        if (robotBattery) {
+            robotBattery.textContent = data.battery;
+        }
+        if (robotIs_online) {
+            if (data.isOnline == "1") {
+                robotIs_online.textContent = "Online";
+            }
+            else {
+                robotIs_online.textContent = "Ofline";
+            }
+        }
+        if (robotIs_online) {
+            if (data.workMsg == "空闲") {
+                robotWorkMes.classList.remove('bg-success', 'bg-danger');
+                robotWorkMes.classList.add('badge', 'bg-success');
+                robotWorkMes.textContent = data.workMsg;
+            } else {
+                robotWorkMes.classList.remove('bg-success', 'bg-danger');
+                robotWorkMes.classList.add('badge', 'bg-danger');
+                robotWorkMes.textContent = data.workMsg;
+            }
+        }
+        if (robotMap) {
+            robotMap.textContent = data.mapName;
+        }
+        if (robotMac) {
+            robotMac.textContent = data.deviceName;
+        }
+    }
+    catch (ex) {
+        console.log(ex);
+    }
+    finally {
+        visualLoading.style.display = 'none';
+    }
+}
+
 
 
 
@@ -295,7 +326,7 @@ connectionDetail.stop().then(() => {
 });
 
 connectionDetail.start().then(() => {
-    console.log("Connection established.");
+    console.log("Connection detail established .");
 }).catch((err) => {
     console.error("SignalR connection error: " + err.toString());
 });

@@ -8,6 +8,8 @@ namespace PuduIOT.Models.RobotsT300
         public string Sn { get; set; }
         [JsonProperty("name")]
         public string Name {  get; set; }
+        [JsonProperty("company_id")]
+        public string Company_id { get; set; }
         [JsonProperty("battery")]
         public int Battery { get; set; }
 

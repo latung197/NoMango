@@ -318,7 +318,6 @@
                 <button type="button" class="border-0 bg-white position-absolute" data-bs-dismiss="modal" aria-label="Close"><img src="~/assets/svg/Close.svg" id="menuToggleCollapse" alt="SVG Image"></button>
             </div>
 
-
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="row g-0">
                     <!-- Hình ảnh robot -->
@@ -327,27 +326,31 @@
                              class="img-fluid rounded-3 border"
                              style="max-height: 500px; object-fit: cover;" />
                     </div>
-                    
-                        <!-- Thông tin robot -->
-                        <div class="col-md-8 p-3">
-                            <h4 class="fw-bold text-primary" id="robotName"></h4>
-                            <p class="mb-1"><strong>Serial:</strong> Số Seri</p>
-                        <p class="mb-1" ><strong>Pin:</strong> pin %</p>
-                            <p>
-                                <strong>Trạng thái:</strong>
-                            <span class="badge" id="rbBattery">
-                                    
-                                </span>
-                            </p>
 
-                            <!-- Thanh pin -->
-                            <div class="progress" style="height: 10px;">
-                                <div class="progress-bar"
-                                     role="progressbar"
-                                     style="width: 20">
-                                </div>
-                             </div> 
+                    <!-- Thông tin robot -->
+                    <div class="col-md-8 p-3">
+
+                        <h4 class="fw-bold text-primary" id="robotName"></h4>
+                        <div class="row text-start">
+                            <div class="col-4 fw-bold">Mac:</div>
+                            <div class="col-8"><span id="robotMac"></span></div>
+                            <div class="col-4 fw-bold">Pin:</div>
+                            <div class="col-8"><span id="robotBattery"></span><span>%</span></div>
+                            <div class="col-4 fw-bold">Trạng thái:</div>
+                            <div class="col-8">
+                                <span id="robotIs_online">
+                                </span>
+                            </div>
+                            <div class="col-4 fw-bold">Trạng thái hoạt động:</div>
+                            <div class="col-8">
+                                <span id="robotWorkMes"></span>
+                            </div>
+
+                            <div class="col-4 fw-bold">Bản đồ:</div>
+                            <div class="col-8"><span id="robotMap"></span></div>
                         </div>
+
+                    </div>
                     <div class="modal-body" id="robotDetailContent">  </div>
                 </div>
 
@@ -359,21 +362,6 @@
     </div>
 </div>
 
-@* <div class="modal fade" id="robotModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
-        <div class="modal-content  border-0 rounded-4">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">
-                     Chi tiết Robot
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body" id="robotDetailContent">
-                <!-- Nội dung load từ Partial -->
-            </div>
-        </div>
-    </div>
-</div> *@
 
 <script>
 
