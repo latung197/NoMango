@@ -11,7 +11,7 @@ namespace CoreMVC.DA.Respository
         }
         public List<MstConfiguration> GetListConfiguration()
         {
-            var existingConfig = _context.MstConfigurations.ToList() ?? new List<MstConfiguration>();
+            var existingConfig = _context.mstConfigurations.ToList() ?? new List<MstConfiguration>();
             return existingConfig;
         }
     }

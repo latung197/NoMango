@@ -25,9 +25,6 @@ namespace PuduIOT.BL
 
         private ILibs _libs;
 
-
-
-
         private static int _count = 0;
 
         private static CancellationTokenSource _cts = new CancellationTokenSource();

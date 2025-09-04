@@ -350,6 +350,11 @@
                             <div class="col-8"><span id="robotMap"></span></div>
                         </div>
 
+                        <div class="mt-3">
+                            <h5 class="fw-bold">Chức năng nhanh:</h5>
+                            <div id="buttonList" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+
                     </div>
                     <div class="modal-body" id="robotDetailContent">  </div>
                 </div>
@@ -365,6 +370,23 @@
 
 <script>
 
+    const buttons = [
+        { text: "Khởi động", action: () => alert("Robot khởi động") },
+        { text: "Dừng", action: () => alert("Robot dừng") },
+        { text: "Sạc", action: () => alert("Robot đi sạc") },
+        { text: "Trở về", action: () => alert("Robot trở về trạm") }
+    ];
+
+    const buttonList = document.getElementById("buttonList");
+
+    // Tự động sinh button
+    buttons.forEach(btn => {
+        const button = document.createElement("button");
+        button.className = "btn btn-primary btn-sm"; // Bootstrap style
+        button.innerText = btn.text;
+        button.onclick = btn.action;
+        buttonList.appendChild(button);
+    });
 
     function electricSaveChanges() {
         var numericValue = document.getElementById('electricInput').value;
