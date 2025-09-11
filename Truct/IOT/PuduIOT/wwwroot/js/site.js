@@ -331,19 +331,6 @@ connectionDetail.start().then(() => {
     console.error("SignalR connection error: " + err.toString());
 });
 
-//window.addEventListener('focus', function () {
-//    connection.start().then(() => {
-//        console.log("Connection established.");
-//    }).catch((err) => {
-//        console.error("SignalR connection error: " + err.toString());
-//    });
-//});
-//window.addEventListener('blur', function () {
-//    connection.stop().then(() => {
-//    }).catch((err) => {
-//        console.error("SignalR connection error: " + err.toString());
-//    });
-//});
 
 function convertTime(date, culture) {
     var year = date.getFullYear();

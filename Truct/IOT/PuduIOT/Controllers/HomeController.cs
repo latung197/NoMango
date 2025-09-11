@@ -36,18 +36,6 @@ namespace PuduIOT.Controllers
             return View(data);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> DetailsPartial(string sn)
-        //{
-        //    if (string.IsNullOrEmpty(sn))
-        //        return BadRequest("SN không hợp lệ");
-
-        //    var robot = await _mstRobotInfoService.GetById(sn); // Lấy robot theo SN
-        //    if (robot == null)
-        //        return NotFound("Không tìm thấy robot");
-
-        //    return PartialView("_RobotDetailPartial", robot);
-        //}
 
         [HttpGet]
         public async Task<IActionResult> GetRobotDetails(string sn)
@@ -65,6 +53,21 @@ namespace PuduIOT.Controllers
                 imgName = robot.ImgName
             });
         }
+
+        [HttpGet("/changing")]
+        public async Task<IActionResult> Charging(string sn)
+        {
+            
+            var robot = await _mstRobotInfoService.GetById(sn); 
+            if (robot == null)
+                return NotFound();
+
+            return Json(new
+            {
+                imgName = robot.ImgName
+            });
+        }
+
 
         [HttpPost("/update-electric-cost")]
         public IActionResult UpdateUnit(MstConfiguration data)

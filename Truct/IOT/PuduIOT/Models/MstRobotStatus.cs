@@ -28,7 +28,7 @@ namespace PuduIOT.Models
         [Column("is_online", TypeName = "integer")]
         public int? IsOnline { get; set; }
 
-        [Column("map_name", TypeName = "integer")]
+        [Column("map_name", TypeName = "varchar(125)")]
         public int? MapName { get; set; }
 
         [Column("move_state", TypeName = "integer")]

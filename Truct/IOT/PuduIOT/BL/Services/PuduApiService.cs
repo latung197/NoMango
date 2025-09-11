@@ -1,4 +1,5 @@
-﻿using PuduIOT.BL.Interfaces;
+﻿using Microsoft.Build.Framework;
+using PuduIOT.BL.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -49,5 +50,12 @@ namespace PuduIOT.BL.Services
 
             return await response.Content.ReadAsStringAsync();
         }
+
+        public async Task<string> Changer(string sn)
+        {
+            string url = _baseUrl + sn;
+            return "";
+        }
+
     }
 }

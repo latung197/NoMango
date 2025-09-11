@@ -14,6 +14,8 @@ namespace PuduIOT.BL.Interfaces
 
         DataTable ExecuteFunction(string func_name);
 
+        public Task<string> GetDataPudu(string pathAndQuery);
+
         string[] ProcessingParam(List<MstUnit> units);
 
         public byte[] ExportDataTableToPdf(DataTable dataTable, MyData mData, string langcode);
