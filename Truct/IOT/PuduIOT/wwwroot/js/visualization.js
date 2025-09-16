@@ -138,11 +138,6 @@
     finally {
     }
 }
-$(document).ready(function () {
-    createBarChart('#visualChart');
-
-});
-
 function findMaxValue(obj) {
     let maxValue = -Infinity;
 

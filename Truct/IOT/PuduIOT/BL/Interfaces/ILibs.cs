@@ -15,6 +15,7 @@ namespace PuduIOT.BL.Interfaces
         DataTable ExecuteFunction(string func_name);
 
         public Task<string> GetDataPudu(string pathAndQuery);
+        public Task<string> CallCustom(string url, string bodyStr);
 
         string[] ProcessingParam(List<MstUnit> units);
 

@@ -154,6 +154,97 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         text-align: center;
     }
+
+/*     .point-list {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 10px;
+        min-height: 200px;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    } */
+
+/*     .point-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, auto));
+        gap: 0.5rem;
+    } */
+
+    #buttonListLeft  {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 10px;
+        min-height: 150px;
+        max-height: 410px;
+        background-color: #f9f9f9;
+        /* dùng grid để chia 3 cột */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cột */
+        gap: 0.5rem;
+        overflow-y: auto;
+    }
+
+    #buttonListRight {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 10px;
+        min-height: 150px;
+        max-height: 410px;
+        background-color: #f9f9f9;
+        /* dùng grid để chia 3 cột */
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 3 cột */
+        gap: 0.5rem;
+        overflow-y: auto;
+    }
+
+        .point-list button {
+            width: 100%; /* chiếm hết cột */
+            height: 40px; /* cố định chiều cao */
+            white-space: nowrap; /* không xuống dòng chữ */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    /* Style chung cho các nút trong #buttonList */
+    #buttonList .btn-custom {
+        min-width: 140px;
+        font-weight: 500;
+        border-radius: 20px; /* bo tròn */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    /* Màu riêng */
+    #buttonList .btn-charge {
+        background-color: #28a745; /* xanh lá */
+        color: white;
+    }
+
+        #buttonList .btn-charge:hover {
+            background-color: #218838;
+        }
+
+    #buttonList .btn-cancel {
+        background-color: #dc3545; /* đỏ */
+        color: white;
+    }
+
+        #buttonList .btn-cancel:hover {
+            background-color: #c82333;
+        }
+
+    #buttonList .btn-action {
+        background-color: #007bff; /* xanh dương */
+        color: white;
+    }
+
+        #buttonList .btn-action:hover {
+            background-color: #0069d9;
+        }
+
 </style>
 
 @* <img class=" w-100 h-100 img-visual" src="~/assets/img/factory-overview.jpg" alt="Image" id="logo" /> *@
@@ -161,24 +252,18 @@
 
 
 <div class="position-absolute start-0 top-0 align-content-left  text-white component-unit fs-18 img-visual-layout">
-
-
-    <div id="robotGrid" class="robot-grid">
-    </div>
-   
+    <div id="robotGrid" class="robot-grid"></div>
     <div class="loadingio-spinner-rolling-3cfcfh1ostx " id="visual-loading">
         <div class="ldio-cfo3yb5owxe">
             <div></div>
         </div>
     </div>
-
-
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="robotModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-content border-0 rounded-4" style="max-height:1200px; max-width:900px; left:30%; top:40%;">
+    <div class="modal-dialog modal-content border-0 rounded-4" style="max-height:1200px; max-width:900px; left:30%; top:65%;">
         <div class="modal-content border-0 rounded-4">
             <div class="modal-header pb-0">
                 <span class="modal-title fs-16 fw-medium">@Localize("PUDU-LBL-001") </span>
@@ -215,11 +300,29 @@
 
                             <div class="col-4 fw-bold">Bản đồ:</div>
                             <div class="col-8"><span id="robotMap"></span></div>
+
+                            <div class="col-4 fw-bold">Đích đến:</div>
+                            <div class="col-8"><span id="vitri"></span></div>
                         </div>
 
                         <div class="mt-3">
-                            <h5 class="fw-bold">Chức năng nhanh:</h5>
+                            <h5 class="fw-bold">Chức năng:</h5>
                             <div id="buttonList" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="row">
+                                <!-- Danh sách điểm bên trái -->
+                                <div class="col-8">
+                                    <h5 class="fw-bold">Các vị trí</h5>
+                                    <div id="buttonListLeft" class="point-list"></div>
+                                </div>
+
+                                <!-- Danh sách điểm bên phải -->
+                                <div class="col-4">
+                                    <h5 class="fw-bold">Giao đến vị trí</h5>
+                                    <div id="buttonListRight" class="point-list"></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -238,33 +341,71 @@
 <script>
 
     const buttons = [
-        { text: "Dừng", action: () => callApi(currentRobotSN, "stop") },
-        { text: "Sạc", action: () => alert("Robot đi sạc") },
-        { text: "Trở về", action: () => alert("Robot trở về trạm") }
+        { text: "Sạc", css: "btn-charge", action: () => reCharge(currentRobotSN, "Robot đi sạc") },
+        { text: "Hủy lệnh", css: "btn-cancel", action: () => CancelAllTasks(currentTaskIds) },
+        { text: "Thực hiện lệnh", css: "btn-action", id: "btnThucHien", action: () => callRobotWithSelected(currentRobotSN) }
     ];
 
-    const buttonList = document.getElementById("buttonList");
 
-    // Tự động sinh button
-    buttons.forEach(btn => {
-        const button = document.createElement("button");
-        button.className = "btn btn-primary btn-sm"; // Bootstrap style
-        button.innerText = btn.text;
-        button.onclick = btn.action;
-        buttonList.appendChild(button);
+    const buttonList = document.getElementById("buttonList");
+    buttonList.innerHTML = ""; // clear trước
+    buttons.forEach(b => {
+        const btn = document.createElement("button");
+        btn.className = `btn btn-custom ${b.css}`;
+        btn.innerText = b.text;
+        if (b.id) btn.id = b.id;
+        btn.onclick = b.action;
+        buttonList.appendChild(btn);
     });
 
+    function CancelAllTasks(taskIds) {
+        taskIds.forEach(id => {
+            CancelTask(id);
+        });
+        currentTaskIds = [];
+        selectedPoints = [];
+        const buttonListRight = document.getElementById("buttonListRight");
+        buttonListRight.innerHTML = "";
+        const btn = document.getElementById('btnThucHien');
+        if (btn) {
+            btn.disabled = false;          // 🔒 khóa nút   
+        }
+        const vt = document.getElementById('vitri');
+        if (vt) {
+            vt.innerText = ``;
+        }
+    }
+
+    function CancelTask(taskId){
+        fetch("/cancelTask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                taskId: taskId
+            })
+        })
+            .then(res => res.json())
+            .then(serverRes => {
+                // serverRes.result là chuỗi JSON
+                let parsed = JSON.parse(serverRes.result); // parse lần nữa
+                console.log("Parsed:", parsed);
+            })
+            .catch(err => { console.error("callRobot error", err); 
+                alert("Có lỗi khi kết nối API");
+});
+    }
+
         // Hàm gọi API
-    function callApi(sn, action) {
+    function reCharge(sn, action) {
       // Ví dụ gọi API /changing?sn=...
-      fetch(`/changing?sn=${sn}`)
+        fetch(`/reCharge?sn=${sn}`)
         .then(resp => {
           if (!resp.ok) throw new Error("Không gọi được API");
           return resp.json();
         })
         .then(data => {
           console.log("Dữ liệu trả về:", data);
-          alert(`Ảnh robot: ${data.imgName}`);
+          //alert(`Ảnh robot: ${data.imgName}`);
           // ở đây bạn có thể làm gì với data.imgName tuỳ ý
         })
         .catch(err => {
@@ -273,34 +414,7 @@
         });
     }
 
-    function electricSaveChanges() {
-        var numericValue = document.getElementById('electricInput').value;
 
-        if (numericValue == '')
-            alert(languageResource['E-010'], 'danger');
-        var data = {
-            Key: 'ElectricCost',
-            Value: parseFloat(numericValue)
-        }
-
-        $.ajax({
-            url: "update-electric-cost",
-            type: "POST",
-            data: data,
-            beforeSend: function () {
-            },
-
-            success: function (data) {
-
-                languageResource['ElectricCost'] = parseFloat(numericValue);
-            },
-            error: function (e) {
-                loading.style.display = "none";
-                console.log(e);
-            }
-        });
-
-    }
 
 
 </script>

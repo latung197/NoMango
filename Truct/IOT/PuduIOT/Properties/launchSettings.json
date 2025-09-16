@@ -7,15 +7,15 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7134;http://localhost:5134"
+      "applicationUrl": "http://localhost:7134;http://localhost:5134"
     },
     "WSL": {
       "commandName": "WSL2",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:7134",
+      "launchUrl": "http://localhost:7134",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "https://localhost:7134;http://localhost:5134"
+        "ASPNETCORE_URLS": "http://localhost:7134;http://localhost:5134"
       },
       "distributionName": ""
     },

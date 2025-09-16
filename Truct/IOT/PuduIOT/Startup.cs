@@ -21,6 +21,7 @@ namespace PuduIOT
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -36,6 +37,7 @@ namespace PuduIOT
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
+
           
             services.AddLocalization();
             services.AddControllersWithViews().AddViewLocalization();
@@ -71,6 +73,11 @@ namespace PuduIOT
 
 
             app.UseStaticFiles();
+            app.Use(async (context, next) =>
+            {
+                context.Request.Host = new HostString("localhost");
+                await next();
+            });
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

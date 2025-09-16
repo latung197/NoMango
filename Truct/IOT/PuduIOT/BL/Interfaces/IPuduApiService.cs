@@ -2,6 +2,7 @@
 {
     public interface IPuduApiService
     {
-       public Task<string> GetDataAsync(string url);
+        Task<string> GetDataAsync(string url);
+        Task<string> ReCharge(string sn);
     }
 }

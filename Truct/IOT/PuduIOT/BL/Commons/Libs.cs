@@ -32,7 +32,9 @@ public class Libs : ILibs
     private readonly ILoggers _logger;
     private readonly IWebHostEnvironment _hostingEnvironment;
     private readonly IMstUnitService _unitService;
-
+    // 应用 ApiAppKey
+    private string ApiAppKey = "APIDdPWPWY2EVEPTKWFOd5NNkEpuHRSb9FPjn3n8h";
+    private string ApiAppSecret = "aeipzmPCHWrVthBfbeHDPwnyiNpx32efBB4foCn9Z";
     public Libs(PuduIotDbContext context, ILoggers loggers, ILanguageService language, IWebHostEnvironment hostingEnvironment, IMstUnitService unitService)
     {
         _logger = loggers;
@@ -115,10 +117,6 @@ public class Libs : ILibs
         string HTTPMethod = "GET";
         string Accept = "application/json";
         string ContentType = "application/json";
-
-        // 应用 ApiAppKey
-        string ApiAppKey = "APIDdPWPWY2EVEPTKWFOd5NNkEpuHRSb9FPjn3n8h";
-        string ApiAppSecret = "aeipzmPCHWrVthBfbeHDPwnyiNpx32efBB4foCn9Z";
 
         // string url = "https://css-open-platform.pudutech.com/pudu-entry/data-open-platform-service/v1/api/robot?limit=2&offset=0&shop_id=526150005";
 
@@ -240,6 +238,108 @@ public class Libs : ILibs
         catch (Exception ex)
         {
             return null;
+        }
+    }
+
+
+    public async Task<string> CallCustom( string url, string bodyStr)
+    {
+        string httpMethod = "POST";
+        string accept = "application/json";
+        string contentType = "application/json";
+
+        Uri uri = new Uri(url);
+        string host = uri.Host;
+        string path = uri.AbsolutePath;
+
+        // xử lý query nếu có
+        if (!string.IsNullOrEmpty(uri.Query))
+        {
+            var queryString = HttpUtility.ParseQueryString(uri.Query);
+            var keys = new System.Collections.Generic.List<string>();
+            foreach (var key in queryString.AllKeys)
+            {
+                keys.Add(key);
+            }
+            keys.Sort();
+
+            StringBuilder sbQuery = new StringBuilder();
+            foreach (string q in keys)
+            {
+                if (queryString[q] != "")
+                    sbQuery.Append("&").Append(q).Append("=").Append(queryString[q]);
+                else
+                    sbQuery.Append("&").Append(q);
+            }
+            path += "?" + sbQuery.ToString().TrimStart('&');
+        }
+
+        string xDate = DateTime.UtcNow.ToString("r");
+
+        // Tính Content-MD5 cho body
+        string contentMd5 = "";
+        byte[] bodyBytes = Encoding.UTF8.GetBytes(bodyStr);
+        using (MD5 md5 = MD5.Create())
+        {
+            byte[] output = md5.ComputeHash(bodyBytes);
+            string hexString = BitConverter.ToString(output).Replace("-", "").ToLower();
+            byte[] bs = Encoding.ASCII.GetBytes(hexString);
+            contentMd5 = Convert.ToBase64String(bs);
+        }
+
+        // Chuỗi cần ký
+        string signingStr = string.Format(
+            "x-date: {0}\n{1}\n{2}\n{3}\n{4}\n{5}",
+            xDate, httpMethod, accept, contentType, contentMd5, path
+        );
+
+        // HMAC-SHA1 ký với ApiAppSecret
+        string signature;
+        using (HMACSHA1 hmacsha1 = new HMACSHA1(Encoding.UTF8.GetBytes(ApiAppSecret)))
+        {
+            byte[] dataBuffer = Encoding.UTF8.GetBytes(signingStr);
+            byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
+            signature = Convert.ToBase64String(hashBytes);
+        }
+
+        // Authorization header
+        string authorization = string.Format(
+            "hmac id=\"{0}\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"{1}\"",
+            ApiAppKey, signature
+        );
+
+        // Gửi request
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+        request.Method = httpMethod;
+        request.Host = host;
+        request.ContentType = contentType;
+        request.Accept = accept;
+        request.Headers.Add("x-date", xDate);
+        request.Headers.Add("Authorization", authorization);
+        request.Headers.Add("Content-MD5", contentMd5);
+
+        // Ghi body
+        using (var stream = request.GetRequestStream())
+        {
+            stream.Write(bodyBytes, 0, bodyBytes.Length);
+        }
+
+        // Đọc response
+        try
+        {
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+        catch (WebException ex)
+        {
+            using (var resp = (HttpWebResponse)ex.Response)
+            using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
+            {
+                return "Error: " + reader.ReadToEnd();
+            }
         }
     }
 

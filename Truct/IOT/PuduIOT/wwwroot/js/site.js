@@ -21,7 +21,7 @@ var electricCost = 0;
 
 function reloadData(data) {
     try {
-       // var obj = JSON.parse(data);
+        // var obj = JSON.parse(data);
         var robots = data;
 
         if (!robots || robots.length === 0) {
@@ -57,12 +57,13 @@ function reloadData(data) {
                             <div class="col-6 fw-bold">Trạng thái hoạt động:</div>
                             <div class="col-6">
                                 <span class="badge ${robot.work_msg === "空闲" ? "bg-success" : "bg-danger"}">
-                                    ${robot.work_msg}
+                                    ${robot.work_msg === "空闲" ? "Sẵn sàng nhận lệnh" : "Đang thực hiện nhiệm vụ"}
                                 </span>
                             </div>
 
                             <div class="col-6 fw-bold">Bản đồ:</div>
                             <div class="col-6">${robot.map_name}</div>
+
                         </div>
                     </div>
                 </div>
@@ -85,9 +86,12 @@ function reloadData(data) {
 // Biến lưu SN đang xem modal
 let currentRobotSN;
 let abortController;
+let currentTaskIds = []; // lưu danh sách các Taskid
+let selectedPoints = []; // Danh sách các điểm đã chọn
 
 
-function loadRobotDetails(sn,name,company_id,battery,is_online, img_name,is_online,map_name) {
+
+function loadRobotDetails(sn, name, company_id, battery, is_online, img_name, is_online, map_name) {
     currentRobotSN = sn;
     abortController = new AbortController();
     //// Show modal
@@ -127,6 +131,13 @@ function loadRobotDetails(sn,name,company_id,battery,is_online, img_name,is_onli
         // Gỡ listener sau khi đóng modal
         connectionDetail.off(`RobotUpdate-${sn}`);
     }, { once: true });
+
+
+    try {
+        renderPoints(sn, map_name);
+    } catch (err) {
+        console.error('Lỗi khi load danh sách point:', err);
+    }
 }
 
 function reloadDataDetail(data) {
@@ -157,11 +168,11 @@ function reloadDataDetail(data) {
             if (data.workMsg == "空闲") {
                 robotWorkMes.classList.remove('bg-success', 'bg-danger');
                 robotWorkMes.classList.add('badge', 'bg-success');
-                robotWorkMes.textContent = data.workMsg;
+                robotWorkMes.textContent = 'Sãn sàng nhận lệnh';
             } else {
                 robotWorkMes.classList.remove('bg-success', 'bg-danger');
                 robotWorkMes.classList.add('badge', 'bg-danger');
-                robotWorkMes.textContent = data.workMsg;
+                robotWorkMes.textContent = 'Đang thực hiện nhiệm vụ';
             }
         }
         if (robotMap) {
@@ -179,7 +190,101 @@ function reloadDataDetail(data) {
     }
 }
 
+async function loadPoints(sn) {
+    const resp = await fetch(`/getListPoint?sn=${encodeURIComponent(sn)}`);
+    if (!resp.ok) throw new Error("Không gọi được API");
+    return resp.json();
+}
 
+async function renderPoints(sn, map_name) {
+    try {
+        const listPoints = await loadPoints(sn);
+
+        const buttonListLeft = document.getElementById("buttonListLeft");
+        const buttonListRight = document.getElementById("buttonListRight");
+
+        buttonListLeft.innerHTML = "";
+        buttonListRight.innerHTML = "";
+        listPoints.forEach((p, index) => {
+            const button = document.createElement("button");
+            button.className = "btn btn-primary btn-sm m-1";
+            button.innerText = p.name;
+
+            button.onclick = () => {
+                if (button.parentElement === buttonListLeft) {
+                    // tạo stt duy nhất
+                    const stt = Date.now();
+
+                    // clone nút nhưng vẫn giữ nguyên class/màu
+                    const cloneBtn = document.createElement("button");
+                    cloneBtn.className = button.className; // giữ nguyên màu
+                    cloneBtn.innerText = p.name;
+                    cloneBtn.dataset.stt = stt;
+
+                    // click clone để xóa
+                    cloneBtn.onclick = () => {
+                        cloneBtn.remove();
+                        selectedPoints = selectedPoints.filter(sp => sp.stt !== stt);
+                        console.log('selectedPoints remove', selectedPoints);
+                    };
+
+                    buttonListRight.appendChild(cloneBtn);
+
+                    // lưu point kèm stt
+                    const pointWithMap = { ...p, map_name: map_name, stt: stt };
+                    selectedPoints.push(pointWithMap);
+                    console.log('selectedPoints add', selectedPoints);
+                }
+            };
+
+            buttonListLeft.appendChild(button);
+        });
+    } catch (err) {
+       
+        alert("Có lỗi khi gọi API");
+    }
+}
+
+async function callRobotWithSelected(sn) {
+    if (!selectedPoints || selectedPoints.length === 0) {
+        return;
+    }
+    const vt = document.getElementById('vitri');
+    if (vt) {
+        vt.innerText = `Đang đến: ${selectedPoints[0].name}`;
+    };
+    const btn = document.getElementById('btnThucHien');
+    if (btn) {
+        btn.disabled = true;          // 🔒 khóa nút
+    }
+    for (const p of selectedPoints) {
+        await callRobot(sn, p.map_name, p.name, p.type);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+}
+
+
+async function callRobot(sn, mapName, pointName, pointType) {
+    fetch("/custom_call", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            sn: sn,
+            mapName: mapName,
+            pointName: pointName,
+            pointType: pointType
+        })
+    })
+        .then(res => res.json())
+        .then(serverRes => {
+            // serverRes.result là chuỗi JSON
+            let parsed = JSON.parse(serverRes.result); // parse lần nữa
+            console.log("Parsed:", parsed);
+            // Lấy task_id
+            currentTaskIds.push(parsed.data.task_id);
+        })
+        .catch(err => console.error("callRobot error", err));
+}
 
 
 // Hàm render dữ liệu vào modal
@@ -195,7 +300,6 @@ function renderRobotDetails(data) {
     if (rbName) {
         rbName.textContent = data.name;
     }
-
 }
 
 function removeClassPerformance(element) {
@@ -206,91 +310,7 @@ function removeClassPerformance(element) {
     });
 }
 
-function reloadDataLine(data, totalData) {
-    data.forEach(item => {
-        var unit = document.getElementById(item.unit_name);
-        removeClassPerformance(unit);
-        if (parseFloat(item.performance) >= 100)
-            unit.parentElement.classList.add('bg-data-100');
-        else
-            if (parseFloat(item.performance) >= 80)
-                unit.parentElement.classList.add('bg-data-80');
-   
-        unit.innerText = languageResource[item.display_name] + ' : ' + item.unit_value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + languageResource["DAS-LBL-010"];
-        if (unit.innerText === '0.00')
-            unit.parentElement.classList.add('bg-data-zero');
-    });
 
-    var total = document.getElementById('index-total');
-    var avg = document.getElementById('index-avg');
-   
-    total.innerText = parseFloat(totalData.totalLine.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    avg.innerText = parseFloat(totalData.avgLine.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    if (total.innerText === '0.00')
-        total.parentElement.parentElement.classList.add('bg-data-zero');
-    if (avg.innerText === '0.00')
-        avg.parentElement.parentElement.classList.add('bg-data-zero');
-
-    visualLoading.style.display = 'none';
-}
-
-function reloadDataAirConditioner(data, totalData) {
-    data.forEach(item => {
-        var unit = document.getElementById(item.unit_name);
-        removeClassPerformance(unit);
-        
-        if (parseFloat(item.performance) >= 100)
-            unit.parentElement.classList.add('bg-data-100');
-        else
-            if (parseFloat(item.performance) >= 80)
-                unit.parentElement.classList.add('bg-data-80');
-        
-        unit.innerText = item.unit_value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (unit.innerText === '0.00')
-            unit.parentElement.classList.add('bg-data-zero');
-    });
-
-    var total = document.getElementById('index-total');
-    var avg = document.getElementById('index-avg');
-
-    total.innerText = parseFloat(totalData.Pac.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    avg.innerText = parseFloat(totalData.avgPac.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    if (total.innerText === '0.00')
-        total.parentElement.parentElement.classList.add('bg-data-zero');
-    if (avg.innerText === '0.00')
-        avg.parentElement.parentElement.classList.add('bg-data-zero');
-    
-    visualLoading.style.display = 'none';
-
-
-}
-
-function reloadDataAirCompressor(data, totalData) {
-    data.forEach(item => {
-        var unit = document.getElementById(item.unit_name);
-        removeClassPerformance(unit);
-        if (parseFloat(item.performance) >= 100)
-            unit.parentElement.classList.add('bg-data-100');
-        else
-            if (parseFloat(item.performance) >= 80)
-                unit.parentElement.classList.add('bg-data-80');
-        unit.innerText = languageResource[item.display_name] + ' : ' + item.unit_value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (unit.innerText === '0.00')
-            unit.parentElement.classList.add('bg-data-zero');
-    });
-    var total = document.getElementById('index-total');
-    var avg = document.getElementById('index-avg');
-
-    total.innerText = parseFloat(totalData.Air.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    avg.innerText = parseFloat(totalData.avgAir.replace(',', '.')).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-    if (total.innerText === '0.00')
-        total.parentElement.parentElement.classList.add('bg-data-zero');
-    if (avg.innerText === '0.00')
-        avg.parentElement.parentElement.classList.add('bg-data-zero');
-
-    visualLoading.style.display = 'none';
-}
 
 var connection = new signalR.HubConnectionBuilder()
     .withUrl("/realTimeHub")
@@ -308,6 +328,51 @@ connection.on("ReceiveRealTimeData", (data) => {
         reloadData(obj.RobotsStatus);
     }
 })
+
+connection.on("RobotCustomCallUpdate", (data) => {
+    try {
+        const obj = typeof data === "string" ? JSON.parse(data) : data;
+
+        // obj.data là object rồi
+        const payload = obj.data || {};
+
+        // Nếu data nằm trong obj.data
+        const point = obj.point; // dùng optional chaining để tránh lỗi
+        const state = obj.state;
+
+        const vt = document.getElementById('vitri');
+        if (vt) {
+            if (state === 'CALL_COMPLETE') {
+                vt.innerText = `Đã đến: ${point}`;
+            } else {
+                if (state === 'CALL_SUCCESS') {
+                    vt.innerText = `Đang đến điểm: ${point}`;
+                }
+            }
+
+            // Xóa các button khi tất cả các điểm đã hoàn thành
+            if ((state === 'CALL_COMPLETE')) {
+                const last = selectedPoints[selectedPoints.length - 1].name; // phần tử cuối
+                if (last === point) {
+                    selectedPoints = [];
+                    const buttonListRight = document.getElementById("buttonListRight");
+                    buttonListRight.innerHTML = "";
+                    const btn = document.getElementById('btnThucHien');
+                    if (btn) {
+                        btn.disabled = false;          // 🔒 Mở khóa
+                    }
+                }
+            }
+        }
+
+    } catch (err) {
+        console.error("Lỗi parse JSON:", err);
+    }
+})
+
+
+
+
 
 connection.stop().then(() => {
 }).catch((err) => {
@@ -354,213 +419,3 @@ var sideBarStorage = {
     air: false
 }
 
-function createBarChart(id) {
-
-    const svg = d3.select(id)
-        .append("svg")
-        .attr("preserveAspectRatio", "xMinYMin meet")
-
-    const ctr = svg.append("g").classed('chart-group', true);
-
-
-    ctr.append('g')
-        .classed('axis-group', true)
-        .attr('shape-rendering', 'geometricPrecision')
-        .classed('x-axis', true);
-
-    ctr.append('g')
-        .classed('axis-group', true)
-        .classed('y-axis', true)
-
-    ctr.append('g')
-        .classed('rect-group', true)
-
-
-    ctr.append('g')
-        .classed('label-groups', true)
-
-    d3.select(id)
-        .append("div")
-        .attr("class", "tooltip-donut")
-        .style("position", "absolute")
-        .style("visibility", "hidden")
-        .append('span');
-
-}
-
-function updateBarChart(data, id, timelist, today) {
-    try {
-
-
-        var classLabel = 'title-' + id.replace('#', '');
-        var labelsChange = document.querySelectorAll(`.${classLabel}  .label-change`);
-        var labelsDay = document.querySelectorAll(`.${classLabel}  .label-day`);
-        var text = changeLableChart();
-        var rs = reloadLabelDateInTable(id, today);
-        if (today !== 'NoLoad') {
-            labelsChange.forEach(label => {
-                label.innerText = text;
-            });
-            labelsDay.forEach(label => {
-                label.innerText = rs.replace(' 23:59:59', '');
-            });
-        }
-        var maxObject = data.reduce(function (prev, current) {
-            return (prev.totalvalue > current.totalvalue) ? prev : current;
-        }, {});
-
-
-        const width = 890;
-        const height = 225;
-        const marginTop = 20;
-        const marginRight = 30;
-        const marginBottom = 30;
-        const marginLeft = 40;
-
-        // Declare the x (horizontal position) scale.
-        const x = d3.scaleBand()
-            .domain(timelist.map(d => d))
-            .range([marginLeft, width - marginRight])
-            .padding(0.1);
-
-        // Declare the y (vertical position) scale.
-        const y = d3.scaleLinear()
-            .domain([0, maxObject.totalvalue || 100])
-            .range([height - marginBottom, marginTop])
-            .rangeRound([height - marginBottom, marginTop])
-            .nice()
-            .clamp(true)
-
-        // Create the SVG container.
-        const svg = d3.select(id + " svg")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("viewBox", [0, 0, width, height])
-            .attr("style", "max-width: 100%; height: auto;");
-
-
-        var rectGroup = svg.select(".chart-group .rect-group")
-            .selectAll("rect")
-            .data(data);
-
-        var widthRect = x.bandwidth() < 60 ? x.bandwidth() : 60;
-
-        // Remove any bars that are no longer needed
-        rectGroup.exit().remove();
-
-        // Add new bars
-        rectGroup.enter()
-            .append("rect")
-            .merge(rectGroup)
-
-            .attr("fill", "#4472c4")
-            .attr("x", (d) => x(d.datetime) + x.bandwidth() / 2 - widthRect / 4)
-            .attr("y", (d) => y(d.totalvalue))
-            .attr("height", (d) => y(0) - y(d.totalvalue))
-            .attr("width", widthRect / 2)
-            .attr('id', (d, i) => i)
-            .on("mouseover", function (e, d, k) {
-                svg.select(`#label_${e.target.id}`).attr('display', 'block')
-            })
-            .on("mouseout", (e) => {
-                svg.select(`#label_${e.target.id}`).attr('display', 'none')
-            });
-
-
-        // Add the x-axis and label.
-        const xAxisGroup = d3.select(id + " svg g .x-axis")
-            .attr("transform", `translate(0,${height - marginBottom})`)
-            .call(d3.axisBottom(x).tickSizeOuter(0));
-
-        xAxisGroup.selectAll('text')
-            .attr('text-anchor', 'center')
-            .attr('fill', '#212529')
-            .text((d) => {
-
-                if (id === dayChartId)
-
-                    return d.split(' ')[1] ? d.split(' ')[1] : new Date(d).getDate();
-                else if (id === monthChartId)
-                    return d.split('/')[2] ? new Date(d).getDate() : new Date(d).getMonth() + 1;
-                else if (id === yearChartId)
-                    return d.split('/')[1] ? new Date(d).getMonth() + 1 : new Date(d).getFullYear();
-                else return d;
-            })
-
-        // Add the y-axis and label, and remove the domain line.
-        d3.select(id + " svg g .y-axis")
-            .attr("transform", `translate(${marginLeft},0)`)
-            .transition().duration(1000)
-            .call(d3.axisLeft(y));
-
-        const yAxis = d3.select(id + " svg g .y-axis");
-        yAxis.select('.domain').remove();
-        yAxis.selectAll('.tick line').remove();
-
-        yAxis.selectAll(" .tick").append("line")
-            .attr("class", "vertical-line")
-            .attr("x1", 0)
-            .attr("y1", (d) => y(d.totalvalue))
-            .attr("x2", width - marginRight - marginLeft)
-            .attr("y2", (d) => y(d.totalvalue))
-            .attr("stroke", "lightgray")
-            .attr("stroke-width", 0.5)
-
-
-
-
-        const labelsGroup = svg.select('.label-groups')
-            .attr('font-size', `10`)
-            .selectAll('text')
-            .data(data);
-
-        // Enter phase
-        const labelsEnter = labelsGroup
-            .enter()
-            .append('text')
-
-            .attr('y', (d) => y(d.totalvalue) - 5)
-            .attr('id', (d, i) => 'label_' + i)
-            .text(function (d) {
-                return d.totalvalue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            });
-
-        // Update phase
-        labelsGroup
-            .merge(labelsEnter)
-            .transition().duration(1000)
-            .attr('y', (d) => y(d.totalvalue) - 5)
-            .text(function (d) {
-                return d.totalvalue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            });
-
-        labelsGroup.exit().remove();
-        const label = document.querySelector(`${id} .label-groups text`);
-        if (label !== null) {
-            var labelWidth = label.getBoundingClientRect().width;
-
-            if (window.screen.width > 1280)
-                labelWidth = labelWidth / 1.486;
-            svg.select('.label-groups')
-                .selectAll('text')
-                .attr('display', 'block')
-
-            svg.select('.label-groups')
-                .selectAll('text')
-                .attr('x', (d, i, nodes) => {
-                    const labelWidth = d3.select(nodes[i]).node().getBBox().width;
-                    return x(d.datetime) + x.bandwidth() / 2 - labelWidth / 2;
-                })
-                .attr('display', 'none')
-        }
-
-
-
-    }
-    catch (e) {
-        console.log(e)
-    }
-    finally {
-        closeLoading();
-    }
-}

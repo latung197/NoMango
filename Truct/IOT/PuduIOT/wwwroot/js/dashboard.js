@@ -145,10 +145,6 @@ function getXAxisValueByType(timeType, startDate, endDate) {
 
 
 $(document).ready(function () {
-    createBarChart(dayChartId)
-    createBarChart(monthChartId)
-    createBarChart(yearChartId)
-    createBarChart(hourChartId)
 
 });
 
@@ -303,33 +299,6 @@ function handlePaste(event) {
 
 }
 
-function saveChanges() {
-    var numericValue = document.getElementById('numericInput').value;
-
-
-    var mydata = {
-        id: rowId.id.replace('row-', ''),
-        value: numericValue
-    };
-
-
-    $.ajax({
-        url: "update_unit",
-        type: "POST",
-        data: mydata,
-        beforeSend: function () {
-        },
-
-        success: function (data) {
-            changeUIDatetimePicker();
-            loadData();
-        },
-        error: function (e) {
-            loading.style.display = "none";
-            console.log(e);
-        }
-    });
-}
 
 function getHtml(id) {
     var html = [];

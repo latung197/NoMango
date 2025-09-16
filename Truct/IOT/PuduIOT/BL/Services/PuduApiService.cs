@@ -1,5 +1,6 @@
 ﻿using Microsoft.Build.Framework;
 using PuduIOT.BL.Interfaces;
+using PuduIOT.DA.Respository;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace PuduIOT.BL.Services
         private readonly string _apiAppSecret;
         private readonly string _baseUrl;
         private readonly HttpClient _httpClient;
+        private readonly PuduApiRespository _puduApiRespository;
 
         public PuduApiService( HttpClient httpClient)
         {
@@ -51,10 +53,11 @@ namespace PuduIOT.BL.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> Changer(string sn)
+        public async Task<string> ReCharge(string sn)
         {
-            string url = _baseUrl + sn;
-            return "";
+            string pathAndQuery = "/open-platform-service/v1/recharge?sn=";
+            string url = pathAndQuery + sn;
+            return await _puduApiRespository.ReCharge(url);
         }
 
     }

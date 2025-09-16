@@ -81,7 +81,7 @@ namespace PuduIOT.BL
                         }.ToJson()
                     );
 
-                    await Task.Delay(5000);
+                    await Task.Delay(2000);
                 }
             }
             catch (Exception ex)
