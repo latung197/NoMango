@@ -68,3 +68,10 @@ Truct/IOT/PuduIOT/obj/
 Truct/Sample.WebApiRestful/Sample.WebApiRestful/obj/
 Truct/Sample.WebApiRestful/.vs/Sample.WebApiRestful/v17/.suo
 Truct/Sample.WebApiRestful/.vs/
+Truct/CoreMVC/.vs/
+Truct/CoreMVC/Core.Application/obj/
+Truct/CoreMVC/Core.Domain/obj/
+Truct/CoreMVC/Core.Infrastructure/bin/
+Truct/CoreMVC/Core.Infrastructure/obj/
+Truct/CoreMVC/Core/obj/
+Truct/CoreMVC/Core.Application/bin/
