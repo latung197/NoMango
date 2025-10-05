@@ -75,3 +75,11 @@ Truct/CoreMVC/Core.Infrastructure/bin/
 Truct/CoreMVC/Core.Infrastructure/obj/
 Truct/CoreMVC/Core/obj/
 Truct/CoreMVC/Core.Application/bin/
+Truct/ERP_System/ERP_System/obj/
+Truct/ERP_System/ERP.Infrastructure/obj/
+Truct/ERP_System/ERP.Domain/obj/
+Truct/ERP_System/ERP.Desktop.WPF/obj/
+Truct/ERP_System/ERP.Desktop.Modules/obj/
+Truct/ERP_System/ERP.Application/obj/
+Truct/ERP_System/ERP.Core/obj/
+Truct/ERP_System/.vs/

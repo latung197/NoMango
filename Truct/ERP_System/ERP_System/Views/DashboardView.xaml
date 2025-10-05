@@ -1,0 +1,171 @@
+﻿<UserControl x:Class="ERP_System.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+            <!-- Header -->
+            <StackPanel Margin="0,0,0,20">
+                <TextBlock Text="TỔNG QUAN HỆ THỐNG" FontSize="24" FontWeight="Bold" 
+                          Foreground="#2C3E50"/>
+                <TextBlock Text="Thống kê và báo cáo tổng quan toàn hệ thống" 
+                          FontSize="12" Foreground="#6C757D" Margin="0,5,0,0"/>
+            </StackPanel>
+
+            <!-- Quick Stats -->
+            <WrapPanel>
+                <!-- Total Materials -->
+                <Border Background="#3498DB" CornerRadius="10" Padding="20" 
+                       Width="200" Height="120" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="📦" FontSize="24" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Tổng vật tư" Foreground="White" FontSize="12" 
+                                  HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="150" Foreground="White" FontSize="24" FontWeight="Bold" 
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Warehouses -->
+                <Border Background="#27AE60" CornerRadius="10" Padding="20" 
+                       Width="200" Height="120" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="🏪" FontSize="24" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Tổng kho" Foreground="White" FontSize="12" 
+                                  HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="8" Foreground="White" FontSize="24" FontWeight="Bold" 
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Customers -->
+                <Border Background="#E74C3C" CornerRadius="10" Padding="20" 
+                       Width="200" Height="120" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="👥" FontSize="24" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Khách hàng" Foreground="White" FontSize="12" 
+                                  HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="45" Foreground="White" FontSize="24" FontWeight="Bold" 
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Suppliers -->
+                <Border Background="#9B59B6" CornerRadius="10" Padding="20" 
+                       Width="200" Height="120" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="🏭" FontSize="24" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Nhà cung cấp" Foreground="White" FontSize="12" 
+                                  HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="12" Foreground="White" FontSize="24" FontWeight="Bold" 
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <!-- Recent Activities -->
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Recent Notifications -->
+                <Border Grid.Column="0" Background="#F8F9FA" CornerRadius="10" Padding="20" Margin="0,0,10,0">
+                    <StackPanel>
+                        <TextBlock Text="THÔNG BÁO GẦN ĐÂY" FontSize="16" FontWeight="Bold" 
+                                  Foreground="#2C3E50" Margin="0,0,0,10"/>
+
+                        <StackPanel>
+                            <Border Background="White" CornerRadius="5" Padding="15" Margin="0,5">
+                                <StackPanel>
+                                    <TextBlock Text="• Phiếu yêu cầu xuất kho đã được duyệt" 
+                                              Foreground="#2C3E50" FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="10:30 - 15/12/2024" 
+                                              Foreground="#6C757D" FontSize="10" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White" CornerRadius="5" Padding="15" Margin="0,5">
+                                <StackPanel>
+                                    <TextBlock Text="• Phiếu mua hàng mới cần xử lý" 
+                                              Foreground="#2C3E50" FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="09:15 - 15/12/2024" 
+                                              Foreground="#6C757D" FontSize="10" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White" CornerRadius="5" Padding="15" Margin="0,5">
+                                <StackPanel>
+                                    <TextBlock Text="• Cảnh báo tồn kho thấp cho sản phẩm A001" 
+                                              Foreground="#E74C3C" FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="08:45 - 15/12/2024" 
+                                              Foreground="#6C757D" FontSize="10" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Quick Actions -->
+                <Border Grid.Column="1" Background="#F8F9FA" CornerRadius="10" Padding="20" Margin="10,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="THAO TÁC NHANH" FontSize="16" FontWeight="Bold" 
+                                  Foreground="#2C3E50" Margin="0,0,0,10"/>
+
+                        <StackPanel>
+                            <Button Content="📦 Tạo phiếu yêu cầu xuất kho" 
+                                   Background="#3498DB" Foreground="White" FontWeight="SemiBold"
+                                   Padding="15,10" Margin="0,5" BorderThickness="0" Cursor="Hand"/>
+                            <Button Content="🛒 Tạo đơn hàng bán" 
+                                   Background="#27AE60" Foreground="White" FontWeight="SemiBold"
+                                   Padding="15,10" Margin="0,5" BorderThickness="0" Cursor="Hand"/>
+                            <Button Content="🏭 Tạo đơn mua hàng" 
+                                   Background="#9B59B6" Foreground="White" FontWeight="SemiBold"
+                                   Padding="15,10" Margin="0,5" BorderThickness="0" Cursor="Hand"/>
+                            <Button Content="📊 Xem báo cáo tồn kho" 
+                                   Background="#E67E22" Foreground="White" FontWeight="SemiBold"
+                                   Padding="15,10" Margin="0,5" BorderThickness="0" Cursor="Hand"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- System Status -->
+            <Border Background="#F8F9FA" CornerRadius="10" Padding="20" Margin="0,20,0,0">
+                <StackPanel>
+                    <TextBlock Text="TRẠNG THÁI HỆ THỐNG" FontSize="16" FontWeight="Bold" 
+                              Foreground="#2C3E50" Margin="0,0,0,10"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock Text="🟢" FontSize="20" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Database" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Đang hoạt động" Foreground="#27AE60" 
+                                      HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock Text="🟢" FontSize="20" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Kết nối mạng" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Ổn định" Foreground="#27AE60" 
+                                      HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                            <TextBlock Text="🟢" FontSize="20" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Bảo mật" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Đã bật" Foreground="#27AE60" 
+                                      HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Styles\ButtonStyles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Styles\ColorThemes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Styles\DataGridStyles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Styles\MainStyles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DashboardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dialogs\ChangePasswordDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Categories\MaterialView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Categories\UnitView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Categories\WarehouseView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Documents\InventoryTransferView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Documents\StockInView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Documents\StockOutView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Documents\StockRequestView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Reports\InventoryMovementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Reports\InventoryReportView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inventory\Reports\StockBalanceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Purchase\PurchaseOrderView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Purchase\PurchaseRequestView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Purchase\SupplierView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Sales\CustomerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Sales\InvoiceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Sales\SalesOrderView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\System\PermissionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\System\UserManagementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ColorThemes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\MainStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogs\ChangePasswordDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Categories\MaterialView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Categories\UnitView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Categories\WarehouseView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Documents\InventoryTransferView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Documents\StockInView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Documents\StockOutView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Documents\StockRequestView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Reports\InventoryMovementView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Reports\InventoryReportView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inventory\Reports\StockBalanceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Purchase\PurchaseOrderView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Purchase\PurchaseRequestView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Purchase\SupplierView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Sales\CustomerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Sales\InvoiceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Sales\SalesOrderView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\System\PermissionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\System\UserManagementView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
