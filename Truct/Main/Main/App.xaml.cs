@@ -12,17 +12,19 @@ namespace Main
     {
         protected void ApplicationStart(object sender, StartupEventArgs e) 
         {
-            var loginView = new LoginView();
-            loginView.Show();
-            loginView.IsVisibleChanged += (s, ev) =>
-            {
-                if (loginView.IsVisible == false && loginView.IsLoaded)
-                {
-                    var mainView = new MainView();
-                    mainView.Show();
-                    loginView.Close();
-                }
-            };
+            var mainView = new MainView();
+            mainView.Show();
+            //var loginView = new LoginView();
+            //loginView.Show();
+            //loginView.IsVisibleChanged += (s, ev) =>
+            //{
+            //    if (loginView.IsVisible == false && loginView.IsLoaded)
+            //    {
+            //        var mainView = new MainView();
+            //        mainView.Show();
+            //        loginView.Close();
+            //    }
+            //};
         }
     }
 

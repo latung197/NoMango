@@ -10,6 +10,12 @@
     <Compile Update="CustomeControls\BindablePasswordBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\BanHangView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DashboardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +25,12 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="CustomeControls\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\BanHangView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">

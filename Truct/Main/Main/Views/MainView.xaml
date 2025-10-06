@@ -5,8 +5,507 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        Title="Hệ Thống Quản Lý - EMax" 
+        Height="700" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+
+    <Window.Resources>
+        <!-- Style cho Menu Items -->
+        <Style x:Key="ModernMenuItemStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#E8E8E8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#34495E"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#42659c"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style cho SubMenu Items -->
+        <Style x:Key="SubMenuItemStyle" TargetType="Button" BasedOn="{StaticResource ModernMenuItemStyle}">
+            <Setter Property="Padding" Value="25,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <!-- Style cho Tab Items -->
+        <Style x:Key="TabItemStyle" TargetType="Button">
+            <Setter Property="Background" Value="#F0F0F0"/>
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Padding" Value="12,4"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="80"/>
+            <Setter Property="MaxWidth" Value="150"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3,3,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" 
+                                           Text="{TemplateBinding Content}" 
+                                           TextTrimming="CharacterEllipsis"
+                                           Margin="8,0"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontWeight="Normal"/>
+
+                                <Button Grid.Column="1" 
+                                        x:Name="btnCloseTab" 
+                                        Content="×" 
+                                        FontSize="12" 
+                                        FontWeight="Bold"
+                                        Foreground="#888888"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Width="16" 
+                                        Height="16"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,4,0"
+                                        Tag="{Binding RelativeSource={RelativeSource AncestorType=Button}}"
+                                        Click="CloseTab_Click"
+                                        Cursor="Hand">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Foreground" Value="#888888"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF4444"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#E8E8E8"/>
+                                <Setter Property="Foreground" Value="#333333"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style cho Active Tab -->
+        <Style x:Key="ActiveTabItemStyle" TargetType="Button" BasedOn="{StaticResource TabItemStyle}">
+            <Setter Property="Background" Value="#42659c"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#355580"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <!-- Style cho Search TextBox -->
+        <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="#34495E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#5D6D7E"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#85929E"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#42659c"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style cho Expander Header -->
+        <Style x:Key="ModernExpanderStyle" TargetType="Expander">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- Converters -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Toggle Menu Button (khi menu ẩn) -->
+        <Button x:Name="btnToggleMenuHidden" 
+                Grid.Column="0"
+                Content="☰" 
+                Width="30" 
+                Height="30"
+                Background="#2C3E50"
+                Foreground="White"
+                BorderThickness="0"
+                FontSize="14"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="5,5,0,0"
+                Click="btnToggleMenu_Click"
+                Visibility="Collapsed"
+                Cursor="Hand">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#2C3E50"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#42659c"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Sidebar Menu -->
+        <Border x:Name="sidebarMenu" 
+                Grid.Column="0" 
+                Background="#2C3E50" 
+                BorderBrush="#34495E" 
+                BorderThickness="0,0,1,0"
+                Width="250">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <Border Grid.Row="0" Background="#1A252F" Height="50">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0">
+                            <Image Source="/Images/1_emax_logo.png" Width="28" Height="28" Margin="0,0,8,0"/>
+                            <TextBlock Text="EMax System" Foreground="White" FontSize="13" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button Grid.Column="1"
+                                x:Name="btnToggleMenu" 
+                                Content="◀" 
+                                Width="22" 
+                                Height="22"
+                                Background="Transparent"
+                                Foreground="White"
+                                BorderThickness="0"
+                                FontSize="10"
+                                VerticalAlignment="Center"
+                                Margin="0,0,8,0"
+                                Click="btnToggleMenu_Click"
+                                Cursor="Hand">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#42659c"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!-- Search Box -->
+                <Border Grid.Row="1" Background="#2C3E50" Padding="10,8" BorderBrush="#34495E" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <TextBox x:Name="txtSearch" 
+                                 Style="{StaticResource SearchTextBoxStyle}"
+                                 TextChanged="txtSearch_TextChanged"
+                                 Foreground="White">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <TextBlock x:Name="txtSearchWatermark" 
+                                   Text="🔍 Tìm kiếm chức năng..." 
+                                   Foreground="#AAB6C2" 
+                                   FontSize="12"
+                                   Margin="8,0"
+                                   VerticalAlignment="Center"
+                                   IsHitTestVisible="False">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtSearch}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtSearch}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+
+                <!-- Menu Items -->
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="menuContainer">
+                        <!-- Dashboard -->
+                        <Button x:Name="btnDashboard" Content="📊 Dashboard" Style="{StaticResource ModernMenuItemStyle}"
+                                Click="MenuItem_Click" Tag="DashboardView" Height="38"/>
+
+                        <!-- Quản lý bán hàng -->
+                        <Expander x:Name="expBanHang" Header="🛒 Quản lý bán hàng" Style="{StaticResource ModernExpanderStyle}">
+                            <Expander.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" Padding="15,10"/>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+
+                            <StackPanel Background="#253341">
+                                <Button x:Name="btnBanHang" Content="Bán hàng" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="BanHangView" Height="32"/>
+                                <Button x:Name="btnHoaDon" Content="Hóa đơn" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="HoaDonView" Height="32"/>
+                                <Button x:Name="btnKhachHang" Content="Khách hàng" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="KhachHangView" Height="32"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Quản lý kho -->
+                        <Expander x:Name="expKho" Header="📦 Quản lý kho" Style="{StaticResource ModernExpanderStyle}">
+                            <Expander.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" Padding="15,10"/>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+
+                            <StackPanel Background="#253341">
+                                <Button x:Name="btnSanPham" Content="Sản phẩm" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="SanPhamView" Height="32"/>
+                                <Button x:Name="btnNhapKho" Content="Nhập kho" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="NhapKhoView" Height="32"/>
+                                <Button x:Name="btnXuatKho" Content="Xuất kho" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="XuatKhoView" Height="32"/>
+                                <Button x:Name="btnTonKho" Content="Tồn kho" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="TonKhoView" Height="32"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Quản lý nhân sự -->
+                        <Expander x:Name="expNhanSu" Header="👥 Quản lý nhân sự" Style="{StaticResource ModernExpanderStyle}">
+                            <Expander.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" Padding="15,10"/>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+
+                            <StackPanel Background="#253341">
+                                <Button x:Name="btnNhanVien" Content="Nhân viên" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="NhanVienView" Height="32"/>
+                                <Button x:Name="btnChamCong" Content="Chấm công" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="ChamCongView" Height="32"/>
+                                <Button x:Name="btnLuong" Content="Tính lương" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="LuongView" Height="32"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Báo cáo -->
+                        <Expander x:Name="expBaoCao" Header="📈 Báo cáo" Style="{StaticResource ModernExpanderStyle}">
+                            <Expander.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" Padding="15,10"/>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+
+                            <StackPanel Background="#253341">
+                                <Button x:Name="btnBaoCaoDoanhThu" Content="Doanh thu" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="BaoCaoDoanhThuView" Height="32"/>
+                                <Button x:Name="btnBaoCaoBanHang" Content="Bán hàng" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="BaoCaoBanHangView" Height="32"/>
+                                <Button x:Name="btnBaoCaoKho" Content="Tồn kho" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="BaoCaoKhoView" Height="32"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- Hệ thống -->
+                        <Expander x:Name="expHeThong" Header="⚙️ Hệ thống" Style="{StaticResource ModernExpanderStyle}">
+                            <Expander.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" Padding="15,10"/>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+
+                            <StackPanel Background="#253341">
+                                <Button x:Name="btnNguoiDung" Content="Người dùng" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="NguoiDungView" Height="32"/>
+                                <Button x:Name="btnPhanQuyen" Content="Phân quyền" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="PhanQuyenView" Height="32"/>
+                                <Button x:Name="btnSaoLuu" Content="Sao lưu" Style="{StaticResource SubMenuItemStyle}" 
+                                        Click="MenuItem_Click" Tag="SaoLuuView" Height="32"/>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Footer -->
+                <Border Grid.Row="3" Background="#1A252F" Height="45">
+                    <Button x:Name="btnDangXuat" Content="🚪 Đăng xuất" 
+                            Click="btnDangXuat_Click"
+                            Style="{StaticResource ModernMenuItemStyle}"
+                            Foreground="White" 
+                            Background="Transparent"
+                            Height="35"
+                            Margin="10,5"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Bar -->
+            <Border Grid.Row="0" Background="#42659c" Height="40">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="txtCurrentView" Text="Dashboard" 
+                               Foreground="White" FontSize="14" FontWeight="Bold"
+                               VerticalAlignment="Center" Margin="12,0"/>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <TextBlock Text="Xin chào, " Foreground="White" FontSize="11" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtUserName" Text="Admin" Foreground="White" FontSize="11" FontWeight="Bold" VerticalAlignment="Center" Margin="2,0,8,0"/>
+                        <Button x:Name="btnThongTin" Content="👤" 
+                                Click="btnThongTin_Click"
+                                Width="24" Height="24" 
+                                Background="Transparent" BorderThickness="0" Foreground="White"
+                                Cursor="Hand"
+                                FontSize="10">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#355580"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Tab Bar -->
+            <Border Grid.Row="1" Background="#F8F9FA" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1" Height="32">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ScrollViewer Grid.Column="0" x:Name="tabScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl x:Name="tabContainer">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter Content="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <!-- Button đóng tất cả tab -->
+                    <Button Grid.Column="1"
+                            x:Name="btnCloseAllTabs" 
+                            Content="Đóng tất cả" 
+                            Style="{StaticResource TabItemStyle}"
+                            Background="#FF6B6B"
+                            Foreground="White"
+                            BorderBrush="#FF5252"
+                            MinWidth="70"
+                            MaxWidth="80"
+                            Height="24"
+                            Margin="4,0,8,0"
+                            FontSize="10"
+                            Click="btnCloseAllTabs_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Content Frame -->
+            <Frame x:Name="MainContentFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
+        </Grid>
     </Grid>
 </Window>

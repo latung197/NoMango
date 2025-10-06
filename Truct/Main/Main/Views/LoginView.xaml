@@ -4,153 +4,303 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main.Views"
-        xmlns:viewModel ="clr-namespace:Main.ViewModels" 
+        xmlns:viewModel="clr-namespace:Main.ViewModels" 
         xmlns:customecontrols="clr-namespace:Main.CustomeControls"
+        mc:Ignorable="d"
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
-        Title="LoginView" Height="250" Width="450">
+        Title="Đăng nhập hệ thống" 
+        Height="420" 
+        Width="500"
+        ResizeMode="NoResize">
+    
     <Window.DataContext>
         <viewModel:LoginViewModel/>
     </Window.DataContext>
+    
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+        
+        <!-- Style chung cho TextBox -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#42659c"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#42659c"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Style chung cho Button -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#42659c"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="6"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#355580"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#2a4366"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#CCCCCC"/>
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- Style cho Label -->
+        <Style x:Key="ModernLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0,0,10,0"/>
+        </Style>
+        
+        <!-- Style cho CheckBox -->
+        <Style x:Key="ModernCheckBox" TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <!-- Style cho ComboBox -->
+        <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Height" Value="32"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#42659c"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+    
     <Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
-    <Border CornerRadius="10" >
-        <Border.Background>
-            <ImageBrush ImageSource="/Images/1_emax_logo.png"/>
-        </Border.Background>
 
-        <Border BorderThickness="3" CornerRadius="10" Opacity="1">
-
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#505050" Offset="0"/>
-                    <GradientStop Color="#505050" Offset="0.75"/>
-                    <GradientStop Color="#505050" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#F2F2F2" Offset="0"/>
-                    <GradientStop Color="#F2F2F2" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel>
-                    <Image Source="/Images/login.png" Stretch="None" Margin="0,10,0,0"/>
-                </StackPanel>
-
-                <Grid Grid.Row="1">
+    <!-- Main Container với shadow effect -->
+    <Border Margin="20" 
+            CornerRadius="12" 
+            Background="White">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" 
+                              Opacity="0.2" 
+                              BlurRadius="15" 
+                              Color="#000000"/>
+        </Border.Effect>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Header với gradient background -->
+            <Border Grid.Row="0" 
+                    Background="#42659c" 
+                    CornerRadius="12,12,0,0"
+                    Height="80">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130"/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Label FontSize="15" FontWeight="Bold">UserID</Label>
-                        <Label FontSize="15" FontWeight="Bold">PassWord</Label>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBox Name="txtUser" Margin="0,0,0,10" FontSize="15" Text="{Binding UserName}"></TextBox>
-
-                        <customecontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-
-                        </customecontrols:BindablePasswordBox>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
-                        <Button Name="btnLogin" Cursor="Hand" Margin="0,0,0,10" FontSize="16" HorizontalContentAlignment="Center"  Foreground="White" Content="Đăng nhập"
-                                Command="{Binding LoginCommand}" Click="btnLogin_Click">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#42659c"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#55acee"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Name="btnClose" Click="btnClose_Click" FontSize="16" HorizontalContentAlignment="Center" Foreground="White" Content="Thoát">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#42659c"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#55acee"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="3" Margin="0,20">
-                        <Button Name="btnSetting" Height="60" Width="40">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#42659c"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#55acee"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White">Cài đặt</TextBlock>
-                        </Button>
-                    </StackPanel>
-
-
+                    
+                    <!-- Logo -->
+                    <Image Grid.Column="0" 
+                           Source="/Images/1_emax_logo.png" 
+                           Stretch="Uniform" 
+                           Height="40" 
+                           Margin="20,0"
+                           VerticalAlignment="Center"/>
+                    
+                    <!-- Title -->
+                    <TextBlock Grid.Column="1" 
+                               Text="ĐĂNG NHẬP HỆ THỐNG" 
+                               Foreground="White" 
+                               FontSize="18" 
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                    
+                    <!-- Close Button -->
+                    <Button Grid.Column="2" 
+                            x:Name="btnClose" 
+                            Click="btnClose_Click"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Width="30" 
+                            Height="30" 
+                            Margin="0,0,10,0"
+                            Cursor="Hand">
+                        <TextBlock Text="✕" 
+                                   Foreground="White" 
+                                   FontSize="14" 
+                                   FontWeight="Bold"/>
+                    </Button>
                 </Grid>
-                <StackPanel Grid.Row="3">
-                    <CheckBox Margin="130,0,0,0">Lưu Tài khoản</CheckBox>
-                    <ComboBox Margin="350,0,10,0">Ngôn ngữ</ComboBox>
-                </StackPanel>
-            </Grid>
+            </Border>
+            
+            <!-- Main Content -->
+            <Border Grid.Row="1" 
+                    Background="White" 
+                    Padding="30,20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Username Field -->
+                    <Grid Grid.Row="0" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Column="0" 
+                               Content="Tên đăng nhập:" 
+                               Style="{StaticResource ModernLabel}" Grid.ColumnSpan="2" Margin="0,0,285,0"/>
+                        
+                        <TextBox Grid.Column="1" 
+                                 x:Name="txtUser" 
+                                 Style="{StaticResource ModernTextBox}"
+                                 Text="{Binding UserName}" Margin="20,0,0,0">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding LoginCommand}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                    </Grid>
+                    
+                    <!-- Password Field -->
+                    <Grid Grid.Row="1" Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Column="0" 
+                               Content="Mật khẩu:" 
+                               Style="{StaticResource ModernLabel}"/>
+                        
+                        <customecontrols:BindablePasswordBox Grid.Column="1"
+                            Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Height="40"
+                            FontSize="14"
+                            VerticalContentAlignment="Center"
+                            Padding="12,8" Loaded="BindablePasswordBox_Loaded" Margin="10,0,0,0"/>
+                    </Grid>
+                    
+                    <!-- Remember & Language -->
+                    <Grid Grid.Row="2" Margin="0,0,0,25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-        </Border>
-
+                        <!--<ComboBox Grid.Column="1" 
+                                  Style="{StaticResource ModernComboBox}"
+                                  Width="120">
+                            <ComboBoxItem Content="Tiếng Việt" IsSelected="True"/>
+                            <ComboBoxItem Content="English"/>
+                        </ComboBox>-->
+                    </Grid>
+                    
+                    <!-- Login Button -->
+                    <Button Grid.Row="3" 
+                            x:Name="btnLogin" 
+                            Content="ĐĂNG NHẬP" 
+                            Style="{StaticResource ModernButton}"
+                            Command="{Binding LoginCommand}"
+                            Click="btnLogin_Click"
+                            FontSize="15"
+                            Height="45"/>
+                </Grid>
+            </Border>
+            
+            <!-- Footer -->
+            <Border Grid.Row="2" 
+                    Background="#F8F9FA" 
+                    CornerRadius="0,0,12,12"
+                    Height="50">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Column="0" 
+                               Text="Phiên bản 1.0.0" 
+                               Foreground="#666666" 
+                               FontSize="11"
+                               VerticalAlignment="Center"
+                               Margin="20,0"/>
+                    
+                    <Button Grid.Column="1" 
+                            x:Name="btnSetting" 
+                            Click="btnSetting_Click"
+                            Background="Transparent"
+                            Foreground="#42659c"
+                            BorderThickness="0"
+                            Margin="0,0,20,0"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="⚙️" Margin="0,0,5,0"/>
+                            <TextBlock Text="Cài đặt"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
     </Border>
 </Window>
