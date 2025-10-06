@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="ERP_System.Views.Inventory.MaterialView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+
+    <UserControl.Resources>
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2980B9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#BDC3C7"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#3498DB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="DANH MỤC VẬT TƯ" FontSize="18" FontWeight="Bold" 
+                      Foreground="#2C3E50"/>
+            <TextBlock Text="Quản lý danh sách vật tư, hàng hóa trong hệ thống" 
+                      FontSize="12" Foreground="#6C757D" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Toolbar -->
+        <Border Grid.Row="1" Background="#F8F9FA" Padding="15" Margin="0,15,0,10" CornerRadius="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Action Buttons -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button Content="➕ Thêm mới" Style="{StaticResource ActionButtonStyle}"
+                           Background="#27AE60" Command="{Binding AddCommand}"/>
+                    <Button Content="✏️ Sửa" Style="{StaticResource ActionButtonStyle}"
+                           Command="{Binding EditCommand}"/>
+                    <Button Content="🗑️ Xóa" Style="{StaticResource ActionButtonStyle}"
+                           Background="#E74C3C" Command="{Binding DeleteCommand}"/>
+                    <Button Content="🔄 Làm mới" Style="{StaticResource ActionButtonStyle}"
+                           Background="#95A5A6" Command="{Binding RefreshCommand}"/>
+                    <Button Content="📊 Xuất Excel" Style="{StaticResource ActionButtonStyle}"
+                           Background="#9B59B6" Command="{Binding ExportCommand}"/>
+                </StackPanel>
+
+                <!-- Search Section -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <TextBox x:Name="txtSearch" Width="250" Style="{StaticResource SearchTextBoxStyle}"
+                            Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                            PlaceholderText="Tìm kiếm theo mã, tên vật tư..."/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Data Grid -->
+        <DataGrid Grid.Row="2" 
+                 ItemsSource="{Binding Materials}"
+                 SelectedItem="{Binding SelectedMaterial}"
+                 AutoGenerateColumns="False" 
+                 CanUserAddRows="False" 
+                 IsReadOnly="True"
+                 SelectionMode="Single"
+                 SelectionUnit="FullRow"
+                 Background="White" 
+                 BorderBrush="#DEE2E6" 
+                 BorderThickness="1"
+                 RowBackground="White"
+                 AlternatingRowBackground="#F8F9FA">
+
+            <DataGrid.Columns>
+                <!-- Material Code -->
+                <DataGridTextColumn Header="Mã vật tư" Binding="{Binding MaterialCode}" 
+                                   Width="100" FontWeight="SemiBold"/>
+
+                <!-- Material Name -->
+                <DataGridTextColumn Header="Tên vật tư" Binding="{Binding MaterialName}" 
+                                   Width="200"/>
+
+                <!-- Unit -->
+                <DataGridTextColumn Header="Đơn vị" Binding="{Binding UnitName}" 
+                                   Width="80"/>
+
+                <!-- Material Group -->
+                <DataGridTextColumn Header="Nhóm" Binding="{Binding MaterialGroup}" 
+                                   Width="120"/>
+
+                <!-- Current Stock -->
+                <DataGridTextColumn Header="Tồn kho" Binding="{Binding CurrentStock, StringFormat=N0}" 
+                                   Width="80">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding StockStatus}" Value="LOW">
+                                    <Setter Property="Foreground" Value="#E74C3C"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StockStatus}" Value="HIGH">
+                                    <Setter Property="Foreground" Value="#F39C12"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Cost Price -->
+                <DataGridTextColumn Header="Giá vốn" Binding="{Binding CostPrice, StringFormat=N0}" 
+                                   Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Selling Price -->
+                <DataGridTextColumn Header="Giá bán" Binding="{Binding SellingPrice, StringFormat=N0}" 
+                                   Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <!-- Status -->
+                <DataGridTemplateColumn Header="Trạng thái" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding StockStatus, Converter={StaticResource StatusToColorConverter}}" 
+                                    CornerRadius="10" Padding="5,2" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding StockStatus}" 
+                                          Foreground="White" FontSize="10" 
+                                          FontWeight="Bold" HorizontalAlignment="Center"
+                                          TextTransform="UpperCase"/>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Active -->
+                <DataGridCheckBoxColumn Header="Hoạt động" Binding="{Binding IsActive}" 
+                                       Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

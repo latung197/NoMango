@@ -3,28 +3,116 @@
   "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\CoreMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|d:\\project\\nomango\\truct\\coremvc\\core\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|solutionrelative:core\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A3CF6206-8A51-485C-83E7-427119DB4748}|Core.Domain\\Core.Domain.csproj|d:\\project\\nomango\\truct\\coremvc\\core.domain\\core.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A3CF6206-8A51-485C-83E7-427119DB4748}|Core.Domain\\Core.Domain.csproj|solutionrelative:core.domain\\core.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\services\\mstlanguageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\services\\mstlanguageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11370E12-F7A3-476F-B428-0A83D33FBD61}|Core.Infrastructure\\Core.Infrastructure.csproj|d:\\project\\nomango\\truct\\coremvc\\core.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11370E12-F7A3-476F-B428-0A83D33FBD61}|Core.Infrastructure\\Core.Infrastructure.csproj|solutionrelative:core.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3CF6206-8A51-485C-83E7-427119DB4748}|Core.Domain\\Core.Domain.csproj|d:\\project\\nomango\\truct\\coremvc\\core.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3CF6206-8A51-485C-83E7-427119DB4748}|Core.Domain\\Core.Domain.csproj|solutionrelative:core.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{278945FB-0BB5-4FD4-8E22-0217986CB788}|Core.Application\\Core.Application.csproj|d:\\project\\nomango\\truct\\coremvc\\core.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{278945FB-0BB5-4FD4-8E22-0217986CB788}|Core.Application\\Core.Application.csproj|solutionrelative:core.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|d:\\project\\nomango\\truct\\coremvc\\core\\controller\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|solutionrelative:core\\controller\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|d:\\project\\nomango\\truct\\coremvc\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9863EF03-BE83-4B3A-B840-4C532D663197}|Core\\Core.csproj|solutionrelative:core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\home\\air.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\home\\air.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\coremvc.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\coremvc.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\commons\\lips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\commons\\lips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\category\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\category\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\respository\\mstlanguagerespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,32 +123,32 @@
       "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\custombaseviewpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\models\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\models\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\coredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\coredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\models\\mstlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\models\\mstlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\respository\\mstconfigurationrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\respository\\mstconfigurationrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\baserepositorydictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\baserepositorydictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\da\\coredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\da\\coredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\interfaces\\imstconfigurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\interfaces\\imstconfigurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\realtimehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\realtimehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\services\\mstunitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\services\\mstunitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\services\\mstconfigurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\services\\mstconfigurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|d:\\project\\nomango\\truct\\coremvc\\coremvc\\bl\\services\\mstlanguageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A692AC-439D-4786-9F35-6BB2D99BBCD7}|CoreMVC\\CoreMVC.csproj|solutionrelative:coremvc\\bl\\services\\mstlanguageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,103 +158,288 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Core.Domain",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Domain\\Core.Domain.csproj",
+              "RelativeDocumentMoniker": "Core.Domain\\Core.Domain.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Domain\\Core.Domain.csproj",
+              "RelativeToolTip": "Core.Domain\\Core.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-28T11:01:07.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\appsettings.json",
+              "RelativeDocumentMoniker": "Core\\appsettings.json",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\appsettings.json",
+              "RelativeToolTip": "Core\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-28T11:02:07.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "Core.Infrastructure\\Class1.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Infrastructure\\Class1.cs",
+              "RelativeToolTip": "Core.Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T10:49:31.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "Core.Domain\\Class1.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Domain\\Class1.cs",
+              "RelativeToolTip": "Core.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T10:49:13.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "Core.Application\\Class1.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core.Application\\Class1.cs",
+              "RelativeToolTip": "Core.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T10:48:47.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\Controller\\HomeController.cs",
+              "RelativeDocumentMoniker": "Core\\Controller\\HomeController.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\Controller\\HomeController.cs",
+              "RelativeToolTip": "Core\\Controller\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T10:46:46.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Core",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\Core.csproj",
+              "RelativeDocumentMoniker": "Core\\Core.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\Core\\Core.csproj",
+              "RelativeToolTip": "Core\\Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-28T10:45:43.897Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MstLanguageService.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstLanguageService.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\BL\\Services\\MstLanguageService.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstLanguageService.cs",
-              "RelativeToolTip": "CoreMVC\\BL\\Services\\MstLanguageService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:43:13.75Z",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-27T15:26:40.937Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "CoreMVC\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T15:26:21.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CoreMVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBoAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-24T09:36:28.943Z"
+              "WhenOpened": "2025-09-27T09:53:39.474Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MstLanguageRespository.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
-              "RelativeToolTip": "CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBgAAAApAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CoreMVC\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:32:10.099Z"
+              "WhenOpened": "2025-09-27T09:52:31.991Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CustomBaseViewPage.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\CustomBaseViewPage.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\DA\\CustomBaseViewPage.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\CustomBaseViewPage.cs",
-              "RelativeToolTip": "CoreMVC\\DA\\CustomBaseViewPage.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAAARAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "CoreMVC\\ScaffoldingReadMe.txt",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "CoreMVC\\ScaffoldingReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-27T09:47:52.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Lips.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Commons\\Lips.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\BL\\Commons\\Lips.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Commons\\Lips.cs",
+              "RelativeToolTip": "CoreMVC\\BL\\Commons\\Lips.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:19:19.755Z"
+              "WhenOpened": "2025-09-26T16:30:31.276Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 15,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "CoreMVC\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "CoreMVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwDEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-24T09:19:52.162Z",
+              "WhenOpened": "2025-09-26T16:26:38.16Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 23,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Error.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Category\\Error.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Error.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Category\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-26T16:25:14.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Category\\Index.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Index.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Category\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-26T16:20:54.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "CoreMVC\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T16:20:13.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Program.cs",
               "RelativeDocumentMoniker": "CoreMVC\\Program.cs",
               "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Program.cs",
               "RelativeToolTip": "CoreMVC\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBoAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAIBJwEAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:31:24.322Z",
+              "WhenOpened": "2025-09-26T15:52:57.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\appsettings.json",
-              "RelativeDocumentMoniker": "CoreMVC\\appsettings.json",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\appsettings.json",
-              "RelativeToolTip": "CoreMVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-27T15:18:13.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CoreMVC\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T16:06:32.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "CoreMVC\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Properties\\launchSettings.json",
+              "RelativeToolTip": "CoreMVC\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-24T09:37:30.18Z",
+              "WhenOpened": "2025-09-26T15:54:48.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "CoreMVC\\Views\\_ViewStart.cshtml",
@@ -174,47 +447,89 @@
               "RelativeToolTip": "CoreMVC\\Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-24T09:36:43.163Z"
+              "WhenOpened": "2025-09-26T16:23:24.157Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Models\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\Models\\BaseEntity.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Models\\BaseEntity.cs",
-              "RelativeToolTip": "CoreMVC\\Models\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:50:55.546Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MstLanguage.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Models\\MstLanguage.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\Models\\MstLanguage.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Models\\MstLanguage.cs",
-              "RelativeToolTip": "CoreMVC\\Models\\MstLanguage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:43:19.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "CoreMVC\\Views\\_ViewImports.cshtml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "CoreMVC\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "Air.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Air.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Home\\Air.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Air.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Home\\Air.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-24T09:36:46.124Z"
+              "WhenOpened": "2025-09-27T05:40:30.14Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
+              "Title": "CoreMVC",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\CoreMVC.csproj",
+              "RelativeDocumentMoniker": "CoreMVC\\CoreMVC.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\CoreMVC.csproj",
+              "RelativeToolTip": "CoreMVC\\CoreMVC.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-27T05:33:25.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-30T08:58:38.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Details.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Category\\Details.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Category\\Details.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Category\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-26T16:21:43.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MstLanguageRespository.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
+              "RelativeToolTip": "CoreMVC\\DA\\Respository\\MstLanguageRespository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwCYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:59:50.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CustomBaseViewPage.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\CustomBaseViewPage.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\DA\\CustomBaseViewPage.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\CustomBaseViewPage.cs",
+              "RelativeToolTip": "CoreMVC\\DA\\CustomBaseViewPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:59:43.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "CoreDbContext.cs",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\CoreDbContext.cs",
               "RelativeDocumentMoniker": "CoreMVC\\DA\\CoreDbContext.cs",
@@ -222,11 +537,38 @@
               "RelativeToolTip": "CoreMVC\\DA\\CoreDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:32:01.446Z"
+              "WhenOpened": "2025-08-30T08:59:42.122Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 26,
+              "Title": "BaseRepository.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\BaseRepository.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\DA\\BaseRepository.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\BaseRepository.cs",
+              "RelativeToolTip": "CoreMVC\\DA\\BaseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:59:40.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "CoreMVC\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "CoreMVC\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-26T16:15:39.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "BaseRepositoryDictionary.cs",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\BaseRepositoryDictionary.cs",
               "RelativeDocumentMoniker": "CoreMVC\\DA\\BaseRepositoryDictionary.cs",
@@ -234,31 +576,73 @@
               "RelativeToolTip": "CoreMVC\\DA\\BaseRepositoryDictionary.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:19:38.129Z"
+              "WhenOpened": "2025-08-30T08:59:25.58Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BaseRepository.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\BaseRepository.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\DA\\BaseRepository.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\BaseRepository.cs",
-              "RelativeToolTip": "CoreMVC\\DA\\BaseRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 31,
+              "Title": "MstConfigurationRespository.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstConfigurationRespository.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\DA\\Respository\\MstConfigurationRespository.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\DA\\Respository\\MstConfigurationRespository.cs",
+              "RelativeToolTip": "CoreMVC\\DA\\Respository\\MstConfigurationRespository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:19:16.751Z"
+              "WhenOpened": "2025-08-30T08:59:08.403Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "RealTimeHub.cs",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\RealTimeHub.cs",
-              "RelativeDocumentMoniker": "CoreMVC\\BL\\RealTimeHub.cs",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\RealTimeHub.cs",
-              "RelativeToolTip": "CoreMVC\\BL\\RealTimeHub.cs",
+              "DocumentIndex": 33,
+              "Title": "IMstConfigurationService.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Interfaces\\IMstConfigurationService.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\BL\\Interfaces\\IMstConfigurationService.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Interfaces\\IMstConfigurationService.cs",
+              "RelativeToolTip": "CoreMVC\\BL\\Interfaces\\IMstConfigurationService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:58:49.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "MstUnitService.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstUnitService.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\BL\\Services\\MstUnitService.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstUnitService.cs",
+              "RelativeToolTip": "CoreMVC\\BL\\Services\\MstUnitService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T09:14:43.309Z"
+              "WhenOpened": "2025-08-30T08:58:44.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "MstConfigurationService.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstConfigurationService.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\BL\\Services\\MstConfigurationService.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstConfigurationService.cs",
+              "RelativeToolTip": "CoreMVC\\BL\\Services\\MstConfigurationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:58:41.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "MstLanguageService.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstLanguageService.cs",
+              "RelativeDocumentMoniker": "CoreMVC\\BL\\Services\\MstLanguageService.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\CoreMVC\\CoreMVC\\BL\\Services\\MstLanguageService.cs",
+              "RelativeToolTip": "CoreMVC\\BL\\Services\\MstLanguageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T08:58:40.389Z",
+              "EditorCaption": ""
             }
           ]
         }

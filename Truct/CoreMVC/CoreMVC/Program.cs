@@ -3,11 +3,14 @@ using CoreMVC.BL.Services;
 using CoreMVC.DA;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using Microsoft.Extensions.Options;
 using System;
 using System.Globalization;
+using System.Net.WebSockets;
 
 var builder = WebApplication.CreateBuilder(args);
+var builderBlazor = builder.Services.AddRazorPages(); 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -36,10 +39,23 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+else
+{
+   builderBlazor.AddRazorRuntimeCompilation();
+}
 
 // Add services
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+
+var timeOutCacheStaticFile = 60*60;
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = cg =>
+    {
+        cg.Context.Response.Headers.Append("Cache-Control", $"public, max-age={timeOutCacheStaticFile}");
+    }
+});
 
 var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 app.UseRequestLocalization(localizationOptions);
@@ -47,6 +63,9 @@ app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
 
 app.UseAuthorization();
+app.MapControllerRoute(
+name: "Admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
