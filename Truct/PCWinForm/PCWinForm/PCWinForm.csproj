@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BaseForm\" />
+    <Folder Include="Menu\Warehouse\MasterData\Dmdvt\" />
+    <Folder Include="Menu\Warehouse\MasterData\Dmkho\" />
+    <Folder Include="Menu\Warehouse\MasterData\Dmncc\" />
+    <Folder Include="Menu\Warehouse\MasterData\Dmvitri\" />
+    <Folder Include="GlobalValue\" />
+    <Folder Include="HelpForm\" />
+    <Folder Include="UserControl\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+</Project>
