@@ -9,19 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{0E5865
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worker.Application", "Worker.Application\Worker.Application.csproj", "{CE8964F4-A6AE-4742-B86C-75B590F8E5D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{7ADE0040-C61B-417B-B649-B8C4903C0BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{7ADE0040-C61B-417B-B649-B8C4903C0BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Application", "Core.Application\Core.Application.csproj", "{DF4F7C09-3AB1-4485-86E4-ABFBEC83EE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Application", "Core.Application\Core.Application.csproj", "{DF4F7C09-3AB1-4485-86E4-ABFBEC83EE6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain", "Core.Domain\Core.Domain.csproj", "{722C6CAC-38BE-42BE-885F-6B7CE5AF7DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain", "Core.Domain\Core.Domain.csproj", "{722C6CAC-38BE-42BE-885F-6B7CE5AF7DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Infrastructure", "Core.Infrastructure\Core.Infrastructure.csproj", "{8581455C-1993-4156-945E-1AC06EFC8B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Infrastructure", "Core.Infrastructure\Core.Infrastructure.csproj", "{8581455C-1993-4156-945E-1AC06EFC8B44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Utils", "Core.Utils\Core.Utils.csproj", "{D3E56589-DC4A-4317-95D1-C351184185C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Utils", "Core.Utils\Core.Utils.csproj", "{D3E56589-DC4A-4317-95D1-C351184185C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.WorkerService", "Core.WorkerService\Core.WorkerService.csproj", "{F721DF43-FAD0-4536-87F2-A795F0403648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.WorkerService", "Core.WorkerService\Core.WorkerService.csproj", "{F721DF43-FAD0-4536-87F2-A795F0403648}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{F5F485B2-413D-4C37-83DF-E29AC23D8CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCMain", "PCMain\PCMain.csproj", "{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{F721DF43-FAD0-4536-87F2-A795F0403648}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F721DF43-FAD0-4536-87F2-A795F0403648}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F721DF43-FAD0-4536-87F2-A795F0403648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{722C6CAC-38BE-42BE-885F-6B7CE5AF7DC5} = {0E5865AD-1E0B-4DFE-BF4E-737A2343C03E}
 		{8581455C-1993-4156-945E-1AC06EFC8B44} = {0E5865AD-1E0B-4DFE-BF4E-737A2343C03E}
 		{F721DF43-FAD0-4536-87F2-A795F0403648} = {9CF5ADD1-AC37-49CA-B45B-16BCE057D124}
+		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1} = {F5F485B2-413D-4C37-83DF-E29AC23D8CFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1EF31CA9-23B3-46AB-9BC5-C9A90EFEB9BB}

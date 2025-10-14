@@ -1,34 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\Icon1.ico</ApplicationIcon>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Images\1_emax_logo.png" />
     <None Remove="Images\about_16x16.png" />
     <None Remove="Images\actions_addcircled.svg" />
     <None Remove="Images\Login.PNG" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="Images\Icon1.ico" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="Images\1_emax_logo.png" />
     <Resource Include="Images\about_16x16.png" />
     <Resource Include="Images\actions_addcircled.svg" />
     <Resource Include="Images\Login.PNG" />
   </ItemGroup>
-
 </Project>
