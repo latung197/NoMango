@@ -1,5 +1,5 @@
 ﻿
-namespace Worker.Application.Enum
+namespace PCMain.BaseHttp.Interface
 {
     public enum HttpClientMethod
     {

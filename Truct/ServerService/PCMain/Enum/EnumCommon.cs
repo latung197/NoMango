@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Worker.Application.Enum
+namespace PCMain.BaseHttp.Interface
 {
     public static class EnumCommon
     {

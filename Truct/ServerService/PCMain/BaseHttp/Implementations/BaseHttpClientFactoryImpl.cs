@@ -1,8 +1,7 @@
-﻿
-using Worker.Application.BaseHttp.Interface;
-using Microsoft.Extensions.DependencyInjection;
+﻿using PCMain.BaseHttp.Interface;
+using Worker.Application.Constants;
 
-namespace Worker.Application.BaseHttp.Implementations
+namespace PCMain.BaseHttp.Interface
 {
     public class BaseHttpClientFactoryImpl : IBaseHttpClientFactory
     {

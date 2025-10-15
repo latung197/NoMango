@@ -1,13 +1,15 @@
 ﻿
-using Worker.Application.BaseHttp.Interface;
 using Worker.Application.Enum;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net;
 using System.Text;
+using Worker.Application.Constants;
+using PCMain.BaseHttp.Interface;
+using System.Net.Http;
 
-namespace Worker.Application.BaseHttp.Implementations
+namespace PCMain.BaseHttp.Interface
 {
     public class BaseHttpClientImpl : IBaseHttpClient
     {
