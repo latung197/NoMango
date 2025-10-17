@@ -33,7 +33,7 @@ switch (DbType)
         builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));
         break;
     case "2"://Postgre
-        builder.Services.AddDbContext<CoreContext>(o => o.UseNpgsql(Environment.GetEnvironmentVariable("CoreContext")));
+        builder.Services.AddDbContext<CoreContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("CoreContext")));
         break;
     default://MSSQL
         builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));

@@ -62,7 +62,7 @@ namespace Core.Infrastructure.Context
                     optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer(Environment.GetEnvironmentVariable("CoreContext"));
                     break;
                 case "2"://Postgre
-                    optionsBuilder.UseLoggerFactory(loggerFactory).UseNpgsql(Environment.GetEnvironmentVariable("CoreContext"));
+                    optionsBuilder.UseLoggerFactory(loggerFactory).UseNpgsql(_configuration.GetConnectionString("CoreContext"));
                     break;
                 default://MSSQL
                     optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer(Environment.GetEnvironmentVariable("CoreContext"));

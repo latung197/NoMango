@@ -32,7 +32,9 @@ namespace Core.Domain.Entity
         public string employee_code { get; set; }
         public DateTime? add_dt { get; set; }
         public DateTime? upd_dt { get; set; }
+        [Column("gender")]
         public bool Gender { get; set; }
+        [Column("validflg")]
         public int ValidFlg { get; set; } = 1;
     }
 }

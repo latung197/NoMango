@@ -51,6 +51,7 @@ namespace Core.Application.Services
         #region Search
         public async Task<GenericResponseResult<AuthorizedUser>> SearchUser(MstUserSearchImpl condition, bool blnExport = false)
         {
+           
             var iqResult = from u in _repo.MstUser.GetAll().AsNoTracking()
                            where (string.IsNullOrEmpty(condition.Username) || u.user_name.ToLower().Contains(condition.Username.ToLower()))
                            && (string.IsNullOrEmpty(condition.Email) || u.email.ToLower().Contains(condition.Email.ToLower()))

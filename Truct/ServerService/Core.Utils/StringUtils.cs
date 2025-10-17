@@ -73,7 +73,7 @@ namespace Core.Utils
 
             if (string.IsNullOrEmpty(pwd))
             {
-                pwd = "https://robotcom-fa.com";
+                pwd = "https://Emax.com";
             }
 
             const int blockSize = 128;
@@ -115,7 +115,7 @@ namespace Core.Utils
 
                 if (string.IsNullOrEmpty(pwd))
                 {
-                    pwd = "https://robotcom-fa.com";
+                    pwd = "https://Emax.com";
                 }
 
                 //Decrypt

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Application.CustomModels.Dtos
 {
@@ -22,10 +23,11 @@ namespace Core.Application.CustomModels.Dtos
         public string full_name { get; set; }
         [Required]
         public string employee_code { get; set; }
-        [MaxLength(20)]
         public DateTime? add_dt { get; set; }
         public DateTime? upd_dt { get; set; }
+        [Column("gender")]
         public bool Gender { get; set; }
+        [Column("validflg")]
         public int ValidFlg { get; set; } = 1;
         public List<int> Role { get; set; }
 
