@@ -2,9 +2,10 @@
 {
     public interface IAuditable
     {
-        string? CreateTime { get; set; }
+        DateTime? CreateTime { get; set; }
         string? CreateId { get; set; }
-        string? UpdateTime { get; set; }
+        DateTime? UpdateTime { get; set; }
         string? UpdateId { get; set; }
+        String? Status { get; set; }
     }
 }

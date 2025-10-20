@@ -2,7 +2,7 @@
 
 namespace Core.Application.CustomModels.SearchConditions
 {
-    public class MstUserSearchImpl //: PaggingImpl
+    public class SysUserSearchImpl //: PaggingImpl
     {
         public string Username { get; set; } = string.Empty;
         public int Role { get; set; }

@@ -10,7 +10,6 @@
     <Folder Include="Entity\INEntities\Lists\" />
     <Folder Include="Entity\INEntities\Vouchers\" />
     <Folder Include="Entity\INEntities\Reports\" />
-    <Folder Include="Entity\SystemEntities\" />
     <Folder Include="Entity\OptionsEntities\" />
   </ItemGroup>
 

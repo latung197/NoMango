@@ -18,13 +18,13 @@ namespace Core.Infrastructure.Repositories
 
         #region Properties
 
-        private IMstUserRepository _mstUserRepository;
-        public IMstUserRepository MstUser
+        private ISysUserRepository _mstUserRepository;
+        public ISysUserRepository SysUser
         {
             get
             {
                 if (_mstUserRepository is null)
-                    _mstUserRepository = new MstUserRepositoryImpl(_repoContext);
+                    _mstUserRepository = new SysUserRepositoryImpl(_repoContext);
                 return _mstUserRepository;
             }
         }

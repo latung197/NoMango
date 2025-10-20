@@ -4,7 +4,7 @@ namespace Core.Domain.Interface
     public interface IBaseRepositoryWrapper
     {
         #region Properties
-        IMstUserRepository MstUser { get; }
+        ISysUserRepository SysUser { get; }
         IExportListPlanRepository ExportListPlan { get; }
         IExportHistoryListRepository ExportHistoryList { get; }
         IMstDataRepository MstData { get; }

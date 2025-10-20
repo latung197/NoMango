@@ -20,7 +20,7 @@ namespace Core.Application.Wrapper
             services.AddSingleton<IBaseHttpClientFactory, BaseHttpClientFactoryImpl>();
             services.AddScoped<IBaseRepositoryWrapper, BaseRepositoryWrapperImpl>();
             services.AddScoped<IUserPrincipalService, UserPrincipalService>();
-            services.AddScoped<IMstUserService, MstUserServiceImpl>();
+            services.AddScoped<ISysUserService, SysUserServiceImpl>();
             services.AddScoped<IExportPlanService, ExportPlanServiceImpl>();
             services.AddScoped<IMstDataService, MstDataServiceImpl>();
             services.AddScoped<IEcuDataService, EcuDataServiceImpl>();

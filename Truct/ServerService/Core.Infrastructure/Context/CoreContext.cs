@@ -7,6 +7,7 @@ using Core.Domain;
 using Core.Utils;
 using System.Reflection;
 using Core.Infrastructure.ContextAccessors;
+using Core.Domain.Entity.SystemEntities;
 
 namespace Core.Infrastructure.Context
 {
@@ -110,7 +111,7 @@ namespace Core.Infrastructure.Context
                             if (_userPrincipalService.IsAuthenticated)
                                 entity.CreateId = _userPrincipalService.UserId.ToString();
 
-                            entity.CreateTime = DateTime.Now.ToString("yyyyMMddHHmm");
+                            entity.CreateTime = DateTime.Now;
                         }
                         else
                         {
@@ -118,7 +119,7 @@ namespace Core.Infrastructure.Context
                             if (_userPrincipalService.IsAuthenticated)
                                 entity.UpdateId = _userPrincipalService.UserId.ToString();
 
-                            entity.UpdateTime = DateTime.Now.ToString("yyyyMMddHHmm");
+                            entity.UpdateTime = DateTime.Now;
                         }
                     }
                 }
@@ -131,7 +132,7 @@ namespace Core.Infrastructure.Context
         }
         #endregion
         #region Declare entity here
-        public DbSet<MstUser> MstUser { get; set; }
+        public DbSet<SysUser> SysUser { get; set; }
         public DbSet<ExportListPlan> ExportListPlan { get; set; }
         public DbSet<ExportHistoryList> ExportHistoryList { get; set; }
         public DbSet<MstData> MstData { get; set; }

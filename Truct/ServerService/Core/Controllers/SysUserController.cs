@@ -9,14 +9,14 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
-    public class UserController : BaseController
+    //[Authorize]
+    public class SysUserController : BaseController
     {
         #region Properties
-        private readonly IMstUserService _service;
+        private readonly ISysUserService _service;
         #endregion
         #region Constructor
-        public UserController(IMstUserService service)
+        public SysUserController(ISysUserService service)
         {
             _service = service;
         }
@@ -24,7 +24,7 @@ namespace Core.Controllers
         #endregion
         #region Search
         [HttpPost("search-user")]
-        public async Task<IActionResult> SearchUser(MstUserSearchImpl condition)
+        public async Task<IActionResult> SearchUser(SysUserSearchImpl condition)
         {
             var result = await _service.SearchUser(condition);
             return new ObjectResult(result);
@@ -38,13 +38,13 @@ namespace Core.Controllers
         #endregion
         #region CRUD
         [HttpPost("insert-user")]
-        public async Task<IActionResult> InsertUser(MstUserDto dto)
+        public async Task<IActionResult> InsertUser(SysUserDto dto)
         {
             var result = await _service.InsertUser(dto);
             return new ObjectResult(result);
         }
         [HttpPost("update-user")]
-        public async Task<IActionResult> UpdateUser(MstUserDto dto)
+        public async Task<IActionResult> UpdateUser(SysUserDto dto)
         {
             var result = await _service.UpdateUser(dto);
             return new ObjectResult(result);

@@ -2,6 +2,7 @@
 using Core.Application.CustomModels.Others;
 using Core.Domain.Entity;
 using AutoMapper;
+using Core.Domain.Entity.SystemEntities;
 
 namespace Core.Application.AutoMapper
 {
@@ -9,8 +10,8 @@ namespace Core.Application.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<MstUser, MstUserDto>();
-            CreateMap<MstUserDto, MstUser>();
+            CreateMap<SysUser, SysUserDto>();
+            CreateMap<SysUserDto, SysUser>();
             CreateMap<ExportListPlan, ExportListPlanDto>();
             CreateMap<ExportListPlan, ExportListPlanImportDto>();
             CreateMap<ExportListPlanDto, ExportListPlan>();

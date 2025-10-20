@@ -1,9 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Core.Application.CustomModels.Dtos
+namespace Core.Application.CustomModels.Dtos.SystemDtos
 {
-    public class MstUserDto
+    public class SysUserDto
     {
         [Required]
         public int user_id { get; set; }
@@ -23,13 +28,10 @@ namespace Core.Application.CustomModels.Dtos
         public string full_name { get; set; }
         [Required]
         public string employee_code { get; set; }
-        public DateTime? add_dt { get; set; }
-        public DateTime? upd_dt { get; set; }
         [Column("gender")]
         public bool Gender { get; set; }
         [Column("validflg")]
         public int ValidFlg { get; set; } = 1;
         public List<int> Role { get; set; }
-
     }
 }

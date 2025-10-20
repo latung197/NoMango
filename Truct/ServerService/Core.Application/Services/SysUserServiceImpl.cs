@@ -18,10 +18,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Core.Domain.Entity.SystemEntities;
 
 namespace Core.Application.Services
 {
-    public class MstUserServiceImpl : IMstUserService
+    public class SysUserServiceImpl : ISysUserService
     {
         #region Properties
         //Repo
@@ -35,7 +36,7 @@ namespace Core.Application.Services
         private readonly IUserPrincipalService _userPrincipalService;
         #endregion
         #region Constructor
-        public MstUserServiceImpl(IBaseRepositoryWrapper repo
+        public SysUserServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
             , IMapper mapper
             , ILoggerManager logger
@@ -49,18 +50,18 @@ namespace Core.Application.Services
         }
         #endregion
         #region Search
-        public async Task<GenericResponseResult<AuthorizedUser>> SearchUser(MstUserSearchImpl condition, bool blnExport = false)
+        public async Task<GenericResponseResult<AuthorizedUser>> SearchUser(SysUserSearchImpl condition, bool blnExport = false)
         {
            
-            var iqResult = from u in _repo.MstUser.GetAll().AsNoTracking()
-                           where (string.IsNullOrEmpty(condition.Username) || u.user_name.ToLower().Contains(condition.Username.ToLower()))
-                           && (string.IsNullOrEmpty(condition.Email) || u.email.ToLower().Contains(condition.Email.ToLower()))
-                           && (string.IsNullOrEmpty(condition.Fullname) || u.full_name.ToLower().Contains(condition.Fullname.ToLower()))
-                           && (condition.Enable == u.enable_fl)
-                           && (condition.Role == -1 || u.auth_fl.Contains(condition.Role.ToString()))
+            var iqResult = from u in _repo.SysUser.GetAll().AsNoTracking()
+                           where (string.IsNullOrEmpty(condition.Username) || u.UserName.ToLower().Contains(condition.Username.ToLower()))
+                           && (string.IsNullOrEmpty(condition.Email) || u.Email.ToLower().Contains(condition.Email.ToLower()))
+                           && (string.IsNullOrEmpty(condition.Fullname) || u.FullName.ToLower().Contains(condition.Fullname.ToLower()))
+                           && (condition.Enable == u.EnableFl)
+                           && (condition.Role == -1 || u.AuthFl.Contains(condition.Role.ToString()))
                            && u.ValidFlg == (int)EnumCommon.Status.Valid
-                           orderby u.user_id descending, (u.UpdateTime ?? u.CreateTime) descending
-                           select _mapper.Map<MstUserDto>(u);
+                           orderby u.UserId descending, (u.UpdateTime ?? u.CreateTime) descending
+                           select _mapper.Map<SysUserDto>(u);
 
             int total = await iqResult.CountAsync();
 
@@ -73,13 +74,13 @@ namespace Core.Application.Services
             var lstResult = new List<AuthorizedUser>();
             foreach (var item in lstData){
                 var author = new AuthorizedUser();
-                author.UserId = item.user_id;
-                author.Username = item.user_name;
-                author.Fullname = item.full_name;
-                author.Employeecode = item.employee_code;
-                author.Email = item.email;
+                author.UserId = item.UserId;
+                author.Username = item.UserName;
+                author.Fullname = item.FullName;
+                author.Employeecode = item.EmployeeCode;
+                author.Email = item.Email;
                 author.Token = string.Empty;
-                author.Role = string.IsNullOrEmpty(item.auth_fl) ? new List<int>() : item.auth_fl.Split(",").Select(x => int.Parse(x)).ToList();
+                author.Role = string.IsNullOrEmpty(item.AuthFl) ? new List<int>() : item.AuthFl.Split(",").Select(x => int.Parse(x)).ToList();
                 lstResult.Add(author);
             }
             return new GenericResponseResult<AuthorizedUser>(lstResult);
@@ -89,17 +90,17 @@ namespace Core.Application.Services
             //Chỉ admin mới có quyền
             //if (!_userPrincipalService.Roles.Contains((int)EnumRole.Role.Admin)) return new ServiceResultError("Bạn không có quyền thực hiện thao tác này!");
 
-            var entity = await _repo.MstUser.GetAsync(id);
+            var entity = await _repo.SysUser.GetAsync(id);
             if (entity is null) return new ServiceResultError("Nhân viên không tồn tại");
             if (entity.ValidFlg != (int)EnumCommon.Status.Valid) return new ServiceResultError("Nhân viên không hợp lệ!");
-            var dto = _mapper.Map<MstUserDto>(entity);
+            var dto = _mapper.Map<SysUserDto>(entity);
 
-            if (string.IsNullOrEmpty(dto.auth_fl))
-                dto.Role = new List<int>();
-            else
-                dto.Role = dto.auth_fl.Split(",").Select(x => int.Parse(x)).ToList();
-            //Admin need original password
-            dto.password = StringUtils.Decrypt(entity.password);
+            //if (string.IsNullOrEmpty(dto.auth_fl))
+            //    dto.UserRoles = new List<int>();
+            //else
+            //    dto.Role = dto.auth_fl.Split(",").Select(x => int.Parse(x)).ToList();
+            ////Admin need original password
+            //dto.password = StringUtils.Decrypt(entity.password);
             return new ServiceResultSuccess("Lấy dữ liệu thành công!", dto);
         }
         #endregion
@@ -111,70 +112,70 @@ namespace Core.Application.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<ServiceResult> InsertUser(MstUserDto dto)
+        public async Task<ServiceResult> InsertUser(SysUserDto dto)
         {
             var lstErr = new List<object>();
             try
             {
-                if (string.IsNullOrEmpty(dto.user_name) || string.IsNullOrEmpty(dto.user_name.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không được để trống!", });
+                if (string.IsNullOrEmpty(dto.UserName) || string.IsNullOrEmpty(dto.UserName.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không được để trống!", });
 
-                if (string.IsNullOrEmpty(dto.full_name) || string.IsNullOrEmpty(dto.full_name.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên nhân viên không được để trống!", });
+                if (string.IsNullOrEmpty(dto.FullName) || string.IsNullOrEmpty(dto.FullName.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên nhân viên không được để trống!", });
 
-                if (string.IsNullOrEmpty(dto.employee_code) || string.IsNullOrEmpty(dto.employee_code.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.employee_code), message = "Mã nhân viên không được để trống!", });
+                if (string.IsNullOrEmpty(dto.EmployeeCode) || string.IsNullOrEmpty(dto.EmployeeCode.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.EmployeeCode), message = "Mã nhân viên không được để trống!", });
 
-                if (!string.IsNullOrEmpty(dto.email))
+                if (!string.IsNullOrEmpty(dto.Email))
                 {
-                    if (!StringUtils.IsValidEmail(dto.email))
-                        lstErr.Add(new { field = nameof(MstUserDto.email), message = "Email không đúng định dạng!", });
+                    if (!StringUtils.IsValidEmail(dto.Email))
+                        lstErr.Add(new { field = nameof(SysUserDto.Email), message = "Email không đúng định dạng!", });
 
-                    var emailExist = await _repo.MstUser.AnyAsync(x => x.email.ToLower().Equals(dto.email.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                    var emailExist = await _repo.SysUser.AnyAsync(x => x.Email.ToLower().Equals(dto.Email.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                     if (emailExist)
-                        lstErr.Add(new { field = nameof(MstUserDto.email), message = "Email đã tồn tại!", });
+                        lstErr.Add(new { field = nameof(SysUserDto.Email), message = "Email đã tồn tại!", });
                 }
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                var userExist = await _repo.MstUser.AnyAsync(x => x.user_name.ToLower().Equals(dto.user_name.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                var userExist = await _repo.SysUser.AnyAsync(x => x.UserName.ToLower().Equals(dto.UserName.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                 if (userExist)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập đã tồn tại!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập đã tồn tại!", });
 
-                var employeeCodeExist = await _repo.MstUser.AnyAsync(x => x.employee_code.ToLower().Equals(dto.employee_code.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                var employeeCodeExist = await _repo.SysUser.AnyAsync(x => x.EmployeeCode.ToLower().Equals(dto.EmployeeCode.ToLower()) && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                 if (employeeCodeExist)
-                    lstErr.Add(new { field = nameof(MstUserDto.employee_code), message = "Mã nhân viên đã tồn tại!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.EmployeeCode), message = "Mã nhân viên đã tồn tại!", });
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                var entity = _mapper.Map<MstUser>(dto);
-                entity.add_dt = DateTime.Now;
+                var entity = _mapper.Map<SysUser>(dto);
+                entity.UpdateTime = DateTime.Now;
 
                 string pass = _configuration["DefaultPassword"];
 
-                if (!string.IsNullOrEmpty(dto.password))
-                    pass = dto.password;
+                if (!string.IsNullOrEmpty(dto.PasswordHash))
+                    pass = dto.PasswordHash;
 
-                entity.password = StringUtils.Encrypt(pass);
+                entity.PasswordHash = StringUtils.Encrypt(pass);
                 entity.ValidFlg = (int)EnumCommon.Status.Valid;
-                if (dto.Role is null || dto.Role.Count == 0)
-                    entity.auth_fl = string.Empty;
-                else
-                    entity.auth_fl = string.Join(",", dto.Role.Select(x => x.ToString()));
+                //if (dto.Role is null || dto.Role.Count == 0)
+                //    entity.auth_fl = string.Empty;
+                //else
+                //    entity.auth_fl = string.Join(",", dto.Role.Select(x => x.ToString()));
 
-                await _repo.MstUser.InsertAsync(entity);
+                await _repo.SysUser.InsertAsync(entity);
                 await _repo.SaveAync();
 
-                var returnData = new Login { Username = dto.user_name, Password = pass };
+                var returnData = new Login { Username = dto.UserName, Password = pass };
                 return new ServiceResultSuccess($"Thêm nhân viên thành công!", returnData);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex);
-                //lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Lỗi khi thêm user: " + ex.Message });
+                //lstErr.Add(new { field = nameof(MstUserDto.UserName), message = "Lỗi khi thêm user: " + ex.Message });
                 //return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
                 return new ServiceResultError($"Đã có lỗi xảy ra: {ex.Message}");
             }
@@ -186,81 +187,81 @@ namespace Core.Application.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<ServiceResult> UpdateUser(MstUserDto dto)
+        public async Task<ServiceResult> UpdateUser(SysUserDto dto)
         {
             var lstErr = new List<object>();
             try
             {
-                if (string.IsNullOrEmpty(dto.user_name) || string.IsNullOrEmpty(dto.user_name.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không được để trống!", });
+                if (string.IsNullOrEmpty(dto.UserName) || string.IsNullOrEmpty(dto.UserName.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không được để trống!", });
 
-                if (string.IsNullOrEmpty(dto.full_name) || string.IsNullOrEmpty(dto.full_name.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên nhân viên không được để trống!", });
+                if (string.IsNullOrEmpty(dto.FullName) || string.IsNullOrEmpty(dto.FullName.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên nhân viên không được để trống!", });
 
-                if (string.IsNullOrEmpty(dto.employee_code) || string.IsNullOrEmpty(dto.employee_code.Trim()))
-                    lstErr.Add(new { field = nameof(MstUserDto.employee_code), message = "Mã nhân viên không được để trống!", });
+                if (string.IsNullOrEmpty(dto.EmployeeCode) || string.IsNullOrEmpty(dto.EmployeeCode.Trim()))
+                    lstErr.Add(new { field = nameof(SysUserDto.EmployeeCode), message = "Mã nhân viên không được để trống!", });
 
-                if (!string.IsNullOrEmpty(dto.email))
+                if (!string.IsNullOrEmpty(dto.Email))
                 {
-                    if (!StringUtils.IsValidEmail(dto.email))
-                        lstErr.Add(new { field = nameof(MstUserDto.email), message = "Email không đúng định dạng!", });
+                    if (!StringUtils.IsValidEmail(dto.Email))
+                        lstErr.Add(new { field = nameof(SysUserDto.Email), message = "Email không đúng định dạng!", });
 
                     if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                    var emailExist = await _repo.MstUser.AnyAsync(x => x.email.ToLower().Equals(dto.email.ToLower()) && x.user_id != dto.user_id && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                    var emailExist = await _repo.SysUser.AnyAsync(x => x.Email.ToLower().Equals(dto.Email.ToLower()) && x.UserId != dto.UserId && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                     if (emailExist)
-                        lstErr.Add(new { field = nameof(MstUserDto.email), message = "Email đã tồn tại!", });
+                        lstErr.Add(new { field = nameof(SysUserDto.Email), message = "Email đã tồn tại!", });
                 }
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
                 //Check tồn tại bản ghi trong DB
-                var entity = await _repo.MstUser.GetAsync(dto.user_id);
+                var entity = await _repo.SysUser.GetAsync(dto.UserId);
                 if (entity is null)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không tồn tại" });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không tồn tại" });
 
                 if (entity is not null && entity.ValidFlg != (int)EnumCommon.Status.Valid)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không hợp lệ" });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không hợp lệ" });
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
                 //Check trùng username trong database
-                var existUser = await _repo.MstUser.AnyAsync(x => x.user_name.ToLower().Equals(dto.user_name.ToLower()) && x.user_id != dto.user_id && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                var existUser = await _repo.SysUser.AnyAsync(x => x.UserName.ToLower().Equals(dto.UserName.ToLower()) && x.UserId != dto.UserId && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                 if (existUser)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập đã tồn tại!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập đã tồn tại!", });
                 
                 //Check trùng mã nhân viên trong database
-                var employeeCodeExist = await _repo.MstUser.AnyAsync(x => x.employee_code.ToLower().Equals(dto.employee_code.ToLower()) && x.user_id != dto.user_id && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                var employeeCodeExist = await _repo.SysUser.AnyAsync(x => x.EmployeeCode.ToLower().Equals(dto.EmployeeCode.ToLower()) && x.UserId != dto.UserId && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                 if (employeeCodeExist)
-                    lstErr.Add(new { field = nameof(MstUserDto.employee_code), message = "Mã nhân viên đã tồn tại!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.EmployeeCode), message = "Mã nhân viên đã tồn tại!", });
 
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
                 string pass = _configuration["DefaultPassword"];
 
-                if (!string.IsNullOrEmpty(dto.password))
-                    pass = dto.password;
+                if (!string.IsNullOrEmpty(dto.PasswordHash))
+                    pass = dto.PasswordHash;
 
-                entity.user_name = dto.user_name;
-                entity.enable_fl = dto.enable_fl;
-                entity.email = dto.email;
-                entity.auth_fl = dto.auth_fl;
-                entity.full_name = dto.full_name;
-                entity.employee_code = dto.employee_code;
-                entity.Gender = dto.Gender;
-                entity.upd_dt = DateTime.Now;
+                entity.UserName = dto.UserName;
+                entity.EnableFl = dto.EnableFl;
+                entity.Email = dto.Email;
+                entity.AuthFl = dto.AuthFl;
+                entity.FullName = dto.FullName;
+                entity.EmployeeCode = dto.EmployeeCode;
+                entity.GenDer = dto.GenDer;
+                entity.UpdateTime = DateTime.Now;
 
-                if (dto.Role is null || dto.Role.Count == 0)
-                    entity.auth_fl = string.Empty;
-                else
-                    entity.auth_fl = string.Join(",", dto.Role.Select(x => x.ToString()));
-                entity.password = StringUtils.Encrypt(pass);
+                //if (dto.Role is null || dto.Role.Count == 0)
+                //    entity.AuthFl = string.Empty;
+                //else
+                //    entity.AuthFl = string.Join(",", dto.Role.Select(x => x.ToString()));
+                entity.PasswordHash = StringUtils.Encrypt(pass);
                 entity.ValidFlg = (int)EnumCommon.Status.Valid;
-                await _repo.MstUser.UpdateAsync(entity);
+                await _repo.SysUser.UpdateAsync(entity);
                 await _repo.SaveAync();
 
                 return new ServiceResultSuccess("Cập nhật nhân viên thành công!");
@@ -268,7 +269,7 @@ namespace Core.Application.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex);
-                lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Lỗi khi cập nhật user: " + ex.Message });
+                lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Lỗi khi cập nhật user: " + ex.Message });
                 return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
             }
         }
@@ -300,22 +301,22 @@ namespace Core.Application.Services
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                var entity = await _repo.MstUser.GetAsync(dto.UserId);
+                var entity = await _repo.SysUser.GetAsync(dto.UserId);
 
                 if (entity is null)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không tồn tại!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không tồn tại!", });
 
                 if (entity is not null && entity.ValidFlg != (int)EnumCommon.Status.Valid)
-                    lstErr.Add(new { field = nameof(MstUserDto.user_name), message = "Tên đăng nhập không hợp lệ!", });
+                    lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không hợp lệ!", });
 
-                if (entity is not null && !entity.password.Equals(StringUtils.Encrypt(dto.Password)))
+                if (entity is not null && !entity.PasswordHash.Equals(StringUtils.Encrypt(dto.Password)))
                     lstErr.Add(new { field = nameof(CustomModels.Others.ChangePassword.Password), message = "Mật khẩu không chính xác!", });
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                entity.upd_dt = DateTime.Now;
-                entity.password = StringUtils.Encrypt(dto.NewPassword);
-                await _repo.MstUser.UpdateAsync(entity);
+                entity.UpdateTime = DateTime.Now;
+                entity.PasswordHash = StringUtils.Encrypt(dto.NewPassword);
+                await _repo.SysUser.UpdateAsync(entity);
                 await _repo.SaveAync();
 
                 return new ServiceResultSuccess("Đổi mật khẩu thành công!");
@@ -337,13 +338,13 @@ namespace Core.Application.Services
                 //Chỉ admin mới có quyền
                 if (!_userPrincipalService.Roles.Contains((int)EnumRole.Role.Admin)) return new ServiceResultError("Bạn không có quyền thực hiện thao tác này!");
 
-                var entity = await _repo.MstUser.GetAsync(id);
+                var entity = await _repo.SysUser.GetAsync(id);
                 if (entity is null) return new ServiceResultError("Nhân viên không tồn tại!");
                 if (entity.ValidFlg != (int)EnumCommon.Status.Valid) return new ServiceResultError("Nhân viên không hợp lệ!");
 
                 entity.ValidFlg = (int)EnumCommon.Status.Invalid;
-                entity.upd_dt = DateTime.Now;
-                await _repo.MstUser.UpdateAsync(entity);
+                entity.UpdateTime = DateTime.Now;
+                await _repo.SysUser.UpdateAsync(entity);
                 await _repo.SaveAync();
                 return new ServiceResultSuccess("Xóa nhân viên thành công!");
             }
@@ -368,15 +369,15 @@ namespace Core.Application.Services
 
                 if (lstErr.Count > 0) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                MstUser user = await _repo.MstUser.FirstOrDefaultAsync(x => x.user_name.ToLower() == login.Username.Trim().ToLower() && x.ValidFlg == (int)EnumCommon.Status.Valid);
+                SysUser user = await _repo.SysUser.FirstOrDefaultAsync(x => x.UserName.ToLower() == login.Username.Trim().ToLower() && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
                 if (user is null)
                     lstErr.Add(new { field = nameof(Login.Username), message = "Tên đăng nhập không tồn tại!" });
 
-                if (user is not null && user.enable_fl != (int)EnumCommon.Status.Valid)
+                if (user is not null && user.EnableFl != (int)EnumCommon.Status.Valid)
                     lstErr.Add(new { field = nameof(Login.Username), message = "Tên đăng nhập không hợp lệ!", });
 
-                if (user is not null && user.password != StringUtils.Encrypt(login.Password))
+                if (user is not null && user.PasswordHash != StringUtils.Encrypt(login.Password))
                     lstErr.Add(new { field = nameof(Login.Password), message = "Mật khẩu sai!", });
 
                 if (lstErr.Count > 0) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
@@ -384,9 +385,9 @@ namespace Core.Application.Services
                 //To do: Other business
                 var claimsToken = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.user_id.ToString()),
-                    new Claim(ClaimTypeConst.USERNAME, user.user_name),
-                    new Claim(ClaimTypes.Role, user.auth_fl),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                    new Claim(ClaimTypeConst.USERNAME, user.UserName),
+                    new Claim(ClaimTypes.Role, user.AuthFl),
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -401,10 +402,10 @@ namespace Core.Application.Services
 
                 AuthorizedUser userInfo = new AuthorizedUser
                 {
-                    UserId = user.user_id,
-                    Username = user.user_name,
-                    Role = string.IsNullOrEmpty(user.auth_fl) ? new List<int>() : user.auth_fl.Split(",").Select(x => int.Parse(x)).ToList(),
-                    Email = user.email,
+                    UserId = user.UserId,
+                    Username = user.UserName,
+                    Role = string.IsNullOrEmpty(user.AuthFl) ? new List<int>() : user.AuthFl.Split(",").Select(x => int.Parse(x)).ToList(),
+                    Email = user.Email,
                     Token = strToken
                 };
 
