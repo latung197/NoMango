@@ -6,10 +6,10 @@ using Core.Application.CustomModels.Dtos;
 
 namespace Core.Application.Interface
 {
-    public interface ISysUserService
+    public interface ISysUserCommandService
     {
-        Task<ServiceResult> Authenticate(Login login);
-        Task<GenericResponseResult<AuthorizedUser>> SearchUser(SysUserSearchImpl condition, bool blnExport = false);
+        //Task<ServiceResult> Authenticate(Login login);
+        //Task<GenericResponseResult<AuthorizedUser>> SearchUser(SysUserSearchImpl condition, bool blnExport = false);
         Task<ServiceResult> InsertUser(SysUserDto dto);
         Task<ServiceResult> UpdateUser(SysUserDto dto);
         Task<ServiceResult> GetUserById(int id);

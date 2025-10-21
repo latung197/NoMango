@@ -1,6 +1,7 @@
 ﻿using Core.Application.BaseHttp.Implementations;
 using Core.Application.BaseHttp.Interface;
 using Core.Application.Interface;
+using Core.Application.Interface.SysInterface;
 using Core.Application.Services;
 using Core.Domain.Interface;
 using Core.Infrastructure.ContextAccessors;

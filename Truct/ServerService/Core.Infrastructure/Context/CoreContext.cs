@@ -133,6 +133,7 @@ namespace Core.Infrastructure.Context
         #endregion
         #region Declare entity here
         public DbSet<SysUser> SysUser { get; set; }
+        public DbSet<SysUserCommand> SysUserCommand { get; set; }
         public DbSet<ExportListPlan> ExportListPlan { get; set; }
         public DbSet<ExportHistoryList> ExportHistoryList { get; set; }
         public DbSet<MstData> MstData { get; set; }

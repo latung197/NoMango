@@ -1,7 +1,7 @@
 ﻿using Core.Application.CustomModels.Dtos;
 using Core.Application.CustomModels.Others;
 using Core.Application.CustomModels.SearchConditions;
-using Core.Application.Interface;
+using Core.Application.Interface.SysInterface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

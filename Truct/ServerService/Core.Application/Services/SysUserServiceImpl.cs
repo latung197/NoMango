@@ -3,7 +3,6 @@ using Core.Application.CustomModels.Dtos;
 using Core.Application.CustomModels.Others;
 using Core.Application.CustomModels.SearchConditions;
 using Core.Application.Enum;
-using Core.Application.Interface;
 using Core.Domain.Entity;
 using Core.Domain.Interface;
 using Core.Infrastructure.Constants;
@@ -19,6 +18,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Core.Domain.Entity.SystemEntities;
+using Core.Application.Interface.SysInterface;
 
 namespace Core.Application.Services
 {

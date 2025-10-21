@@ -12,9 +12,10 @@ namespace Core.Domain.Entity.SystemEntities
     [Table("sys_role_command")]
     public class SysRoleCommand:AuditableImpl
     {
+        [Key]
         [Column("role_id")]
         public int RoleId { get; set; }
-
+        [Key]
         [Column("menuid0")]
         [StringLength(20)]
         public string MenuId0 { get; set; } = string.Empty;

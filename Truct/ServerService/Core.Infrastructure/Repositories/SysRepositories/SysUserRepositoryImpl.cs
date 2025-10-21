@@ -3,7 +3,7 @@ using Core.Infrastructure.Context;
 using Core.Domain.Entity;
 using Core.Domain.Entity.SystemEntities;
 
-namespace Core.Infrastructure.Repositories
+namespace Core.Infrastructure.Repositories.SysRepositories
 {
     public class SysUserRepositoryImpl : CoreBaseRepositoryImpl<SysUser>, ISysUserRepository
     {
