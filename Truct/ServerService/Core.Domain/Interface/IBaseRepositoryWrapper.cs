@@ -1,4 +1,6 @@
 ﻿
+using Core.Domain.Interface.SystemInterface;
+
 namespace Core.Domain.Interface
 {
     public interface IBaseRepositoryWrapper

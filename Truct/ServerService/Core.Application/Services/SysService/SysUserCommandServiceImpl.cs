@@ -19,10 +19,11 @@ using System.Security.Claims;
 using System.Text;
 using Core.Domain.Entity.SystemEntities;
 using Core.Application.Interface.SysInterface;
+using Core.Application.Interface;
 
 namespace Core.Application.Services
 {
-    public class SysUserServiceImpl : ISysUserService
+    public class SysUserCommandServiceImpl : ISysUserCommandService
     {
         #region Properties
         //Repo

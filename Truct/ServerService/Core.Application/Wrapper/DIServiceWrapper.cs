@@ -3,6 +3,7 @@ using Core.Application.BaseHttp.Interface;
 using Core.Application.Interface;
 using Core.Application.Interface.SysInterface;
 using Core.Application.Services;
+using Core.Application.Services.SysService;
 using Core.Domain.Interface;
 using Core.Infrastructure.ContextAccessors;
 using Core.Infrastructure.Repositories;
@@ -22,6 +23,7 @@ namespace Core.Application.Wrapper
             services.AddScoped<IBaseRepositoryWrapper, BaseRepositoryWrapperImpl>();
             services.AddScoped<IUserPrincipalService, UserPrincipalService>();
             services.AddScoped<ISysUserService, SysUserServiceImpl>();
+            services.AddScoped<ISysUserCommandService, SysUserServiceImpl>();
             services.AddScoped<IExportPlanService, ExportPlanServiceImpl>();
             services.AddScoped<IMstDataService, MstDataServiceImpl>();
             services.AddScoped<IEcuDataService, EcuDataServiceImpl>();

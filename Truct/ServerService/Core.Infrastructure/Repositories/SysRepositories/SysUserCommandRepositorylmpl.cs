@@ -1,5 +1,5 @@
 ﻿using Core.Domain.Entity.SystemEntities;
-using Core.Domain.Interface;
+using Core.Domain.Interface.SystemInterface;
 using Core.Infrastructure.Context;
 using System;
 using System.Collections.Generic;

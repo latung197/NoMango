@@ -1,5 +1,7 @@
 ﻿using Core.Domain.Interface;
+using Core.Domain.Interface.SystemInterface;
 using Core.Infrastructure.Context;
+using Core.Infrastructure.Repositories.SysRepositories;
 using Microsoft.Extensions.Configuration;
 
 namespace Core.Infrastructure.Repositories
