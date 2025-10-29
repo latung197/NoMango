@@ -1,0 +1,75 @@
+﻿@model Cody_v3.Services.DTOs.ReportRequestDTO
+@{
+    ViewData["Title"] = "Overload report";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <form id="MainForm">
+            <div class="row p-2">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">Từ ngày:</label>
+                        <input type="date" asp-for="From" name="From" id="From" class="form-control datepicker-form"/>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">Từ ngày:</label>
+                        <input type="date" asp-for="To" name="To" id="To" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">Từ ngày:</label>
+                        <select asp-for="DepartmentId" asp-items="ViewBag.lsDepartment" class="form-control form-select"></select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <label class="control-label"></label>
+                    <a onclick="Searching();" class="btn btn-success form-control" href="#">Tìm kiếm</a>
+                </div>
+
+            </div>
+        </form>    
+    </div>
+</div>
+<div class="row" id="ResultTable">
+
+    
+</div>
+
+<script>
+       function Searching() {
+            if ($('#MainForm').validate()) {
+                var From = new Date($('#From').val());
+                var To = new Date($('#To').val());
+
+                console.log(From);
+
+                $.ajax({
+                    url: '/Home/OverloadReportSearching',
+                    type: 'POST',
+                    dataType: 'html',   
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: $('#MainForm').serialize(),
+                    beforeSend: function() {
+                        showLoading();
+                    },
+                    success: function(data) {
+                        $('#ResultTable').html(data);
+                        hideLoading();
+                        InitMainTable();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error after request: ",error);
+                    },
+                    complete: function(xhr, status) {
+                        //todo Hide loading
+                    }
+                });
+            }
+        }
+</script>

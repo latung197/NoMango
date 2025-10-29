@@ -1,0 +1,156 @@
+﻿@using Cody_v3.Web.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cody v3</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="~/lib/summernote/summernote.min.css" rel="stylesheet" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    @*    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">*@
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="~/lib/adminlte3.2.0/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/lib/adminlte3.2.0/css/adminlte.css">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Preloader -->
+    <div class="wrapper">
+        @await Html.PartialAsync("_Main_Header_partial")
+        @await Html.PartialAsync("_Main_Siderbar_partial")
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard v3</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    @*<div class="row">*@
+                        @RenderBody()
+                    @*</div>*@
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+    <!-- /.content-wrapper -->
+            @await Html.PartialAsync("_Main_Control_Sidebar_partial")
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Cody V3</a>.</strong>
+                All rights reserved.
+                <div class="float-right d-none d-sm-inline-block">
+                    <b>Vers      ion</b> 3.2.0
+                </div>
+            </footer>
+
+
+    </div>
+        <!-- ./wrapper -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js">   </script>*@
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"> </script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js">   </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">  </script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">    </script>*@
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js">  </script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js">  </script>
+    <script src="~/lib/summernote/summernote.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="~/lib/adminlte3.2.0/js/adminlte.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            InitMainTable();
+
+            $('.alert').alert();
+        });
+
+        $(document).ready(function () {
+            //$('#summernote').summernote({
+            //    height: 200,
+            //    onImageUpload: function (files, editor, welEditable) {
+            //        sendFile(files[0], editor, welEditable);
+            //    }
+            //});
+            $('.summernote').summernote({
+                height: 300,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true,                  // set focus to editable area after initializing summernote
+                callbacks: {
+                    onImageUpload: function (files) {
+                        for (let i = 0; i < files.length; i++) {
+                            UploadImage(files[i]);
+                        }
+                    }
+                }
+            });
+
+            function UploadImage(file) {
+                var url = '@Url.Action("UploadFile", "Home")';
+
+                console.log('file: ', file);
+
+                formData = new FormData();
+                formData.append("image", file);
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (FileUrl) {
+                        // alert(FileUrl);
+                        var imgNode = document.createElement('img');
+                        imgNode.src = FileUrl;
+                        imgNode.alt = file.name;
+                        $('.summernote').summernote('insertNode', imgNode);
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }
+        });
+
+    </script>
+
+    @await Html.PartialAsync("_FullScreenLoading")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

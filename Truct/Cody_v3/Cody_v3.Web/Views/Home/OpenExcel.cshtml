@@ -1,0 +1,44 @@
+﻿@model Cody_v3.Services.DTOs.ExcelRequestDTO
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<h4>Import Excel Tool</h4>
+<div class="row">
+
+    <div class="col-md-4">
+        @using (Html.BeginForm("ImportExcel", "Home", FormMethod.Post, new { enctype = "multipart/form-data",  onsubmit="showLoading();" }))//, onsubmit = "return myFunction()" 
+        {            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ExcelFiles">Chọn các file Excel cần Import (Tối đa <strong>100</strong> files):</label>
+                <input asp-for="ExcelFiles" class="form-control" id="exampleInputExcelFile" aria-describedby="emailHelp" placeholder="Enter email"  onchange="checkFilesCount(this)">
+                <small id="excelHelp" class="form-text text-muted">Select the ".xlsx" file</small>
+              </div>
+            <div class="form-group">
+                <input type="submit" value="Import" class="btn btn-primary" />
+            </div>        
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function checkFilesCount(id) {
+        //console.log('ID input: ',id.id);
+        if(id.files.length > 100)
+        {    
+            alert('Bạn đã chọn: '+id.files.length+' files. \nVui lòng chọn tối đa là 100 files.');
+            id.value = "";
+        }
+    }
+</script>
