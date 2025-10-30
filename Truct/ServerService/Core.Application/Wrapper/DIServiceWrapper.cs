@@ -23,7 +23,7 @@ namespace Core.Application.Wrapper
             services.AddScoped<IBaseRepositoryWrapper, BaseRepositoryWrapperImpl>();
             services.AddScoped<IUserPrincipalService, UserPrincipalService>();
             services.AddScoped<ISysUserService, SysUserServiceImpl>();
-            services.AddScoped<ISysUserCommandService, SysUserServiceImpl>();
+            services.AddScoped<ISysUserCommandService, SysUserCommandServiceImpl>();
             services.AddScoped<IExportPlanService, ExportPlanServiceImpl>();
             services.AddScoped<IMstDataService, MstDataServiceImpl>();
             services.AddScoped<IEcuDataService, EcuDataServiceImpl>();

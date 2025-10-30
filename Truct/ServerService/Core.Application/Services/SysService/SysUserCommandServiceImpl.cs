@@ -37,7 +37,7 @@ namespace Core.Application.Services
         private readonly IUserPrincipalService _userPrincipalService;
         #endregion
         #region Constructor
-        public SysUserServiceImpl(IBaseRepositoryWrapper repo
+        public SysUserCommandServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
             , IMapper mapper
             , ILoggerManager logger
@@ -419,6 +419,16 @@ namespace Core.Application.Services
                 return new ServiceResultError("Lỗi khi xác thực: " + ex.Message, lstErr);
             }
 
+        }
+
+        public Task<ServiceResult> InsertUser(CustomModels.Dtos.SystemDtos.SysUserCommandDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResult> UpdateUser(CustomModels.Dtos.SystemDtos.SysUserCommandDto dto)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
