@@ -1,0 +1,83 @@
+﻿@model List<Cody_v3.Services.DTOs.OverloadReportResponseDTO>
+
+<div>
+
+
+    <table  class="table table-hover" id="mainTable" style=" margin-bottom:5px;">
+        <thead>
+            <tr>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].Row_ID)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].RecloserQualify)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].I_Norms)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].Max_I_A)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].AVG_I_A)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].Percent_I_A)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].Count_OverLoad)
+                </th>
+                <th rowspan="2">
+                    @Html.DisplayNameFor(model => model[0].Minutes_OverLoad)
+                </th>
+                <th colspan="2">
+                    Thời điểm Imax
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Max_Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Date)
+                </th>           
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td  align="center">
+                        @Html.DisplayFor(modelItem => item.Row_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecloserQualify)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.I_Norms)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Max_I_A)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.AVG_I_A)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Percent_I_A)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Count_OverLoad)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Minutes_OverLoad)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Max_Time)
+                    </td>
+                    <td align="center">
+                        @item.Date.ToString("dd/MM/yyyy")
+                    </td>
+                </tr>
+        }
+        </tbody>
+    </table>
+</div>

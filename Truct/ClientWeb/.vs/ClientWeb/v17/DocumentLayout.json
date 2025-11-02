@@ -3,6 +3,62 @@
   "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\ClientWeb\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\home\\statistical.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\home\\statistical.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\home\\statisticaldetail_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\home\\statisticaldetail_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_paging_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_paging_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_main_siderbar_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_main_siderbar_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_main_header_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_main_header_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_main_control_sidebar_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_main_control_sidebar_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_main_content_wrapper_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_main_content_wrapper_partial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\home\\openexcel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\home\\openexcel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\clientweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\clientweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -13,14 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,14 +83,92 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClientWeb",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj",
-              "RelativeDocumentMoniker": "ClientWeb\\ClientWeb.csproj",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj",
-              "RelativeToolTip": "ClientWeb\\ClientWeb.csproj",
+              "Title": "Statistical.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\Statistical.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Home\\Statistical.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\Statistical.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Home\\Statistical.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:43:35.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StatisticalDetail_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\StatisticalDetail_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Home\\StatisticalDetail_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\StatisticalDetail_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Home\\StatisticalDetail_partial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:42:55.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:41:17.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:41:11.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Paging_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Paging_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Paging_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Paging_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Paging_partial.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:11:25.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Main_Siderbar_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Siderbar_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Main_Siderbar_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Siderbar_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Main_Siderbar_partial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-30T15:47:13.075Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:11:17.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Main_Header_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Header_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Main_Header_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Header_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Main_Header_partial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:07:22.812Z",
               "EditorCaption": ""
             },
             {
@@ -55,7 +181,111 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "_Main_Control_Sidebar_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Control_Sidebar_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Main_Control_Sidebar_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Control_Sidebar_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Main_Control_Sidebar_partial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:11:11.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Main_Content_wrapper_partial.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Content_wrapper_partial.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Main_Content_wrapper_partial.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Main_Content_wrapper_partial.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Main_Content_wrapper_partial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:11:09.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OpenExcel.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\OpenExcel.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Home\\OpenExcel.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\OpenExcel.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Home\\OpenExcel.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:10:42.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:10:39.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "ClientWeb\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "ClientWeb\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T13:10:27.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppSettings.cs",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Models\\AppSettings.cs",
+              "RelativeDocumentMoniker": "ClientWeb\\Models\\AppSettings.cs",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Models\\AppSettings.cs",
+              "RelativeToolTip": "ClientWeb\\Models\\AppSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T13:10:23.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ClientWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ClientWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:09:38.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ClientWeb.csproj",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj",
+              "RelativeDocumentMoniker": "ClientWeb\\ClientWeb.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj",
+              "RelativeToolTip": "ClientWeb\\ClientWeb.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-30T15:47:13.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "bootstrap-grid.css",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
               "RelativeDocumentMoniker": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
@@ -63,12 +293,11 @@
               "RelativeToolTip": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAD4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-30T15:32:24.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T15:32:24.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": "bootstrap.css",
               "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
               "RelativeDocumentMoniker": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -76,34 +305,7 @@
               "RelativeToolTip": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
               "ViewState": "AgIAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-30T15:32:13.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "ClientWeb\\Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "ClientWeb\\Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-30T15:30:00.581Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Pages\\Index.cshtml",
-              "RelativeDocumentMoniker": "ClientWeb\\Pages\\Index.cshtml",
-              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\Pages\\Index.cshtml",
-              "RelativeToolTip": "ClientWeb\\Pages\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-30T15:29:53.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T15:32:13.813Z"
             }
           ]
         }

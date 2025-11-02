@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Project\\NoMango\\Truct\\ClientWeb\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\clientweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\clientweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|d:\\project\\nomango\\truct\\clientweb\\clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7398B3DA-52C6-4107-8FBC-0E3F6DE04AE1}|ClientWeb\\ClientWeb.csproj|solutionrelative:clientweb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +31,43 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClientWeb.csproj",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj",
+              "RelativeDocumentMoniker": "ClientWeb\\ClientWeb.csproj",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\ClientWeb.csproj*",
+              "RelativeToolTip": "ClientWeb\\ClientWeb.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-30T15:47:13.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "bootstrap-grid.css",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "RelativeDocumentMoniker": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "RelativeToolTip": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAD4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-30T15:32:24.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "bootstrap.css",
+              "DocumentMoniker": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "RelativeDocumentMoniker": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "ToolTip": "D:\\Project\\NoMango\\Truct\\ClientWeb\\ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "RelativeToolTip": "ClientWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-30T15:32:13.813Z"
             }
           ]
         }

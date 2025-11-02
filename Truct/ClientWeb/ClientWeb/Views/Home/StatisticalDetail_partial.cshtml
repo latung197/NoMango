@@ -1,0 +1,94 @@
+﻿@model List<Cody_v3.Services.DTOs.RecloserDataResponseDTO>
+
+<table class="table table-hover" id="mainTable" style=" margin-bottom:5px;">
+    <thead>
+        <tr>
+            <th rowspan="2">STT</th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].ExcelFileName)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].SheetName)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].RecloserQualify)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].U_kV)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].I_A)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].P_MW)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].Q_MVar)
+            </th>
+            <th rowspan="2">
+                @Html.DisplayNameFor(model => model[0].COS_φ)
+            </th>
+            <th colspan="2">
+                Thời điểm Cosφ min
+            </th>
+
+            <th rowspan="2">Tác vụ</th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Time)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+
+            int i = 1;
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td align="center">@i</td>@{
+                        i++;
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExcelFileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SheetName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecloserQualify)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.U_kV)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.I_A)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.P_MW)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Q_MVar)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.COS_φ)
+                    </td>
+                    <td align="right">
+                        @item.Date?.ToString("dd/MM/yyyy")
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td align="center">
+                        <a asp-action="Delete" asp-controller="Home"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
