@@ -35,9 +35,9 @@ const LoginForm = () => {
 
         try {
             setLoading(true);
-            const data = await login({ email, password });
-            setToken(data.data.accessToken, data.data.accessTokenExpiresIn);
-            const result = await getUserInfo();
+            //const data = await login({ email, password });
+            //setToken(data.data.accessToken, data.data.accessTokenExpiresIn);
+            //const result = await getUserInfo();
             window.location.href = "/";
         } finally {
             setLoading(false);
@@ -47,17 +47,17 @@ const LoginForm = () => {
     return (
         <div className="max-w-md mx-auto mt-20 p-8 bg-white shadow-lg rounded-lg">
             <div className="text-center mb-6">
-                <h1 className="text-6xl font-bold text-[#009EE2]">ようこそ</h1>
-                <p className="text-gray-500 text-sm">メールでログイン</p>
+                <h1 className="text-6xl font-bold text-[#009EE2]">Chào mừng</h1>
+                <p className="text-gray-500 text-sm">Đăng nhập bằng Email</p>
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <div className="relative mb-6">
                     <span className="absolute top-0 left-3 -translate-y-1/2 bg-white px-1 text-sm text-[#009EE2] font-semibold">
-                        メールアドレス
+                        Tài Khoản
                     </span>
                     <span className="absolute inset-y-0 left-3 flex items-center text-[#009EE2]">
-                        <img src={emailIcon} alt="メールアドレス" className="w-5 h-5 object-contain" />
+                        <img src={emailIcon} alt="Địa chỉ Email" className="w-5 h-5 object-contain" />
                     </span>
                     <input
                         type="email"
@@ -68,7 +68,7 @@ const LoginForm = () => {
                             setEmailError(false);
                             }
                         }}
-                        placeholder="メールアドレスを入力"
+                        placeholder="Nhập tài khoản"
                         className={`w-full rounded-md pl-10 pr-4 py-3 focus:outline-none focus:ring-2 ${
                             emailError
                             ? 'border border-red-500 focus:ring-red-500'
@@ -79,7 +79,7 @@ const LoginForm = () => {
 
                 <div className="relative mb-">
                     <span className="absolute top-0 left-3 -translate-y-1/2 bg-white px-1 text-sm text-[#009EE2] font-semibold">
-                        パスワード
+                        Mật khẩu
                     </span>
                     <span className="absolute inset-y-0 left-3 flex items-center text-[#009EE2]">
                         <img src={passwordIcon} alt="パスワード" className="w-5 h-5 object-contain" />
@@ -93,7 +93,7 @@ const LoginForm = () => {
                                 setPasswordError(false);
                             }
                         }}
-                        placeholder="パスワードを入力"
+                        placeholder="Nhập mật khẩu"
                         className={`w-full rounded-md pl-10 pr-4 py-3 focus:outline-none focus:ring-2 ${
                             passwordError
                             ? 'border border-red-500 focus:ring-red-500'
@@ -107,7 +107,7 @@ const LoginForm = () => {
                         onClick={() => navigate('/forgot-password')}
                         className="text-sm text-gray-600 hover:underline font-semibold"
                     >
-                        パスワードを忘れました
+                        Quên mật khẩu
                     </button>
                 </div>
                 <button
@@ -115,18 +115,18 @@ const LoginForm = () => {
                     disabled={loading}
                     className="bg-[#009EE2] text-white mt-2 px-8 py-3 rounded hover:bg-[#007AC0] transition font-semibold"
                 >
-                    ログイン
+                    Đăng nhập
                 </button>
             </form>
             
 
             <p className="text-center text-sm text-gray-600 mt-6">
-                アカウントをお持ちでない方は{' '}
+                Nếu bạn không có tài khoản{' '}
                 <button
                     onClick={() => navigate('/sign-up')}
                     className="text-[#009EE2] font-medium hover:underline bg-transparent border-none p-0"
                 >
-                    新規登録
+                    Đăng ký mới
                 </button>
             </p>
         </div>

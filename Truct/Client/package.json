@@ -13,6 +13,7 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "axios": "^1.11.0",
     "i18next": "^25.5.2",
+    "lucide-react": "^0.555.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-i18next": "^15.7.3",

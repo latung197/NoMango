@@ -10,6 +10,8 @@ import { ApiResponse } from '@/types/ApiResponse';
 import { useCategory } from "@/hooks/useCategory";
 
 import bannerImg from '@/assets/images/banner.png';
+import {House} from "lucide-react"
+
 
 const Home: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -50,6 +52,13 @@ const Home: React.FC = () => {
   return (
     <>
       <main className="flex flex-col items-center">
+    <nav className="show-md h-screen w-60 p-2">
+        
+          <div className='border px-3 py-2 h-20'>
+            <House size={24} className="" />
+          </div>
+      </nav>
+
         <div className="hidden md:grid items-center">
           {/* Khối banner + category */}
           <div className="flex w-[100%] px-4 py-2 gap-4 h-[500px] mx-auto">
@@ -66,7 +75,6 @@ const Home: React.FC = () => {
                 ))}
               </div>
             </aside>
-
             <section className="flex-1 h-full">
               <img
                 src={bannerImg}
