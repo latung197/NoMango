@@ -97,3 +97,7 @@ Truct/AIOI/AIOI/obj/
 Truct/ClientWeb/ClientWeb/bin/
 Truct/ClientWeb/ClientWeb/obj/
 Truct/CoreClient/package-lock.json
+Truct/ServerService/Core.API/bin/
+Truct/ServerService/Core.API/obj/
+Truct/ServerService/Core.Utils/bin/
+Truct/PCWinForm/PCWinForm/bin/
