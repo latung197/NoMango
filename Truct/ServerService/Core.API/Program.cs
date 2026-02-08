@@ -1,4 +1,4 @@
-using Core.Application.AutoMapper;
+﻿using Core.Application.AutoMapper;
 using Core.Application.Middleware;
 using Core.Application.Wrapper;
 using Core.Infrastructure.Context;
@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 #region CONFIGURATION
 
-// appsettings.json ?? ???c load s?n, kh?ng c?n AddJsonFile l?i
+// appsettings.json 
 
 #endregion
 
@@ -45,7 +45,7 @@ switch (dbType)
         break;
 
     default:
-        throw new Exception("DatabaseType kh?ng h?p l?");
+        throw new Exception("DatabaseType không hợp lệ");
 }
 
 // ===== CORS =====
@@ -56,7 +56,7 @@ builder.Services.AddCors(options =>
         policy
             .AllowAnyHeader()
             .AllowAnyMethod()
-            .AllowAnyOrigin(); // API thu?n �� kh?ng AllowCredentials
+            .AllowAnyOrigin(); // API thư cong mở cho tất cả các domain. để kết nối từ client
     });
 });
 
@@ -80,7 +80,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidateLifetime = true, // ? B?T BU?C
+            ValidateLifetime = true, // kiểm tra xenh hạn token
 
             ValidIssuer = builder.Configuration["Tokens:Issuer"],
             ValidAudience = builder.Configuration["Tokens:Audience"],
@@ -118,14 +118,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-// Cookie policy (n?u c? d?ng)
+// Cookie policy 
 app.UseCookiePolicy(new CookiePolicyOptions
 {
     HttpOnly = HttpOnlyPolicy.Always,
     Secure = CookieSecurePolicy.SameAsRequest
 });
 
-// Pipeline chu?n
+// Pipeline configuration
 app.UseHttpsRedirection();
 app.UseRouting();
 
@@ -139,7 +139,7 @@ app.MapControllers();
 
 #endregion
 
-// Postgre legacy (n?u c?n)
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+// Postgre legacy ( )
+//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 app.Run();
