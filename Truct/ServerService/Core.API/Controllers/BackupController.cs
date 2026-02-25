@@ -1,13 +1,13 @@
-﻿using Core.Application.CustomModels.Others;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Core.Application.CustomModels.SearchConditions;
 using Core.Application.Interface;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Core.Controllers
+namespace Core.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class BackupController : BaseController
     {
 
@@ -43,3 +43,4 @@ namespace Core.Controllers
         #endregion
     }
 }
+

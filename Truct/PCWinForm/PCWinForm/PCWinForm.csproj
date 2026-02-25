@@ -16,6 +16,7 @@
     <Folder Include="Menu\Warehouse\MasterData\Dmvitri\" />
     <Folder Include="GlobalValue\" />
     <Folder Include="HelpForm\" />
+    <Folder Include="Menu\Warehouse\MasterData\Dmvt\" />
     <Folder Include="UserControl\" />
     <Folder Include="Resources\" />
   </ItemGroup>

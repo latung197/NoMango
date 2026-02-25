@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.8.34322.80
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worker", "Worker", "{9CF5ADD1-AC37-49CA-B45B-16BCE057D124}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{F5F485B2-413D-4C37-83DF-E29AC23D8CFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCMain", "PCMain\PCMain.csproj", "{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.API", "Core.API\Core.API.csproj", "{221405C6-E183-4695-95DA-64CC9877BDC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221405C6-E183-4695-95DA-64CC9877BDC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221405C6-E183-4695-95DA-64CC9877BDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221405C6-E183-4695-95DA-64CC9877BDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221405C6-E183-4695-95DA-64CC9877BDC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{8581455C-1993-4156-945E-1AC06EFC8B44} = {0E5865AD-1E0B-4DFE-BF4E-737A2343C03E}
 		{F721DF43-FAD0-4536-87F2-A795F0403648} = {9CF5ADD1-AC37-49CA-B45B-16BCE057D124}
 		{9EEC0005-1FB2-4A61-B661-BDB20FE71BE1} = {F5F485B2-413D-4C37-83DF-E29AC23D8CFD}
+		{221405C6-E183-4695-95DA-64CC9877BDC5} = {0E5865AD-1E0B-4DFE-BF4E-737A2343C03E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1EF31CA9-23B3-46AB-9BC5-C9A90EFEB9BB}

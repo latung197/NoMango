@@ -28,12 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            button1 = new Button();
+            lblStatus = new Label();
+            button2 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(102, 189);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(222, 197);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(38, 15);
+            lblStatus.TabIndex = 1;
+            lblStatus.Text = "label1";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(383, 196);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(button2);
+            Controls.Add(lblStatus);
+            Controls.Add(button1);
+            Name = "Form1";
+            Text = "Form1";
+            FormClosing += Form1_FormClosing;
+            FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button button1;
+        private Label lblStatus;
+        private Button button2;
     }
 }
