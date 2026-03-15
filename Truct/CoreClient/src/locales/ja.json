@@ -1,0 +1,95 @@
+{
+    "navbar": {
+        "search": "検索",
+        "login": "ログイン/ 登録",
+        "category": "商品カテゴリ",
+        "language": "日本語",
+        "cart": "カート",
+        "help": "サポート",
+        "wishlist": "ウィッシュリスト"
+    },
+    "search": {
+        "noResults": "商品が見つかりません",
+        "home": "ホーム",
+        "search_result": "検索結果",
+        "total_items": "合計 ({{count}} 件の商品)",
+        "prev": "前へ",
+        "next": "次へ"
+    },
+    "footer": {
+        "contact": "お問い合わせ",
+        "location": "所在地",
+        "address": "ベトナム ハノイ市 カウザイ区 Duy Tan通り11番地 CMCタワー13階 R1306",
+        "phone": "024 7109 9333",
+        "website": "https://fstv.vn",
+        "social": {
+            "facebook": "フェイスブック",
+            "linkedin": "リンクトイン",
+            "gmail": "Gメール"
+        }
+    },
+    "home": {
+        "category": "商品カテゴリ",
+        "learn_more": "もっと見る"
+    },
+    "product_detail": {
+        "sku": "製品コード",
+        "select_label": "選択",
+        "description_title": "商品情報",
+        "shipping_type": "配送の種類",
+        "quote_button": "見積もり",
+        "download_quotation": "見積書をダウンロード",
+        "total_label": "合計",
+        "quantity": "数量",
+        "enter_number": "数字を入力",
+        "min_value": "最小値は {{value}} です",
+        "max_value": "最大値は {{value}} です",
+        "required_input": "値を入力してください",
+        "required_select": "値を選択してください",
+        "contact_modal": {
+            "title": "連絡先をご入力ください",
+            "cancel": "キャンセル",
+            "confirm": "見積へ",
+            "full_name": "氏名",
+            "company_name": "会社名",
+            "position": "役職",
+            "email": "メールアドレス",
+            "phone": "電話番号",
+            "message": "確認したい内容",
+            "required": "入力必須です",
+            "email_invalid": "有効なメールアドレスを入力してください",
+            "address": "住所"
+
+        },
+        "quote_info_modal": {
+            "quotation_info": "見積もり情報",
+            "full_name": "氏名",
+            "company_name": "会社名",
+            "position": "役職",
+            "email": "メールアドレス",
+            "phone": "電話番号",
+            "product_code": "製品コード",
+            "product_price": "製品価格",
+            "shipping_price": "送料",
+            "total_price": "合計金額",
+            "close": "閉じる"
+        }
+    },
+    "message": {
+        "success": "成功しました",
+        "error": "エラーが発生しました",
+        "validate": {
+            "required_input": "値を入力してください",
+            "required_select": "値を選択してください",
+            "password_mismatch": "パスワードが一致しません"
+        }
+    },
+    "title": {
+        "home": "アルミ安全冊見積もり | ホーム",
+        "search": "アルミ安全冊見積もり | 検索",
+        "product": "アルミ安全冊見積もり | 商品",
+        "not_found": "アルミ安全冊見積もり | ページが見つかりません",
+        "login": "アルミ安全冊見積もり | ログインページ",
+        "sign_up": "アルミ安全冊見積もり | アカウントを作成"
+    }
+}

@@ -1,0 +1,95 @@
+{
+    "navbar": {
+        "search": "Tìm kiếm",
+        "login": "Đăng nhập/ Đăng ký",
+        "category": "Danh mục",
+        "language": "Tiếng Việt",
+        "cart": "Giỏ hàng",
+        "help": "Hỗ trợ",
+        "wishlist": "Danh sách yêu thích"
+    },
+    "search": {
+        "noResults": "Không tìm thấy sản phẩm",
+        "home": "Trang chủ",
+        "search_result": "Kết quả tìm kiếm",
+        "total_items": "Tổng cộng ({{count}} mặt hàng)",
+        "prev": "Trước",
+        "next": "Tiếp"
+    },
+    "footer": {
+        "contact": "Liên hệ",
+        "location": "Địa chỉ",
+        "address": "R1306, Tầng 13, CMC Tower, 11 Duy Tân, Cầu Giấy, Hà Nội",
+        "phone": "024 7109 9333",
+        "website": "https://fstv.vn",
+        "social": {
+            "facebook": "Facebook",
+            "linkedin": "LinkedIn",
+            "gmail": "Gmail"
+        }
+    },
+    "home": {
+        "category": "Danh mục",
+        "learn_more": "Xem thêm"
+    },
+    "product_detail": {
+        "sku": "Mã sản phẩm",
+        "select_label": "Chọn",
+        "description_title": "Mô tả",
+        "shipping_type": "Loại hình vận chuyển",
+        "quote_button": "Báo giá",
+        "download_quotation": "Tải xuống báo giá",
+        "total_label": "Tổng",
+        "quantity": "Số lượng",
+        "enter_number": "Nhập số",
+        "min_value": "Giá trị tối thiểu là {{value}}",
+        "max_value": "Giá trị tối đa là {{value}}",
+        "required_input": "Vui lòng nhập giá trị",
+        "required_select": "Vui lòng chọn giá trị",
+        "contact_modal": {
+            "title": "Thông tin liên hệ",
+            "cancel": "Hủy",
+            "confirm": "Xác nhận",
+            "full_name": "Họ và tên",
+            "company_name": "Công ty",
+            "position": "Chức vụ",
+            "email": "Email",
+            "phone": "Số điện thoại",
+            "message": "Nội dung",
+            "required": "Không được để trống",
+            "email_invalid": "Email không hợp lệ",
+            "address": "Địa chỉ"
+
+        },
+        "quote_info_modal": {
+            "quotation_info": "Thông tin báo giá",
+            "full_name": "Họ và tên",
+            "company_name": "Công ty",
+            "position": "Chức vụ",
+            "email": "Email",
+            "phone": "Số điện thoại",
+            "product_code": "Mã sản phẩm",
+            "product_price": "Giá sản phẩm",
+            "shipping_price": "Phí vận chuyển",
+            "total_price": "Tổng",
+            "close": "Đóng"
+        }
+    },
+    "message": {
+        "success": "Thành công",
+        "error": "Đã có lỗi xảy ra",
+        "validate": {
+            "required_input": "Vui lòng nhập giá trị",
+            "required_select": "Vui lòng chọn giá trị",
+            "password_mismatch": "パスワードが一致しません"
+        }
+    },
+    "title": {
+        "home": "Báo giá cửa nhôm an toàn | Trang chủ",
+        "search": "Báo giá cửa nhôm an toàn | Tìm kiếm",
+        "product": "Báo giá cửa nhôm an toàn | Sản phẩm",
+        "not_found": "Báo giá cửa nhôm an toàn | Không tìm thấy trang",
+        "login": "Báo giá cửa nhôm an toàn | Đăng nhập",
+        "sign_up": "Báo giá cửa nhôm an toàn | Tạo tài khoản"
+    }
+}

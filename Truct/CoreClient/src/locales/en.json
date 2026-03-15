@@ -1,0 +1,95 @@
+{
+    "navbar": {
+        "search": "Search",
+        "login": "Login/ Register",
+        "category": "Categories",
+        "language": "English",
+        "cart": "Cart",
+        "help": "Support",
+        "wishlist": "whishlist"
+    },
+    "search": {
+        "noResults": "No products found",
+        "home": "Home",
+        "search_result": "Search results",
+        "total_items": "Total ({{count}} items)",
+        "prev": "Previous",
+        "next": "Next"
+    },
+    "footer": {
+        "contact": "Contact",
+        "location": "Localtion",
+        "address": "R1306, 13FL, CMC Tower, 11 Duy Tan, Cau Giay, Hanoi",
+        "phone": "+84 24 7109 9333",
+        "website": "https://fstv.vn",
+        "social": {
+            "facebook": "Facebook",
+            "linkedin": "LinkedIn",
+            "gmail": "Gmail"
+        }
+    },
+    "home": {
+        "category": "Categories",
+        "learn_more": "Learn more"
+    },
+    "product_detail": {
+        "sku": "Sku",
+        "select_label": "Select",
+        "description_title": "Description",
+        "shipping_type": "Shipping Type",
+        "quote_button": "Get Quote",
+        "download_quotation": "Download Quotation",
+        "total_label": "Total",
+        "quantity": "Quantity",
+        "enter_number": "Enter number",
+        "min_value": "Minimum value is {{value}}",
+        "max_value": "Maximum value is {{value}}",
+        "required_input": "Please enter a value",
+        "required_select": "Please select a value",
+        "contact_modal": {
+            "title": "Contact Information",
+            "cancel": "Cancel",
+            "confirm": "Confirm",
+            "full_name": "Full Name",
+            "company_name": "Company",
+            "position": "Position",
+            "email": "Email",
+            "phone": "Phone Number",
+            "message": "Message",
+            "required": "This field is required",
+            "email_invalid": "Invalid email address",
+            "address": "Address"
+        },
+        "quote_info_modal": {
+            "quotation_info": "Quotation Information",
+            "full_name": "Full Name",
+            "company_name": "Company",
+            "position": "Position",
+            "email": "Email",
+            "phone": "Phone Number",
+            "product_code": "Product Code",
+            "product_price": "Product Price",
+            "shipping_price": "Shipping Fee",
+            "total_price": "Total",
+            "close": "Close"
+        }
+
+    },
+    "message": {
+        "success": "Success",
+        "error": "An error occurred",
+        "validate": {
+            "required_input": "Please enter a value",
+            "required_select": "Please select a value",
+            "password_mismatch": "パスワードが一致しません"
+        }
+    },
+    "title": {
+        "home": "Quotation for Security Aluminum Doors | Home",
+        "search": "Quotation for Security Aluminum Doors | Search",
+        "product": "Quotation for Security Aluminum Doors | Product",
+        "not_found": "Quotation for Security Aluminum Doors | Not found",
+        "login": "Quotation for Security Aluminum Doors | Login",
+        "sign_up": "Quotation for Security Aluminum Doors | Sign-up"
+    }
+}
