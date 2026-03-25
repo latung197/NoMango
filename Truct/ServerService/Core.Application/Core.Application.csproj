@@ -7,15 +7,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.28" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
+		<PackageReference Include="Dapper" Version="2.1.72" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Core.Infrastructure\Core.Infrastructure.csproj" />
-		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper" Version="16.1.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<ProjectReference Include="..\Core.Utils\Core.Utils.csproj" />
-		<PackageReference Include="CsvHelper" Version="30.0.1" />
+		<PackageReference Include="CsvHelper" Version="33.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="CustomModels\INModel\" />

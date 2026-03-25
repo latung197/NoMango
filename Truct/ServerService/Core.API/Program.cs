@@ -126,7 +126,11 @@ app.UseCookiePolicy(new CookiePolicyOptions
 });
 
 // Pipeline configuration
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseRouting();
 
 app.UseCors("CoreCorsPolicy");

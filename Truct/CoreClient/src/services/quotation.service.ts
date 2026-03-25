@@ -28,7 +28,7 @@ export async function quotationDownload(id: number): Promise<void> {
         const pad = (n: number) => n.toString().padStart(2, '0');
         const timestamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
 
-        let filename = `見積書_${timestamp}.pdf`;
+        const filename = `見積書_${timestamp}.pdf`;
 
         const blob = new Blob([res.data], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);

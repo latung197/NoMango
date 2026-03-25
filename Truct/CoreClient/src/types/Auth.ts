@@ -3,7 +3,7 @@ interface LoginResponse {
   name: string;
   accessToken: string;
   refreshToken: string;
-  message: String; 
+  message: string; 
   tokenType: string;
   accessTokenExpiresIn: string;
   refreshTokenExpiresIn: string

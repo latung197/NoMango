@@ -1,6 +1,7 @@
 ﻿using Core.Application.CustomModels.Others;
 using Core.Application.CustomModels.SearchConditions;
 using Core.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers

@@ -1,4 +1,5 @@
-﻿using PCMain.BaseHttp.Interface;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PCMain.BaseHttp.Interface;
 using Worker.Application.Constants;
 
 namespace PCMain.BaseHttp.Interface

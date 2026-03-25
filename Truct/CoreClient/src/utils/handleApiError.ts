@@ -8,7 +8,7 @@ export function handleApiError(error: any) {
         window.location.href = "/login";
         return;
     }
-
+const a={name:"tung"}
     const message = getApiMessage(error);
     toast.error(message);
     throw error;
