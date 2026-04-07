@@ -50,22 +50,8 @@ const CategoryDropdown: React.FC<Props> = ({ triggerRef, categories, t, onSelect
   }, [position]); 
 
   return (
-    position && (
-      <div
-        ref={dropdownRef}
-        className="fixed w-72 bg-white shadow rounded z-[999] text-black"
-        style={{ top: position.top, left: position.left }}
-      >
-        <div className="bg-[#02CECF] text-white px-4 py-2 text-sm font-semibold">
-          <span className="truncate max-w-[120px]">{t('home.category')}</span>
-        </div>
-        <div className="p-4 h-[400px] overflow-y-auto">
-          {categories.map((cat) => (
-            <CategoryItem key={cat.id} category={cat} asideHeight={dropdownHeight} top={position.top} onSelectCategory={onSelectCategory}/>
-          ))}
-        </div>
-      </div>
-    )
+
+    <div></div>
   );
 };
 

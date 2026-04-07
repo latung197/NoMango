@@ -2,9 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from "react-router-dom";
-import { useAutocompleteSearch } from './navbar/AutoCompleteSearch';
 import CategoryDropdown from './navbar/CategoryDropdown';
-import ProductSearchDropdown from './navbar/ProductSearchDropdown';
 import HoverMenu from './navbar/HoverMenu';
 import { ensureUserInfo, getToken, logout } from '@/utils/authUtils';
 import ProfileDropdown from './navbar/ProfileDropdown';
@@ -25,7 +23,6 @@ const Navbar: React.FC = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
-  const { results } = useAutocompleteSearch(query, 30);
 
 
   const toggleCategory = () => {
@@ -90,30 +87,36 @@ const Navbar: React.FC = () => {
   }, [showDropdownProfile]);
 
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setShowDropdownProfile(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // useEffect(() => {
+  //   const handleClickOutside = (e: MouseEvent) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+  //       setShowDropdownProfile(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
 
-  const getCart = () => {
-    const token = getToken();
-    if (!getToken()) {
-        return;
-    }
-    navigate(`/user/cart`);
-  }
+  // const getCart = () => {
+  //   const token = getToken();
+  //   if (!getToken()) {
+  //       return;
+  //   }
+  //   navigate(`/user/cart`);
+  // }
 
-  return (
-    <>
-      <div>
+ return (
+    <header className="w-full fixed top-0 left-0 z-50 bg-yellow-500 text-white shadow-md overflow-x-hidden">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="text-xl font-bold">Logo</div>
+        <nav className="space-x-4">
+          <a href="/" className="hover:text-yellow-200">Trang chủ</a>
+          <a href="/about" className="hover:text-yellow-200">Giới thiệu</a>
+          <a href="/contact" className="hover:text-yellow-200">Liên hệ</a>
+        </nav>
       </div>
-    </>
+    </header>
   );
 };
 

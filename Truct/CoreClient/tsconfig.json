@@ -18,6 +18,7 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"]
-    }
+    },
+    "ignoreDeprecations": "6.0"
   }
 }
