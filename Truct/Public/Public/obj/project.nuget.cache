@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "IF23YLGTF+WmLHo1dl3lrKsDgGJPlLJDASO0j8QZqcp+bCmhXPB3zRrdxXQVKvg+q7X5sF9iktbeIamQcyuyYQ==",
+  "dgSpecHash": "b8lurhKYZJg=",
   "success": true,
-  "projectFilePath": "D:\\TungLV\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
+  "projectFilePath": "D:\\Project\\NoMango\\Truct\\Public\\Public\\Public.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\RFVNPC\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\RFVNPC\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    "C:\\Users\\Tung\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tung\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tung\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Tung\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Tung\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512"
   ],
   "logs": []
 }

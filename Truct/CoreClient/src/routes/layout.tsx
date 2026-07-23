@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Route, Routes, Outlet } from 'react-router-dom'
 import { routes } from './routes'
-import Navbar from '../components/layout/Navbar'
+import Navbar from '../components/layout/navbar/Navbar'
 import Footer from '../components/layout/Footer'
 
 // Layout chỉ có 3 phần: Navbar, Outlet, Footer

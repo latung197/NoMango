@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Core.Domain;
+using Core.Domain.Entity;
+using Core.Domain.Entity.SystemEntities;
+using Core.Infrastructure.ContextAccessors;
+using Core.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Core.Domain.Entity;
-using Core.Domain;
-using Core.Utils;
+using System.Data;
 using System.Reflection;
-using Core.Infrastructure.ContextAccessors;
-using Core.Domain.Entity.SystemEntities;
 
 namespace Core.Infrastructure.Context
 {
@@ -56,17 +57,23 @@ namespace Core.Infrastructure.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            string DbType = _configuration.GetConnectionString("DatabaseType");
+            string DbType = _configuration.GetConnectionString("DatabaseType") ?? "2";
+
+            // Lấy chuỗi kết nối
+            string? connectionString = DbType == "2"
+                ? _configuration?.GetConnectionString("CoreContext")
+                : Environment.GetEnvironmentVariable("CoreContext");
+
             switch (DbType)
             {
                 case "1"://MSSQL
-                    optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer(Environment.GetEnvironmentVariable("CoreContext"));
+                    optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer(connectionString);
                     break;
                 case "2"://Postgre
-                    optionsBuilder.UseLoggerFactory(loggerFactory).UseNpgsql(_configuration.GetConnectionString("CoreContext"));
+                    optionsBuilder.UseLoggerFactory(loggerFactory).UseNpgsql(connectionString);
                     break;
-                default://MSSQL
-                    optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer(Environment.GetEnvironmentVariable("CoreContext"));
+                default://Postgre
+                    optionsBuilder.UseLoggerFactory(loggerFactory).UseNpgsql(connectionString);
                     break;
             }
         }
