@@ -3,6 +3,7 @@ import { ApiResponse } from "@/types/ApiResponse";
 import api from "../configs/api";
 import { toast } from "sonner";
 import { getApiMessage } from "@/utils/apiMessage";
+import { LoginResponse } from "@/types/Auth";
 
 const path = "/auth";
 

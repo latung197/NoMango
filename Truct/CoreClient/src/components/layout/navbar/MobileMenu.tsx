@@ -21,13 +21,6 @@ interface ProfileDropdownProps {
 export default function ProfileDropdown({ userInfo, onLogout }: ProfileDropdownProps) {
     const navigate = useNavigate();
 
-    const quotationHistory = () => {
-      const token = getToken();
-      if (!getToken()) {
-          return;
-      }
-      navigate(`/user/quotation/history`);
-    }
 
   return (
     <div className="relative">
@@ -39,17 +32,11 @@ export default function ProfileDropdown({ userInfo, onLogout }: ProfileDropdownP
         <ul className="text-sm text-gray-700">
           <li className="px-4 py-1 hover:bg-gray-100 cursor-pointer flex items-center gap-1">
             <img src={userProfileIcon} className="h-4 w-4 align-middle" />
-            <i className="fas fa-user"/> アカウント情報
-          </li>
-          <li className="px-4 py-1 hover:bg-gray-100 cursor-pointer flex items-center gap-1"
-            onClick={quotationHistory}
-           >
-            <img src={quoteHistoryIcon} className="h-4 w-4 align-middle" />
-            <i className="fas fa-file-alt" />見積履歴
+            <i className="fas fa-user"/>
           </li>
           <li className="px-4 py-1 hover:bg-gray-100 cursor-pointer flex items-center gap-1">
             <img src={settingIcon} className="h-4 w-4 align-middle" />
-            <i className="fas fa-cog" /> 設定
+            <i className="fas fa-cog" /> 
           </li>
           <li
             className="px-4 py-1 hover:bg-gray-100 cursor-pointer flex items-center gap-1"
