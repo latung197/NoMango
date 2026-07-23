@@ -1,9 +1,8 @@
-import { QuotationAttributeRequest } from "./Quotation";
+
 
 export interface AddToCartRequest {
   productId: number;
   quantity: number;
-  attributes: QuotationAttributeRequest[] | null;
 }
 
 

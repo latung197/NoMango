@@ -1,4 +1,3 @@
-import { ShippingMethod } from "./Shipping";
 
 export interface ProductResponse {
   id: number;
@@ -66,7 +65,6 @@ export interface Attribute {
 }
 
 export interface ProductMetaResponse {
-  shippingMethods: ShippingMethod[];
   attributes: Attribute[];
   skus: SkuAttrResponse[];
 }
