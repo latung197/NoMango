@@ -10,20 +10,16 @@ import {
 
 const Navbar: React.FC = () => {
   return (
-    <header className="fixed left-0 top-0 z-[100] w-full border-b border-emerald-600/30 bg-emerald-600 text-white shadow-lg">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="fixed left-0 top-0 z-[100] w-full border-b border-emerald-600/30 bg-fuchsia-100 text-white shadow-lg">
+      <div className="mx-auto flex h-16 max-w-8xl  px-2 sm:px-2 lg:px-2">
 
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 text-xl font-bold tracking-tight"
+          className="flex items-center gap-1 text-xl font-bold tracking-tight"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/15">
-            L
-          </span>
-
-          <span>
-            Logo
+          <span className="flex h-15 w-30 items-center justify-center rounded-lg bg-white/15">
+            <img src="/src/assets/LOGO FSTV-01.png" alt="Logo" className="h-full w-full object-contain" />
           </span>
         </Link>
 
@@ -49,7 +45,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Products */}
-          <MainMenu
+          {/* <MainMenu
             trigger={
               <button
                 type="button"
@@ -92,10 +88,10 @@ const Navbar: React.FC = () => {
                 />
               </div>
             )}
-          </MainMenu>
+          </MainMenu> */}
 
           {/* Account */}
-          <MainMenu
+          {/* <MainMenu
             trigger={
               <button
                 type="button"
@@ -140,7 +136,7 @@ const Navbar: React.FC = () => {
                 />
               </div>
             )}
-          </MainMenu>
+          </MainMenu> */}
 
         </nav>
       </div>

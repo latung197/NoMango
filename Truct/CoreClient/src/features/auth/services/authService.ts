@@ -1,6 +1,6 @@
 // src/features/auth/services/authService.ts
 
-import apiClient from '@/services/api/apiClient'
+import api from "../../../configs/api";
 
 import type {
   LoginRequest,
@@ -10,7 +10,7 @@ import type {
 export const login = async (
   request: LoginRequest,
 ): Promise<LoginResponse> => {
-  const response = await apiClient.post<LoginResponse>(
+  const response = await api.post<LoginResponse>(
     '/auth/login',
     request,
   )
@@ -19,11 +19,11 @@ export const login = async (
 }
 
 export const logout = async (): Promise<void> => {
-  await apiClient.post('/auth/logout')
+  await api.post('/auth/logout')
 }
 
 export const getCurrentUser = async () => {
-  const response = await apiClient.get('/auth/me')
+  const response = await api.get('/auth/me')
 
   return response.data
 }
