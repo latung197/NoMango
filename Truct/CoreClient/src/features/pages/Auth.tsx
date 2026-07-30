@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login, signUp } from "@/services/auth.service";
-import { setToken } from "@/utils/authUtils";
+import { signUp } from "@/services/auth.service";
+import { setToken, setUserInfoUtils } from "@/utils/authUtils";
 
 type AuthMode = "login" | "signUp";
 
@@ -29,16 +29,14 @@ const Auth = () => {
     setSubmitting(true);
     try {
       if (isLogin) {
-        const response = await login({ email, password }) as any;
-        const authData = response?.data ?? response;
+        // Mock login for local testing: accept any credentials
+        const fakeToken = "mock-token"
+        const expiresAt = new Date(Date.now() + 1000 * 60 * 60).toISOString() // 1 hour
 
-        if (!authData?.accessToken || !authData?.accessTokenExpiresIn) {
-          throw new Error("Phản hồi đăng nhập không hợp lệ.");
-        }
-
-        setToken(authData.accessToken, authData.accessTokenExpiresIn);
-        navigate("/");
-        return;
+        setToken(fakeToken, expiresAt)
+        setUserInfoUtils({ name: "Test User", email })
+        navigate("/home")
+        return
       }
 
       await signUp({ name, email, password });
@@ -53,7 +51,8 @@ const Auth = () => {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 pt-20">
+    <div className="min-w-screen">
+    <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 pt-2">
       <section className="w-full max-w-md rounded-xl bg-white p-8 text-left shadow-lg">
         <h1 className="mb-2 text-2xl font-bold text-slate-900">
           {isLogin ? "Đăng nhập" : "Tạo tài khoản"}
@@ -135,6 +134,7 @@ const Auth = () => {
         </button>
       </section>
     </main>
+    </div>
   );
 };
 

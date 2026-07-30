@@ -6,6 +6,11 @@ import { t } from "i18next";
 export const routes = [
   {
     path: "/",
+    page: Auth,
+    getTitle: () => t("title.login"),
+  },
+  {
+    path: "/home",
     page: Home,
     getTitle: () => t("title.home"),
   },
