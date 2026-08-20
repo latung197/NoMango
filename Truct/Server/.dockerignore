@@ -1,0 +1,17 @@
+**
+!config/
+!src/
+!.editorconfig
+!WCS.sln
+
+bin/
+obj/
+.git/
+.vs/
+.vscode/
+*.user
+*.suo
+*.swp
+Thumbs.db
+*.pdb
+

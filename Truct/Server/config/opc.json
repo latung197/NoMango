@@ -1,0 +1,10 @@
+{
+  "SubcribeTags": [
+    "DeviceK.Station_J.PLC.iJ_Pos1",
+    "DeviceK.Station_J.PLC.iJ_Pos1_Intrusion_possible",
+    "DeviceK.Station_J.PLC.iJ_Status",
+    "DeviceK.Station_AS1.PLC.iAS1_Pos1",
+    "DeviceK.Station_AS1.PLC.iAS1_Pos1_Intrusion_possible",
+    "DeviceK.Station_AS1.PLC.iAS1_Status"
+  ]
+}

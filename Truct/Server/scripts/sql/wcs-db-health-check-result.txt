@@ -1,0 +1,391 @@
+================================================================
+ WCS DB Health Check
+ Thời gian chạy : 2026-07-20 17:10:36
+ SQL khởi động  : 2026-06-23 09:21:12
+ Uptime (giờ)   : 655.8
+================================================================
+ 
+--- 1. Tổng quan SQL Server instance ---
+1 28671 20590 1556 544 1
+22
+9978259
+ 
+--- 2. Buffer cache hit ratio (nên > 95%) ---
+100.00
+.49125671386
+CapWcsDb 454
+NULL 20
+WcsDb 17
+WmsDb 4
+ 
+--- 3. Disk I/O latency theo file DB (avg_read_ms > 20 = cần xem xét) ---
+CapWcsDb ROWS C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS\MSSQL\DATA\CapWcsDb.mdf 6215 7636 1 78609 159072 2
+WcsDb ROWS C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS\MSSQL\DATA\WcsDb.mdf 384 398 1 4652 6507 1
+WcsDb LOG C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS\MSSQL\DATA\WcsDb_log.ldf 8 4 0 323614 82931 0
+CapWcsDb LOG C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS\MSSQL\DATA\CapWcsDb_log.ldf 10 7 0 3498327 1161944 0
+ 
+--- 4. Active requests (wait_time cao = đang chờ I/O / lock / network) ---
+ 
+--- 4b. Blocking chain ---
+ 
+--- 5. Top wait types (PAGEIOLATCH=I/O, LCK_M=lock, ASYNC_NETWORK_IO=client chậm) ---
+PWAIT_EXTENSIBILITY_CLEANUP_TASK 8158 2447163.977000 99.89 299971
+WRITELOG 3773211 1325.754000 .05 0
+PREEMPTIVE_OS_CRYPTOPS 15442 927.787000 .04 60
+SOS_SCHEDULER_YIELD 663914 146.004000 .01 0
+PREEMPTIVE_OS_QUERYREGISTRY 1555147 140.809000 .01 0
+WAIT_ON_SYNC_STATISTICS_REFRESH 5848 82.009000 .00 14
+AZURE_IMDS_VERSIONS 3 63.131000 .00 21043
+ASYNC_NETWORK_IO 545880 53.202000 .00 0
+PREEMPTIVE_OS_AUTHENTICATIONOPS 49915 10.964000 .00 0
+PREEMPTIVE_OS_GENERICOPS 16674 2.708000 .00 0
+PAGEIOLATCH_EX 3248 2.678000 .00 0
+PAGEIOLATCH_SH 4296 2.544000 .00 0
+PREEMPTIVE_OS_CRYPTACQUIRECONTEXT 5214 1.918000 .00 0
+PREEMPTIVE_OS_AUTHORIZATIONOPS 10975 1.886000 .00 0
+PREEMPTIVE_OS_WRITEFILE 1161 1.628000 .00 1
+ 
+--- 6. Top 20 query theo total elapsed time (từ lúc restart) ---
+148951 1830977 12 240734377 1616 1823479 2026-07-20 17:10:32.780 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM [Stations] AS [s]
+LEFT JOIN [StationTags] AS [s0] ON [s].[Id] = [s0].[StationId]
+WHERE [s].[IsActive] = CAST(1 AS bit)
+ORDER BY [s].[Id]
+625306 140294 0 13227570 21 140145 2026-07-20 17:10:32.767 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[IsAuxiliaryMaterial], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+431143 84630 0 7115739 16 84535 2026-07-10 11:56:36.780 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+340790 76575 0 4065562 11 76493 2026-07-10 11:56:49.930 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[AutoReceiveEnabled], [s0].[AutoSendEnabled], [s0].[AutoSendIsEmptyTray], [s0].[AutoSendToStage], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[MainPoint], [s0].[Sizes], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+124662 32291 0 2035254 16 32260 2026-07-20 17:10:25.633 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[AutoReceiveEnabled], [s0].[AutoSendEnabled], [s0].[AutoSendIsEmptyTray], [s0].[AutoSendToStage], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[IsAuxiliaryMaterial], [s0].[MainPoint], [s0].[Sizes], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+976918 25631 0 3400804 3 25398 2026-07-20 17:09:47.823 SELECT TOP(1) [a].[Id], [a].[Area], [a].[Battery], [a].[Code], [a].[CreatedAt], [a].[Direction], [a].[Exclude], [a].[ExcludeStr], [a].[Ip], [a].[IsActive], [a].[MapCode], [a].[MapName], [a].[Name], [a].[OnLine], [a].[PodCode], [a].[PodDir], [a].[PosX], [a].[PosY], [a].[RobotStatus], [a].[Status], [a].[StatusStr], [a].[Stop], [a].[StopStr], [a].[TypeCode], [a].[UpdatedAt]
+FROM [Amrs] AS [a]
+WHERE [a].[Code] = @__code_0
+83530 10985 0 1460142 17 10961 2026-07-20 17:10:32.793 UPDATE [TransferRequests] SET [Status] = @p0, [UpdatedAt] = @p1
+OUTPUT 1
+WHERE [Id] = @p2
+92768 10774 0 1528467 16 10749 2026-07-20 17:10:32.750 UPDATE [t]
+SET [t].[UpdatedAt] = GETUTCDATE(),
+    [t].[Status] = 5
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__id_0 AND [t].[Status] = 0
+99097 10056 0 369004 3 10032 2026-06-30 15:37:33.127 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[MainPoint], [s0].[Size], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+99088 8355 0 525514 5 8318 2026-06-30 14:35:32.553 SELECT [s1].[Id], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[MainPoint], [s1].[Size], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Size], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+296 6864 23 13871 46 1944 2026-07-20 17:09:46.187 SELECT [f].[Id], [f].[CassetteCode], [f].[CompletedAt], [f].[ConsumedDropFillers], [f].[CranePositionsJson], [f].[CraneTaskNo], [f].[CreatedAt], [f].[CurrentStep], [f].[CurrentStepStartedAt], [f].[FromStationCode], [f].[Product], [f].[Quantity], [f].[RcsTaskId], [f].[RerouteCount], [f].[RerouteJson], [f].[RobotCode], [f].[Status], [f].[StorageStageCode], [f].[TaskSize], [f].[ToStationCode], [f].[UpdatedAt], [f0].[Id], [f0].[CreatedAt], [f0].[FlowTaskId], [f0].[IsMet], [f0].[NeedType], [f0].[UpdatedAt], [f1].[Id], [f1].[CreatedAt], [f1].[Event], [f1].[FlowTaskId], [f1].[LogMessage], [f1].[Step]
+FROM [FlowTasks] AS [f]
+LEFT JOIN [FlowTaskWaitingSets] AS [f0] ON [f].[Id] = [f0].[FlowTaskId]
+LEFT JOIN [FlowTaskHistory] AS [f1] ON [f].[Id] = [f1].[FlowTaskId]
+ORDER BY [f].[CreatedAt] DESC, [f].[Id], [f0].[Id]
+123693 5112 0 247396 2 5084 2026-07-20 17:10:32.793 SELECT TOP(1) [t].[Id], [t].[CassetteCode], [t].[CranePositionsJson], [t].[CreatedAt], [t].[ExpiresAt], [t].[FlowTaskId], [t].[FromStageCode], [t].[FromStationCode], [t].[IsEmptyTray], [t].[IsWipTray], [t].[MatchedRequestId], [t].[PendingWarehouseStationCode], [t].[Product], [t].[Quantity], [t].[RobotCode], [t].[Size], [t].[Source], [t].[Status], [t].[StorageStageCode], [t].[ToStageCode], [t].[ToStationCode], [t].[Type], [t].[UpdatedAt], [t].[WarehousePendingKind]
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__request_Id_0
+377 4886 12 520723 1381 4229 2026-07-13 15:10:06.637 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM [Stations] AS [s]
+LEFT JOIN [StationTags] AS [s0] ON [s].[Id] = [s0].[StationId]
+WHERE [s].[IsActive] = CAST(1 AS bit)
+ORDER BY [s].[Id]
+124925 4840 0 249850 2 4811 2026-07-20 17:10:32.753 SELECT TOP(1) [t].[Id], [t].[CassetteCode], [t].[CranePositionsJson], [t].[CreatedAt], [t].[ExpiresAt], [t].[FlowTaskId], [t].[FromStageCode], [t].[FromStationCode], [t].[IsEmptyTray], [t].[IsWipTray], [t].[MatchedRequestId], [t].[PendingWarehouseStationCode], [t].[Product], [t].[Quantity], [t].[RobotCode], [t].[Size], [t].[Source], [t].[Status], [t].[StorageStageCode], [t].[ToStageCode], [t].[ToStationCode], [t].[Type], [t].[UpdatedAt], [t].[WarehousePendingKind]
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__id_0
+38799 3470 0 544251 14 3461 2026-07-20 11:28:44.220 UPDATE [TransferRequests] SET [MatchedRequestId] = @p0, [Status] = @p1, [UpdatedAt] = @p2
+OUTPUT 1
+WHERE [Id] = @p3
+242 2916 12 353776 1461 2855 2026-07-20 16:56:52.293 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[IsAuxiliaryMaterial], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[IsActive] = CAST(1 AS bit)
+    ORDER BY [s].[StageCode], [s].[Code]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[StageCode], [s1].[Code], [s1].[Id]
+222 2584 11 283271 1275 2473 2026-07-13 15:10:06.520 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[IsActive] = CAST(1 AS bit)
+    ORDER BY [s].[StageCode], [s].[Code]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[StageCode], [s1].[Code], [s1].[Id]
+458 2125 4 15279 33 390 2026-07-20 16:14:39.550 SELECT [f].[Id], [f].[CassetteCode], [f].[CompletedAt], [f].[ConsumedDropFillers], [f].[CranePositionsJson], [f].[CraneTaskNo], [f].[CreatedAt], [f].[CurrentStep], [f].[CurrentStepStartedAt], [f].[FromStationCode], [f].[Product], [f].[Quantity], [f].[RcsTaskId], [f].[RerouteCount], [f].[RerouteJson], [f].[RobotCode], [f].[Status], [f].[StorageStageCode], [f].[TaskSize], [f].[ToStationCode], [f].[UpdatedAt]
+FROM [FlowTasks] AS [f]
+13588 1454 0 64784 4 1448 2026-07-20 17:07:25.327 UPDATE [FlowTasks] SET [CassetteCode] = @p0, [CompletedAt] = @p1, [ConsumedDropFillers] = @p2, [CranePositionsJson] = @p3, [CraneTaskNo] = @p4, [CurrentStep] = @p5, [CurrentStepStartedAt] = @p6, [FromStationCode] = @p7, [Product] = @p8, [Quantity] = @p9, [RcsTaskId] = @p10, [RerouteCount] = @p11, [RerouteJson] = @p12, [RobotCode] = @p13, [Status] = @p14, [StorageStageCode] = @p15, [TaskSize] = @p16, [ToStationCode] = @p17, [UpdatedAt] = @p18
+OUTPUT 1
+WHERE [Id] = @p19
+2347 1328 0 16440 7 1327 2026-07-20 16:56:52.503 SELECT [e].[Id], [e].[Area], [e].[Code], [e].[CreatedAt], [e].[ErrorType], [e].[FlowTaskId], [e].[FromStation], [e].[Message], [e].[Status], [e].[ToStation], [e].[UpdatedAt]
+FROM [Errors] AS [e]
+WHERE [e].[Status] <> 2 OR [e].[CreatedAt] >= @__twentyFourHoursAgo_0
+ORDER BY [e].[CreatedAt] DESC, [e].[Area]
+ 
+--- 7. Top 20 query theo execution count (nhiều round-trip nhỏ) ---
+976918 0 3 2026-07-20 17:09:47.823 SELECT TOP(1) [a].[Id], [a].[Area], [a].[Battery], [a].[Code], [a].[CreatedAt], [a].[Direction], [a].[Exclude], [a].[ExcludeStr], [a].[Ip], [a].[IsActive], [a].[MapCode], [a].[MapName], [a].[Name], [a].[OnLine], [a].[PodCode], [a].[PodDir], [a].[PosX], [a].[PosY], [a].[RobotStatus], [a].[Status], [a].[StatusStr], [a].[Stop], [a].[StopStr], [a].[TypeCode], [a].[UpdatedAt]
+FROM [Amrs] AS [a]
+WHERE [a].[Code] = @__code_0
+625306 0 21 2026-07-20 17:10:32.767 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[IsAuxiliaryMaterial], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+552664 0 16 2026-07-20 17:10:25.630 UPDATE cap.Published SET Content=@Content, Retries=@Retries,ExpiresAt=@ExpiresAt,StatusName=@StatusName WHERE Id=@Id
+552637 0 12 2026-07-20 17:10:25.633 INSERT INTO cap.Received([Id],[Version],[Name],[Group],[Content],[Retries],[Added],[ExpiresAt],[StatusName])VALUES(@Id,'v1',@Name,@Group,@Content,@Retries,@Added,@ExpiresAt,@StatusName)
+552637 0 17 2026-07-20 17:10:25.633 UPDATE cap.Received SET Content=@Content, Retries=@Retries,ExpiresAt=@ExpiresAt,StatusName=@StatusName WHERE Id=@Id
+552636 0 12 2026-07-20 17:10:25.630 INSERT INTO cap.Published ([Id],[Version],[Name],[Content],[Retries],[Added],[ExpiresAt],[StatusName])VALUES(@Id,'v1',@Name,@Content,@Retries,@Added,@ExpiresAt,@StatusName)
+431143 0 16 2026-07-10 11:56:36.780 SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[MainPoint], [s1].[Sizes], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+340790 0 11 2026-07-10 11:56:49.930 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[AutoReceiveEnabled], [s0].[AutoSendEnabled], [s0].[AutoSendIsEmptyTray], [s0].[AutoSendToStage], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[MainPoint], [s0].[Sizes], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+148951 12 1616 2026-07-20 17:10:32.780 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint], [s].[Sizes], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM [Stations] AS [s]
+LEFT JOIN [StationTags] AS [s0] ON [s].[Id] = [s0].[StationId]
+WHERE [s].[IsActive] = CAST(1 AS bit)
+ORDER BY [s].[Id]
+124925 0 2 2026-07-20 17:10:32.753 SELECT TOP(1) [t].[Id], [t].[CassetteCode], [t].[CranePositionsJson], [t].[CreatedAt], [t].[ExpiresAt], [t].[FlowTaskId], [t].[FromStageCode], [t].[FromStationCode], [t].[IsEmptyTray], [t].[IsWipTray], [t].[MatchedRequestId], [t].[PendingWarehouseStationCode], [t].[Product], [t].[Quantity], [t].[RobotCode], [t].[Size], [t].[Source], [t].[Status], [t].[StorageStageCode], [t].[ToStageCode], [t].[ToStationCode], [t].[Type], [t].[UpdatedAt], [t].[WarehousePendingKind]
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__id_0
+124662 0 16 2026-07-20 17:10:25.633 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[AutoReceiveEnabled], [s0].[AutoSendEnabled], [s0].[AutoSendIsEmptyTray], [s0].[AutoSendToStage], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[IsAuxiliaryMaterial], [s0].[MainPoint], [s0].[Sizes], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+123693 0 2 2026-07-20 17:10:32.793 SELECT TOP(1) [t].[Id], [t].[CassetteCode], [t].[CranePositionsJson], [t].[CreatedAt], [t].[ExpiresAt], [t].[FlowTaskId], [t].[FromStageCode], [t].[FromStationCode], [t].[IsEmptyTray], [t].[IsWipTray], [t].[MatchedRequestId], [t].[PendingWarehouseStationCode], [t].[Product], [t].[Quantity], [t].[RobotCode], [t].[Size], [t].[Source], [t].[Status], [t].[StorageStageCode], [t].[ToStageCode], [t].[ToStationCode], [t].[Type], [t].[UpdatedAt], [t].[WarehousePendingKind]
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__request_Id_0
+99097 0 3 2026-06-30 15:37:33.127 SELECT TOP(1) [s].[Id], [s].[CompletedAt], [s].[CreatedAt], [s].[StationId], [s].[Tag], [s].[TagType], [s].[UpdatedAt], [s0].[Id], [s0].[Capacity], [s0].[Code], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[HasConveyor], [s0].[HasCurtain], [s0].[HasWarehouseDoor], [s0].[IsActive], [s0].[MainPoint], [s0].[Size], [s0].[StageCode], [s0].[Type], [s0].[UpdatedAt], [s0].[WaitingPoint]
+FROM [StationTags] AS [s]
+INNER JOIN [Stations] AS [s0] ON [s].[StationId] = [s0].[Id]
+WHERE [s].[Tag] = @__tag_0
+99088 0 5 2026-06-30 14:35:32.553 SELECT [s1].[Id], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[MainPoint], [s1].[Size], [s1].[StageCode], [s1].[Type], [s1].[UpdatedAt], [s1].[WaitingPoint], [s0].[Id], [s0].[CompletedAt], [s0].[CreatedAt], [s0].[StationId], [s0].[Tag], [s0].[TagType], [s0].[UpdatedAt]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[MainPoint], [s].[Size], [s].[StageCode], [s].[Type], [s].[UpdatedAt], [s].[WaitingPoint]
+    FROM [Stations] AS [s]
+    WHERE [s].[Code] = @__code_0 AND [s].[IsActive] = CAST(1 AS bit)
+) AS [s1]
+LEFT JOIN [StationTags] AS [s0] ON [s1].[Id] = [s0].[StationId]
+ORDER BY [s1].[Id]
+92768 0 16 2026-07-20 17:10:32.750 UPDATE [t]
+SET [t].[UpdatedAt] = GETUTCDATE(),
+    [t].[Status] = 5
+FROM [TransferRequests] AS [t]
+WHERE [t].[Id] = @__id_0 AND [t].[Status] = 0
+83530 0 17 2026-07-20 17:10:32.793 UPDATE [TransferRequests] SET [Status] = @p0, [UpdatedAt] = @p1
+OUTPUT 1
+WHERE [Id] = @p2
+60930 0 16 2026-07-20 17:10:24.400 UPDATE cap.Published SET Content=@Content, Retries=@Retries,ExpiresAt=@ExpiresAt,StatusName=@StatusName WHERE Id=@Id
+60929 0 12 2026-07-20 17:10:24.400 INSERT INTO cap.Received([Id],[Version],[Name],[Group],[Content],[Retries],[Added],[ExpiresAt],[StatusName])VALUES(@Id,'v1',@Name,@Group,@Content,@Retries,@Added,@ExpiresAt,@StatusName)
+60929 0 17 2026-07-20 17:10:24.400 UPDATE cap.Received SET Content=@Content, Retries=@Retries,ExpiresAt=@ExpiresAt,StatusName=@StatusName WHERE Id=@Id
+60929 0 12 2026-07-20 17:10:24.397 INSERT INTO cap.Published ([Id],[Version],[Name],[Content],[Retries],[Added],[ExpiresAt],[StatusName])VALUES(@Id,'v1',@Name,@Content,@Retries,@Added,@ExpiresAt,@StatusName)
+ 
+--- 8. Kích thước database ---
+WcsDb ONLINE SIMPLE 144
+CapWcsDb ONLINE SIMPLE 656
+ 
+--- 8b. Row count & size các bảng chính WcsDb ---
+TransferRequests 32346 1 1
+StationTags 888 0 0
+FlowTasks 814 0 0
+Cassettes 166 0 0
+FlowTaskHistory 165 0 0
+Stations 143 0 0
+CraneTaskDispatches 83 0 0
+FlowTaskWaitingSets 36 0 0
+Amrs 9 0 0
+Settings 2 0 0
+ 
+--- 9. Phân bố status TransferRequests & FlowTasks ---
+2 10320
+4 223
+1 150
+3 84
+0 5
+2 13 630
+4 1 55
+4 2 34
+4 11 34
+4 8 14
+4 0 12
+4 3 8
+4 9 6
+4 4 5
+4 7 5
+4 10 4
+4 13 2
+4 6 2
+4 5 2
+4 12 1
+ 
+--- 10. Missing index suggestions cho WcsDb ---
+62.950000000000003 1454 FlowTasks [RcsTaskId] NULL NULL 58.391663592655512 CREATE NONCLUSTERED INDEX IX_FlowTasks_RcsTaskId ON [WcsDb].[dbo].[FlowTasks] ([RcsTaskId])
+40.259999999999998 6 FlowTasks NULL [Status] [CurrentStep] 0.39686148893169626 CREATE NONCLUSTERED INDEX IX_FlowTasks_ ON [WcsDb].[dbo].[FlowTasks] (, [Status]) INCLUDE ([CurrentStep])
+65.439999999999998 1 TransferRequests NULL [FlowTaskId] NULL 0.28384829566244874 CREATE NONCLUSTERED INDEX IX_TransferRequests_ ON [WcsDb].[dbo].[TransferRequests] (, [FlowTaskId])
+91.459999999999994 1 TransferRequests [FromStationCode] [Status] [Type], [ToStageCode], [Size], [IsEmptyTray], [ExpiresAt], [CreatedAt], [Source] 0.23064841280132703 CREATE NONCLUSTERED INDEX IX_TransferRequests_FromStationCode ON [WcsDb].[dbo].[TransferRequests] ([FromStationCode], [Status]) INCLUDE ([Type], [ToStageCode], [Size], [IsEmptyTray], [ExpiresAt], [CreatedAt], [Source])
+91.079999999999998 1 TransferRequests [FromStationCode] NULL [Type], [ToStageCode], [Size], [Status], [CreatedAt], [Source] 0.21238379197796581 CREATE NONCLUSTERED INDEX IX_TransferRequests_FromStationCode ON [WcsDb].[dbo].[TransferRequests] ([FromStationCode]) INCLUDE ([Type], [ToStageCode], [Size], [Status], [CreatedAt], [Source])
+49.909999999999997 1 FlowTasks [Status] NULL [FromStationCode], [ToStationCode], [CurrentStep], [CreatedAt], [UpdatedAt], [CassetteCode], [Product], [Quantity] 4.0829269276375341E-2 CREATE NONCLUSTERED INDEX IX_FlowTasks_Status ON [WcsDb].[dbo].[FlowTasks] ([Status]) INCLUDE ([FromStationCode], [ToStationCode], [CurrentStep], [CreatedAt], [UpdatedAt], [CassetteCode], [Product], [Quantity])
+ 
+--- 11. Index ít/không được seek/scan (user_seeks + user_scans = 0) ---
+FlowTasks IX_FlowTasks_CurrentStep NONCLUSTERED 0 0 0 18696
+FlowTaskWaitingSets IX_FlowTaskWaitingSets_FlowTaskId_NeedType NONCLUSTERED 0 0 0 1878
+FlowTasks IX_FlowTasks_CreatedAt NONCLUSTERED 0 0 0 720
+Cassettes IX_Cassettes_Code_IsActive NONCLUSTERED 0 0 0 439
+CraneTaskDispatches IX_CraneTaskDispatches_IdempotencyKey_Active NONCLUSTERED 0 0 0 324
+CraneTaskDispatches IX_CraneTaskDispatches_Status NONCLUSTERED 0 0 0 324
+CraneTaskDispatches IX_CraneTaskDispatches_TaskNo_Active NONCLUSTERED 0 0 0 324
+CraneTaskDispatches IX_CraneTaskDispatches_FlowTaskId NONCLUSTERED 0 0 0 83
+Flows IX_Flows_Name NONCLUSTERED 0 0 0 56
+Flows IX_Flows_Priority NONCLUSTERED 0 0 0 56
+Flows IX_Flows_ReturnEmpty NONCLUSTERED 0 0 0 56
+Requests IX_Requests_Code NONCLUSTERED 0 0 0 12
+MaterialRequests IX_MaterialRequests_MaterialId NONCLUSTERED 0 0 0 12
+MaterialRequests IX_MaterialRequests_RequestId NONCLUSTERED 0 0 0 12
+plan_persist_query_variant plan_persist_query_variant_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query_variant plan_persist_query_variant_idx1 NONCLUSTERED NULL NULL NULL NULL
+ledger_tables_history_internal ci_ledger_tables_history_internal CLUSTERED NULL NULL NULL NULL
+ledger_tables_history_internal_history ci_ledger_tables_history_internal_history CLUSTERED NULL NULL NULL NULL
+ledger_columns_history_internal ci_ledger_columns_history_internal CLUSTERED NULL NULL NULL NULL
+ledger_columns_history_internal_history ci_ledger_columns_history_internal_history CLUSTERED NULL NULL NULL NULL
+db_ledger_digest_locations ci_type_and_path CLUSTERED NULL NULL NULL NULL
+plan_persist_replicas plan_persist_qds_replicas_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_replicas plan_persist_qds_replicas_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_plan_forcing_locations plan_persist_plan_force_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_plan_forcing_locations plan_persist_plan_force_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats_v2 plan_persist_runtime_stats_v2_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats_v2 plan_persist_runtime_stats_v2_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats_v2 plan_persist_runtime_stats_v2_idx2 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_wait_stats_v2 plan_persist_wait_stats_v2_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_wait_stats_v2 plan_persist_wait_stats_v2_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_wait_stats_v2 plan_persist_wait_stats_v2_idx2 NONCLUSTERED NULL NULL NULL NULL
+ipv6_firewall_rules_table idx_firewall_rules_unique CLUSTERED NULL NULL NULL NULL
+ipv6_firewall_rules_table idx_firewall_rules_ip_address_values NONCLUSTERED NULL NULL NULL NULL
+ipv6_database_firewall_rules_table idx_database_firewall_rules_unique CLUSTERED NULL NULL NULL NULL
+ipv6_database_firewall_rules_table idx_database_firewall_rules_ip_address_values NONCLUSTERED NULL NULL NULL NULL
+pause_resume_history IX_pause_resume_history CLUSTERED NULL NULL NULL NULL
+fulltext_thesaurus_metadata_table idx_lcid CLUSTERED NULL NULL NULL NULL
+fulltext_thesaurus_state_table idx_term CLUSTERED NULL NULL NULL NULL
+fulltext_thesaurus_phrase_table idx_groupid CLUSTERED NULL NULL NULL NULL
+fulltext_thesaurus_phrase_table idx_phraseid NONCLUSTERED NULL NULL NULL NULL
+wpr_bucket_table wpr_bucket_clustered_idx CLUSTERED NULL NULL NULL NULL
+sqlagent_jobs sqlagent_jobs_clust CLUSTERED NULL NULL NULL NULL
+sqlagent_jobs sqlagent_jobs_nc1_name NONCLUSTERED NULL NULL NULL NULL
+sqlagent_jobsteps sqlagent_jobsteps_clust CLUSTERED NULL NULL NULL NULL
+sqlagent_jobsteps sqlagent_jobsteps_nc1 NONCLUSTERED NULL NULL NULL NULL
+sqlagent_jobsteps sqlagent_jobsteps_nc2 NONCLUSTERED NULL NULL NULL NULL
+sqlagent_job_history sqlagent_job_history_clust CLUSTERED NULL NULL NULL NULL
+sqlagent_job_history sqlagent_job_history_nc1 NONCLUSTERED NULL NULL NULL NULL
+sqlagent_jobsteps_logs sqlagent_jobsteps_logs_nc1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_query_text plan_persist_query_text_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query_text plan_persist_query_text_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_query plan_persist_query_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query plan_persist_query_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_plan plan_persist_plan_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_plan plan_persist_plan_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats plan_persist_runtime_stats_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats plan_persist_runtime_stats_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats_interval plan_persist_runtime_stats_interval_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_runtime_stats_interval plan_persist_runtime_stats_interval_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_context_settings plan_persist_context_settings_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query_hints plan_persist_query_hints_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query_hints plan_persist_query_hints_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_query_template_parameterization plan_persist_query_template_parameterization_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_query_template_parameterization plan_persist_query_template_parameterization_idx1 NONCLUSTERED NULL NULL NULL NULL
+plan_persist_wait_stats plan_persist_wait_stats_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_wait_stats plan_persist_wait_stats_idx1 NONCLUSTERED NULL NULL NULL NULL
+db_ledger_blocks ci_block_id CLUSTERED NULL NULL NULL NULL
+db_ledger_transactions ci_block_id CLUSTERED NULL NULL NULL NULL
+db_ledger_transactions nci_transaction_id NONCLUSTERED NULL NULL NULL NULL
+backup_metadata_store IX_backup_metadata_start_date_metadata_uuid CLUSTERED NULL NULL NULL NULL
+backup_metadata_store IX_backup_metadata_type_finish_date NONCLUSTERED NULL NULL NULL NULL
+backup_metadata_store IX_backup_metadata_first_lsn NONCLUSTERED NULL NULL NULL NULL
+backup_metadata_store IX_backup_metadata_last_lsn NONCLUSTERED NULL NULL NULL NULL
+backup_metadata_store IX_backup_metadata_database_guid NONCLUSTERED NULL NULL NULL NULL
+plan_persist_plan_feedback plan_feedback_cidx CLUSTERED NULL NULL NULL NULL
+plan_persist_plan_feedback plan_feedback_idx1 NONCLUSTERED NULL NULL NULL NULL
+queue_messages_2041058307 queue_clustered_index CLUSTERED NULL NULL NULL NULL
+queue_messages_2041058307 queue_secondary_index NONCLUSTERED NULL NULL NULL NULL
+filestream_tombstone_2073058421 FSTSClusIdx CLUSTERED NULL NULL NULL NULL
+filestream_tombstone_2073058421 FSTSNCIdx NONCLUSTERED NULL NULL NULL NULL
+syscommittab ci_commit_ts CLUSTERED NULL NULL NULL NULL
+syscommittab si_xdes_id NONCLUSTERED NULL NULL NULL NULL
+syscommittab si_commit_time_ts NONCLUSTERED NULL NULL NULL NULL
+filetable_updates_2105058535 FFtUpdateIdx CLUSTERED NULL NULL NULL NULL
+queue_messages_1977058079 queue_clustered_index CLUSTERED NULL NULL NULL NULL
+queue_messages_1977058079 queue_secondary_index NONCLUSTERED NULL NULL NULL NULL
+queue_messages_2009058193 queue_clustered_index CLUSTERED NULL NULL NULL NULL
+queue_messages_2009058193 queue_secondary_index NONCLUSTERED NULL NULL NULL NULL
+ 
+--- 12. Query Store ---
+WcsDb 1
+CapWcsDb 1
+READ_WRITE READ_WRITE 8 1000
+3066 284638 0.20756179076581482 20.149902683408399 (@__code_0 nvarchar(50))SELECT [s1].[Id], [s1].[AutoReceiveEnabled], [s1].[AutoSendEnabled], [s1].[AutoSendIsEmptyTray], [s1].[AutoSendToStage], [s1].[Capacity], [s1].[Code], [s1].[CompletedAt], [s1].[CreatedAt], [s1].[HasConveyor], [s1].[HasCurtain], [s1].[HasWarehouseDoor], [s1].[IsActive], [s1].[
+3065 2770 12.630851985559566 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2705 12.764529020332716 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2658 12.633195259593681 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2573 12.980906335017488 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2483 12.387483286347161 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2433 12.289701602959308 1626.5371968762845 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2156 12.536317254174397 1656.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2164 12.361833179297596 1559.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+3065 2133 12.475789029535864 1656.0 SELECT [s].[Id], [s].[AutoReceiveEnabled], [s].[AutoSendEnabled], [s].[AutoSendIsEmptyTray], [s].[AutoSendToStage], [s].[Capacity], [s].[Code], [s].[CompletedAt], [s].[CreatedAt], [s].[HasConveyor], [s].[HasCurtain], [s].[HasWarehouseDoor], [s].[IsActive], [s].[IsAuxiliaryMaterial], [s].[MainPoint],
+ 
+--- 13. CAP queue backlog (CapWcsDb) ---
+Không tìm thấy bảng cap.Published — có thể CAP chưa khởi tạo schema.
+ 
+--- 14. Connections theo program & login ---
+(idle/unknown) Core Microsoft SqlClient Data Provider nitto WIN-TR82T4A4VV1 18 0
+(idle/unknown) Navicat nitto DESKTOP-MSNASDA 2 0
+(idle/unknown) SQLServerCEIP NT SERVICE\SQLTELEMETRY$SQLEXPRESS WIN-TR82T4A4VV1 1 0
+master SQLCMD nitto DESKTOP-MSNASDA 1 1
+ 
+--- 15. Gợi ý bật Extended Events bắt query chậm (>500ms) ---
+ 
+CREATE EVENT SESSION [Wcs_SlowQueries] ON SERVER
+ADD EVENT sqlserver.sql_statement_completed(
+    ACTION(sqlserver.sql_text, sqlserver.client_app_name, sqlserver.database_name)
+    WHERE (duration > 500000)
+)
+ADD TARGET package0.event_file(SET filename=N'C:\Temp\WcsSlowQueries.xel')
+WITH (MAX_MEMORY=4096 KB, EVENT_RETENTION_MODE=ALLOW_SINGLE_EVENT_LOSS);
+ALTER EVENT SESSION [Wcs_SlowQueries] ON SERVER STATE = START;
+ 
+================================================================
+ Health check hoàn tất.
+================================================================

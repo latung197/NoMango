@@ -51,7 +51,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-w-screen">
+    <div className="w-full bg-white rounded-xl shadow-md overflow-hidden">
     <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 pt-2">
       <section className="w-full max-w-md rounded-xl bg-white p-8 text-left shadow-lg">
         <h1 className="mb-2 text-2xl font-bold text-slate-900">

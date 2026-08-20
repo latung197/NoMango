@@ -1,0 +1,70 @@
+services:
+  wcs-api:
+    container_name: wcs-api
+    build:
+      context: .
+      dockerfile: src/Wcs.Api/Dockerfile
+      args:
+        - BUILD_CONFIGURATION=Release
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Server=tcp:192.168.20.175,1433;Database=WcsDb;User Id=admin;Password=admin;Encrypt=false
+      ConnectionStrings__CapConnection: Server=tcp:192.168.20.175,1433;Database=CapWcsDb;User Id=admin;Password=admin;Encrypt=false
+      ConnectionStrings__RabbitConnection: amqp://admin:1234@192.168.20.41:5672/
+      Rcs__BaseUrl: http://192.168.20.65:8182/rcms/services/rest/hikRpcService
+      Rcs__DpsUrl: http://192.168.20.65:8083/rcms-dps/rest
+      Rcs__ClientCode: WCS
+      Rcs__TokenCode: ""
+      Hik__MainFlowTaskTyp: nitto1
+      OpcUa__EndpointUrl: opc.tcp://192.168.20.31:52250
+      OpcUa__ConnectionTimeout: 30
+      OpcUa__OperationTimeout: 60
+      OpcUa__ApplicationName: WCS OPC UA Client
+      OpcUa__Organization: WCS
+      OpcUa__PublishingIntervalMs: 200
+      OpcUa__SamplingIntervalMs: 100
+      OpcUa__KeepAliveIntervalMs: 3000
+      OpcUa__AutoAcceptUntrustedCerts: true
+      OpcUa__TagClockPulseRead: DeviceK.Station.PLC.iClock1s_pulse
+      OpcUa__TagClockPC: DeviceK.Station.OPC.iClock1s_PC
+      OpcUa__TagSystemStatus: DeviceK.Station.PLC.iSystems_Status
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./config:/app/config:ro
+
+  wcs-cms:
+    container_name: wcs-cms
+    build:
+      context: .
+      dockerfile: src/Wcs.Cms/Dockerfile
+      args:
+        - BUILD_CONFIGURATION=Release
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Server=tcp:192.168.20.175,1433;Database=WcsDb;User Id=admin;Password=admin;Encrypt=false
+      ConnectionStrings__CapConnection: Server=tcp:192.168.20.175,1433;Database=CapWcsDb;User Id=admin;Password=admin;Encrypt=false
+      ConnectionStrings__RabbitConnection: amqp://admin:1234@192.168.20.41:5672/
+      Cors__AllowedOrigins__0: http://192.168.20.41:5173
+      Cors__AllowedOrigins__1: http://192.168.20.41:3000
+      Cors__AllowedOrigins__2: http://localhost:5173
+    ports:
+      - "5001:8090"
+    volumes:
+      - ./config:/app/config:ro
+  wcs-migrator:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: ef-migrator
+    working_dir: /src
+    volumes:
+      - ./:/src
+    command: >
+      bash -c "
+        ls -la &&
+        dotnet tool restore &&
+        dotnet ef database update --project src/Wcs.Infrastructure/Wcs.Infrastructure.csproj --startup-project src/Wcs.Api/Wcs.Api.csproj
+      "
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Server=tcp:192.168.20.175,1433;Database=WcsDb;User Id=admin;Password=admin;Encrypt=false
+      ConnectionStrings__CapConnection: Server=tcp:192.168.20.175,1433;Database=CapWcsDb;User Id=admin;Password=admin;Encrypt=false

@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "dotrush.roslyn.projectOrSolutionFiles": [
+    "c:\\Code\\FSTV\\nitto-hy\\Wcs\\WCS.sln"
+  ]
+}

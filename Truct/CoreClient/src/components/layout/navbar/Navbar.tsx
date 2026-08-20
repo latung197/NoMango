@@ -23,10 +23,6 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar, isSidebarOpen }) => {
               <HomeIcon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
             )}
           </button>
-          
-          <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-            My App
-          </h1>
         </div>
         
         {/* Các nút bên phải */}

@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCS – Task Monitor</title>
+  <script src="/tailwind.js"></script>
+  <style>
+    :root { --refresh-ms: 5000; }
+    body { background: #0f172a; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; }
+
+    /* Tab */
+    .tab-btn.active { border-bottom: 2px solid #60a5fa; color: #60a5fa; }
+    .tab-btn { border-bottom: 2px solid transparent; color: #94a3b8; }
+
+    /* Spinner */
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Flash on update */
+    @keyframes flash { 0%,100%{opacity:1} 50%{opacity:0.35} }
+    .flash { animation: flash 0.5s ease; }
+
+    /* Status badges */
+    .badge { display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:600; }
+    .badge-active    { background:#064e3b; color:#6ee7b7; }
+    .badge-pending   { background:#1e293b; color:#94a3b8; }
+    .badge-completed { background:#1e3a5f; color:#93c5fd; }
+    .badge-paused    { background:#451a03; color:#fcd34d; }
+    .badge-dispatching { background:#78350f; color:#fde68a; border:1px solid #f59e0b; }
+    .badge-cancelled { background:#450a0a; color:#fca5a5; }
+    .badge-error     { background:#7f1d1d; color:#fca5a5; }
+
+    /* Step progress */
+    .step-bar { height: 6px; border-radius: 3px; background: #1e293b; overflow:hidden; }
+    .step-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+    .step-fill-active    { background: linear-gradient(90deg, #0891b2, #06b6d4); }
+    .step-fill-completed { background: #22c55e; }
+    .step-fill-paused    { background: #f59e0b; }
+    .step-fill-error     { background: #ef4444; }
+
+    /* Wait chips */
+    .wait-chip { display:inline-flex; align-items:center; gap:3px; padding:1px 7px; border-radius:5px; font-size:10px; }
+    .wait-pending { background:#451a03; color:#fcd34d; }
+    .wait-met     { background:#064e3b; color:#6ee7b7; }
+
+    /* Station signal dots */
+    .sig-dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+    .sig-on   { background:#22c55e; box-shadow: 0 0 6px #22c55e88; }
+    .sig-off  { background:#374151; }
+    .sig-err  { background:#ef444488; }
+
+    /* Task cards */
+    .task-card { border: 1px solid #1e293b; border-radius: 8px; background: #0f172a; transition: border-color 0.2s; }
+    .task-card:hover { border-color: #334155; }
+    .task-card.expanded { border-color: #3b82f6; }
+    .task-card.status-error { border-color: #7f1d1d; }
+    .task-card.status-paused { border-color: #451a03; }
+
+    /* Detail expand */
+    .task-detail { display:none; border-top: 1px solid #1e293b; }
+    .task-detail.open { display:block; }
+
+    /* Log entries */
+    .log-ok   { color: #4ade80; }
+    .log-err  { color: #f87171; }
+    .log-info { color: #94a3b8; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+    /* Action buttons */
+    .btn-cancel { background:#7f1d1d; color:#fca5a5; }
+    .btn-cancel:hover { background:#991b1b; }
+    .btn-cancel:disabled { opacity:0.4; cursor:not-allowed; }
+    .btn-resume { background:#1e3a5f; color:#93c5fd; }
+    .btn-resume:hover { background:#1e40af; }
+    .btn-action { padding:3px 10px; border-radius:5px; font-size:11px; font-weight:600; cursor:pointer; transition:background 0.15s; }
+
+    /* Modal */
+    #confirm-modal { display:none; }
+    #confirm-modal.open { display:flex; }
+
+    /* Live event log */
+    .evt-log { max-height: 220px; overflow-y: auto; }
+    .evt-row { display:flex; align-items:baseline; gap:8px; padding:2px 0; border-bottom:1px solid #1e293b22; }
+    .evt-row:first-child { border-top: none; }
+    .evt-ts    { color:#475569; font-variant-numeric:tabular-nums; white-space:nowrap; flex-shrink:0; font-size:10px; }
+    .evt-name  { font-weight:600; white-space:nowrap; flex-shrink:0; }
+    .evt-detail{ color:#94a3b8; font-size:10px; }
+    .evt-connected   { color:#22c55e; }
+    .evt-flow        { color:#60a5fa; }
+    .evt-robot       { color:#a78bfa; }
+    .evt-station     { color:#f59e0b; }
+    .evt-error       { color:#f87171; }
+    .sse-dot { width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0; }
+    .sse-dot-on  { background:#22c55e; box-shadow:0 0 5px #22c55e88; animation: pulse 2s infinite; }
+    .sse-dot-off { background:#475569; }
+    .sse-dot-err { background:#ef4444; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+    /* Station tag table */
+    .tag-table th { background: #1e293b; position: sticky; top: 0; z-index: 10; }
+    .tag-table td, .tag-table th { padding: 5px 10px; border-bottom: 1px solid #1e293b; }
+    .tag-table tr:hover td { background: #1e293b55; }
+    .val-on  { background:#064e3b; color:#6ee7b7; }
+    .val-off { background:#1e293b; color:#64748b; }
+    .val-err { background:#450a0a; color:#fca5a5; }
+
+    /* Status dot (connection) */
+    .status-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- ===== HEADER ===== -->
+<div class="bg-slate-900 border-b border-slate-700 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+    </svg>
+    <span class="text-white font-semibold text-lg">WCS – Task Monitor</span>
+    <span class="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded">LIVE</span>
+  </div>
+  <div class="flex items-center gap-5 text-sm">
+    <div class="flex items-center gap-2">
+      <span id="api-dot" class="status-dot bg-gray-600"></span>
+      <span id="api-status" class="text-slate-400 text-xs">Chưa kết nối</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span id="spin-icon" class="hidden text-blue-400">
+        <svg class="w-4 h-4 spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+      </span>
+      <span id="last-refresh" class="text-slate-500 text-xs">—</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONFIG ===== -->
+<div class="bg-slate-800 border-b border-slate-700 px-6 py-2 flex flex-wrap items-center gap-4 text-sm">
+  <div class="flex items-center gap-2">
+    <label class="text-slate-400 whitespace-nowrap text-xs">Wcs.Api URL:</label>
+    <input id="api-url" type="text" value="http://10.178.28.13:2511"
+      class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-52 text-xs focus:outline-none focus:border-blue-500" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label class="text-slate-400 text-xs">Interval (s):</label>
+    <input id="interval-input" type="number" value="5" min="1" max="60"
+      class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-14 text-center text-xs focus:outline-none focus:border-blue-500" />
+  </div>
+  <button id="toggle-auto" onclick="toggleAutoRefresh()"
+    class="px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white text-xs transition">
+    ▶ Bật auto
+  </button>
+  <button onclick="fetchAll()"
+    class="px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white text-xs transition">
+    🔄 Refresh ngay
+  </button>
+  <div class="ml-auto flex items-center gap-2">
+    <label class="text-slate-400 text-xs">Lọc:</label>
+    <input id="filter-input" type="text" placeholder="Task ID / robot / trạm..."
+      oninput="applyFilter()"
+      class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-48 text-xs focus:outline-none focus:border-blue-500" />
+  </div>
+</div>
+
+<!-- ===== STATS BAR ===== -->
+<div id="stats-bar" class="bg-slate-900 border-b border-slate-700 px-6 py-2 flex gap-6 text-xs items-center">
+  <span class="text-slate-500">Loading...</span>
+</div>
+
+<!-- ===== TABS ===== -->
+<div class="bg-slate-900 border-b border-slate-700 px-6 flex gap-6 text-sm">
+  <button class="tab-btn active py-3 px-1 font-medium transition" onclick="switchTab('active')" id="tab-active">
+    🔄 Active Tasks (<span id="cnt-active">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('pending')" id="tab-pending">
+    ⏳ Lệnh chờ (<span id="cnt-pending">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('crane')" id="tab-crane">
+    🏗 Lệnh Crane (<span id="cnt-crane">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('recent')" id="tab-recent">
+    📋 Recent Tasks (<span id="cnt-recent">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('cancelled')" id="tab-cancelled">
+    ✕ Cancelled (<span id="cnt-cancelled">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('signals')" id="tab-signals">
+    📡 Station Signals
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('opc')" id="tab-opc">
+    🔌 OPC Trạm
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('errors')" id="tab-errors">
+    ⚠ Error Logs (<span id="cnt-errors">0</span>)
+  </button>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="p-4">
+
+  <!-- ACTIVE TASKS TAB -->
+  <div id="pane-active" class="tab-pane">
+    <div id="active-empty" class="hidden text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">✅</div>
+      <div class="text-lg font-medium">Không có task nào đang chạy</div>
+      <div class="text-sm mt-1">Hệ thống đang idle</div>
+    </div>
+    <div id="active-list" class="flex flex-col gap-3"></div>
+  </div>
+
+  <!-- PENDING COMMANDS TAB -->
+  <div id="pane-pending" class="tab-pane hidden">
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <span class="text-xs text-slate-400">Lọc loại:</span>
+      <select id="pending-type-filter" onchange="renderPendingCommands()"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="Send">Send (Gửi)</option>
+        <option value="Receive">Receive (Nhận)</option>
+      </select>
+      <span class="text-xs text-slate-400">Chờ kho:</span>
+      <select id="pending-warehouse-filter" onchange="renderPendingCommands()"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="None">Chờ khớp lệnh</option>
+        <option value="Inbound">Chờ cửa kho nhập</option>
+        <option value="Outbound">Chờ cửa kho xuất</option>
+      </select>
+      <span class="text-xs text-slate-400">Status:</span>
+      <select id="pending-status-filter" onchange="renderPendingCommands()"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="Waiting">Waiting</option>
+        <option value="Dispatching">Dispatching</option>
+      </select>
+      <span id="pending-status" class="text-xs text-slate-500 ml-auto">—</span>
+    </div>
+    <div id="pending-empty" class="hidden text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">✓</div>
+      <div class="text-lg font-medium">Không có lệnh nào đang chờ</div>
+      <div class="text-sm mt-1">Tất cả yêu cầu đã được khớp hoặc xử lý</div>
+    </div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 280px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left py-2 px-3">ID</th>
+            <th class="text-center">Loại</th>
+            <th class="text-left">From Stage</th>
+            <th class="text-left">To Stage</th>
+            <th class="text-left">Trạm</th>
+            <th class="text-center">Size</th>
+            <th class="text-center">Tray</th>
+            <th class="text-left">Nguồn</th>
+            <th class="text-center">Status</th>
+            <th class="text-left">Trạng thái chờ</th>
+            <th class="text-left">Flow Task</th>
+            <th class="text-right">Tuổi</th>
+            <th class="text-right">Hết hạn</th>
+            <th class="text-right">Tạo lúc</th>
+            <th class="text-center">Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="pending-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CRANE COMMANDS TAB -->
+  <div id="pane-crane" class="tab-pane hidden">
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <span class="text-xs text-slate-400">Loại:</span>
+      <select id="crane-type-filter" onchange="fetchCraneDispatches().then(() => renderCraneDispatches())"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="Inbound">Inbound</option>
+        <option value="Outbound">Outbound</option>
+        <option value="InternalMove">InternalMove</option>
+      </select>
+      <span class="text-xs text-slate-400">Nguồn:</span>
+      <select id="crane-source-filter" onchange="fetchCraneDispatches().then(() => renderCraneDispatches())"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="Automatic">Tự động</option>
+        <option value="Manual">Thủ công</option>
+      </select>
+      <span class="text-xs text-slate-400">Status:</span>
+      <select id="crane-status-filter" onchange="fetchCraneDispatches().then(() => renderCraneDispatches())"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="active">Đang chạy</option>
+        <option value="Dispatching">Dispatching</option>
+        <option value="Accepted">Accepted</option>
+        <option value="Completing">Completing</option>
+        <option value="Completed">Completed</option>
+        <option value="Failed">Failed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+      <label class="flex items-center gap-1.5 text-xs text-slate-400 cursor-pointer">
+        <input id="crane-active-only" type="checkbox" onchange="fetchCraneDispatches().then(() => renderCraneDispatches())"
+          class="rounded border-slate-600 bg-slate-700" />
+        Chỉ lệnh đang chạy
+      </label>
+      <span id="crane-status" class="text-xs text-slate-500 ml-auto">—</span>
+    </div>
+    <div id="crane-empty" class="hidden text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">🏗</div>
+      <div class="text-lg font-medium">Không có lệnh crane nào</div>
+      <div class="text-sm mt-1">Chưa có dispatch nào được ghi vào DB</div>
+    </div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 280px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-right py-2 px-3">TaskNo</th>
+            <th class="text-center">Loại</th>
+            <th class="text-center">Nguồn</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">D2451</th>
+            <th class="text-left">Flow Task</th>
+            <th class="text-left">Tin nhắn / Lỗi</th>
+            <th class="text-right">Err</th>
+            <th class="text-right">Tuổi</th>
+            <th class="text-right">Tạo lúc</th>
+            <th class="text-right">Accepted</th>
+            <th class="text-right">Hoàn thành</th>
+          </tr>
+        </thead>
+        <tbody id="crane-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RECENT TASKS TAB -->
+  <div id="pane-recent" class="tab-pane hidden">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-xs text-slate-400">Lọc trạng thái:</span>
+      <select id="recent-status-filter" onchange="renderRecentTasks()"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+        <option value="">Tất cả</option>
+        <option value="0">Pending</option>
+        <option value="1">Active</option>
+        <option value="2">Completed</option>
+        <option value="3">Paused</option>
+        <option value="4">Cancelled</option>
+        <option value="5">Error</option>
+      </select>
+    </div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 280px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left py-2 px-3">Task ID</th>
+            <th class="text-left">Robot</th>
+            <th class="text-left">From → To</th>
+            <th class="text-center">Bước</th>
+            <th class="text-center">Trạng thái</th>
+            <th class="text-left">Waiting For</th>
+            <th class="text-left">RCS Task ID</th>
+            <th class="text-right">Thời gian chạy</th>
+            <th class="text-right">Tạo lúc</th>
+            <th class="text-center">Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="recent-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CANCELLED TASKS TAB -->
+  <div id="pane-cancelled" class="tab-pane hidden">
+    <div id="cancelled-empty" class="hidden text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">✓</div>
+      <div class="text-lg font-medium">Không có task nào bị hủy</div>
+      <div class="text-sm mt-1">Danh sách trống</div>
+    </div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 280px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left py-2 px-3">Task ID</th>
+            <th class="text-left">RCS Task ID</th>
+            <th class="text-left">Robot</th>
+            <th class="text-left">From → To</th>
+            <th class="text-center">Bước khi hủy</th>
+            <th class="text-left">Log / Lý do</th>
+            <th class="text-right">Thời gian chạy</th>
+            <th class="text-right">Hủy lúc</th>
+            <th class="text-right">Tạo lúc</th>
+          </tr>
+        </thead>
+        <tbody id="cancelled-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- STATION SIGNALS TAB -->
+  <div id="pane-signals" class="tab-pane hidden">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+
+      <!-- Inbound -->
+      <div class="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
+        <div class="bg-slate-700 px-4 py-2 flex items-center justify-between">
+          <span class="font-semibold text-sm text-green-400">📥 Inbound (Nhập kho – DROP side)</span>
+          <span id="in-analysis" class="text-xs"></span>
+        </div>
+        <div class="p-4">
+          <!-- Analysis -->
+          <div id="in-analysis-detail" class="grid grid-cols-3 gap-2 mb-4 text-xs"></div>
+          <!-- Tags table -->
+          <div class="overflow-auto" style="max-height: 320px">
+            <table class="tag-table w-full text-xs">
+              <thead>
+                <tr class="text-slate-400">
+                  <th class="text-left">Tag</th>
+                  <th class="text-left">Mô tả</th>
+                  <th class="text-center">Giá trị</th>
+                  <th class="text-right">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="in-tags-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outbound -->
+      <div class="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
+        <div class="bg-slate-700 px-4 py-2 flex items-center justify-between">
+          <span class="font-semibold text-sm text-orange-400">📤 Outbound (Xuất kho – PICK side)</span>
+          <span id="out-analysis" class="text-xs"></span>
+        </div>
+        <div class="p-4">
+          <div id="out-analysis-detail" class="grid grid-cols-3 gap-2 mb-4 text-xs"></div>
+          <div class="overflow-auto" style="max-height: 320px">
+            <table class="tag-table w-full text-xs">
+              <thead>
+                <tr class="text-slate-400">
+                  <th class="text-left">Tag</th>
+                  <th class="text-left">Mô tả</th>
+                  <th class="text-center">Giá trị</th>
+                  <th class="text-right">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="out-tags-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Raw timestamp -->
+    <div class="mt-3 text-xs text-slate-600 text-right" id="signals-ts">—</div>
+  </div>
+
+  <!-- OPC STATION CHECK TAB -->
+  <div id="pane-opc" class="tab-pane hidden">
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      <label class="text-xs text-slate-400 whitespace-nowrap">Mã trạm:</label>
+      <input id="opc-station-code" type="text" list="opc-station-list" placeholder="VD: IN-01, OUT-02..."
+        onkeydown="if(event.key==='Enter') fetchOpcStationTags()"
+        class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-44 text-xs focus:outline-none focus:border-blue-500 font-mono" />
+      <datalist id="opc-station-list"></datalist>
+      <button onclick="fetchOpcStationTags()"
+        class="px-3 py-1 rounded bg-blue-700 hover:bg-blue-600 text-white text-xs transition">
+        🔍 Đọc OPC
+      </button>
+      <label class="flex items-center gap-1.5 text-xs text-slate-400 cursor-pointer select-none">
+        <input id="opc-auto-refresh" type="checkbox" onchange="toggleOpcAutoRefresh()"
+          class="rounded border-slate-600 bg-slate-700" />
+        Auto refresh
+      </label>
+      <span id="opc-status" class="text-xs text-slate-500 ml-auto">Nhập mã trạm và bấm "Đọc OPC"</span>
+    </div>
+    <div id="opc-tags-container">
+      <div class="text-center py-16 text-slate-500">
+        <div class="text-4xl mb-3">🔌</div>
+        <div class="text-sm">Chọn trạm để xem tín hiệu OPC UA realtime</div>
+        <div class="text-xs mt-1 text-slate-600">API: GET /api/stations/{code}/opc-tags</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR LOGS TAB -->
+  <div id="pane-errors" class="tab-pane hidden">
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400 whitespace-nowrap">Task ID:</label>
+        <input id="error-task-filter" type="text" placeholder="Lọc theo Task ID..."
+          oninput="debouncedFetchErrorLogs()"
+          class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-52 text-xs focus:outline-none focus:border-red-500 font-mono" />
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400">Event:</label>
+        <select id="error-event-filter" onchange="fetchErrorLogs()"
+          class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+          <option value="">Tất cả lỗi</option>
+          <option value="ExternalApiError">ExternalApiError</option>
+          <option value="FlowErrorOccurred">FlowErrorOccurred</option>
+          <option value="TimeoutFired">TimeoutFired</option>
+          <option value="StopEmergency">StopEmergency</option>
+        </select>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400">Nguồn:</label>
+        <select id="error-source-filter" onchange="renderErrorLogs()"
+          class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+          <option value="">Tất cả</option>
+          <option value="RCS">RCS</option>
+          <option value="WMS">WMS</option>
+          <option value="Crane">Crane</option>
+          <option value="OPC">OPC</option>
+        </select>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400">Limit:</label>
+        <select id="error-limit-filter" onchange="fetchErrorLogs()"
+          class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs focus:outline-none">
+          <option value="50">50</option>
+          <option value="100" selected>100</option>
+          <option value="200">200</option>
+          <option value="500">500</option>
+        </select>
+      </div>
+      <button onclick="fetchErrorLogs()"
+        class="px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white text-xs transition">
+        🔄 Tải lại
+      </button>
+      <button onclick="clearErrorFilters()"
+        class="px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs transition">
+        ✕ Xóa filter
+      </button>
+      <span id="error-logs-status" class="text-xs text-slate-500 ml-auto">—</span>
+    </div>
+    <div id="error-logs-empty" class="hidden text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">✓</div>
+      <div class="text-lg font-medium">Không có log lỗi nào</div>
+      <div class="text-sm mt-1">Thử thay đổi bộ lọc hoặc chờ task phát sinh lỗi</div>
+    </div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 320px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left py-2 px-3">Thời gian</th>
+            <th class="text-left">Task ID</th>
+            <th class="text-center">Step</th>
+            <th class="text-left">Event</th>
+            <th class="text-left">Nguồn</th>
+            <th class="text-left">Message</th>
+          </tr>
+        </thead>
+        <tbody id="error-logs-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CONFIRM MODAL ===== -->
+<div id="confirm-modal" class="fixed inset-0 bg-black/70 z-50 items-center justify-center">
+  <div class="bg-slate-800 border border-slate-600 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
+    <div class="text-lg font-semibold mb-2" id="modal-title">Xác nhận</div>
+    <div class="text-sm text-slate-300 mb-5" id="modal-body">Bạn có chắc chắn không?</div>
+    <div class="flex gap-3 justify-end">
+      <button onclick="closeModal()" class="px-4 py-2 rounded bg-slate-600 hover:bg-slate-500 text-sm text-white transition">
+        Hủy
+      </button>
+      <button id="modal-confirm-btn" class="px-4 py-2 rounded bg-red-700 hover:bg-red-600 text-sm text-white font-semibold transition">
+        Xác nhận
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =====================================================================
+//  CONSTANTS
+// =====================================================================
+
+const FLOW_STEPS = {
+  0:  { name: 'Initial',                  short: 'Initial',          phase: 'idle' },
+  1:  { name: 'Move → Pickup Wait',       short: 'Move to Pick Wait', phase: 'pick' },
+  2:  { name: 'Before Pick',              short: 'Before Pick',      phase: 'pick' },
+  3:  { name: 'Enter Pickup Point',       short: 'Enter Pickup',     phase: 'pick' },
+  4:  { name: 'Lift Rack',                short: 'Lift Rack',        phase: 'pick' },
+  5:  { name: 'Back → Pickup Wait',       short: 'Back Pick Wait',   phase: 'pick' },
+  6:  { name: 'After Pickup',             short: 'After Pickup',     phase: 'pick' },
+  7:  { name: 'Move → Drop Wait',         short: 'Move to Drop Wait', phase: 'drop' },
+  8:  { name: 'Before Drop',              short: 'Before Drop',      phase: 'drop' },
+  9:  { name: 'Enter Drop Point',         short: 'Enter Drop',       phase: 'drop' },
+  10: { name: 'Putdown Rack',             short: 'Putdown Rack',     phase: 'drop' },
+  11: { name: 'Back → Drop Wait',         short: 'Back Drop Wait',   phase: 'drop' },
+  12: { name: 'After Drop',               short: 'After Drop',       phase: 'drop' },
+  13: { name: 'Completed',               short: 'Completed',        phase: 'done' }
+};
+const TOTAL_STEPS = 13;
+
+const FLOW_STATUS = {
+  0: { label: 'Pending',   cls: 'badge-pending',   fillCls: '' },
+  1: { label: 'Active',    cls: 'badge-active',    fillCls: 'step-fill-active' },
+  2: { label: 'Completed', cls: 'badge-completed', fillCls: 'step-fill-completed' },
+  3: { label: 'Paused',    cls: 'badge-paused',    fillCls: 'step-fill-paused' },
+  4: { label: 'Cancelled', cls: 'badge-cancelled', fillCls: '' },
+  5: { label: 'Error',     cls: 'badge-error',     fillCls: 'step-fill-error' }
+};
+
+// =====================================================================
+//  STATE
+// =====================================================================
+let activeTasks = [];
+let pendingCommands = [];
+let craneDispatches = [];
+let recentTasks = [];
+let cancelledTasks = [];
+let errorLogs = [];
+let signalsData = null;
+let opcStationData = null;
+let opcStationError = null;
+let opcStationCode = '';
+let opcAutoRefresh = false;
+let opcRefreshTimer = null;
+let autoRefresh = false;
+let refreshTimer = null;
+let currentTab = 'active';
+let modalCallback = null;
+
+// =====================================================================
+//  HELPERS
+// =====================================================================
+function apiUrl(path) {
+  const base = document.getElementById('api-url').value.replace(/\/$/, '');
+  return base + path;
+}
+
+function fmtTime(isoStr) {
+  if (!isoStr) return '—';
+  const d = new Date(isoStr);
+  return d.toLocaleTimeString('vi-VN', { hour12: false }) + ' ' +
+    d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+}
+
+function fmtAge(isoStr) {
+  if (!isoStr) return '—';
+  const sec = Math.floor((Date.now() - new Date(isoStr).getTime()) / 1000);
+  if (sec < 60) return `${sec}s`;
+  if (sec < 3600) return `${Math.floor(sec/60)}m ${sec%60}s`;
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  return `${h}h ${m}m`;
+}
+
+function fmtDuration(startIso, endIso) {
+  if (!startIso) return '—';
+  const endMs = endIso ? new Date(endIso).getTime() : Date.now();
+  const sec = Math.floor((endMs - new Date(startIso).getTime()) / 1000);
+  if (sec < 60) return `${sec}s`;
+  if (sec < 3600) return `${Math.floor(sec/60)}m ${sec%60}s`;
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  return `${h}h ${m}m`;
+}
+
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function stepInfo(step) {
+  return FLOW_STEPS[step] ?? { name: `Step ${step}`, short: `Step ${step}`, phase: 'unknown' };
+}
+
+function statusInfo(status) {
+  return FLOW_STATUS[status] ?? { label: `Status ${status}`, cls: 'badge-pending', fillCls: '' };
+}
+
+function stationCode(station) {
+  if (!station) return '?';
+  return station.code ?? station.Code ?? '?';
+}
+
+function isWarehouseOutbound(t) {
+  const from = t?.fromStation ?? t?.FromStation;
+  return !!(from?.hasWarehouseDoor ?? from?.HasWarehouseDoor);
+}
+
+function taskCreatedAt(t) {
+  const v = t.createdAt ?? t.CreatedAt;
+  return v ? new Date(v).getTime() : 0;
+}
+
+function sortByCreatedAt(tasks, newestFirst = true) {
+  return [...tasks].sort((a, b) => {
+    const diff = taskCreatedAt(b) - taskCreatedAt(a);
+    return newestFirst ? diff : -diff;
+  });
+}
+
+// =====================================================================
+//  FETCH
+// =====================================================================
+async function fetchActive() {
+  try {
+    const r = await fetch(apiUrl('/api/flow-tasks/active'));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    activeTasks = json.data ?? [];
+    setApiStatus(true);
+    return true;
+  } catch(e) {
+    setApiStatus(false, e.message);
+    return false;
+  }
+}
+
+async function fetchPendingCommands() {
+  const statusEl = document.getElementById('pending-status');
+  if (statusEl) statusEl.textContent = 'Đang tải...';
+  try {
+    const r = await fetch(apiUrl('/api/transfer-requests/waiting'));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    pendingCommands = json.data ?? [];
+    const dispatchingCount = pendingCommands.filter(r => normalizeTransferStatus(r) === 'Dispatching').length;
+    if (statusEl) {
+      statusEl.textContent = dispatchingCount > 0
+        ? `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${pendingCommands.length} lệnh (${dispatchingCount} dispatching)`
+        : `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${pendingCommands.length} lệnh`;
+    }
+    document.getElementById('cnt-pending').textContent = dispatchingCount > 0
+      ? `${pendingCommands.length} (${dispatchingCount} dispatching)`
+      : String(pendingCommands.length);
+    return true;
+  } catch (e) {
+    pendingCommands = [];
+    if (statusEl) statusEl.textContent = `Lỗi: ${e.message}`;
+    document.getElementById('cnt-pending').textContent = '0';
+    return false;
+  }
+}
+
+async function fetchCraneDispatches() {
+  const statusEl = document.getElementById('crane-status');
+  if (statusEl) statusEl.textContent = 'Đang tải...';
+
+  const activeOnly = document.getElementById('crane-active-only')?.checked ?? false;
+  const statusFilter = document.getElementById('crane-status-filter')?.value ?? '';
+  const typeFilter = document.getElementById('crane-type-filter')?.value ?? '';
+  const sourceFilter = document.getElementById('crane-source-filter')?.value ?? '';
+
+  const params = new URLSearchParams({ limit: '100' });
+  if (activeOnly || statusFilter === 'active') params.set('activeOnly', 'true');
+  else if (statusFilter) params.set('status', statusFilter);
+  if (typeFilter) params.set('taskType', typeFilter);
+  if (sourceFilter === 'Manual') params.set('source', 'manual');
+  else if (sourceFilter === 'Automatic') params.set('source', 'automatic');
+
+  try {
+    const r = await fetch(apiUrl(`/api/crane/dispatches?${params}`));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    craneDispatches = json.data ?? [];
+    const activeCount = craneDispatches.filter(d => isCraneDispatchActive(d)).length;
+    if (statusEl) {
+      statusEl.textContent = activeCount > 0
+        ? `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${craneDispatches.length} lệnh (${activeCount} đang chạy)`
+        : `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${craneDispatches.length} lệnh`;
+    }
+    const cntEl = document.getElementById('cnt-crane');
+    if (cntEl) {
+      cntEl.textContent = activeCount > 0
+        ? `${craneDispatches.length} (${activeCount} active)`
+        : String(craneDispatches.length);
+    }
+    return true;
+  } catch (e) {
+    craneDispatches = [];
+    if (statusEl) statusEl.textContent = `Lỗi: ${e.message}`;
+    const cntEl = document.getElementById('cnt-crane');
+    if (cntEl) cntEl.textContent = '0';
+    return false;
+  }
+}
+
+async function fetchRecent() {
+  try {
+    const r = await fetch(apiUrl('/api/flow-tasks/recent?limit=50'));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    recentTasks = json.data ?? [];
+    return true;
+  } catch(e) { return false; }
+}
+
+async function fetchCancelled() {
+  try {
+    const r = await fetch(apiUrl('/api/flow-tasks/cancelled?limit=50'));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    cancelledTasks = json.data ?? [];
+    return true;
+  } catch(e) {
+    cancelledTasks = recentTasks.filter(t => (t.status ?? t.Status ?? 0) === 4);
+    return cancelledTasks.length > 0;
+  }
+}
+
+async function fetchErrorLogs() {
+  const taskId = document.getElementById('error-task-filter')?.value.trim() ?? '';
+  const eventName = document.getElementById('error-event-filter')?.value ?? '';
+  const limit = document.getElementById('error-limit-filter')?.value ?? '100';
+  const statusEl = document.getElementById('error-logs-status');
+
+  const params = new URLSearchParams({ errorsOnly: 'true', limit });
+  if (taskId) params.set('taskId', taskId);
+  if (eventName) params.set('event', eventName);
+
+  if (statusEl) statusEl.textContent = 'Đang tải...';
+
+  try {
+    const r = await fetch(apiUrl(`/api/flow-tasks/history?${params}`));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    errorLogs = json.data ?? [];
+    if (statusEl) statusEl.textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${errorLogs.length} bản ghi`;
+    document.getElementById('cnt-errors').textContent = errorLogs.length;
+    return true;
+  } catch (e) {
+    errorLogs = [];
+    if (statusEl) statusEl.textContent = `Lỗi: ${e.message}`;
+    document.getElementById('cnt-errors').textContent = '0';
+    return false;
+  }
+}
+
+let _errorFilterTimer = null;
+function debouncedFetchErrorLogs() {
+  clearTimeout(_errorFilterTimer);
+  _errorFilterTimer = setTimeout(fetchErrorLogs, 350);
+}
+
+function clearErrorFilters() {
+  document.getElementById('error-task-filter').value = '';
+  document.getElementById('error-event-filter').value = '';
+  document.getElementById('error-source-filter').value = '';
+  fetchErrorLogs();
+}
+
+async function fetchSignals() {
+  try {
+    const r = await fetch(apiUrl('/api/station-handshake/tags/snapshot'));
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    signalsData = await r.json();
+    return true;
+  } catch(e) {
+    signalsData = null;
+    return false;
+  }
+}
+
+async function fetchAll() {
+  document.getElementById('spin-icon').classList.remove('hidden');
+  await Promise.all([fetchActive(), fetchRecent(), fetchPendingCommands(), fetchCraneDispatches()]);
+  await fetchCancelled();
+  if (currentTab === 'signals') await fetchSignals();
+  else if (currentTab === 'opc' && opcAutoRefresh && opcStationCode) await fetchOpcStationTags();
+  else if (currentTab === 'errors') await fetchErrorLogs();
+  document.getElementById('last-refresh').textContent = 'Updated: ' + new Date().toLocaleTimeString('vi-VN');
+  document.getElementById('spin-icon').classList.add('hidden');
+  updateOpcStationDatalist();
+  renderAll();
+}
+
+// =====================================================================
+//  RENDER
+// =====================================================================
+function renderAll() {
+  renderStats();
+  if (currentTab === 'active') renderActiveTasks();
+  else if (currentTab === 'pending') renderPendingCommands();
+  else if (currentTab === 'crane') renderCraneDispatches();
+  else if (currentTab === 'recent') renderRecentTasks();
+  else if (currentTab === 'cancelled') renderCancelledTasks();
+  else if (currentTab === 'errors') renderErrorLogs();
+  else if (currentTab === 'signals') renderSignals();
+  else if (currentTab === 'opc') renderOpcStationTags();
+}
+
+function renderStats() {
+  const all = [...activeTasks, ...recentTasks.filter(t => !activeTasks.find(a => a.id === t.id))];
+  const counts = { active: 0, paused: 0, error: 0, completed: 0, cancelled: 0 };
+  activeTasks.forEach(t => {
+    const s = t.status ?? t.Status ?? 1;
+    if (s === 1) counts.active++;
+    else if (s === 3) counts.paused++;
+    else if (s === 5) counts.error++;
+  });
+  recentTasks.forEach(t => {
+    const s = t.status ?? t.Status ?? 0;
+    if (s === 2) counts.completed++;
+  });
+  counts.cancelled = cancelledTasks.length;
+  const pendingSend = pendingCommands.filter(r => (r.type ?? r.Type) === 'Send').length;
+  const pendingReceive = pendingCommands.filter(r => (r.type ?? r.Type) === 'Receive').length;
+  const pendingWaiting = pendingCommands.filter(r => normalizeTransferStatus(r) === 'Waiting').length;
+  const pendingDispatching = pendingCommands.filter(r => normalizeTransferStatus(r) === 'Dispatching').length;
+  const craneActive = craneDispatches.filter(d => isCraneDispatchActive(d)).length;
+  const craneFailed = craneDispatches.filter(d => normalizeCraneStatus(d) === 'Failed').length;
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="flex gap-5 items-center text-xs">
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+        <span class="text-slate-300 font-medium">Active: <span class="text-emerald-400 font-bold">${counts.active}</span></span>
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-yellow-500 inline-block"></span>
+        <span class="text-slate-300 font-medium">Paused: <span class="text-yellow-400 font-bold">${counts.paused}</span></span>
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>
+        <span class="text-slate-300 font-medium">Error: <span class="text-red-400 font-bold">${counts.error}</span></span>
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Lệnh chờ: <span class="text-amber-300 font-bold">${pendingCommands.length}</span>
+        <span class="text-slate-600">(Send ${pendingSend} / Receive ${pendingReceive})</span>
+        <span class="text-slate-600"> · Waiting ${pendingWaiting}</span>
+        ${pendingDispatching > 0
+          ? `<span class="text-amber-400 font-bold"> · Dispatching ${pendingDispatching}</span>`
+          : ''}</span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Crane: <span class="text-cyan-300 font-bold">${craneDispatches.length}</span>
+        ${craneActive > 0 ? `<span class="text-cyan-400 font-bold"> · active ${craneActive}</span>` : ''}
+        ${craneFailed > 0 ? `<span class="text-red-400"> · failed ${craneFailed}</span>` : ''}
+      </span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400">Recent: <span class="text-slate-300">${recentTasks.length}</span></span>
+      <span class="text-slate-400">Completed: <span class="text-blue-300">${counts.completed}</span></span>
+      <span class="text-slate-400">Cancelled: <span class="text-red-300">${counts.cancelled}</span></span>
+    </div>
+  `;
+  document.getElementById('cnt-active').textContent = activeTasks.length;
+  const pendingTabLabel = pendingDispatching > 0
+    ? `${pendingCommands.length} (${pendingDispatching} dispatching)`
+    : String(pendingCommands.length);
+  document.getElementById('cnt-pending').textContent = pendingTabLabel;
+  const craneTabLabel = craneActive > 0
+    ? `${craneDispatches.length} (${craneActive} active)`
+    : String(craneDispatches.length);
+  const cntCrane = document.getElementById('cnt-crane');
+  if (cntCrane) cntCrane.textContent = craneTabLabel;
+  document.getElementById('cnt-recent').textContent = recentTasks.length;
+  document.getElementById('cnt-cancelled').textContent = cancelledTasks.length;
+}
+
+function renderActiveTasks() {
+  const filter = document.getElementById('filter-input').value.toLowerCase();
+  let tasks = activeTasks;
+  if (filter) {
+    tasks = tasks.filter(t =>
+      (t.id ?? '').toLowerCase().includes(filter) ||
+      stationCode(t.fromStation ?? t.FromStation).toLowerCase().includes(filter) ||
+      stationCode(t.toStation ?? t.ToStation).toLowerCase().includes(filter) ||
+      ((t.robot ?? t.Robot)?.code ?? '').toLowerCase().includes(filter) ||
+      (t.rcsTaskId ?? t.RcsTaskId ?? '').toLowerCase().includes(filter)
+    );
+  }
+  tasks = sortByCreatedAt(tasks);
+
+  const emptyEl = document.getElementById('active-empty');
+  const listEl = document.getElementById('active-list');
+
+  if (tasks.length === 0) {
+    emptyEl.classList.remove('hidden');
+    listEl.innerHTML = '';
+    return;
+  }
+  emptyEl.classList.add('hidden');
+  listEl.innerHTML = tasks.map(t => buildTaskCard(t)).join('');
+}
+
+function buildTaskCard(t) {
+  const id = t.id ?? t.Id ?? '?';
+  const step = t.currentStep ?? t.CurrentStep ?? 0;
+  const status = t.status ?? t.Status ?? 1;
+  const from = stationCode(t.fromStation ?? t.FromStation);
+  const to   = stationCode(t.toStation ?? t.ToStation);
+  const robot = (t.robot ?? t.Robot)?.code ?? (t.robot ?? t.Robot)?.Code ?? '—';
+  const rcsId = t.rcsTaskId ?? t.RcsTaskId;
+  const createdAt = t.createdAt ?? t.CreatedAt;
+  const updatedAt = t.updatedAt ?? t.UpdatedAt;
+  const stepStartedAt = t.currentStepStartedAt ?? t.CurrentStepStartedAt;
+  const logMsg = t.logMessage ?? t.LogMessage ?? '';
+  const waitingFor = t.waitingFor ?? t.WaitingFor;
+  const cassetteCode = t.cassetteCode ?? t.CassetteCode;
+  const cranePositions = t.cranePositions ?? t.CranePositions;
+
+  const si = stepInfo(step);
+  const st = statusInfo(status);
+  const pct = Math.round((step / TOTAL_STEPS) * 100);
+  const fillCls = st.fillCls || 'step-fill-active';
+
+  const statusCardCls = status === 5 ? 'status-error' : status === 3 ? 'status-paused' : '';
+
+  // Waiting pills
+  const waitHtml = buildWaitHtml(waitingFor, logMsg);
+
+  // Phase color
+  const phaseColor = si.phase === 'pick' ? 'text-sky-400' :
+                     si.phase === 'drop' ? 'text-orange-400' :
+                     si.phase === 'done' ? 'text-emerald-400' : 'text-slate-400';
+
+  // Crane positions
+  const craneHtml = cranePositions && cranePositions.length > 0
+    ? cranePositions.map(cp =>
+        `<span class="bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded text-xs">R${cp.row ?? cp.Row} F${cp.floor ?? cp.Floor} P${cp.position ?? cp.Position}</span>`
+      ).join(' ')
+    : '<span class="text-slate-600">—</span>';
+
+  return `
+  <div class="task-card ${statusCardCls}" id="card-${id}">
+    <!-- Main row -->
+    <div class="px-4 py-3 flex flex-wrap items-center gap-x-4 gap-y-2 cursor-pointer select-none"
+         onclick="toggleCard('${id}')">
+
+      <!-- ID + expand icon -->
+      <div class="flex items-center gap-2 min-w-[120px]">
+        <svg id="expand-icon-${id}" class="w-3 h-3 text-slate-500 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+        <span class="font-mono font-bold text-blue-300 text-xs">${escHtml(id)}</span>
+      </div>
+
+      <!-- Robot -->
+      <div class="flex items-center gap-1.5 min-w-[80px]">
+        <svg class="w-3 h-3 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+        </svg>
+        <span class="text-slate-300 text-xs font-medium">${escHtml(robot)}</span>
+      </div>
+
+      <!-- From → To -->
+      <div class="flex items-center gap-1.5">
+        <span class="bg-slate-700 px-2 py-0.5 rounded text-xs font-mono text-slate-200">${escHtml(from)}</span>
+        <svg class="w-3 h-3 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+        <span class="bg-slate-700 px-2 py-0.5 rounded text-xs font-mono text-slate-200">${escHtml(to)}</span>
+      </div>
+
+      <!-- Step progress -->
+      <div class="flex-1 min-w-[200px]">
+        <div class="flex items-center justify-between mb-1">
+          <span class="${phaseColor} text-xs font-medium">${step}. ${escHtml(si.short)}</span>
+          <span class="text-slate-500 text-xs">${pct}%</span>
+        </div>
+        <div class="step-bar w-full">
+          <div class="step-fill ${fillCls}" style="width:${pct}%"></div>
+        </div>
+      </div>
+
+      <!-- Status badge -->
+      <div>
+        <span class="badge ${st.cls}">${st.label}</span>
+      </div>
+
+      <!-- Waiting -->
+      <div class="min-w-[120px]">${waitHtml}</div>
+
+      <!-- Age / Step time -->
+      <div class="text-right text-xs text-slate-400 min-w-[90px]">
+        <div>Tuổi: <span class="text-white">${fmtAge(createdAt)}</span></div>
+        <div>Step: <span class="text-yellow-300">${fmtDuration(stepStartedAt)}</span></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex gap-2" onclick="event.stopPropagation()">
+        <button class="btn-action btn-resume" onclick="resumeTask('${id}')">▶ Resume</button>
+        ${isWarehouseOutbound(t)
+          ? `<button class="btn-action btn-cancel" disabled title="Không thể hủy task xuất kho sau khi FlowTask đã được tạo">✕ Cancel</button>`
+          : `<button class="btn-action btn-cancel" onclick="confirmCancel('${id}')">✕ Cancel</button>`}
+      </div>
+    </div>
+
+    <!-- Detail panel -->
+    <div class="task-detail" id="detail-${id}">
+      <div class="px-4 py-3 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+        <div>
+          <div class="text-slate-500 mb-1">RCS Task ID</div>
+          <div class="font-mono text-amber-300">${escHtml(rcsId ?? '—')}</div>
+        </div>
+        <div>
+          <div class="text-slate-500 mb-1">Cassette Code</div>
+          <div class="font-mono text-cyan-300">${escHtml(cassetteCode ?? '—')}</div>
+        </div>
+        <div>
+          <div class="text-slate-500 mb-1">Tạo lúc</div>
+          <div class="text-slate-300">${fmtTime(createdAt)}</div>
+        </div>
+        <div>
+          <div class="text-slate-500 mb-1">Cập nhật lúc</div>
+          <div class="text-slate-300">${fmtTime(updatedAt)}</div>
+        </div>
+        <div>
+          <div class="text-slate-500 mb-1">Step bắt đầu</div>
+          <div class="text-slate-300">${fmtTime(stepStartedAt)}</div>
+        </div>
+        <div>
+          <div class="text-slate-500 mb-1">Step hiện tại</div>
+          <div class="text-white font-medium">${step} – ${escHtml(si.name)}</div>
+        </div>
+        <div class="col-span-2">
+          <div class="text-slate-500 mb-1">Crane Positions</div>
+          <div class="flex flex-wrap gap-1">${craneHtml}</div>
+        </div>
+      </div>
+      ${logMsg ? `
+      <div class="px-4 pb-3 text-xs">
+        <div class="text-slate-500 mb-1">Log Message</div>
+        <div class="bg-slate-900 rounded px-3 py-2 text-yellow-200 font-mono border border-slate-700">${escHtml(logMsg)}</div>
+      </div>` : ''}
+      ${waitingFor ? buildWaitDetailHtml(waitingFor) : ''}
+      <!-- Live Events -->
+      <div class="border-t border-slate-700/50 px-4 py-3">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="sse-dot sse-dot-off" id="sse-dot-${id}"></span>
+            <span class="text-xs font-medium text-slate-400">📟 Live Events</span>
+            <span class="text-xs text-slate-600" id="sse-status-${id}">Chưa kết nối</span>
+          </div>
+          <button onclick="toggleEventStream('${id}'); event.stopPropagation()"
+            id="sse-btn-${id}"
+            class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-900 hover:bg-emerald-800 text-xs text-emerald-300 transition">
+            ▶ Bắt đầu nhận events
+          </button>
+        </div>
+        <div id="event-log-${id}" class="evt-log bg-slate-950 rounded border border-slate-800 px-3 py-2 min-h-[40px]">
+          <div class="text-slate-700 text-xs italic">Nhấn để bắt đầu nhận events realtime của task này</div>
+        </div>
+      </div>
+      <!-- Station OPC Signals -->
+      <div class="border-t border-slate-700/50 px-4 py-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-medium text-slate-400">📡 Tín hiệu OPC – Trạm</span>
+          <button onclick="loadStationSignals('${id}','${from}','${to}'); event.stopPropagation()"
+            id="sig-btn-${id}"
+            class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-xs text-slate-300 transition">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            Refresh tín hiệu
+          </button>
+        </div>
+        <div id="station-signals-${id}" class="text-xs text-slate-600 italic">
+          Nhấn <em>Refresh tín hiệu</em> để đọc OPC tags của trạm <strong class="text-orange-300">${escHtml(from)}</strong> và <strong class="text-sky-300">${escHtml(to)}</strong>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildWaitHtml(waitingFor, logMsg) {
+  if (!waitingFor) {
+    return '<span class="text-slate-600 text-xs">—</span>';
+  }
+  const needs = waitingFor.needs ?? waitingFor.Needs ?? [];
+  const met   = waitingFor.met   ?? waitingFor.Met   ?? [];
+  if (needs.length === 0) {
+    return '<span class="text-slate-600 text-xs">—</span>';
+  }
+  return needs.map(n => {
+    const isMet = met.includes(n);
+    const cls = isMet ? 'wait-met' : 'wait-pending';
+    const icon = isMet ? '✓' : '⟳';
+    const shortName = n.replace('Event', '').replace(/([A-Z])/g, ' $1').trim();
+    return `<span class="wait-chip ${cls}">${icon} ${escHtml(shortName)}</span>`;
+  }).join(' ');
+}
+
+function buildWaitDetailHtml(waitingFor) {
+  const needs = waitingFor.needs ?? waitingFor.Needs ?? [];
+  const met   = waitingFor.met   ?? waitingFor.Met   ?? [];
+  const isAllMet = waitingFor.isAllMet ?? waitingFor.IsAllMet ?? false;
+  if (needs.length === 0) return '';
+  return `
+  <div class="px-4 pb-3 text-xs">
+    <div class="text-slate-500 mb-1">Chờ điều kiện ${isAllMet ? '<span class="text-emerald-400">(đã thỏa mãn)</span>' : '<span class="text-yellow-400">(đang chờ)</span>'}</div>
+    <div class="flex flex-wrap gap-1.5">
+      ${needs.map(n => {
+        const isMet = met.includes(n);
+        const cls = isMet ? 'bg-emerald-900 text-emerald-300' : 'bg-yellow-900 text-yellow-300';
+        const icon = isMet ? '✓' : '⟳';
+        return `<span class="px-2 py-0.5 rounded font-mono ${cls}">${icon} ${escHtml(n)}</span>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+// =====================================================================
+//  STATION OPC SIGNALS (per-task)
+// =====================================================================
+async function loadStationSignals(taskId, fromCode, toCode) {
+  const container = document.getElementById(`station-signals-${taskId}`);
+  const btn = document.getElementById(`sig-btn-${taskId}`);
+  if (!container) return;
+
+  container.innerHTML = `<div class="flex items-center gap-2 text-slate-500 text-xs py-1">
+    <svg class="w-3 h-3 spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+    </svg>
+    Đang đọc OPC tags...
+  </div>`;
+  if (btn) btn.disabled = true;
+
+  try {
+    const fetchTag = async (code) => {
+      if (!code || code === '?') return null;
+      const r = await fetch(apiUrl(`/api/stations/${encodeURIComponent(code)}/opc-tags`));
+      return r.ok ? r.json() : null;
+    };
+
+    const [fromRes, toRes] = await Promise.all([fetchTag(fromCode), fetchTag(toCode)]);
+
+    const fromData = fromRes?.data ?? null;
+    const toData   = toRes?.data   ?? null;
+    const fromErr  = (!fromRes || !fromRes.success) ? (fromRes?.message ?? 'Lỗi đọc tag') : null;
+    const toErr    = (!toRes   || !toRes.success)   ? (toRes?.message   ?? 'Lỗi đọc tag') : null;
+
+    const now = new Date().toLocaleTimeString('vi-VN');
+
+    let html = `<div class="grid grid-cols-1 xl:grid-cols-2 gap-3">`;
+    html += buildStationTagsPanel(fromCode, fromData, 'from', fromErr);
+    html += buildStationTagsPanel(toCode,   toData,   'to',   toErr);
+    html += `</div><div class="text-right text-slate-600 text-xs mt-1">Cập nhật: ${now}</div>`;
+
+    container.innerHTML = html;
+  } catch (e) {
+    container.innerHTML = `<div class="text-red-400 text-xs">Lỗi: ${escHtml(e.message)}</div>`;
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+function formatOpcTagValue(rawVal, isGood) {
+  if (!isGood) return { text: 'ERR', valCls: 'val-err', dotCls: 'sig-err' };
+  if (rawVal === null || rawVal === undefined) return { text: '—', valCls: 'val-off', dotCls: 'sig-off' };
+  if (typeof rawVal === 'boolean') {
+    return rawVal
+      ? { text: 'true', valCls: 'val-on', dotCls: 'sig-on' }
+      : { text: 'false', valCls: 'val-off', dotCls: 'sig-off' };
+  }
+  const numVal = Number(rawVal);
+  if (!Number.isNaN(numVal) && String(rawVal).trim() !== '') {
+    const isOn = numVal !== 0;
+    return { text: String(numVal), valCls: isOn ? 'val-on' : 'val-off', dotCls: isOn ? 'sig-on' : 'sig-off' };
+  }
+  return { text: String(rawVal), valCls: 'val-on', dotCls: 'sig-on' };
+}
+
+function buildStationTagsPanel(stationCode, data, role, errorMsg) {
+  const roleLabel = role === 'from' ? '📤 From' : role === 'to' ? '📥 To' : '🏭 Station';
+  const roleCls   = role === 'from' ? 'text-orange-300 border-orange-800'
+    : role === 'to' ? 'text-sky-300 border-sky-800' : 'text-blue-300 border-blue-800';
+  const hdrBg     = role === 'from' ? 'bg-orange-950/40'
+    : role === 'to' ? 'bg-sky-950/40' : 'bg-blue-950/40';
+
+  if (errorMsg) {
+    return `<div class="bg-slate-900 rounded border border-slate-700 overflow-hidden">
+      <div class="px-3 py-1.5 ${hdrBg} flex items-center gap-2 border-b border-slate-700">
+        <span class="${roleCls} font-semibold text-xs">${roleLabel}: ${escHtml(stationCode)}</span>
+      </div>
+      <div class="px-3 py-2 text-red-400 text-xs">${escHtml(errorMsg)}</div>
+    </div>`;
+  }
+
+  const tags = data?.tags ?? [];
+  if (tags.length === 0) {
+    return `<div class="bg-slate-900 rounded border border-slate-700 overflow-hidden">
+      <div class="px-3 py-1.5 ${hdrBg} flex items-center gap-2 border-b border-slate-700">
+        <span class="${roleCls} font-semibold text-xs">${roleLabel}: ${escHtml(stationCode)}</span>
+      </div>
+      <div class="px-3 py-2 text-slate-600 text-xs">Không có tag</div>
+    </div>`;
+  }
+
+  // Group tags by tagType for better readability
+  const grouped = {};
+  for (const tag of tags) {
+    const t = tag.tagType ?? 'Other';
+    if (!grouped[t]) grouped[t] = [];
+    grouped[t].push(tag);
+  }
+
+  const rows = tags.map(tag => {
+    const rawVal = tag.value;
+    const isGood = tag.isGood ?? false;
+    const { text: valText, valCls, dotCls } = formatOpcTagValue(rawVal, isGood);
+    const ts = tag.timestamp ? new Date(tag.timestamp).toLocaleTimeString('vi-VN') : '—';
+
+    // Short tag name (last segment)
+    const shortName = (tag.tagName ?? '').split('.').pop() ?? tag.tagName ?? '';
+
+    return `<tr>
+      <td class="py-1 px-2">
+        <div class="flex items-center gap-1.5">
+          <span class="sig-dot ${dotCls}" style="flex-shrink:0"></span>
+          <span class="text-slate-300 font-medium">${escHtml(tag.tagType ?? '')}</span>
+        </div>
+      </td>
+      <td class="py-1 px-2 font-mono text-slate-500" style="font-size:10px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+          title="${escHtml(tag.tagName ?? '')}">${escHtml(shortName)}</td>
+      <td class="py-1 px-2 text-center">
+        <span class="badge ${valCls}" style="font-size:10px;padding:1px 6px">${escHtml(valText)}</span>
+      </td>
+      <td class="py-1 px-2 text-right text-slate-600" style="font-size:10px;white-space:nowrap">${ts}</td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="bg-slate-900 rounded border border-slate-700 overflow-hidden">
+    <div class="px-3 py-1.5 ${hdrBg} flex items-center justify-between border-b border-slate-700">
+      <span class="${roleCls} font-semibold text-xs">${roleLabel}: ${escHtml(stationCode)}</span>
+      <span class="text-slate-600 text-xs">${tags.length} tags</span>
+    </div>
+    <table class="tag-table w-full" style="font-size:11px">
+      <thead>
+        <tr class="text-slate-500">
+          <th class="text-left py-1 px-2">Tag Type</th>
+          <th class="text-left py-1 px-2">Node ID</th>
+          <th class="text-center py-1 px-2">Giá trị</th>
+          <th class="text-right py-1 px-2">Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
+function toggleCard(id) {
+  const detail = document.getElementById(`detail-${id}`);
+  const icon   = document.getElementById(`expand-icon-${id}`);
+  const card   = document.getElementById(`card-${id}`);
+  if (!detail) return;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  card.classList.toggle('expanded', !isOpen);
+  if (icon) icon.style.transform = isOpen ? '' : 'rotate(90deg)';
+
+  // Đóng card → tự động dừng SSE stream
+  if (isOpen && _evtSources[id]) stopEventStream(id);
+}
+
+// =====================================================================
+//  PENDING COMMANDS TABLE
+// =====================================================================
+const TRANSFER_STATUS_NAMES = {
+  0: 'Waiting',
+  1: 'Matched',
+  2: 'Cancelled',
+  3: 'TimedOut',
+  4: 'Completed',
+  5: 'Dispatching',
+};
+
+function normalizeTransferStatus(r) {
+  const raw = r?.status ?? r?.Status ?? 'Waiting';
+  if (typeof raw === 'number') {
+    return TRANSFER_STATUS_NAMES[raw] ?? String(raw);
+  }
+  return String(raw);
+}
+
+function pendingReason(r) {
+  const status = normalizeTransferStatus(r);
+  if (status === 'Dispatching') return 'Đang dispatch (có thể kẹt nếu quá lâu)';
+  const type = r.type ?? r.Type ?? '';
+  const wh = r.warehouse_pending_kind ?? r.WarehousePendingKind ?? 'None';
+  if (wh === 'Inbound') return 'Chờ cửa kho nhập';
+  if (wh === 'Outbound') return 'Chờ cửa kho xuất';
+  if (type === 'Send') return 'Chờ khớp lệnh nhận';
+  if (type === 'Receive') return 'Chờ khớp lệnh gửi';
+  return 'Đang chờ';
+}
+
+function pendingStatusBadge(status) {
+  const s = status ?? 'Waiting';
+  if (s === 'Dispatching') return '<span class="badge badge-dispatching">Dispatching</span>';
+  if (s === 'Waiting') return '<span class="badge badge-pending">Waiting</span>';
+  return `<span class="badge badge-pending">${escHtml(String(s))}</span>`;
+}
+
+function pendingTypeBadge(type) {
+  const t = type ?? '';
+  if (t === 'Send') return '<span class="badge badge-paused">Send</span>';
+  if (t === 'Receive') return '<span class="badge badge-active">Receive</span>';
+  return `<span class="badge badge-pending">${escHtml(t || '—')}</span>`;
+}
+
+function pendingTrayLabel(r) {
+  const isEmpty = r.is_empty_tray ?? r.IsEmptyTray ?? false;
+  const isWip = r.is_wip_tray ?? r.IsWipTray ?? false;
+  if (isEmpty) return '<span class="text-slate-400">Empty</span>';
+  if (isWip) return '<span class="text-purple-300">WIP</span>';
+  return '<span class="text-emerald-300">Goods</span>';
+}
+
+function renderPendingCommands() {
+  const typeFilter = document.getElementById('pending-type-filter')?.value ?? '';
+  const whFilter = document.getElementById('pending-warehouse-filter')?.value ?? '';
+  const statusFilter = document.getElementById('pending-status-filter')?.value ?? '';
+  const filter = document.getElementById('filter-input').value.toLowerCase();
+
+  let items = pendingCommands;
+  if (typeFilter) {
+    items = items.filter(r => (r.type ?? r.Type) === typeFilter);
+  }
+  if (whFilter) {
+    items = items.filter(r => (r.warehouse_pending_kind ?? r.WarehousePendingKind ?? 'None') === whFilter);
+  }
+  if (statusFilter) {
+    items = items.filter(r => normalizeTransferStatus(r) === statusFilter);
+  }
+  if (filter) {
+    items = items.filter(r => {
+      const id = String(r.id ?? r.Id ?? '').toLowerCase();
+      const fromStage = String(r.fromStageCode ?? r.FromStageCode ?? '').toLowerCase();
+      const toStage = String(r.toStageCode ?? r.ToStageCode ?? '').toLowerCase();
+      const fromStation = String(r.fromStationCode ?? r.FromStationCode ?? '').toLowerCase();
+      const toStation = String(r.toStationCode ?? r.ToStationCode ?? '').toLowerCase();
+      const flowTask = String(r.flowTaskId ?? r.FlowTaskId ?? '').toLowerCase();
+      return id.includes(filter) || fromStage.includes(filter) || toStage.includes(filter)
+        || fromStation.includes(filter) || toStation.includes(filter) || flowTask.includes(filter);
+    });
+  }
+
+  const emptyEl = document.getElementById('pending-empty');
+  const tbody = document.getElementById('pending-body');
+
+  if (items.length === 0) {
+    emptyEl.classList.remove('hidden');
+    tbody.innerHTML = '';
+    return;
+  }
+  emptyEl.classList.add('hidden');
+  tbody.innerHTML = items.map(r => buildPendingRow(r)).join('');
+}
+
+function buildPendingRow(r) {
+  const id = r.id ?? r.Id ?? '?';
+  const type = r.type ?? r.Type ?? '';
+  const status = normalizeTransferStatus(r);
+  const fromStage = r.fromStageCode ?? r.FromStageCode ?? '—';
+  const toStage = r.toStageCode ?? r.ToStageCode ?? '—';
+  const fromStation = r.fromStationCode ?? r.FromStationCode;
+  const toStation = r.toStationCode ?? r.ToStationCode;
+  const size = r.size ?? r.Size ?? '—';
+  const source = r.source ?? r.Source ?? '—';
+  const flowTaskId = r.flowTaskId ?? r.FlowTaskId;
+  const createdAt = r.createdAt ?? r.CreatedAt;
+  const expiresAt = r.expiresAt ?? r.ExpiresAt;
+  const whStation = r.pending_warehouse_station_code ?? r.PendingWarehouseStationCode;
+  const isDispatching = status === 'Dispatching';
+  const rowClass = isDispatching ? 'hover:bg-amber-900/30 bg-amber-950/40' : 'hover:bg-slate-800/40';
+
+  const stationLabel = type === 'Send'
+    ? `<span class="font-mono text-orange-300">${escHtml(fromStation ?? '—')}</span>`
+    : `<span class="font-mono text-sky-300">${escHtml(toStation ?? '—')}</span>`;
+
+  const reason = pendingReason(r);
+  const whDetail = whStation ? ` <span class="text-slate-500">@ ${escHtml(whStation)}</span>` : '';
+
+  return `
+  <tr class="${rowClass}">
+    <td class="font-mono text-amber-300 text-xs py-2 px-3" title="${escHtml(id)}">${escHtml(String(id).slice(0, 8))}…</td>
+    <td class="text-center">${pendingTypeBadge(type)}</td>
+    <td class="font-mono text-slate-300 text-xs">${escHtml(fromStage)}</td>
+    <td class="font-mono text-slate-300 text-xs">${escHtml(toStage)}</td>
+    <td class="text-xs">${stationLabel}</td>
+    <td class="text-center text-slate-300">${escHtml(size)}</td>
+    <td class="text-center text-xs">${pendingTrayLabel(r)}</td>
+    <td class="text-xs text-slate-400">${escHtml(source)}</td>
+    <td class="text-center">${pendingStatusBadge(status)}</td>
+    <td class="text-xs ${isDispatching ? 'text-amber-200' : 'text-yellow-200'}">${escHtml(reason)}${whDetail}</td>
+    <td class="font-mono text-blue-300 text-xs">${escHtml(flowTaskId ?? '—')}</td>
+    <td class="text-right text-xs text-slate-400">${fmtAge(createdAt)}</td>
+    <td class="text-right text-xs ${expiresAt ? 'text-red-300' : 'text-slate-600'}">${expiresAt ? fmtTime(expiresAt) : '—'}</td>
+    <td class="text-right text-xs text-slate-400">${fmtTime(createdAt)}</td>
+    <td class="text-center">
+      <button class="btn-action btn-cancel text-xs" onclick="confirmCancelPending('${id}')" title="Hủy lệnh Waiting/Dispatching">✕</button>
+    </td>
+  </tr>`;
+}
+
+function confirmCancelPending(id) {
+  showModal(
+    '✕ Hủy lệnh chờ / dispatching',
+    `Bạn có chắc muốn <strong class="text-red-300">hủy</strong> lệnh <strong class="text-amber-300">${escHtml(id)}</strong>?<br><span class="text-slate-400 text-xs">Áp dụng cho Waiting hoặc Dispatching (kẹt sau khi restart server).</span>`,
+    async () => {
+      try {
+        const r = await fetch(apiUrl(`/api/transfer-requests/${id}/cancel`), { method: 'POST' });
+        const json = await r.json();
+        if (json.success !== false) {
+          appendLog(`✓ Đã hủy lệnh chờ ${id}`, 'log-ok');
+          await fetchPendingCommands();
+          renderPendingCommands();
+          renderStats();
+        } else {
+          appendLog(`✗ Hủy lệnh ${id}: ${json.message ?? 'Lỗi'}`, 'log-err');
+        }
+      } catch (e) {
+        appendLog(`✗ Hủy lệnh ${id}: ${e.message}`, 'log-err');
+      }
+    }
+  );
+}
+
+// =====================================================================
+//  CRANE DISPATCHES TABLE
+// =====================================================================
+function normalizeCraneStatus(d) {
+  return String(d.status ?? d.Status ?? '');
+}
+
+function isCraneDispatchActive(d) {
+  const s = normalizeCraneStatus(d);
+  return s === 'Dispatching' || s === 'Accepted' || s === 'Completing';
+}
+
+function craneStatusBadge(status) {
+  const s = String(status ?? '');
+  if (s === 'Dispatching') return '<span class="badge badge-dispatching">Dispatching</span>';
+  if (s === 'Accepted') return '<span class="badge badge-active">Accepted</span>';
+  if (s === 'Completing') return '<span class="badge badge-dispatching">Completing</span>';
+  if (s === 'Completed') return '<span class="badge badge-completed">Completed</span>';
+  if (s === 'Failed') return '<span class="badge badge-error">Failed</span>';
+  if (s === 'Cancelled') return '<span class="badge badge-cancelled">Cancelled</span>';
+  return `<span class="badge badge-pending">${escHtml(s || '—')}</span>`;
+}
+
+function craneTypeBadge(taskType) {
+  const t = String(taskType ?? '');
+  if (t === 'Inbound') return '<span class="badge badge-active">Inbound</span>';
+  if (t === 'Outbound') return '<span class="badge badge-completed">Outbound</span>';
+  if (t === 'InternalMove') return '<span class="badge badge-paused">InternalMove</span>';
+  return `<span class="badge badge-pending">${escHtml(t || '—')}</span>`;
+}
+
+function craneSourceBadge(source) {
+  const s = String(source ?? '');
+  if (s === 'Manual') return '<span class="badge badge-paused">Manual</span>';
+  if (s === 'Automatic') return '<span class="badge badge-completed">Auto</span>';
+  return `<span class="badge badge-pending">${escHtml(s || '—')}</span>`;
+}
+
+function craneQrFinishedBadge(d) {
+  const raised = d.qrFinishedRaisedValue ?? d.QrFinishedRaisedValue;
+  const raisedAt = d.qrFinishedRaisedAt ?? d.QrFinishedRaisedAt;
+  const clearedAt = d.qrFinishedClearedAt ?? d.QrFinishedClearedAt;
+  const taskType = String(d.taskType ?? d.TaskType ?? '');
+
+  if (taskType !== 'Inbound') {
+    return '<span class="text-slate-600">—</span>';
+  }
+  if (raised == null && !raisedAt) {
+    return '<span class="badge badge-pending">Chưa</span>';
+  }
+  if (raisedAt && !clearedAt) {
+    return `<span class="badge badge-dispatching">↑${raised} chờ 0</span>`;
+  }
+  if (raised === 1 && clearedAt) {
+    return '<span class="badge badge-active">1→0 OK</span>';
+  }
+  if (raised === 2 && clearedAt) {
+    return '<span class="badge badge-paused">2→0</span>';
+  }
+  return `<span class="badge badge-pending">${escHtml(String(raised ?? '?'))}→0</span>`;
+}
+
+function renderCraneDispatches() {
+  const filter = document.getElementById('filter-input').value.toLowerCase();
+  let items = craneDispatches;
+
+  if (filter) {
+    items = items.filter(d => {
+      const taskNo = String(d.taskNo ?? d.TaskNo ?? '');
+      const flowTask = String(d.flowTaskId ?? d.FlowTaskId ?? '').toLowerCase();
+      const msg = String(d.lastMessage ?? d.LastMessage ?? d.errorNote ?? d.ErrorNote ?? '').toLowerCase();
+      const id = String(d.id ?? d.Id ?? '').toLowerCase();
+      return taskNo.includes(filter) || flowTask.includes(filter) || msg.includes(filter) || id.includes(filter);
+    });
+  }
+
+  const emptyEl = document.getElementById('crane-empty');
+  const tbody = document.getElementById('crane-body');
+
+  if (items.length === 0) {
+    emptyEl?.classList.remove('hidden');
+    if (tbody) tbody.innerHTML = '';
+    return;
+  }
+  emptyEl?.classList.add('hidden');
+  tbody.innerHTML = items.map(d => buildCraneRow(d)).join('');
+}
+
+function buildCraneRow(d) {
+  const taskNo = d.taskNo ?? d.TaskNo ?? '—';
+  const taskType = d.taskType ?? d.TaskType ?? '';
+  const source = d.source ?? d.Source ?? '';
+  const status = normalizeCraneStatus(d);
+  const flowTaskId = d.flowTaskId ?? d.FlowTaskId;
+  const lastMessage = d.lastMessage ?? d.LastMessage ?? '';
+  const errorNote = d.errorNote ?? d.ErrorNote ?? '';
+  const errorCode = d.errorCode ?? d.ErrorCode;
+  const createdAt = d.createdAt ?? d.CreatedAt;
+  const acceptedAt = d.acceptedAt ?? d.AcceptedAt;
+  const completedAt = d.completedAt ?? d.CompletedAt;
+  const failedAt = d.failedAt ?? d.FailedAt;
+  const doneAt = completedAt || failedAt;
+
+  const msgParts = [];
+  if (lastMessage) msgParts.push(escHtml(lastMessage));
+  if (errorNote && errorNote !== lastMessage) msgParts.push(`<span class="text-red-300">${escHtml(errorNote)}</span>`);
+  const msgCell = msgParts.length ? msgParts.join('<br/>') : '<span class="text-slate-600">—</span>';
+
+  const rowCls = isCraneDispatchActive(d)
+    ? 'bg-amber-950/20'
+    : (status === 'Failed' ? 'bg-red-950/15' : '');
+
+  return `<tr class="${rowCls}">
+    <td class="text-right font-mono font-semibold text-cyan-300 py-2 px-3">${escHtml(String(taskNo))}</td>
+    <td class="text-center">${craneTypeBadge(taskType)}</td>
+    <td class="text-center">${craneSourceBadge(source)}</td>
+    <td class="text-center">${craneStatusBadge(status)}</td>
+    <td class="text-center">${craneQrFinishedBadge(d)}</td>
+    <td class="text-left font-mono text-slate-300">${flowTaskId ? escHtml(flowTaskId) : '<span class="text-slate-600">—</span>'}</td>
+    <td class="text-left max-w-xs truncate" title="${escHtml(lastMessage || errorNote || '')}">${msgCell}</td>
+    <td class="text-right font-mono ${errorCode ? 'text-red-300' : 'text-slate-600'}">${errorCode ?? '—'}</td>
+    <td class="text-right text-slate-400">${fmtAge(createdAt)}</td>
+    <td class="text-right text-slate-400">${fmtTime(createdAt)}</td>
+    <td class="text-right text-slate-400">${fmtTime(acceptedAt)}</td>
+    <td class="text-right text-slate-400">${fmtTime(doneAt)}</td>
+  </tr>`;
+}
+
+// =====================================================================
+//  RECENT TASKS TABLE
+// =====================================================================
+function renderRecentTasks() {
+  const statusFilter = document.getElementById('recent-status-filter').value;
+  const filter = document.getElementById('filter-input').value.toLowerCase();
+  let tasks = recentTasks;
+  if (statusFilter !== '') {
+    tasks = tasks.filter(t => String(t.status ?? t.Status ?? 0) === statusFilter);
+  }
+  if (filter) {
+    tasks = tasks.filter(t =>
+      (t.id ?? '').toLowerCase().includes(filter) ||
+      stationCode(t.fromStation ?? t.FromStation).toLowerCase().includes(filter) ||
+      stationCode(t.toStation ?? t.ToStation).toLowerCase().includes(filter) ||
+      ((t.robot ?? t.Robot)?.code ?? '').toLowerCase().includes(filter)
+    );
+  }
+  tasks = sortByCreatedAt(tasks);
+
+  const tbody = document.getElementById('recent-body');
+  if (tasks.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="10" class="text-center py-8 text-slate-500">Không có task nào</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = tasks.map(t => buildRecentRow(t)).join('');
+}
+
+function buildRecentRow(t) {
+  const id = t.id ?? t.Id ?? '?';
+  const step = t.currentStep ?? t.CurrentStep ?? 0;
+  const status = t.status ?? t.Status ?? 0;
+  const from = stationCode(t.fromStation ?? t.FromStation);
+  const to   = stationCode(t.toStation ?? t.ToStation);
+  const robot = (t.robot ?? t.Robot)?.code ?? (t.robot ?? t.Robot)?.Code ?? '—';
+  const rcsId = t.rcsTaskId ?? t.RcsTaskId;
+  const createdAt = t.createdAt ?? t.CreatedAt;
+  const completedAt = t.completedAt ?? t.CompletedAt;
+  const waitingFor = t.waitingFor ?? t.WaitingFor;
+
+  const si = stepInfo(step);
+  const st = statusInfo(status);
+  const phaseColor = si.phase === 'pick' ? 'text-sky-400' :
+                     si.phase === 'drop' ? 'text-orange-400' :
+                     si.phase === 'done' ? 'text-emerald-400' : 'text-slate-400';
+
+  const canAction = status === 1 || status === 3;
+  const canCancel = canAction && !isWarehouseOutbound(t);
+
+  return `
+  <tr class="hover:bg-slate-800/40">
+    <td class="font-mono text-blue-300 text-xs font-bold">${escHtml(id)}</td>
+    <td class="text-slate-300 text-xs">${escHtml(robot)}</td>
+    <td class="text-xs">
+      <span class="font-mono text-slate-200">${escHtml(from)}</span>
+      <span class="text-slate-500 mx-1">→</span>
+      <span class="font-mono text-slate-200">${escHtml(to)}</span>
+    </td>
+    <td class="text-center">
+      <span class="${phaseColor} text-xs">${step}. ${escHtml(si.short)}</span>
+    </td>
+    <td class="text-center"><span class="badge ${st.cls}">${st.label}</span></td>
+    <td class="text-xs">${buildWaitHtml(waitingFor, '')}</td>
+    <td class="font-mono text-amber-300 text-xs">${escHtml(rcsId ?? '—')}</td>
+    <td class="text-right text-xs text-slate-400">${fmtDuration(createdAt, completedAt)}</td>
+    <td class="text-right text-xs text-slate-400">${fmtTime(createdAt)}</td>
+    <td class="text-center">
+      ${canAction ? `
+      <div class="flex gap-1 justify-center">
+        <button class="btn-action btn-resume text-xs" onclick="resumeTask('${id}')">▶</button>
+        ${canCancel
+          ? `<button class="btn-action btn-cancel text-xs" onclick="confirmCancel('${id}')">✕</button>`
+          : `<button class="btn-action btn-cancel text-xs" disabled title="Không thể hủy task xuất kho sau khi FlowTask đã được tạo">✕</button>`}
+      </div>` : '<span class="text-slate-600">—</span>'}
+    </td>
+  </tr>`;
+}
+
+// =====================================================================
+//  CANCELLED TASKS TABLE
+// =====================================================================
+function renderCancelledTasks() {
+  const filter = document.getElementById('filter-input').value.toLowerCase();
+  let tasks = cancelledTasks;
+  if (filter) {
+    tasks = tasks.filter(t =>
+      (t.id ?? t.Id ?? '').toLowerCase().includes(filter) ||
+      stationCode(t.fromStation ?? t.FromStation).toLowerCase().includes(filter) ||
+      stationCode(t.toStation ?? t.ToStation).toLowerCase().includes(filter) ||
+      ((t.robot ?? t.Robot)?.code ?? '').toLowerCase().includes(filter) ||
+      (t.rcsTaskId ?? t.RcsTaskId ?? '').toLowerCase().includes(filter) ||
+      (t.logMessage ?? t.LogMessage ?? '').toLowerCase().includes(filter)
+    );
+  }
+  tasks = sortByCreatedAt(tasks);
+
+  const emptyEl = document.getElementById('cancelled-empty');
+  const tbody = document.getElementById('cancelled-body');
+
+  if (tasks.length === 0) {
+    emptyEl.classList.remove('hidden');
+    tbody.innerHTML = '';
+    return;
+  }
+  emptyEl.classList.add('hidden');
+  tbody.innerHTML = tasks.map(t => buildCancelledRow(t)).join('');
+}
+
+function buildCancelledRow(t) {
+  const id = t.id ?? t.Id ?? '?';
+  const step = t.currentStep ?? t.CurrentStep ?? 0;
+  const from = stationCode(t.fromStation ?? t.FromStation);
+  const to   = stationCode(t.toStation ?? t.ToStation);
+  const robot = (t.robot ?? t.Robot)?.code ?? (t.robot ?? t.Robot)?.Code ?? '—';
+  const rcsId = t.rcsTaskId ?? t.RcsTaskId;
+  const createdAt = t.createdAt ?? t.CreatedAt;
+  const updatedAt = t.updatedAt ?? t.UpdatedAt;
+  const logMsg = t.logMessage ?? t.LogMessage ?? '';
+
+  const si = stepInfo(step);
+  const phaseColor = si.phase === 'pick' ? 'text-sky-400' :
+                     si.phase === 'drop' ? 'text-orange-400' :
+                     si.phase === 'done' ? 'text-emerald-400' : 'text-slate-400';
+
+  return `
+  <tr class="hover:bg-slate-800/40">
+    <td class="font-mono text-blue-300 text-xs font-bold">${escHtml(id)}</td>
+    <td class="font-mono text-amber-300 text-xs font-semibold whitespace-nowrap">${escHtml(rcsId ?? '—')}</td>
+    <td class="text-slate-300 text-xs">${escHtml(robot)}</td>
+    <td class="text-xs">
+      <span class="font-mono text-slate-200">${escHtml(from)}</span>
+      <span class="text-slate-500 mx-1">→</span>
+      <span class="font-mono text-slate-200">${escHtml(to)}</span>
+    </td>
+    <td class="text-center">
+      <span class="${phaseColor} text-xs">${step}. ${escHtml(si.short)}</span>
+    </td>
+    <td class="text-xs text-red-200 max-w-[220px] truncate" title="${escHtml(logMsg)}">${escHtml(logMsg || '—')}</td>
+    <td class="text-right text-xs text-slate-400">${fmtDuration(createdAt, updatedAt)}</td>
+    <td class="text-right text-xs text-red-300">${fmtTime(updatedAt)}</td>
+    <td class="text-right text-xs text-slate-400">${fmtTime(createdAt)}</td>
+  </tr>`;
+}
+
+// =====================================================================
+//  ERROR LOGS TABLE
+// =====================================================================
+function parseLogSource(message) {
+  if (!message) return '';
+  const m = String(message).match(/^\[([^\]]+)\]/);
+  return m ? m[1] : '';
+}
+
+function errorEventBadge(eventName) {
+  const e = eventName ?? '';
+  const cls =
+    e === 'ExternalApiError' ? 'badge-error' :
+    e === 'FlowErrorOccurred' ? 'badge-error' :
+    e === 'TimeoutFired' ? 'badge-paused' :
+    e === 'StopEmergency' ? 'badge-error' :
+    'badge-cancelled';
+  return `<span class="badge ${cls}">${escHtml(e || '—')}</span>`;
+}
+
+function sourceBadge(source) {
+  if (!source) return '<span class="text-slate-600">—</span>';
+  const cls =
+    source === 'RCS' ? 'text-purple-300 bg-purple-950' :
+    source === 'WMS' ? 'text-amber-300 bg-amber-950' :
+    source === 'Crane' ? 'text-orange-300 bg-orange-950' :
+    source === 'OPC' ? 'text-cyan-300 bg-cyan-950' :
+    'text-slate-300 bg-slate-700';
+  return `<span class="px-1.5 py-0.5 rounded text-xs font-semibold ${cls}">${escHtml(source)}</span>`;
+}
+
+function renderErrorLogs() {
+  const sourceFilter = document.getElementById('error-source-filter')?.value ?? '';
+  let logs = errorLogs;
+
+  if (sourceFilter) {
+    logs = logs.filter(l => parseLogSource(l.logMessage ?? l.LogMessage) === sourceFilter);
+  }
+
+  const emptyEl = document.getElementById('error-logs-empty');
+  const tbody = document.getElementById('error-logs-body');
+
+  if (logs.length === 0) {
+    emptyEl.classList.remove('hidden');
+    tbody.innerHTML = '';
+    return;
+  }
+  emptyEl.classList.add('hidden');
+
+  tbody.innerHTML = logs.map(l => {
+    const taskId = l.flowTaskId ?? l.FlowTaskId ?? '?';
+    const step = l.step ?? l.Step;
+    const event = l.event ?? l.Event;
+    const message = l.logMessage ?? l.LogMessage ?? '';
+    const createdAt = l.createdAt ?? l.CreatedAt;
+    const source = parseLogSource(message);
+    const si = step != null ? stepInfo(step) : null;
+
+    return `
+    <tr class="hover:bg-slate-800/40">
+      <td class="text-slate-400 whitespace-nowrap py-2 px-3">${fmtTime(createdAt)}</td>
+      <td class="py-2 px-1">
+        <button onclick='filterErrorByTaskId(${JSON.stringify(taskId)})'
+          class="font-mono text-blue-300 text-xs font-bold hover:text-blue-200 hover:underline"
+          title="Lọc theo task này">${escHtml(taskId)}</button>
+      </td>
+      <td class="text-center text-xs text-slate-300 whitespace-nowrap">
+        ${step != null ? `${step}. ${escHtml(si?.short ?? step)}` : '—'}
+      </td>
+      <td class="py-2 px-1">${errorEventBadge(event)}</td>
+      <td class="py-2 px-1">${sourceBadge(source)}</td>
+      <td class="py-2 px-1 text-red-200 text-xs font-mono max-w-[480px] break-words">${escHtml(message || '—')}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterErrorByTaskId(taskId) {
+  document.getElementById('error-task-filter').value = taskId;
+  switchTab('errors');
+  fetchErrorLogs();
+}
+
+// =====================================================================
+//  STATION SIGNALS
+// =====================================================================
+async function refreshSignalsIfVisible() {
+  if (currentTab !== 'signals') return;
+  await fetchSignals();
+  renderSignals();
+}
+
+// =====================================================================
+//  OPC STATION CHECK (per-station via /api/stations/{code}/opc-tags)
+// =====================================================================
+function collectKnownStationCodes() {
+  const codes = new Set();
+  for (const t of [...activeTasks, ...recentTasks]) {
+    const from = stationCode(t.fromStation ?? t.FromStation);
+    const to = stationCode(t.toStation ?? t.ToStation);
+    if (from && from !== '?') codes.add(from);
+    if (to && to !== '?') codes.add(to);
+  }
+  return [...codes].sort();
+}
+
+function updateOpcStationDatalist() {
+  const dl = document.getElementById('opc-station-list');
+  if (!dl) return;
+  dl.innerHTML = collectKnownStationCodes()
+    .map(c => `<option value="${escHtml(c)}"></option>`)
+    .join('');
+}
+
+async function fetchOpcStationTags() {
+  const input = document.getElementById('opc-station-code');
+  const statusEl = document.getElementById('opc-status');
+  const code = input?.value.trim() ?? '';
+  if (!code) {
+    if (statusEl) {
+      statusEl.textContent = 'Vui lòng nhập mã trạm';
+      statusEl.className = 'text-xs text-amber-400 ml-auto';
+    }
+    return;
+  }
+
+  opcStationCode = code;
+  if (statusEl) {
+    statusEl.textContent = 'Đang đọc OPC...';
+    statusEl.className = 'text-xs text-slate-400 ml-auto';
+  }
+
+  try {
+    const r = await fetch(apiUrl(`/api/stations/${encodeURIComponent(code)}/opc-tags`));
+    const json = await r.json();
+    if (!r.ok || !json.success) {
+      opcStationData = null;
+      opcStationError = json.message ?? `HTTP ${r.status}`;
+    } else {
+      opcStationData = json.data ?? null;
+      opcStationError = null;
+      setApiStatus(true);
+    }
+    renderOpcStationTags();
+    if (statusEl) {
+      const tagCount = opcStationData?.tags?.length ?? 0;
+      statusEl.textContent = opcStationError
+        ? `Lỗi: ${opcStationError}`
+        : `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · ${tagCount} tags`;
+      statusEl.className = `text-xs ml-auto ${opcStationError ? 'text-red-400' : 'text-slate-500'}`;
+    }
+  } catch (e) {
+    opcStationData = null;
+    opcStationError = e.message;
+    setApiStatus(false, e.message);
+    renderOpcStationTags();
+    if (statusEl) {
+      statusEl.textContent = `Lỗi: ${e.message}`;
+      statusEl.className = 'text-xs text-red-400 ml-auto';
+    }
+  }
+}
+
+function renderOpcStationTags() {
+  const container = document.getElementById('opc-tags-container');
+  if (!container) return;
+
+  const code = opcStationCode || document.getElementById('opc-station-code')?.value.trim() || '';
+  if (!code) {
+    container.innerHTML = `<div class="text-center py-16 text-slate-500">
+      <div class="text-4xl mb-3">🔌</div>
+      <div class="text-sm">Chọn trạm để xem tín hiệu OPC UA realtime</div>
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = buildStationTagsPanel(code, opcStationData, 'station', opcStationError);
+}
+
+function toggleOpcAutoRefresh() {
+  opcAutoRefresh = document.getElementById('opc-auto-refresh')?.checked ?? false;
+  clearTimeout(opcRefreshTimer);
+  if (opcAutoRefresh && currentTab === 'opc' && opcStationCode) scheduleOpcRefresh();
+}
+
+function scheduleOpcRefresh() {
+  clearTimeout(opcRefreshTimer);
+  if (!opcAutoRefresh || currentTab !== 'opc' || !opcStationCode) return;
+  const sec = parseInt(document.getElementById('interval-input').value) || 5;
+  opcRefreshTimer = setTimeout(async () => {
+    if (currentTab === 'opc' && opcAutoRefresh && opcStationCode) {
+      await fetchOpcStationTags();
+      scheduleOpcRefresh();
+    }
+  }, sec * 1000);
+}
+
+function stopOpcRefresh() {
+  clearTimeout(opcRefreshTimer);
+  opcRefreshTimer = null;
+}
+
+function renderSignals() {
+  if (!signalsData) {
+    document.getElementById('in-tags-body').innerHTML =
+      `<tr><td colspan="4" class="text-center py-4 text-slate-500">Không có dữ liệu</td></tr>`;
+    document.getElementById('out-tags-body').innerHTML =
+      `<tr><td colspan="4" class="text-center py-4 text-slate-500">Không có dữ liệu</td></tr>`;
+    return;
+  }
+
+  const tags = signalsData.tags ?? {};
+  const analysis = signalsData.analysis ?? {};
+  const ts = signalsData.timestamp;
+  document.getElementById('signals-ts').textContent = ts ? 'Snapshot: ' + new Date(ts).toLocaleTimeString('vi-VN') : '';
+
+  const IN_KEYS  = ['in_cv_ready','in_cv_allow','in_cv_safety','in_cv_conveyor',
+                    'in_agv_ready','in_agv_arrived','in_agv_inprogress','in_agv_intrusion',
+                    'in_agv_qr_done','in_cv_qr_ready'];
+  const OUT_KEYS = ['out_cv_ready','out_cv_request','out_cv_safety','out_cv_conveyor',
+                    'out_agv_ready','out_agv_arrived','out_agv_moving','out_agv_intrusion',
+                    'out_agv_receiving','out_agv_qr_done','out_cv_qr_ready'];
+
+  renderSignalTable('in-tags-body', IN_KEYS, tags);
+  renderSignalTable('out-tags-body', OUT_KEYS, tags);
+  renderAnalysis('in-analysis-detail', 'in-analysis', analysis.inbound, 'Inbound');
+  renderAnalysis('out-analysis-detail', 'out-analysis', analysis.outbound, 'Outbound');
+}
+
+function renderSignalTable(tbodyId, keys, tags) {
+  const tbody = document.getElementById(tbodyId);
+  tbody.innerHTML = keys.map(key => {
+    const t = tags[key];
+    if (!t) return '';
+    const isTrue = t.isTrue ?? false;
+    const isGood = t.isGood ?? false;
+    const hasErr = !!t.error;
+    const valCls = hasErr ? 'val-err' : isTrue ? 'val-on' : 'val-off';
+    const sigCls = hasErr ? 'sig-err' : isTrue ? 'sig-on' : 'sig-off';
+    const valText = hasErr ? 'ERR' : isTrue ? '1 (ON)' : '0 (OFF)';
+    const ts = t.timestamp ? new Date(t.timestamp).toLocaleTimeString('vi-VN') : '—';
+    const direction = key.startsWith('in_cv') || key.startsWith('out_cv') ? 'CV→AGV' : 'AGV→CV';
+    const dirColor  = direction === 'CV→AGV' ? 'text-purple-400' : 'text-orange-400';
+    return `
+    <tr>
+      <td>
+        <div class="flex items-center gap-2">
+          <span class="sig-dot ${sigCls}"></span>
+          <span class="font-mono text-xs ${dirColor}">${escHtml(key)}</span>
+        </div>
+      </td>
+      <td class="text-slate-400 text-xs">${escHtml(t.label ?? key)}</td>
+      <td class="text-center"><span class="badge ${valCls} text-xs">${valText}</span></td>
+      <td class="text-right text-slate-500 text-xs">${ts}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderAnalysis(detailId, summaryId, analysis, label) {
+  if (!analysis) return;
+  const canStart = analysis.canStartHandshake ?? false;
+  const summaryEl = document.getElementById(summaryId);
+  if (summaryEl) {
+    summaryEl.innerHTML = canStart
+      ? `<span class="badge badge-active">✓ Sẵn sàng handshake</span>`
+      : `<span class="badge badge-paused">⚠ Chưa sẵn sàng</span>`;
+  }
+
+  const detailEl = document.getElementById(detailId);
+  if (!detailEl) return;
+  const items = Object.entries(analysis).filter(([k]) => k !== 'canStartHandshake');
+  detailEl.innerHTML = items.map(([k, v]) => {
+    const on = v === true;
+    const cls = on ? 'text-emerald-400' : 'text-slate-500';
+    const dot = on ? 'sig-on' : 'sig-off';
+    const name = k.replace(/([A-Z])/g, ' $1').replace(/^./, c => c.toUpperCase());
+    return `<div class="flex items-center gap-1.5 ${cls}">
+      <span class="sig-dot ${dot}"></span>
+      <span>${escHtml(name)}</span>
+    </div>`;
+  }).join('');
+}
+
+// =====================================================================
+//  LIVE EVENT STREAM (SSE)
+// =====================================================================
+const _evtSources = {}; // taskId → EventSource
+
+function toggleEventStream(taskId) {
+  if (_evtSources[taskId]) {
+    stopEventStream(taskId);
+  } else {
+    startEventStream(taskId);
+  }
+}
+
+function startEventStream(taskId) {
+  if (_evtSources[taskId]) return;
+
+  const url = apiUrl(`/api/flow-tasks/${taskId}/stream`);
+  const es = new EventSource(url);
+  _evtSources[taskId] = es;
+
+  setSseUi(taskId, 'connecting');
+
+  es.onopen = () => setSseUi(taskId, 'on');
+
+  es.onmessage = (ev) => {
+    try { appendTaskEvent(taskId, JSON.parse(ev.data)); }
+    catch(e) { /* ignore parse error */ }
+  };
+
+  es.onerror = () => {
+    // EventSource auto-reconnects; chỉ báo error khi closed hẳn
+    if (es.readyState === EventSource.CLOSED) {
+      setSseUi(taskId, 'err');
+      delete _evtSources[taskId];
+    }
+  };
+}
+
+function stopEventStream(taskId) {
+  const es = _evtSources[taskId];
+  if (!es) return;
+  es.close();
+  delete _evtSources[taskId];
+  setSseUi(taskId, 'off');
+  appendTaskEvent(taskId, {
+    eventName: 'Disconnected', taskId, detail: 'Stream đã đóng', timestamp: new Date().toISOString()
+  });
+}
+
+function setSseUi(taskId, state) {
+  const dot = document.getElementById(`sse-dot-${taskId}`);
+  const lbl = document.getElementById(`sse-status-${taskId}`);
+  const btn = document.getElementById(`sse-btn-${taskId}`);
+  if (!dot) return;
+
+  const cfg = {
+    on:         { dot: 'sse-dot-on',  lbl: 'Đang kết nối',   btn: '⏹ Dừng', btnCls: 'bg-red-900 hover:bg-red-800 text-red-300' },
+    connecting: { dot: 'sse-dot-on',  lbl: 'Đang kết nối...', btn: '⏹ Dừng', btnCls: 'bg-red-900 hover:bg-red-800 text-red-300' },
+    off:        { dot: 'sse-dot-off', lbl: 'Đã ngắt',         btn: '▶ Bắt đầu nhận events', btnCls: 'bg-emerald-900 hover:bg-emerald-800 text-emerald-300' },
+    err:        { dot: 'sse-dot-err', lbl: 'Lỗi kết nối',     btn: '▶ Thử lại', btnCls: 'bg-emerald-900 hover:bg-emerald-800 text-emerald-300' },
+  }[state] ?? {};
+
+  dot.className = `sse-dot ${cfg.dot ?? 'sse-dot-off'}`;
+  if (lbl) lbl.textContent = cfg.lbl ?? '';
+  if (btn) {
+    btn.textContent = cfg.btn ?? '';
+    btn.className = `flex items-center gap-1.5 px-2.5 py-1 rounded text-xs transition ${cfg.btnCls ?? ''}`;
+  }
+}
+
+function appendTaskEvent(taskId, data) {
+  const container = document.getElementById(`event-log-${taskId}`);
+  if (!container) return;
+
+  // Xóa placeholder
+  const placeholder = container.querySelector('.italic');
+  if (placeholder) placeholder.remove();
+
+  const ts    = data.timestamp ? new Date(data.timestamp).toLocaleTimeString('vi-VN', { hour12: false }) : '';
+  const name  = data.eventName ?? 'Unknown';
+  const detail = data.detail ?? '';
+
+  // Classify sự kiện → color
+  const cls =
+    name === 'Connected' || name === 'FlowStarted' || name === 'FlowResumed' ? 'evt-connected' :
+    name.startsWith('Robot')    ? 'evt-robot' :
+    name.startsWith('Flow')     ? 'evt-flow' :
+    name.includes('Error') || name.includes('Timeout') || name.includes('Emergency')
+                                || name === 'Disconnected' ? 'evt-error' :
+    'evt-station';
+
+  const row = document.createElement('div');
+  row.className = 'evt-row';
+  row.innerHTML =
+    `<span class="evt-ts">${ts}</span>` +
+    `<span class="evt-name ${cls}">${escHtml(name)}</span>` +
+    (detail ? `<span class="evt-detail">${escHtml(detail)}</span>` : '');
+
+  container.insertBefore(row, container.firstChild);
+
+  // Giới hạn 100 dòng
+  while (container.children.length > 100) container.removeChild(container.lastChild);
+}
+
+// =====================================================================
+//  ACTIONS
+// =====================================================================
+async function resumeTask(id) {
+  showModal(
+    '▶ Resume Task',
+    `Tiếp tục task <strong class="text-blue-300">${escHtml(id)}</strong>?`,
+    async () => {
+      try {
+        const r = await fetch(apiUrl(`/api/flow-tasks/resume/${id}`), { method: 'POST' });
+        const json = await r.json();
+        if (json.success !== false) {
+          appendLog(`✓ Resume task ${id} thành công`, 'log-ok');
+          await fetchAll();
+        } else {
+          appendLog(`✗ Resume task ${id}: ${json.message ?? json.error ?? 'Lỗi không xác định'}`, 'log-err');
+        }
+      } catch(e) {
+        appendLog(`✗ Resume task ${id}: ${e.message}`, 'log-err');
+      }
+    }
+  );
+}
+
+function confirmCancel(id) {
+  const task = [...activeTasks, ...recentTasks].find(t => (t.id ?? t.Id) === id);
+  if (isWarehouseOutbound(task)) {
+    appendLog(`✗ Không thể hủy task xuất kho ${id} sau khi FlowTask đã được tạo`, 'log-err');
+    return;
+  }
+  showModal(
+    '✕ Hủy Task',
+    `Bạn có chắc muốn <strong class="text-red-300">hủy</strong> task <strong class="text-blue-300">${escHtml(id)}</strong>?<br/><span class="text-slate-400 text-xs">Thao tác này không thể hoàn tác.</span>`,
+    async () => {
+      try {
+        const r = await fetch(apiUrl(`/api/flow-tasks/cancel/${id}`), { method: 'POST' });
+        const json = await r.json();
+        if (json.success !== false) {
+          appendLog(`✓ Đã hủy task ${id}`, 'log-ok');
+          await fetchAll();
+        } else {
+          appendLog(`✗ Hủy task ${id}: ${json.message ?? 'Lỗi'}`, 'log-err');
+        }
+      } catch(e) {
+        appendLog(`✗ Hủy task ${id}: ${e.message}`, 'log-err');
+      }
+    }
+  );
+}
+
+// =====================================================================
+//  MODAL
+// =====================================================================
+function showModal(title, body, onConfirm) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').innerHTML = body;
+  document.getElementById('confirm-modal').classList.add('open');
+  const btn = document.getElementById('modal-confirm-btn');
+  btn.onclick = () => { closeModal(); onConfirm(); };
+  const isCancel = title.includes('Hủy');
+  btn.className = `px-4 py-2 rounded text-sm text-white font-semibold transition ${isCancel ? 'bg-red-700 hover:bg-red-600' : 'bg-blue-700 hover:bg-blue-600'}`;
+}
+
+function closeModal() {
+  document.getElementById('confirm-modal').classList.remove('open');
+}
+
+// =====================================================================
+//  STATUS INDICATOR
+// =====================================================================
+function setApiStatus(ok, msg = '') {
+  const dot = document.getElementById('api-dot');
+  const txt = document.getElementById('api-status');
+  dot.className = `status-dot ${ok ? 'bg-green-500' : 'bg-red-500'}`;
+  txt.textContent = ok ? 'Connected' : `Lỗi: ${msg}`;
+  txt.className = `text-xs ${ok ? 'text-green-400' : 'text-red-400'}`;
+}
+
+// =====================================================================
+//  TABS
+// =====================================================================
+function switchTab(name) {
+  if (currentTab === 'opc') stopOpcRefresh();
+  currentTab = name;
+  document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(`pane-${name}`)?.classList.remove('hidden');
+  document.getElementById(`tab-${name}`)?.classList.add('active');
+  if (name === 'signals') {
+    fetchSignals().then(() => renderSignals());
+  } else if (name === 'opc') {
+    updateOpcStationDatalist();
+    if (opcStationCode) fetchOpcStationTags();
+    else renderOpcStationTags();
+    if (opcAutoRefresh && opcStationCode) scheduleOpcRefresh();
+  } else if (name === 'active') {
+    renderActiveTasks();
+  } else if (name === 'pending') {
+    fetchPendingCommands().then(() => renderPendingCommands());
+  } else if (name === 'crane') {
+    fetchCraneDispatches().then(() => renderCraneDispatches());
+  } else if (name === 'recent') {
+    renderRecentTasks();
+  } else if (name === 'cancelled') {
+    renderCancelledTasks();
+  } else if (name === 'errors') {
+    fetchErrorLogs().then(() => renderErrorLogs());
+  }
+}
+
+function applyFilter() {
+  if (currentTab === 'active') renderActiveTasks();
+  else if (currentTab === 'pending') renderPendingCommands();
+  else if (currentTab === 'crane') renderCraneDispatches();
+  else if (currentTab === 'recent') renderRecentTasks();
+  else if (currentTab === 'cancelled') renderCancelledTasks();
+  else if (currentTab === 'errors') renderErrorLogs();
+}
+
+// =====================================================================
+//  AUTO REFRESH
+// =====================================================================
+function scheduleRefresh() {
+  clearTimeout(refreshTimer);
+  if (!autoRefresh) return;
+  const sec = parseInt(document.getElementById('interval-input').value) || 5;
+  refreshTimer = setTimeout(async () => {
+    await fetchAll();
+    scheduleRefresh();
+  }, sec * 1000);
+}
+
+function toggleAutoRefresh() {
+  autoRefresh = !autoRefresh;
+  const btn = document.getElementById('toggle-auto');
+  btn.textContent = autoRefresh ? '⏸ Dừng auto' : '▶ Bật auto';
+  btn.className = `px-3 py-1 rounded text-white text-xs transition ${autoRefresh ? 'bg-blue-700 hover:bg-blue-600' : 'bg-slate-600 hover:bg-slate-500'}`;
+  if (autoRefresh) scheduleRefresh();
+  else clearTimeout(refreshTimer);
+}
+
+// =====================================================================
+//  LOG (simple in-page log)
+// =====================================================================
+const _logs = [];
+function appendLog(msg, cls = 'log-info') {
+  const ts = new Date().toLocaleTimeString('vi-VN');
+  _logs.unshift(`<span class="${cls}">[${ts}] ${escHtml(msg)}</span>`);
+  if (_logs.length > 50) _logs.pop();
+}
+
+// =====================================================================
+//  BOOT
+// =====================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('interval-input').addEventListener('change', () => {
+    if (autoRefresh) { clearTimeout(refreshTimer); scheduleRefresh(); }
+  });
+});
+</script>
+</body>
+</html>

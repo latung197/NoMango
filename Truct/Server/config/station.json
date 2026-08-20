@@ -1,0 +1,30 @@
+{
+  "Stations": [
+    {
+      "Code": "J1",
+      "StageCode": "J",
+      "Type": "OUT",
+      "Tag_Control": "DeviceK.Station_J.OPC.iJ_Pos1_AMR_Intrusion_Status",
+      "Tag_Status": "DeviceK.Station_J.PLC.iJ_Status",
+      "HasCurtain": true,
+      "Tag_CurtainState": "DeviceK.Station_J.PLC.iJ_Pos1_Intrusion_possible",
+      "HasConveyor": true,
+      "Tag_State": "DeviceK.Station_J.PLC.iJ_Pos1",
+      "MainPoint": "069299AA037160",
+      "WaitingPoint": "069299AA040120"
+    },
+    {
+      "Code": "AS11",
+      "StageCode": "AS1",
+      "Type": "IN",
+      "Tag_Control": "DeviceK.Station_AS1.OPC.iAS1_Pos1_AMR_Intrusion_Status",
+      "Tag_Status": "DeviceK.Station_AS1.PLC.iAS1_Status",
+      "HasCurtain": true,
+      "Tag_CurtainState": "DeviceK.Station_AS1.PLC.iAS1_Pos1_Intrusion_possible",
+      "HasConveyor": true,
+      "Tag_State": "DeviceK.Station_AS1.PLC.iAS1_Pos1",
+      "MainPoint": "090303AA036682",
+      "WaitingPoint": "090303AA040311"
+    }
+  ]
+}

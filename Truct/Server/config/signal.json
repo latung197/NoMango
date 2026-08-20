@@ -1,0 +1,3881 @@
+{
+  "Signals": [
+    {
+      "Area": "Chip",
+      "Device": "System",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station.PLC.iSystems_Status",
+          "TagName": "iSystems_Status",
+          "tagValues": [
+            "",
+            "Normal",
+            "Error"
+          ],
+          "Description": "Systems_Status 1: Normal, 2: Error",
+          "DeviceType": "W",
+          "Address": "0",
+          "DataType": "Short",
+          "Location": "W0"
+        },
+        {
+          "TagOPC": "DeviceK.Station.PLC.iClock1s_pulse",
+          "TagName": "iClock1s_pulse",
+          "Description": "Clock1s_pulse",
+          "DeviceType": "W",
+          "Address": "1",
+          "DataType": "Short",
+          "Location": "W1"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iClock1s_PC",
+          "TagName": "iClock1s_PC",
+          "Description": "= W1 (Clock1s_pulse)",
+          "DeviceType": "W",
+          "Address": "201",
+          "DataType": "Short",
+          "Location": "W201"
+        },
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "AMR",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR1_Status",
+          "TagName": "iAMR1_Status",
+          "Description": "AMR1_Status",
+          "DeviceType": "W",
+          "Address": "204",
+          "DataType": "Short",
+          "Location": "W204"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR1_Pos_Exist",
+          "TagName": "iAMR1_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR1_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "205",
+          "DataType": "Short",
+          "Location": "W205"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR2_Status",
+          "TagName": "iAMR2_Status",
+          "Description": "AMR2_Status",
+          "DeviceType": "W",
+          "Address": "206",
+          "DataType": "Short",
+          "Location": "W206"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR2_Pos_Exist",
+          "TagName": "iAMR2_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR2_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "207",
+          "DataType": "Short",
+          "Location": "W207"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR3_Status",
+          "TagName": "iAMR3_Status",
+          "Description": "AMR3_Status",
+          "DeviceType": "W",
+          "Address": "208",
+          "DataType": "Short",
+          "Location": "W208"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR3_Pos_Exist",
+          "TagName": "iAMR3_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR3_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "209",
+          "DataType": "Short",
+          "Location": "W209"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR4_Status",
+          "TagName": "iAMR4_Status",
+          "Description": "AMR4_Status",
+          "DeviceType": "W",
+          "Address": "20A",
+          "DataType": "Short",
+          "Location": "W20A"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR4_Pos_Exist",
+          "TagName": "iAMR4_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR4_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "20B",
+          "DataType": "Short",
+          "Location": "W20B"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR5_Status",
+          "TagName": "iAMR5_Status",
+          "Description": "AMR5_Status",
+          "DeviceType": "W",
+          "Address": "20C",
+          "DataType": "Short",
+          "Location": "W20C"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR5_Pos_Exist",
+          "TagName": "iAMR5_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR5_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "20D",
+          "DataType": "Short",
+          "Location": "W20D"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR6_Status",
+          "TagName": "iAMR6_Status",
+          "Description": "AMR6_Status",
+          "DeviceType": "W",
+          "Address": "20E",
+          "DataType": "Short",
+          "Location": "W20E"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR6_Pos_Exist",
+          "TagName": "iAMR6_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR6_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "20F",
+          "DataType": "Short",
+          "Location": "W20F"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR7_Status",
+          "TagName": "iAMR7_Status",
+          "Description": "AMR7_Status",
+          "DeviceType": "W",
+          "Address": "210",
+          "DataType": "Short",
+          "Location": "W210"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR7_Pos_Exist",
+          "TagName": "iAMR7_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR7_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "211",
+          "DataType": "Short",
+          "Location": "W211"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR8_Status",
+          "TagName": "iAMR8_Status",
+          "Description": "AMR8_Status",
+          "DeviceType": "W",
+          "Address": "212",
+          "DataType": "Short",
+          "Location": "W212"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR8_Pos_Exist",
+          "TagName": "iAMR8_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR8_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "213",
+          "DataType": "Short",
+          "Location": "W213"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR9_Status",
+          "TagName": "iAMR9_Status",
+          "Description": "AMR9_Status",
+          "DeviceType": "W",
+          "Address": "214",
+          "DataType": "Short",
+          "Location": "W214"
+        },
+        {
+          "TagOPC": "DeviceK.Station.OPC.iAMR9_Pos_Exist",
+          "TagName": "iAMR9_Pos_Exist",
+          "tagValues": [
+            "Not Exist",
+            "Exist"
+          ],
+          "Description": "AMR9_Box_Exist 1: Exist; 0: Not Exist",
+          "DeviceType": "W",
+          "Address": "215",
+          "DataType": "Short",
+          "Location": "W215"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "Proximity Sensors",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[0]",
+          "TagName": "bA_Exist[0]",
+          "Description": "StationA_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "0",
+          "DataType": "Boolean",
+          "Location": "B0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[1]",
+          "TagName": "bA_Exist[1]",
+          "Description": "StationA_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "1",
+          "DataType": "Boolean",
+          "Location": "B1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[2]",
+          "TagName": "bA_Exist[2]",
+          "Description": "StationA_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "2",
+          "DataType": "Boolean",
+          "Location": "B2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[3]",
+          "TagName": "bA_Exist[3]",
+          "Description": "StationA_Pos4_Exist",
+          "DeviceType": "B",
+          "Address": "3",
+          "DataType": "Boolean",
+          "Location": "B3"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[4]",
+          "TagName": "bA_Exist[4]",
+          "Description": "StationA_Pos5_Exist",
+          "DeviceType": "B",
+          "Address": "4",
+          "DataType": "Boolean",
+          "Location": "B4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[5]",
+          "TagName": "bA_Exist[5]",
+          "Description": "StationA_Pos6_Exist",
+          "DeviceType": "B",
+          "Address": "5",
+          "DataType": "Boolean",
+          "Location": "B5"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[6]",
+          "TagName": "bA_Exist[6]",
+          "Description": "StationA_Pos7_Exist",
+          "DeviceType": "B",
+          "Address": "6",
+          "DataType": "Boolean",
+          "Location": "B6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[7]",
+          "TagName": "bA_Exist[7]",
+          "Description": "StationA_Pos8_Exist",
+          "DeviceType": "B",
+          "Address": "7",
+          "DataType": "Boolean",
+          "Location": "B7"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bA_Exist[8]",
+          "TagName": "bA_Exist[8]",
+          "Description": "StationA_Pos9_Exist",
+          "DeviceType": "B",
+          "Address": "8",
+          "DataType": "Boolean",
+          "Location": "B8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[0]",
+          "TagName": "bB_Exist[0]",
+          "Description": "StationB_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "10",
+          "DataType": "Boolean",
+          "Location": "B10"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[1]",
+          "TagName": "bB_Exist[1]",
+          "Description": "StationB_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "11",
+          "DataType": "Boolean",
+          "Location": "B11"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[2]",
+          "TagName": "bB_Exist[2]",
+          "Description": "StationB_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "12",
+          "DataType": "Boolean",
+          "Location": "B12"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[3]",
+          "TagName": "bB_Exist[3]",
+          "Description": "StationB_Pos4_Exist",
+          "DeviceType": "B",
+          "Address": "13",
+          "DataType": "Boolean",
+          "Location": "B13"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[4]",
+          "TagName": "bB_Exist[4]",
+          "Description": "StationB_Pos5_Exist",
+          "DeviceType": "B",
+          "Address": "14",
+          "DataType": "Boolean",
+          "Location": "B14"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bB_Exist[5]",
+          "TagName": "bB_Exist[5]",
+          "Description": "StationB_Pos6_Exist",
+          "DeviceType": "B",
+          "Address": "15",
+          "DataType": "Boolean",
+          "Location": "B15"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bD_Exist[0]",
+          "TagName": "bD_Exist[0]",
+          "Description": "StationD_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "20",
+          "DataType": "Boolean",
+          "Location": "B20"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bD_Exist[1]",
+          "TagName": "bD_Exist[1]",
+          "Description": "StationD_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "21",
+          "DataType": "Boolean",
+          "Location": "B21"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bD_Exist[2]",
+          "TagName": "bD_Exist[2]",
+          "Description": "StationD_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "22",
+          "DataType": "Boolean",
+          "Location": "B22"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bE_Exist[0]",
+          "TagName": "bE_Exist[0]",
+          "Description": "StationE_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "30",
+          "DataType": "Boolean",
+          "Location": "B30"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bE_Exist[1]",
+          "TagName": "bE_Exist[1]",
+          "Description": "StationE_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "31",
+          "DataType": "Boolean",
+          "Location": "B31"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bE_Exist[2]",
+          "TagName": "bE_Exist[2]",
+          "Description": "StationE_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "32",
+          "DataType": "Boolean",
+          "Location": "B32"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[0]",
+          "TagName": "bF_Exist[0]",
+          "Description": "StationF_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "40",
+          "DataType": "Boolean",
+          "Location": "B40"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[1]",
+          "TagName": "bF_Exist[1]",
+          "Description": "StationF_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "41",
+          "DataType": "Boolean",
+          "Location": "B41"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[2]",
+          "TagName": "bF_Exist[2]",
+          "Description": "StationF_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "42",
+          "DataType": "Boolean",
+          "Location": "B42"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[3]",
+          "TagName": "bF_Exist[3]",
+          "Description": "StationF_Pos4_Exist",
+          "DeviceType": "B",
+          "Address": "43",
+          "DataType": "Boolean",
+          "Location": "B43"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[4]",
+          "TagName": "bF_Exist[4]",
+          "Description": "StationF_Pos5_Exist",
+          "DeviceType": "B",
+          "Address": "44",
+          "DataType": "Boolean",
+          "Location": "B44"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bF_Exist[5]",
+          "TagName": "bF_Exist[5]",
+          "Description": "StationF_Pos6_Exist",
+          "DeviceType": "B",
+          "Address": "45",
+          "DataType": "Boolean",
+          "Location": "B45"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[0]",
+          "TagName": "bG_Exist[0]",
+          "Description": "StationG1_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "50",
+          "DataType": "Boolean",
+          "Location": "B50"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[1]",
+          "TagName": "bG_Exist[1]",
+          "Description": "StationG1_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "51",
+          "DataType": "Boolean",
+          "Location": "B51"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[2]",
+          "TagName": "bG_Exist[2]",
+          "Description": "StationG1_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "52",
+          "DataType": "Boolean",
+          "Location": "B52"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[3]",
+          "TagName": "bG_Exist[3]",
+          "Description": "StationG2_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "53",
+          "DataType": "Boolean",
+          "Location": "B53"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[4]",
+          "TagName": "bG_Exist[4]",
+          "Description": "StationG2_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "54",
+          "DataType": "Boolean",
+          "Location": "B54"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[5]",
+          "TagName": "bG_Exist[5]",
+          "Description": "StationG2_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "55",
+          "DataType": "Boolean",
+          "Location": "B55"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[6]",
+          "TagName": "bG_Exist[6]",
+          "Description": "StationG3_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "56",
+          "DataType": "Boolean",
+          "Location": "B56"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[7]",
+          "TagName": "bG_Exist[7]",
+          "Description": "StationG3_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "57",
+          "DataType": "Boolean",
+          "Location": "B75"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bG_Exist[8]",
+          "TagName": "bG_Exist[8]",
+          "Description": "StationG3_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "58",
+          "DataType": "Boolean",
+          "Location": "B58"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[0]",
+          "TagName": "bH_Exist[0]",
+          "Description": "StationH1_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "60",
+          "DataType": "Boolean",
+          "Location": "B60"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[1]",
+          "TagName": "bH_Exist[1]",
+          "Description": "StationH1_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "61",
+          "DataType": "Boolean",
+          "Location": "B61"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[2]",
+          "TagName": "bH_Exist[2]",
+          "Description": "StationH1_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "62",
+          "DataType": "Boolean",
+          "Location": "B62"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[3]",
+          "TagName": "bH_Exist[3]",
+          "Description": "StationH2_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "63",
+          "DataType": "Boolean",
+          "Location": "B63"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[4]",
+          "TagName": "bH_Exist[4]",
+          "Description": "StationH2_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "64",
+          "DataType": "Boolean",
+          "Location": "B64"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[5]",
+          "TagName": "bH_Exist[5]",
+          "Description": "StationH2_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "65",
+          "DataType": "Boolean",
+          "Location": "B65"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[6]",
+          "TagName": "bH_Exist[6]",
+          "Description": "StationH3_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "66",
+          "DataType": "Boolean",
+          "Location": "B66"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[7]",
+          "TagName": "bH_Exist[7]",
+          "Description": "StationH3_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "67",
+          "DataType": "Boolean",
+          "Location": "B67"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bH_Exist[8]",
+          "TagName": "bH_Exist[8]",
+          "Description": "StationH3_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "68",
+          "DataType": "Boolean",
+          "Location": "B68"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[0]",
+          "TagName": "bI_Exist[0]",
+          "Description": "StationI1_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "70",
+          "DataType": "Boolean",
+          "Location": "B70"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[1]",
+          "TagName": "bI_Exist[1]",
+          "Description": "StationI1_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "71",
+          "DataType": "Boolean",
+          "Location": "B71"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[2]",
+          "TagName": "bI_Exist[2]",
+          "Description": "StationI1_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "72",
+          "DataType": "Boolean",
+          "Location": "B72"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[3]",
+          "TagName": "bI_Exist[3]",
+          "Description": "StationI2_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "73",
+          "DataType": "Boolean",
+          "Location": "B73"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[4]",
+          "TagName": "bI_Exist[4]",
+          "Description": "StationI2_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "74",
+          "DataType": "Boolean",
+          "Location": "B74"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[5]",
+          "TagName": "bI_Exist[5]",
+          "Description": "StationI2_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "75",
+          "DataType": "Boolean",
+          "Location": "B75"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[6]",
+          "TagName": "bI_Exist[6]",
+          "Description": "StationI3_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "76",
+          "DataType": "Boolean",
+          "Location": "B76"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[7]",
+          "TagName": "bI_Exist[7]",
+          "Description": "StationI3_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "77",
+          "DataType": "Boolean",
+          "Location": "B77"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bI_Exist[8]",
+          "TagName": "bI_Exist[8]",
+          "Description": "StationI3_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "78",
+          "DataType": "Boolean",
+          "Location": "B78"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[0]",
+          "TagName": "bK_Exist[0]",
+          "Description": "StationK_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "80",
+          "DataType": "Boolean",
+          "Location": "B80"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[1]",
+          "TagName": "bK_Exist[1]",
+          "Description": "StationK_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "81",
+          "DataType": "Boolean",
+          "Location": "B81"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[2]",
+          "TagName": "bK_Exist[2]",
+          "Description": "StationK_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "82",
+          "DataType": "Boolean",
+          "Location": "B82"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[3]",
+          "TagName": "bK_Exist[3]",
+          "Description": "StationK_Pos4_Exist",
+          "DeviceType": "B",
+          "Address": "83",
+          "DataType": "Boolean",
+          "Location": "B83"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[4]",
+          "TagName": "bK_Exist[4]",
+          "Description": "StationK_Pos5_Exist",
+          "DeviceType": "B",
+          "Address": "84",
+          "DataType": "Boolean",
+          "Location": "B84"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bK_Exist[5]",
+          "TagName": "bK_Exist[5]",
+          "Description": "StationK_Pos6_Exist",
+          "DeviceType": "B",
+          "Address": "85",
+          "DataType": "Boolean",
+          "Location": "B85"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[0]",
+          "TagName": "bM_Exist[0]",
+          "Description": "StationM1_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "90",
+          "DataType": "Boolean",
+          "Location": "B90"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[1]",
+          "TagName": "bM_Exist[1]",
+          "Description": "StationM1_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "91",
+          "DataType": "Boolean",
+          "Location": "B91"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[2]",
+          "TagName": "bM_Exist[2]",
+          "Description": "StationM1_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "92",
+          "DataType": "Boolean",
+          "Location": "B92"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[3]",
+          "TagName": "bM_Exist[3]",
+          "Description": "StationM2_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "93",
+          "DataType": "Boolean",
+          "Location": "B93"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[4]",
+          "TagName": "bM_Exist[4]",
+          "Description": "StationM2_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "94",
+          "DataType": "Boolean",
+          "Location": "B94"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bM_Exist[5]",
+          "TagName": "bM_Exist[5]",
+          "Description": "StationM2_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "95",
+          "DataType": "Boolean",
+          "Location": "B95"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bN_Exist[0]",
+          "TagName": "bN_Exist[0]",
+          "Description": "StationN_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "A0",
+          "DataType": "Boolean",
+          "Location": "BA0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bN_Exist[1]",
+          "TagName": "bN_Exist[1]",
+          "Description": "StationN_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "A1",
+          "DataType": "Boolean",
+          "Location": "BA1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bP_Exist[0]",
+          "TagName": "bP_Exist[0]",
+          "Description": "StationP_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "B0",
+          "DataType": "Boolean",
+          "Location": "BB0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bP_Exist[1]",
+          "TagName": "bP_Exist[1]",
+          "Description": "StationP_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "B1",
+          "DataType": "Boolean",
+          "Location": "BB1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bQ_Exist[0]",
+          "TagName": "bQ_Exist[0]",
+          "Description": "StationQ_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "C0",
+          "DataType": "Boolean",
+          "Location": "BC0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bR_Exist[0]",
+          "TagName": "bR_Exist[0]",
+          "Description": "StationR_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "D0",
+          "DataType": "Boolean",
+          "Location": "BD0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bS_Exist[0]",
+          "TagName": "bS_Exist[0]",
+          "Description": "StationS_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "E0",
+          "DataType": "Boolean",
+          "Location": "BE0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bS_Exist[1]",
+          "TagName": "bS_Exist[1]",
+          "Description": "StationS_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "E1",
+          "DataType": "Boolean",
+          "Location": "BE1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bS_Exist[2]",
+          "TagName": "bS_Exist[2]",
+          "Description": "StationS_Pos3_Exist",
+          "DeviceType": "B",
+          "Address": "E2",
+          "DataType": "Boolean",
+          "Location": "BE2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsA_Exist[0]",
+          "TagName": "bsA_Exist[0]",
+          "Description": "StationA'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F0",
+          "DataType": "Boolean",
+          "Location": "BF0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsB_Exist[0]",
+          "TagName": "bsB_Exist[0]",
+          "Description": "StationB'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F2",
+          "DataType": "Boolean",
+          "Location": "BF2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsC_Exist[0]",
+          "TagName": "bsC_Exist[0]",
+          "Description": "StationC'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F4",
+          "DataType": "Boolean",
+          "Location": "BF4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsD_Exist[0]",
+          "TagName": "bsD_Exist[0]",
+          "Description": "StationD'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F6",
+          "DataType": "Boolean",
+          "Location": "BF6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsE_Exist[0]",
+          "TagName": "bsE_Exist[0]",
+          "Description": "StationE'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F8",
+          "DataType": "Boolean",
+          "Location": "BF8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsF_Exist[0]",
+          "TagName": "bsF_Exist[0]",
+          "Description": "StationF'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FA",
+          "DataType": "Boolean",
+          "Location": "BFA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsG_Exist[0]",
+          "TagName": "bsG_Exist[0]",
+          "Description": "StationG'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FC",
+          "DataType": "Boolean",
+          "Location": "BFC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsH_Exist[0]",
+          "TagName": "bsH_Exist[0]",
+          "Description": "StationH'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FE",
+          "DataType": "Boolean",
+          "Location": "BFE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsH_Exist[1]",
+          "TagName": "bsH_Exist[1]",
+          "Description": "StationH'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "FF",
+          "DataType": "Boolean",
+          "Location": "BFF"
+        },
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "QR Code",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR1",
+          "TagName": "sA_QR1",
+          "Description": "Station A_QR-code 1",
+          "DeviceType": "W",
+          "Address": "400",
+          "DataType": "Short",
+          "Length": 5,
+          "Location": "W400"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR2",
+          "TagName": "sA_QR2",
+          "Description": "Station A_QR-code 2",
+          "DeviceType": "W",
+          "Address": "40A",
+          "DataType": "Short",
+          "Location": "W40A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR3",
+          "TagName": "sA_QR3",
+          "Description": "Station A_QR-code 3",
+          "DeviceType": "W",
+          "Address": "414",
+          "DataType": "Short",
+          "Location": "W414"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR4",
+          "TagName": "sA_QR4",
+          "Description": "Station A_QR-code 4",
+          "DeviceType": "W",
+          "Address": "41E",
+          "DataType": "Short",
+          "Location": "W41E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR5",
+          "TagName": "sA_QR5",
+          "Description": "Station A_QR-code 5",
+          "DeviceType": "W",
+          "Address": "428",
+          "DataType": "Short",
+          "Location": "W428"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR6",
+          "TagName": "sA_QR6",
+          "Description": "Station A_QR-code 6",
+          "DeviceType": "W",
+          "Address": "432",
+          "DataType": "Short",
+          "Location": "W432"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR7",
+          "TagName": "sA_QR7",
+          "Description": "Station A_QR-code 7",
+          "DeviceType": "W",
+          "Address": "43C",
+          "DataType": "Short",
+          "Location": "W43C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR8",
+          "TagName": "sA_QR8",
+          "Description": "Station A_QR-code 8",
+          "DeviceType": "W",
+          "Address": "446",
+          "DataType": "Short",
+          "Location": "W446"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sA_QR9",
+          "TagName": "sA_QR9",
+          "Description": "Station A_QR-code 9",
+          "DeviceType": "W",
+          "Address": "450",
+          "DataType": "Short",
+          "Location": "W450"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR1",
+          "TagName": "sB_QR1",
+          "Description": "Station B_QR-code 1",
+          "DeviceType": "W",
+          "Address": "45A",
+          "DataType": "Short",
+          "Location": "W45A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR2",
+          "TagName": "sB_QR2",
+          "Description": "Station B_QR-code 2",
+          "DeviceType": "W",
+          "Address": "464",
+          "DataType": "Short",
+          "Location": "W464"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR3",
+          "TagName": "sB_QR3",
+          "Description": "Station B_QR-code 3",
+          "DeviceType": "W",
+          "Address": "46E",
+          "DataType": "Short",
+          "Location": "W46E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR4",
+          "TagName": "sB_QR4",
+          "Description": "Station B_QR-code 4",
+          "DeviceType": "W",
+          "Address": "478",
+          "DataType": "Short",
+          "Location": "W478"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR5",
+          "TagName": "sB_QR5",
+          "Description": "Station B_QR-code 5",
+          "DeviceType": "W",
+          "Address": "482",
+          "DataType": "Short",
+          "Location": "W482"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sB_QR6",
+          "TagName": "sB_QR6",
+          "Description": "Station B_QR-code 6",
+          "DeviceType": "W",
+          "Address": "48C",
+          "DataType": "Short",
+          "Location": "W48C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sC_QR1",
+          "TagName": "sC_QR1",
+          "Description": "Station C_QR-code 1",
+          "DeviceType": "W",
+          "Address": "482",
+          "DataType": "Short",
+          "Location": "W482"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sC_QR2",
+          "TagName": "sC_QR2",
+          "Description": "Station C_QR-code 2",
+          "DeviceType": "W",
+          "Address": "W48C",
+          "DataType": "Short",
+          "Location": "W48C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sD_QR1",
+          "TagName": "sD_QR1",
+          "Description": "Station D_QR-code 1",
+          "DeviceType": "W",
+          "Address": "496",
+          "DataType": "Short",
+          "Location": "W496"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sD_QR2",
+          "TagName": "sD_QR2",
+          "Description": "Station D_QR-code 2",
+          "DeviceType": "W",
+          "Address": "4A0",
+          "DataType": "Short",
+          "Location": "4A0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sD_QR3",
+          "TagName": "sD_QR3",
+          "Description": "Station D_QR-code 3",
+          "DeviceType": "W",
+          "Address": "4AA",
+          "DataType": "Short",
+          "Location": "W4AA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sE_QR1",
+          "TagName": "sE_QR1",
+          "Description": "Station E_QR-code 1",
+          "DeviceType": "W",
+          "Address": "4B4",
+          "DataType": "Short",
+          "Location": "W4B4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sE_QR2",
+          "TagName": "sE_QR2",
+          "Description": "Station E_QR-code 2",
+          "DeviceType": "W",
+          "Address": "4BE",
+          "DataType": "Short",
+          "Location": "W4BE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sE_QR3",
+          "TagName": "sE_QR3",
+          "Description": "Station E_QR-code 3",
+          "DeviceType": "W",
+          "Address": "4C8",
+          "DataType": "Short",
+          "Location": "W4C8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR1",
+          "TagName": "sF_QR1",
+          "Description": "Station F_QR-code 1",
+          "DeviceType": "W",
+          "Address": "4D2",
+          "DataType": "Short",
+          "Location": "W4D2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR2",
+          "TagName": "sF_QR2",
+          "Description": "Station F_QR-code 2",
+          "DeviceType": "W",
+          "Address": "4DC",
+          "DataType": "Short",
+          "Location": "W4DC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR3",
+          "TagName": "sF_QR3",
+          "Description": "Station F_QR-code 3",
+          "DeviceType": "W",
+          "Address": "4E6",
+          "DataType": "Short",
+          "Location": "W4E6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR4",
+          "TagName": "sF_QR4",
+          "Description": "Station F_QR-code 4",
+          "DeviceType": "W",
+          "Address": "4F0",
+          "DataType": "Short",
+          "Location": "W4F0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR5",
+          "TagName": "sF_QR5",
+          "Description": "Station F_QR-code 5",
+          "DeviceType": "W",
+          "Address": "4FA",
+          "DataType": "Short",
+          "Location": "W4FA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sF_QR6",
+          "TagName": "sF_QR6",
+          "Description": "Station F_QR-code 6",
+          "DeviceType": "W",
+          "Address": "504",
+          "DataType": "Short",
+          "Location": "W504"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR1",
+          "TagName": "sG_QR1",
+          "Description": "Station G_QR-code 1",
+          "DeviceType": "W",
+          "Address": "50E",
+          "DataType": "Short",
+          "Location": "W50E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR2",
+          "TagName": "sG_QR2",
+          "Description": "Station G_QR-code 2",
+          "DeviceType": "W",
+          "Address": "518",
+          "DataType": "Short",
+          "Location": "W518"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR3",
+          "TagName": "sG_QR3",
+          "Description": "Station G_QR-code 3",
+          "DeviceType": "W",
+          "Address": "522",
+          "DataType": "Short",
+          "Location": "W522"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR4",
+          "TagName": "sG_QR4",
+          "Description": "Station G_QR-code 4",
+          "DeviceType": "W",
+          "Address": "52C",
+          "DataType": "Short",
+          "Location": "W52C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR5",
+          "TagName": "sG_QR5",
+          "Description": "Station G_QR-code 5",
+          "DeviceType": "W",
+          "Address": "536",
+          "DataType": "Short",
+          "Location": "W536"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR6",
+          "TagName": "sG_QR6",
+          "Description": "Station G_QR-code 6",
+          "DeviceType": "W",
+          "Address": "540",
+          "DataType": "Short",
+          "Location": "W540"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR7",
+          "TagName": "sG_QR7",
+          "Description": "Station G_QR-code 7",
+          "DeviceType": "W",
+          "Address": "54A",
+          "DataType": "Short",
+          "Location": "W54A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR8",
+          "TagName": "sG_QR8",
+          "Description": "Station G_QR-code 8",
+          "DeviceType": "W",
+          "Address": "554",
+          "DataType": "Short",
+          "Location": "W554"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sG_QR9",
+          "TagName": "sG_QR9",
+          "Description": "Station G_QR-code 9",
+          "DeviceType": "W",
+          "Address": "55E",
+          "DataType": "Short",
+          "Location": "W55E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR1",
+          "TagName": "sH_QR1",
+          "Description": "Station H_QR-code 1",
+          "DeviceType": "W",
+          "Address": "568",
+          "DataType": "Short",
+          "Location": "W568"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR2",
+          "TagName": "sH_QR2",
+          "Description": "Station H_QR-code 2",
+          "DeviceType": "W",
+          "Address": "572",
+          "DataType": "Short",
+          "Location": "W572"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR3",
+          "TagName": "sH_QR3",
+          "Description": "Station H_QR-code 3",
+          "DeviceType": "W",
+          "Address": "57C",
+          "DataType": "Short",
+          "Location": "W57C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR4",
+          "TagName": "sH_QR4",
+          "Description": "Station H_QR-code 4",
+          "DeviceType": "W",
+          "Address": "586",
+          "DataType": "Short",
+          "Location": "W586"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR5",
+          "TagName": "sH_QR5",
+          "Description": "Station H_QR-code 5",
+          "DeviceType": "W",
+          "Address": "590",
+          "DataType": "Short",
+          "Location": "W590"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR6",
+          "TagName": "sH_QR6",
+          "Description": "Station H_QR-code 6",
+          "DeviceType": "W",
+          "Address": "59A",
+          "DataType": "Short",
+          "Location": "W59A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR7",
+          "TagName": "sH_QR7",
+          "Description": "Station H_QR-code 7",
+          "DeviceType": "W",
+          "Address": "5A4",
+          "DataType": "Short",
+          "Location": "W5A4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR8",
+          "TagName": "sH_QR8",
+          "Description": "Station H_QR-code 8",
+          "DeviceType": "W",
+          "Address": "5AE",
+          "DataType": "Short",
+          "Location": "W5AE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sH_QR9",
+          "TagName": "sH_QR9",
+          "Description": "Station H_QR-code 9",
+          "DeviceType": "W",
+          "Address": "5B8",
+          "DataType": "Short",
+          "Location": "W5B8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR1",
+          "TagName": "sI_QR1",
+          "Description": "Station I_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5C2",
+          "DataType": "Short",
+          "Location": "W5C2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR2",
+          "TagName": "sI_QR2",
+          "Description": "Station I_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5CC",
+          "DataType": "Short",
+          "Location": "W5CC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR3",
+          "TagName": "sI_QR3",
+          "Description": "Station I_QR-code 3",
+          "DeviceType": "W",
+          "Address": "5D6",
+          "DataType": "Short",
+          "Location": "W5D6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR4",
+          "TagName": "sI_QR4",
+          "Description": "Station I_QR-code 4",
+          "DeviceType": "W",
+          "Address": "5E0",
+          "DataType": "Short",
+          "Location": "W5E0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR5",
+          "TagName": "sI_QR5",
+          "Description": "Station I_QR-code 5",
+          "DeviceType": "W",
+          "Address": "5EA",
+          "DataType": "Short",
+          "Location": "W5EA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR6",
+          "TagName": "sI_QR6",
+          "Description": "Station I_QR-code 6",
+          "DeviceType": "W",
+          "Address": "5F4",
+          "DataType": "Short",
+          "Location": "W5F4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR7",
+          "TagName": "sI_QR7",
+          "Description": "Station I_QR-code 7",
+          "DeviceType": "W",
+          "Address": "5FE",
+          "DataType": "Short",
+          "Location": "W5FE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR8",
+          "TagName": "sI_QR8",
+          "Description": "Station I_QR-code 8",
+          "DeviceType": "W",
+          "Address": "608",
+          "DataType": "Short",
+          "Location": "W608"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sI_QR9",
+          "TagName": "sI_QR9",
+          "Description": "Station I_QR-code 9",
+          "DeviceType": "W",
+          "Address": "612",
+          "DataType": "Short",
+          "Location": "W612"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR1",
+          "TagName": "sK_QR1",
+          "Description": "Station K_QR-code 1",
+          "DeviceType": "W",
+          "Address": "61C",
+          "DataType": "Short",
+          "Location": "W61C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR2",
+          "TagName": "sK_QR2",
+          "Description": "Station K_QR-code 2",
+          "DeviceType": "W",
+          "Address": "626",
+          "DataType": "Short",
+          "Location": "W626"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR3",
+          "TagName": "sK_QR3",
+          "Description": "Station K_QR-code 3",
+          "DeviceType": "W",
+          "Address": "630",
+          "DataType": "Short",
+          "Location": "W630"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR4",
+          "TagName": "sK_QR4",
+          "Description": "Station K_QR-code 4",
+          "DeviceType": "W",
+          "Address": "63A",
+          "DataType": "Short",
+          "Location": "W63A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR5",
+          "TagName": "sK_QR5",
+          "Description": "Station K_QR-code 5",
+          "DeviceType": "W",
+          "Address": "644",
+          "DataType": "Short",
+          "Location": "W644"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sK_QR6",
+          "TagName": "sK_QR6",
+          "Description": "Station K_QR-code 6",
+          "DeviceType": "W",
+          "Address": "64E",
+          "DataType": "Short",
+          "Location": "W64E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR1",
+          "TagName": "sM_QR1",
+          "Description": "Station M_QR-code 1",
+          "DeviceType": "W",
+          "Address": "658",
+          "DataType": "Short",
+          "Location": "W658"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR2",
+          "TagName": "sM_QR2",
+          "Description": "Station M_QR-code 2",
+          "DeviceType": "W",
+          "Address": "662",
+          "DataType": "Short",
+          "Location": "W662"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR3",
+          "TagName": "sM_QR3",
+          "Description": "Station M_QR-code 3",
+          "DeviceType": "W",
+          "Address": "66C",
+          "DataType": "Short",
+          "Location": "W66C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR4",
+          "TagName": "sM_QR4",
+          "Description": "Station M_QR-code 4",
+          "DeviceType": "W",
+          "Address": "676",
+          "DataType": "Short",
+          "Location": "W676"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR5",
+          "TagName": "sM_QR5",
+          "Description": "Station M_QR-code 5",
+          "DeviceType": "W",
+          "Address": "680",
+          "DataType": "Short",
+          "Location": "W680"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sM_QR6",
+          "TagName": "sM_QR6",
+          "Description": "Station M_QR-code 6",
+          "DeviceType": "W",
+          "Address": "68A",
+          "DataType": "Short",
+          "Location": "W68A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sN_QR1",
+          "TagName": "sN_QR1",
+          "Description": "Station N_QR-code 1",
+          "DeviceType": "W",
+          "Address": "694",
+          "DataType": "Short",
+          "Location": "W694"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sN_QR2",
+          "TagName": "sN_QR2",
+          "Description": "Station N_QR-code 2",
+          "DeviceType": "W",
+          "Address": "69E",
+          "DataType": "Short",
+          "Location": "W69E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sQ_QR1",
+          "TagName": "sQ_QR1",
+          "Description": "Station Q_QR-code 1",
+          "DeviceType": "W",
+          "Address": "6A8",
+          "DataType": "Short",
+          "Location": "W6A8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sQ_QR2",
+          "TagName": "sQ_QR2",
+          "Description": "Station Q_QR-code 2",
+          "DeviceType": "W",
+          "Address": "6B2",
+          "DataType": "Short",
+          "Location": "W6B2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sR_QR1",
+          "TagName": "sR_QR1",
+          "Description": "Station R_QR-code 1",
+          "DeviceType": "W",
+          "Address": "6BC",
+          "DataType": "Short",
+          "Location": "W6BC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sR_QR2",
+          "TagName": "sR_QR2",
+          "Description": "Station R_QR-code 2",
+          "DeviceType": "W",
+          "Address": "6C6",
+          "DataType": "Short",
+          "Location": "W6C6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sS_QR1",
+          "TagName": "sS_QR1",
+          "Description": "Station S_QR-code 1",
+          "DeviceType": "W",
+          "Address": "6D0",
+          "DataType": "Short",
+          "Location": "W6D0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sS_QR2",
+          "TagName": "sS_QR2",
+          "Description": "Station S_QR-code 2",
+          "DeviceType": "W",
+          "Address": "6DA",
+          "DataType": "Short",
+          "Location": "W6DA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sS_QR3",
+          "TagName": "sS_QR3",
+          "Description": "Station S_QR-code 3",
+          "DeviceType": "W",
+          "Address": "6E4",
+          "DataType": "Short",
+          "Location": "W6E4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssA_QR1",
+          "TagName": "ssA_QR1",
+          "Description": "Station A'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "6EE",
+          "DataType": "Short",
+          "Location": "W6EE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssA_QR2",
+          "TagName": "ssA_QR2",
+          "Description": "Station A'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "6F8",
+          "DataType": "Short",
+          "Location": "W6F8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssB_QR1",
+          "TagName": "ssB_QR1",
+          "Description": "Station B'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "702",
+          "DataType": "Short",
+          "Location": "W702"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssB_QR2",
+          "TagName": "ssB_QR2",
+          "Description": "Station B'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "70C",
+          "DataType": "Short",
+          "Location": "W70C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssC_QR1",
+          "TagName": "ssC_QR1",
+          "Description": "Station C'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "716",
+          "DataType": "Short",
+          "Location": "W716"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssC_QR2",
+          "TagName": "ssC_QR2",
+          "Description": "Station C'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "720",
+          "DataType": "Short",
+          "Location": "W720"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssD_QR1",
+          "TagName": "ssD_QR1",
+          "Description": "Station D'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "72A",
+          "DataType": "Short",
+          "Location": "W72A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssD_QR2",
+          "TagName": "ssD_QR2",
+          "Description": "Station D'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "734",
+          "DataType": "Short",
+          "Location": "W734"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssE_QR1",
+          "TagName": "ssE_QR1",
+          "Description": "Station E'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "73E",
+          "DataType": "Short",
+          "Location": "W73E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssE_QR2",
+          "TagName": "ssE_QR2",
+          "Description": "Station E'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "748",
+          "DataType": "Short",
+          "Location": "W748"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssF_QR1",
+          "TagName": "ssF_QR1",
+          "Description": "Station F'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "752",
+          "DataType": "Short",
+          "Location": "W752"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssF_QR2",
+          "TagName": "ssF_QR2",
+          "Description": "Station F'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "75C",
+          "DataType": "Short",
+          "Location": "W75C"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssG_QR1",
+          "TagName": "ssG_QR1",
+          "Description": "Station G'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "766",
+          "DataType": "Short",
+          "Location": "W766"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssG_QR2",
+          "TagName": "ssG_QR2",
+          "Description": "Station G'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "770",
+          "DataType": "Short",
+          "Location": "W770"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssH_QR1",
+          "TagName": "ssH_QR1",
+          "Description": "Station H'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "77A",
+          "DataType": "Short",
+          "Location": "W77A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssH_QR2",
+          "TagName": "ssH_QR2",
+          "Description": "Station H'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "784",
+          "DataType": "Short",
+          "Location": "W784"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR1",
+          "TagName": "sJ_QR1",
+          "Description": "Station J_QR-code 1",
+          "DeviceType": "W",
+          "Address": "78E",
+          "DataType": "Short",
+          "Location": "W78E"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR2",
+          "TagName": "sJ_QR2",
+          "Description": "Station J_QR-code 2",
+          "DeviceType": "W",
+          "Address": "798",
+          "DataType": "Short",
+          "Location": "W798"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR3",
+          "TagName": "sJ_QR3",
+          "Description": "Station J_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7A2",
+          "DataType": "Short",
+          "Location": "W7A2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS1_QR1",
+          "TagName": "sAS1_QR1",
+          "Description": "Station AS1_QR-code 2",
+          "DeviceType": "W",
+          "Address": "7AC",
+          "DataType": "Short",
+          "Location": "W7AC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS1_QR2",
+          "TagName": "sAS1_QR2",
+          "Description": "Station AS1_QR-code 3",
+          "DeviceType": "W",
+          "Address": "7B6",
+          "DataType": "Short",
+          "Location": "W7B6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS2_QR1",
+          "TagName": "sAS2_QR1",
+          "Description": "Station AS2_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7C0",
+          "DataType": "Short",
+          "Location": "W7C0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS2_QR2",
+          "TagName": "sAS2_QR2",
+          "Description": "Station AS2_QR-code 2",
+          "DeviceType": "W",
+          "Address": "7CA",
+          "DataType": "Short",
+          "Location": "W7CA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS3_QR1",
+          "TagName": "sAS3_QR1",
+          "Description": "Station AS3_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7D4",
+          "DataType": "Short",
+          "Location": "W7D4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS4_QR1",
+          "TagName": "sAS4_QR1",
+          "Description": "Station AS4_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7DE",
+          "DataType": "Short",
+          "Location": "W7DE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS5_QR1",
+          "TagName": "sAS5_QR",
+          "Description": "Station AS3_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7E8",
+          "DataType": "Short",
+          "Location": "W7E8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH1_QR1",
+          "TagName": "sSH1_QR1",
+          "Description": "Station SH1_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7F2",
+          "DataType": "Short",
+          "Location": "W7F2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH2_QR",
+          "TagName": "sSH2_QR",
+          "Description": "Station SH2_QR-code 1",
+          "DeviceType": "W",
+          "Address": "7FC",
+          "DataType": "Short",
+          "Location": "W7FC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH3_QR",
+          "TagName": "sSH3_QR",
+          "Description": "Station SH1_QR-code 1",
+          "DeviceType": "W",
+          "Address": "806",
+          "DataType": "Short",
+          "Location": "W806"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sC_QR1",
+          "TagName": "sC_QR1",
+          "Description": "Station C_QR-code 1",
+          "DeviceType": "W",
+          "Address": "810",
+          "DataType": "Short",
+          "Location": "W810"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sC_QR2",
+          "TagName": "sC_QR2",
+          "Description": "Station C_QR-code 2",
+          "DeviceType": "W",
+          "Address": "81A",
+          "DataType": "Short",
+          "Location": "W81A"
+        },
+      ]
+    },
+    {
+      "Area": "Stock",
+      "Device": "Conveyor",
+      "Tags": [
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_in_ready",
+          "TagName": "wcs_in_ready",
+          "Description": "准备就绪Ready",
+          "DeviceType": "D",
+          "Address": "2101",
+          "DataType": "Short",
+          "Location": "D2101"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_in_arrived",
+          "TagName": "wcs_in_arrived",
+          "Description": "AGV arrival signal",
+          "DeviceType": "D",
+          "Address": "2102",
+          "DataType": "Short",
+          "Location": "D2102"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_in_handoverInProgress",
+          "TagName": "wcs_in_handoverInProgress",
+          "Description": "Safety sensor off",
+          "DeviceType": "D",
+          "Address": "2103",
+          "DataType": "Short",
+          "Location": "D2103"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_in_intrusionDetected",
+          "TagName": "wcs_in_intrusionDetected",
+          "Description": "AGV intrusion behavior",
+          "DeviceType": "D",
+          "Address": "2104",
+          "DataType": "Short",
+          "Location": "D2104"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_ready",
+          "TagName": "wcs_out_ready",
+          "Description": "准备就绪Ready",
+          "DeviceType": "D",
+          "Address": "2111",
+          "DataType": "Short",
+          "Location": "D2111"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_arrived",
+          "TagName": "wcs_out_arrived",
+          "Description": "AGV request signal",
+          "DeviceType": "D",
+          "Address": "2112",
+          "DataType": "Short",
+          "Location": "D2112"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_movingOrCarrying",
+          "TagName": "wcs_out_movingOrCarrying",
+          "Description": "Safety sensor off",
+          "DeviceType": "D",
+          "Address": "2113",
+          "DataType": "Short",
+          "Location": "D2113"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_intrusionDetected",
+          "TagName": "wcs_out_intrusionDetected",
+          "Description": "Conveyor rotation",
+          "DeviceType": "D",
+          "Address": "2114",
+          "DataType": "Short",
+          "Location": "D2114"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_armOrReceiveAction",
+          "TagName": "wcs_out_armOrReceiveAction",
+          "Description": "AGV receives the goods",
+          "DeviceType": "D",
+          "Address": "2215",
+          "DataType": "Short",
+          "Location": "D2215"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_out_qrFinished",
+          "TagName": "wcs_out_qrFinished",
+          "Description": "Completed Normal = 1, Abnormal = 2",
+          "DeviceType": "D",
+          "Address": "2411",
+          "DataType": "Short",
+          "Location": "D2411"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.PLC.wcs_in_qrFinished",
+          "TagName": "wcs_in_qrFinished",
+          "tagValues": [
+            "Normal",
+            "Abnormal"
+          ],
+          "Description": "Completed Normal = 1, Abnormal = 2",
+          "DeviceType": "D",
+          "Address": "2451",
+          "DataType": "Short",
+          "Location": "D2451"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_ready",
+          "TagName": "dev_in_ready",
+          "Description": "准备就绪Ready",
+          "DeviceType": "D",
+          "Address": "2001",
+          "DataType": "Short",
+          "Location": "D2001"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_allowHandover",
+          "TagName": "dev_in_allowHandover",
+          "Description": "Deliverableady",
+          "DeviceType": "D",
+          "Address": "2002",
+          "DataType": "Short",
+          "Location": "D2002"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_safetySensorOffOrClosed",
+          "TagName": "dev_in_safetySensorOffOrClosed",
+          "Description": "Safety sensor off",
+          "DeviceType": "D",
+          "Address": "2003",
+          "DataType": "Short",
+          "Location": "D2003"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_conveyorOrTurntableRunning",
+          "TagName": "dev_in_conveyorOrTurntableRunning",
+          "Description": "Conveyor rotation",
+          "DeviceType": "D",
+          "Address": "2004",
+          "DataType": "Short",
+          "Location": "D2004"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_ready",
+          "TagName": "dev_out_ready",
+          "Description": "准备就绪Ready",
+          "DeviceType": "D",
+          "Address": "2011",
+          "DataType": "Short",
+          "Location": "D2011"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_requestAgvArrive",
+          "TagName": "dev_out_requestAgvArrive",
+          "Description": "AGV request signal",
+          "DeviceType": "D",
+          "Address": "2012",
+          "DataType": "Short",
+          "Location": "D2012"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_safetySensorOffOrClosed",
+          "TagName": "dev_out_safetySensorOffOrClosed",
+          "Description": "Safety sensor off",
+          "DeviceType": "D",
+          "Address": "2013",
+          "DataType": "Short",
+          "Location": "D2013"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_conveyorOrTurntableRunning",
+          "TagName": "dev_out_conveyorOrTurntableRunning",
+          "Description": "Conveyor rotation",
+          "DeviceType": "D",
+          "Address": "2014",
+          "DataType": "Short",
+          "Location": "D2014"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_craneReady",
+          "TagName": "dev_in_craneReady",
+          "Description": "Crane ready",
+          "DeviceType": "D",
+          "Address": "2021",
+          "DataType": "Short",
+          "Location": "D2021"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_craneReady",
+          "TagName": "dev_out_craneReady",
+          "Description": "Crane ready",
+          "DeviceType": "D",
+          "Address": "2022",
+          "DataType": "Short",
+          "Location": "D2022"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_safetySensorStatus",
+          "TagName": "dev_in_safetySensorStatus",
+          "Description": "Safety sensor off",
+          "DeviceType": "D",
+          "Address": "2024",
+          "DataType": "Short",
+          "Location": "D2024"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_safetySensorStatus",
+          "TagName": "dev_out_safetySensorStatus",
+          "Description": "Conveyor rotation",
+          "DeviceType": "D",
+          "Address": "2026",
+          "DataType": "Short",
+          "Location": "D2026"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_qr",
+          "TagName": "dev_out_qr",
+          "Description": "QR data",
+          "DeviceType": "D",
+          "Address": "2311",
+          "DataType": "String",
+          "Location": "D2311"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_out_qrReady",
+          "TagName": "dev_out_qrReady",
+          "Description": "Data read request",
+          "DeviceType": "D",
+          "Address": "2321",
+          "DataType": "Short",
+          "Location": "D2321"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_qr",
+          "TagName": "dev_in_qr",
+          "Description": "QR data",
+          "DeviceType": "D",
+          "Address": "2351",
+          "DataType": "String",
+          "Location": "D2351"
+        },
+        {
+          "TagOPC": "DeviceM.CvAgv.OPC.dev_in_qrReady",
+          "TagName": "dev_in_qrReady",
+          "Description": "Data reading request",
+          "DeviceType": "D",
+          "Address": "2361",
+          "DataType": "Short",
+          "Location": "D2361"
+        }
+      ]
+    },
+    {
+      "Area": "Stock",
+      "Device": "Crane",
+      "Tags": [
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_heartBeat",
+          "TagName": "wcs_heartBeat",
+          "Description": "Heartbeat",
+          "DeviceType": "D",
+          "Address": "3000",
+          "DataType": "Short",
+          "Location": "D3000"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_deviceCode",
+          "TagName": "wcs_deviceCode",
+          "Description": "Stacker No",
+          "DeviceType": "D",
+          "Address": "3001",
+          "DataType": "Short",
+          "Location": "D3001"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taryType",
+          "TagName": "wcs_taryType",
+          "Description": "Tray type",
+          "DeviceType": "D",
+          "Address": "3002",
+          "DataType": "Short",
+          "Location": "D3002"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_startPosX",
+          "TagName": "wcs_startPosX",
+          "Description": "Pickup row",
+          "DeviceType": "D",
+          "Address": "3003",
+          "DataType": "Short",
+          "Location": "D3003"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_startPosY",
+          "TagName": "wcs_startPosY",
+          "Description": "Pickup line",
+          "DeviceType": "D",
+          "Address": "3004",
+          "DataType": "Short",
+          "Location": "D3004"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_startPosZ",
+          "TagName": "wcs_startPosZ",
+          "Description": "Pickup level",
+          "DeviceType": "D",
+          "Address": "3005",
+          "DataType": "Short",
+          "Location": "D3005"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_endPosX",
+          "TagName": "wcs_endPosX",
+          "Description": "Place-up row",
+          "DeviceType": "D",
+          "Address": "3006",
+          "DataType": "Short",
+          "Location": "D3006"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_endPosY",
+          "TagName": "wcs_endPosY",
+          "Description": "Place-up line",
+          "DeviceType": "D",
+          "Address": "3007",
+          "DataType": "Short",
+          "Location": "D3007"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_endPosZ",
+          "TagName": "wcs_endPosZ",
+          "Description": "Place-up level",
+          "DeviceType": "D",
+          "Address": "3008",
+          "DataType": "Short",
+          "Location": "D3008"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskType",
+          "TagName": "wcs_taskType",
+          "Description": "Task Type",
+          "DeviceType": "D",
+          "Address": "3009",
+          "DataType": "Short",
+          "Location": "D3009"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskExe",
+          "TagName": "wcs_taskExe",
+          "tagValues": [
+            "Initial",
+            "Task issued",
+            "Task executed"
+          ],
+          "Description": "Task execution signals: 0 = Initial, 1 = Task issued, 2 = Task executed",
+          "DeviceType": "D",
+          "Address": "3010",
+          "DataType": "Short",
+          "Location": "D3010"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_stStop",
+          "TagName": "wcs_stStop",
+          "tagValues": [
+            "",
+            "Emergency stop"
+          ],
+          "Description": "Emergency stop signal: 1 = Emergency stop",
+          "DeviceType": "D",
+          "Address": "3011",
+          "DataType": "Short",
+          "Location": "D3011"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_stReset",
+          "TagName": "wcs_stReset",
+          "tagValues": [
+            "",
+            "Alarm cleared"
+          ],
+          "Description": "Reset signal: 1 = Alarm cleared",
+          "DeviceType": "D",
+          "Address": "3012",
+          "DataType": "Short",
+          "Location": "D3012"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskFinishAffirm",
+          "TagName": "wcs_taskFinishAffirm",
+          "Description": "Task completed",
+          "DeviceType": "D",
+          "Address": "3013",
+          "DataType": "Short",
+          "Location": "D3013"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskErrorAffirm",
+          "TagName": "wcs_taskErrorAffirm",
+          "Description": "Special anomaly confirmation",
+          "DeviceType": "D",
+          "Address": "3014",
+          "DataType": "Short",
+          "Location": "D3014"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskInAffirm",
+          "TagName": "wcs_taskInAffirm",
+          "tagValues": [
+            "",
+            "Confirmation"
+          ],
+          "Description": "Pickup completed confirmation: 1 confirmation",
+          "DeviceType": "D",
+          "Address": "3015",
+          "DataType": "Short",
+          "Location": "D3015"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_taskNo",
+          "TagName": "wcs_taskNo",
+          "Description": "Task Number",
+          "DeviceType": "D",
+          "Address": "3016",
+          "DataType": "Short",
+          "Location": "D3016"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.PLC.wcs_weight",
+          "TagName": "wcs_weight",
+          "Description": "Weight information",
+          "DeviceType": "D",
+          "Address": "3017",
+          "DataType": "Short",
+          "Location": "D3017"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_heartBeat",
+          "TagName": "dev_heartBeat",
+          "Description": "Heartbeat",
+          "DeviceType": "D",
+          "Address": "3040",
+          "DataType": "Short",
+          "Location": "D3040"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_deviceCode",
+          "TagName": "dev_deviceCode",
+          "Description": "Stacker No",
+          "DeviceType": "D",
+          "Address": "3041",
+          "DataType": "Short",
+          "Location": "D3041"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_tunnel",
+          "TagName": "dev_tunnel",
+          "Description": "Current tunnel",
+          "DeviceType": "D",
+          "Address": "3042",
+          "DataType": "Short",
+          "Location": "D3042"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_startPosX",
+          "TagName": "dev_startPosX",
+          "Description": "Current task pickup queue",
+          "DeviceType": "D",
+          "Address": "3043",
+          "DataType": "Short",
+          "Location": "D3043"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_startPosY",
+          "TagName": "dev_startPosY",
+          "Description": "Current task pickup column",
+          "DeviceType": "D",
+          "Address": "3044",
+          "DataType": "Short",
+          "Location": "D3044"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_startPosZ",
+          "TagName": "dev_startPosZ",
+          "Description": "Current task pickup layer",
+          "DeviceType": "D",
+          "Address": "3045",
+          "DataType": "Short",
+          "Location": "D3045"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_endPosX",
+          "TagName": "dev_endPosX",
+          "Description": "Current task delivery queue",
+          "DeviceType": "D",
+          "Address": "3046",
+          "DataType": "Short",
+          "Location": "D3046"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_endPosY",
+          "TagName": "dev_endPosY",
+          "Description": "Current task delivery column",
+          "DeviceType": "D",
+          "Address": "3047",
+          "DataType": "Short",
+          "Location": "D3047"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_endPosZ",
+          "TagName": "dev_endPosZ",
+          "Description": "Current task delivery layer",
+          "DeviceType": "D",
+          "Address": "3048",
+          "DataType": "Short",
+          "Location": "D3048"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taskType",
+          "TagName": "dev_taskType",
+          "Description": "Current Task Type",
+          "DeviceType": "D",
+          "Address": "3049",
+          "DataType": "Short",
+          "Location": "D3049"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taskExe",
+          "TagName": "dev_taskExe",
+          "Description": "Task execution feedback",
+          "DeviceType": "D",
+          "Address": "3050",
+          "DataType": "Short",
+          "Location": "D3050"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_error",
+          "TagName": "dev_error",
+          "Description": "Current Fault",
+          "DeviceType": "D",
+          "Address": "3051",
+          "DataType": "Short",
+          "Location": "D3051"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taryType",
+          "TagName": "dev_taryType",
+          "Description": "Current tray type",
+          "DeviceType": "D",
+          "Address": "3052",
+          "DataType": "Short",
+          "Location": "D3052"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taskFinishState",
+          "TagName": "dev_taskFinishState",
+          "Description": "Task Completion Status",
+          "DeviceType": "D",
+          "Address": "3053",
+          "DataType": "Short",
+          "Location": "D3053"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taskAbnormalFeedback",
+          "TagName": "dev_taskAbnormalFeedback",
+          "Description": "Special anomaly feedback",
+          "DeviceType": "D",
+          "Address": "3054",
+          "DataType": "Short",
+          "Location": "D3054"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_claimGoods",
+          "TagName": "dev_claimGoods",
+          "tagValues": [
+            "",
+            "Picking completed"
+          ],
+          "Description": "Stacker crane picking signal: 1 = Picking completed",
+          "DeviceType": "D",
+          "Address": "3055",
+          "DataType": "Short",
+          "Location": "D3055"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_task",
+          "TagName": "dev_task",
+          "Description": "Current task number",
+          "DeviceType": "D",
+          "Address": "3056",
+          "DataType": "Short",
+          "Location": "D3056"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_dispatch",
+          "TagName": "dev_dispatch",
+          "Description": "Scheduled state, ready",
+          "DeviceType": "D",
+          "Address": "3057",
+          "DataType": "Short",
+          "Location": "D3057"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_load",
+          "TagName": "dev_load",
+          "Description": "Payload",
+          "DeviceType": "D",
+          "Address": "3058",
+          "DataType": "Short",
+          "Location": "D3058"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_pattern",
+          "TagName": "dev_pattern",
+          "tagValues": [
+            "Auto",
+            "Manual",
+            "Offline",
+            "Maintenance"
+          ],
+          "Description": "Current mode 1:Auto, 2:Manual, 3:Offline, 4:Maintenance",
+          "DeviceType": "D",
+          "Address": "3059",
+          "DataType": "Short",
+          "Location": "D3059"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_vanState",
+          "TagName": "dev_vanState",
+          "tagValues": [
+            "",
+            "Loading platform has goods"
+          ],
+          "Description": "Loading platform loading status: 1 = Loading platform has goods",
+          "DeviceType": "D",
+          "Address": "3060",
+          "DataType": "Short",
+          "Location": "D3060"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_posX",
+          "TagName": "dev_posX",
+          "Description": "Stacker crane current row",
+          "DeviceType": "D",
+          "Address": "3061",
+          "DataType": "Short",
+          "Location": "D3061"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_posY",
+          "TagName": "dev_posY",
+          "Description": "Stacker crane current column",
+          "DeviceType": "D",
+          "Address": "3062",
+          "DataType": "Short",
+          "Location": "D3062"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_posZ",
+          "TagName": "dev_posZ",
+          "Description": "Stacker crane current layer",
+          "DeviceType": "D",
+          "Address": "3063",
+          "DataType": "Short",
+          "Location": "D3063"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_locatX",
+          "TagName": "dev_locatX",
+          "Description": "Stacker crane current travel value",
+          "DeviceType": "D",
+          "Address": "3064",
+          "DataType": "Short",
+          "Location": "D3064"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_locatY",
+          "TagName": "dev_locatY",
+          "Description": "Stacker crane current travel value",
+          "DeviceType": "D",
+          "Address": "3066",
+          "DataType": "Short",
+          "Location": "D3066"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_locatZ",
+          "TagName": "dev_locatZ",
+          "Description": "Current rise/fall value of stacker crane",
+          "DeviceType": "D",
+          "Address": "3068",
+          "DataType": "Short",
+          "Location": "D3068"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_releaseFinish",
+          "TagName": "dev_releaseFinish",
+          "Description": "Stacker crane delivery signal",
+          "DeviceType": "D",
+          "Address": "3071",
+          "DataType": "Short",
+          "Location": "D3071"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.dev_taskNo",
+          "TagName": "dev_taskNo",
+          "Description": "Stacker crane currently executing task number",
+          "DeviceType": "D",
+          "Address": "3072",
+          "DataType": "Short",
+          "Location": "D3072"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.LineState1",
+          "TagName": "LineState1",
+          "tagValues": [
+            "Neither Enterable nor Exitable",
+            "Enterable",
+            "Exitable"
+          ],
+          "Description": "Conveyor Line 1: 1 - Enterable, 2 - Exitable, 0 - Neither Enterable nor Exitable",
+          "DeviceType": "D",
+          "Address": "3073",
+          "DataType": "Short",
+          "Location": "D3073"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.LineState2",
+          "TagName": "LineState2",
+          "tagValues": [
+            "Neither Enterable nor Exitable",
+            "Enterable",
+            "Exitable"
+          ],
+          "Description": "Conveyor Line 2: 1 - Enterable, 2 - Exitable, 0 - Neither Enterable nor Exitable",
+          "DeviceType": "D",
+          "Address": "3074",
+          "DataType": "Short",
+          "Location": "D3074"
+        },
+        {
+          "TagOPC": "DeviceM.Stacker.OPC.LineState3",
+          "TagName": "LineState3",
+          "tagValues": [
+            "Neither Enterable nor Exitable",
+            "Enterable",
+            "Exitable"
+          ],
+          "Description": "Conveyor Line 3: 1 - Enterable, 2 - Exitable, 0 - Neither Enterable nor Exitable",
+          "DeviceType": "D",
+          "Address": "3075",
+          "DataType": "Short",
+          "Location": "D3075"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "Station J",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Status",
+          "TagName": "iJ_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationJ_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "30",
+          "DataType": "Short",
+          "Location": "W20"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos1",
+          "TagName": "iJ_Pos1",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationJ_Pos1 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "21",
+          "DataType": "Short",
+          "Location": "W21"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos2",
+          "TagName": "iJ_Pos2",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationJ_Pos2 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "22",
+          "DataType": "Short",
+          "Location": "W22"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos3",
+          "TagName": "iJ_Pos3",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationJ_Pos3 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "23",
+          "DataType": "Short",
+          "Location": "W23"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos1_Intrusion_possible",
+          "TagName": "iJ_Pos1_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationJ_Pos1_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "24",
+          "DataType": "Short",
+          "Location": "W24"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos2_Intrusion_possible",
+          "TagName": "iJ_Pos2_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationJ_Pos2_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "25",
+          "DataType": "Short",
+          "Location": "W25"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Pos3_Intrusion_possible",
+          "TagName": "iJ_Pos3_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationJ_Pos3_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "26",
+          "DataType": "Short",
+          "Location": "W26"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Conv1_Number_of_Pos",
+          "TagName": "iJ_Conv1_Number_of_Pos",
+          "Description": "Số lượng hàng có ở băng tải 1",
+          "DeviceType": "W",
+          "Address": "2A",
+          "DataType": "Short",
+          "Location": "W2A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.iJ_Conv2_Number_of_Pos",
+          "TagName": "iJ_Conv2_Number_of_Pos",
+          "Description": "Số lượng hàng có ở băng tải 2",
+          "DeviceType": "W",
+          "Address": "2B",
+          "DataType": "Short",
+          "Location": "W2B"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.PLC.sJ_Bar_code",
+          "TagName": "sJ_Bar_code",
+          "Description": "J_Bar_code",
+          "DeviceType": "W",
+          "Address": "34",
+          "DataType": "String",
+          "Length": 10,
+          "Location": "W34"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.OPC.iJ_Pos1_AMR_Intrusion_Status",
+          "TagName": "iJ_Pos1_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationJ_Pos1_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "224",
+          "DataType": "Short",
+          "Location": "W224"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.OPC.iJ_Pos2_AMR_Intrusion_Status",
+          "TagName": "iJ_Pos2_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationJ_Pos2_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "225",
+          "DataType": "Short",
+          "Location": "W225"
+        },
+        {
+          "TagOPC": "DeviceK.Station_J.OPC.iJ_Pos3_AMR_Intrusion_Status",
+          "TagName": "iJ_Pos3_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationJ_Pos3_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "226",
+          "DataType": "Short",
+          "Location": "W226"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "AS-1",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.iAS1_Status",
+          "TagName": "iAS1_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationAS1_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "40",
+          "DataType": "Short",
+          "Location": "W40"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.iAS1_Pos1",
+          "TagName": "iAS1_Pos1",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS1_Pos1 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "41",
+          "DataType": "Short",
+          "Location": "W41"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.iAS1_Pos2",
+          "TagName": "iAS1_Pos2",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS1_Pos2 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "42",
+          "DataType": "Short",
+          "Location": "W42"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.iAS1_Pos1_Intrusion_possible",
+          "TagName": "iAS1_Pos1_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationAS1_Pos1_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "43",
+          "DataType": "Short",
+          "Location": "W43"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.iAS1_Pos2_Intrusion_possible",
+          "TagName": "iAS1_Pos2_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationAS1_Pos2_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "44",
+          "DataType": "Short",
+          "Location": "W44"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.sAS1_Bar_code_1",
+          "TagName": "sAS1_Bar_code_1",
+          "Description": "AS1_Bar_code_1",
+          "DeviceType": "W",
+          "Address": "48",
+          "DataType": "String",
+          "Length": 10,
+          "Location": "W48"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.PLC.sAS1_Bar_code_2",
+          "TagName": "sAS1_Bar_code_2",
+          "Description": "AS1_Bar_code_2",
+          "DeviceType": "W",
+          "Address": "54",
+          "DataType": "String",
+          "Length": 10,
+          "Location": "W54"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.OPC.iAS1_Pos1_AMR_Intrusion_Status",
+          "TagName": "iAS1_Pos1_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS1_Pos1_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "243",
+          "DataType": "Short",
+          "Location": "W243"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS1.OPC.iAS1_Pos2_AMR_Intrusion_Status",
+          "TagName": "iAS1_Pos2_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS1_Pos2_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "244",
+          "DataType": "Short",
+          "Location": "W244"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "AS-3",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_AS3.PLC.iAS3_Status",
+          "TagName": "iAS3_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationAS3_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "80",
+          "DataType": "Short",
+          "Location": "W80"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS3.PLC.iAS3_Pos",
+          "TagName": "iAS3_Pos",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS3_Pos 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "81",
+          "DataType": "Short",
+          "Location": "W81"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS3.OPC.iAS3_Pos_AMR_Intrusion",
+          "TagName": "iAS3_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS3_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "281",
+          "DataType": "Short",
+          "Location": "W281"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "AS-4",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_AS4.PLC.iAS4_Status",
+          "TagName": "iAS4_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationAS4_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "90",
+          "DataType": "Short",
+          "Location": "W90"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS4.PLC.iAS4_Pos",
+          "TagName": "iAS4_Pos",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS4_Pos 1:Ready to receive (empty)",
+          "DeviceType": "W",
+          "Address": "91",
+          "DataType": "Short",
+          "Location": "W91"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS4.OPC.iAS4_Pos_AMR_Intrusion",
+          "TagName": "iAS4_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS4_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "291",
+          "DataType": "Short",
+          "Location": "W291"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "AS-5",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_AS5.PLC.iAS5_Status",
+          "TagName": "iAS5_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationAS5_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "A0",
+          "DataType": "Short",
+          "Location": "WA0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS5.PLC.iAS5_Pos",
+          "TagName": "iAS5_Pos",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS5_Pos 1:Ready to receive (empty)",
+          "DeviceType": "W",
+          "Address": "A1",
+          "DataType": "Short",
+          "Location": "WA1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS5.OPC.iAS5_Pos_AMR_Intrusion",
+          "TagName": "iAS5_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS5_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "2A1",
+          "DataType": "Short",
+          "Location": "W2A1"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "SH-1",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_SH1.PLC.iSH1_Status",
+          "TagName": "iSH1_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationSH1_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "B0",
+          "DataType": "Short",
+          "Location": "WB0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH1.PLC.iSH1_Pos",
+          "TagName": "iSH1_Pos",
+          "tagValues": [
+            "",
+            "",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationSH1_Pos 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "B1",
+          "DataType": "Short",
+          "Location": "WB1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH1.OPC.iSH1_Pos_AMR_Intrusion",
+          "TagName": "iSH1_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationSH1_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "2B1",
+          "DataType": "Short",
+          "Location": "W2B1"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "SH-2",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_SH2.PLC.iSH2_Status",
+          "TagName": "iSH2_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationSH2_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "C0",
+          "DataType": "Short",
+          "Location": "WC0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH2.PLC.iSH2_Pos",
+          "TagName": "iSH2_Pos",
+          "tagValues": [
+            "",
+            "",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationSH2_Pos 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "C1",
+          "DataType": "Short",
+          "Location": "WC1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH2.OPC.iSH2_Pos_AMR_Intrusion",
+          "TagName": "iSH2_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationSH2_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "2C1",
+          "DataType": "Short",
+          "Location": "W2C1"
+        }
+      ]
+    },
+    {
+      "Area": "Chip",
+      "Device": "SH-3",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_SH3.PLC.iSH3_Status",
+          "TagName": "iSH3_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationSH3_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "D0",
+          "DataType": "Short",
+          "Location": "WD0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH3.PLC.iSH3_Pos",
+          "TagName": "iSH3_Pos",
+          "tagValues": [
+            "",
+            "",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationSH3_Pos 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "D1",
+          "DataType": "Short",
+          "Location": "WD1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_SH3.OPC.iSH3_Pos_AMR_Intrusion",
+          "TagName": "iSH3_Pos_AMR_Intrusion",
+          "tagValues": [
+            "non-intrusion",
+            "",
+            "Intrusion in progress"
+          ],
+          "Description": "StationSH3_Pos_AMR Intrusion 0: non-intrusion; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "2D1",
+          "DataType": "Short",
+          "Location": "W2D1"
+        }
+      ]
+    },
+	{
+      "Area": "Material",
+      "Device": "Proximity Sensors",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsA_Exist[0]",
+          "TagName": "bsA_Exist[0]",
+          "Description": "StationA'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F0",
+          "DataType": "Boolean",
+          "Location": "BF0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsA_Exist[0]",
+          "TagName": "bsA_Exist[0]",
+          "Description": "StationA'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "F1",
+          "DataType": "Boolean",
+          "Location": "BF1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsB_Exist[0]",
+          "TagName": "bsB_Exist[0]",
+          "Description": "StationB'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F2",
+          "DataType": "Boolean",
+          "Location": "BF2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsB_Exist[1]",
+          "TagName": "bsB_Exist[1]",
+          "Description": "StationB'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "F3",
+          "DataType": "Boolean",
+          "Location": "BF3"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsC_Exist[0]",
+          "TagName": "bsC_Exist[0]",
+          "Description": "StationC'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F4",
+          "DataType": "Boolean",
+          "Location": "BF4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsC_Exist[1]",
+          "TagName": "bsC_Exist[1]",
+          "Description": "StationC'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "F5",
+          "DataType": "Boolean",
+          "Location": "BF5"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsD_Exist[0]",
+          "TagName": "bsD_Exist[0]",
+          "Description": "StationD'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F6",
+          "DataType": "Boolean",
+          "Location": "BF6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsD_Exist[1]",
+          "TagName": "bsD_Exist[1]",
+          "Description": "StationD'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "F7",
+          "DataType": "Boolean",
+          "Location": "BF7"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsE_Exist[0]",
+          "TagName": "bsE_Exist[0]",
+          "Description": "StationE'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "F8",
+          "DataType": "Boolean",
+          "Location": "BF8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsE_Exist[1]",
+          "TagName": "bsE_Exist[1]",
+          "Description": "StationE'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "F9",
+          "DataType": "Boolean",
+          "Location": "BF9"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsF_Exist[0]",
+          "TagName": "bsF_Exist[0]",
+          "Description": "StationF'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FA",
+          "DataType": "Boolean",
+          "Location": "BFA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsF_Exist[1]",
+          "TagName": "bsF_Exist[1]",
+          "Description": "StationF'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "FB",
+          "DataType": "Boolean",
+          "Location": "BFB"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsG_Exist[0]",
+          "TagName": "bsG_Exist[0]",
+          "Description": "StationG'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FC",
+          "DataType": "Boolean",
+          "Location": "BFC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsG_Exist[1]",
+          "TagName": "bsG_Exist[1]",
+          "Description": "StationG'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "FD",
+          "DataType": "Boolean",
+          "Location": "BFD"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsH_Exist[0]",
+          "TagName": "bsH_Exist[0]",
+          "Description": "StationH'_Pos1_Exist",
+          "DeviceType": "B",
+          "Address": "FE",
+          "DataType": "Boolean",
+          "Location": "BFE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_Pos.PLC.bsH_Exist[1]",
+          "TagName": "bsH_Exist[1]",
+          "Description": "StationH'_Pos2_Exist",
+          "DeviceType": "B",
+          "Address": "FF",
+          "DataType": "Boolean",
+          "Location": "BFF"
+        },
+      ]
+    },
+	{
+      "Area": "Material",
+      "Device": "QR Code",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssA_QR1",
+          "TagName": "ssA_QR1",
+          "Description": "Station A'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "581",
+          "DataType": "Short",
+          "Location": "W581"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssA_QR2",
+          "TagName": "ssA_QR2",
+          "Description": "Station A'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "586",
+          "DataType": "Short",
+          "Location": "W586"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssB_QR1",
+          "TagName": "ssB_QR1",
+          "Description": "Station B'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "58B",
+          "DataType": "Short",
+          "Location": "W58B"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssB_QR2",
+          "TagName": "ssB_QR2",
+          "Description": "Station B'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "590",
+          "DataType": "Short",
+          "Location": "W590"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssC_QR1",
+          "TagName": "ssC_QR1",
+          "Description": "Station C'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "590",
+          "DataType": "Short",
+          "Location": "W590"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssC_QR2",
+          "TagName": "ssC_QR2",
+          "Description": "Station C'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "59A",
+          "DataType": "Short",
+          "Location": "W59A"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssD_QR1",
+          "TagName": "ssD_QR1",
+          "Description": "Station D'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "59F",
+          "DataType": "Short",
+          "Location": "W59F"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssD_QR2",
+          "TagName": "ssD_QR2",
+          "Description": "Station D'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5A4",
+          "DataType": "Short",
+          "Location": "W5A4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssE_QR1",
+          "TagName": "ssE_QR1",
+          "Description": "Station E'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5A9",
+          "DataType": "Short",
+          "Location": "W5A9"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssE_QR2",
+          "TagName": "ssE_QR2",
+          "Description": "Station E'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5AE",
+          "DataType": "Short",
+          "Location": "W5AE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssF_QR1",
+          "TagName": "ssF_QR1",
+          "Description": "Station F'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5B3",
+          "DataType": "Short",
+          "Location": "W5B3"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssF_QR2",
+          "TagName": "ssF_QR2",
+          "Description": "Station F'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5B8",
+          "DataType": "Short",
+          "Location": "W5B8"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssG_QR1",
+          "TagName": "ssG_QR1",
+          "Description": "Station G'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5BD",
+          "DataType": "Short",
+          "Location": "W5BD"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssG_QR2",
+          "TagName": "ssG_QR2",
+          "Description": "Station G'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5C2",
+          "DataType": "Short",
+          "Location": "W5C2"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssH_QR1",
+          "TagName": "ssH_QR1",
+          "Description": "Station H'_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5C7",
+          "DataType": "Short",
+          "Location": "W5C7"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.ssH_QR2",
+          "TagName": "ssH_QR2",
+          "Description": "Station H'_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5CC",
+          "DataType": "Short",
+          "Location": "W5CC"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR1",
+          "TagName": "sJ_QR1",
+          "Description": "Station J_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5D1",
+          "DataType": "Short",
+          "Location": "W5D1"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR2",
+          "TagName": "sJ_QR2",
+          "Description": "Station J_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5D6",
+          "DataType": "Short",
+          "Location": "W5D6"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sJ_QR3",
+          "TagName": "sJ_QR3",
+          "Description": "Station J_QR-code 3",
+          "DeviceType": "W",
+          "Address": "5DB",
+          "DataType": "Short",
+          "Location": "W5DB"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS1_QR1",
+          "TagName": "sAS1_QR1",
+          "Description": "Station AS1_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5E0",
+          "DataType": "Short",
+          "Location": "W5E0"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS1_QR2",
+          "TagName": "sAS1_QR2",
+          "Description": "Station AS1_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5E5",
+          "DataType": "Short",
+          "Location": "W5E5"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS2_QR1",
+          "TagName": "sAS2_QR1",
+          "Description": "Station AS2_QR-code 1",
+          "DeviceType": "W",
+          "Address": "5EA",
+          "DataType": "Short",
+          "Location": "W5EA"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS2_QR2",
+          "TagName": "sAS2_QR2",
+          "Description": "Station AS2_QR-code 2",
+          "DeviceType": "W",
+          "Address": "5EF",
+          "DataType": "Short",
+          "Location": "W5EF"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS3_QR",
+          "TagName": "sAS3_QR",
+          "Description": "Station AS3_QR-code",
+          "DeviceType": "W",
+          "Address": "5F4",
+          "DataType": "Short",
+          "Location": "W5F4"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS4_QR",
+          "TagName": "sAS4_QR",
+          "Description": "Station AS4_QR-code",
+          "DeviceType": "W",
+          "Address": "5F9",
+          "DataType": "Short",
+          "Location": "W5F9"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sAS5_QR",
+          "TagName": "sAS5_QR",
+          "Description": "Station AS5_QR-code",
+          "DeviceType": "W",
+          "Address": "5FE",
+          "DataType": "Short",
+          "Location": "W5FE"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH1_QR",
+          "TagName": "sSH1_QR",
+          "Description": "Station SH1_QR-code",
+          "DeviceType": "W",
+          "Address": "603",
+          "DataType": "Short",
+          "Location": "W603"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH2_QR",
+          "TagName": "sSH2_QR",
+          "Description": "Station SH2_QR-code",
+          "DeviceType": "W",
+          "Address": "608",
+          "DataType": "Short",
+          "Location": "W608"
+        },
+        {
+          "TagOPC": "DeviceK.Station_QRCode.PLC.sSH3_QR",
+          "TagName": "sSH3_QR",
+          "Description": "Station SH3_QR-code",
+          "DeviceType": "W",
+          "Address": "60D",
+          "DataType": "Short",
+          "Location": "W60D"
+        },
+      ]
+    },
+    {
+      "Area": "Large",
+      "Device": "AS-2",
+      "Tags": [
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.iAS2_Status",
+          "TagName": "iAS2_Status",
+          "tagValues": [
+            "",
+            "Running",
+            "Error"
+          ],
+          "Description": "StationAS2_Status 1: Running, 2: Error",
+          "DeviceType": "W",
+          "Address": "60",
+          "DataType": "Short",
+          "Location": "W60"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.iAS2_Pos1",
+          "TagName": "iAS2_Pos1",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS2_Pos1 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "61",
+          "DataType": "Short",
+          "Location": "W61"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.iAS2_Pos2",
+          "TagName": "iAS2_Pos2",
+          "tagValues": [
+            "",
+            "Ready to receive (empty)",
+            "Request for pickup",
+            "Request for pickup & box arrived"
+          ],
+          "Description": "StationAS2_Pos2 1:Ready to receive (empty) 2: Request for pickup, 3:Request for pickup & box arrived",
+          "DeviceType": "W",
+          "Address": "62",
+          "DataType": "Short",
+          "Location": "W62"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.iAS2_Pos1_Intrusion_possible",
+          "TagName": "iAS2_Pos1_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationAS2_Pos1_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "63",
+          "DataType": "Short",
+          "Location": "W63"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.iAS2_Pos2_Intrusion_possible",
+          "TagName": "iAS2_Pos2_Intrusion_possible",
+          "tagValues": [
+            "intrusion prohibited",
+            "intrusion possible"
+          ],
+          "Description": "StationAS2_Pos2_Intrusion_possible 0: intrusion prohibited 1: intrusion possible",
+          "DeviceType": "W",
+          "Address": "64",
+          "DataType": "Short",
+          "Location": "W64"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.sAS2_Bar_code_1",
+          "TagName": "sAS2_Bar_code_1",
+          "Description": "AS2_Bar_code_1",
+          "DeviceType": "W",
+          "Address": "68",
+          "DataType": "String",
+          "Length": 10,
+          "Location": "W68"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.PLC.sAS2_Bar_code_2",
+          "TagName": "sAS2_Bar_code_2",
+          "Description": "AS2_Bar_code_2",
+          "DeviceType": "W",
+          "Address": "74",
+          "DataType": "String",
+          "Length": 10,
+          "Location": "W74"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.OPC.iAS2_Pos1_AMR_Intrusion_Status",
+          "TagName": "iAS2_Pos1_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS2_Pos1_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "263",
+          "DataType": "Short",
+          "Location": "W263"
+        },
+        {
+          "TagOPC": "DeviceK.Station_AS2.OPC.iAS2_Pos2_AMR_Intrusion_Status",
+          "TagName": "iAS2_Pos2_AMR_Intrusion_Status",
+          "tagValues": [
+            "non-intrusion",
+            "Intrusion request",
+            "Intrusion in progress"
+          ],
+          "Description": "StationAS2_Pos2_AMR Intrusion Status 0: non-intrusion; 1: Intrusion request; 2: Intrusion in progress;",
+          "DeviceType": "W",
+          "Address": "264",
+          "DataType": "Short",
+          "Location": "W264"
+        }
+      ]
+    },
+    {
+      "Area": "Waste",
+      "Device": "Waste Station",
+      "Tags": [
+      ]
+    }
+  ]
+}

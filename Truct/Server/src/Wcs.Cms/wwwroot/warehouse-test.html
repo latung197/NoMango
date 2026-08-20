@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCS – Warehouse Test Tool</title>
+  <script src="/tailwind.js"></script>
+  <style>
+    :root { --refresh-ms: 3000; }
+    body { background: #0f172a; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; }
+
+    /* Tag table */
+    .tag-table th { background: #1e293b; position: sticky; top: 0; z-index: 10; }
+    .tag-table td, .tag-table th { padding: 6px 10px; border-bottom: 1px solid #1e293b; }
+    .tag-table tr:hover td { background: #1e293b55; }
+
+    /* value badges */
+    .val-good  { background:#064e3b; color:#6ee7b7; }
+    .val-error { background:#450a0a; color:#fca5a5; }
+    .val-null  { background:#1e293b; color:#64748b; }
+    .val-nonzero { background:#1c1917; color:#fcd34d; }
+
+    /* category pills */
+    .cat-Instruction  { background:#1e3a5f; color:#93c5fd; }
+    .cat-Feedback     { background:#2d1b69; color:#c4b5fd; }
+    .cat-Position     { background:#14532d; color:#86efac; }
+    .cat-Error        { background:#450a0a; color:#fca5a5; }
+    .cat-Control      { background:#451a03; color:#fcd34d; }
+    .cat-Status       { background:#1e293b; color:#94a3b8; }
+    .cat-Heartbeat    { background:#0c4a6e; color:#7dd3fc; }
+    .cat-Info         { background:#1a2e05; color:#a3e635; }
+    .cat-Inbound      { background:#064e3b; color:#34d399; }
+    .cat-Outbound     { background:#1c1917; color:#fb923c; }
+    .cat-InboundQR,
+    .cat-OutboundQR   { background:#1e293b; color:#94a3b8; font-style: italic; }
+
+    .dir-pc-plc { color:#60a5fa; }
+    .dir-plc-pc { color:#4ade80; }
+    .dir-cv-agv { color:#fb923c; }
+    .dir-agv-cv { color:#c084fc; }
+
+    /* blink on update */
+    @keyframes flash { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .flash { animation: flash 0.4s ease; }
+
+    /* tab */
+    .tab-btn.active { border-bottom: 2px solid #60a5fa; color: #60a5fa; }
+    .tab-btn { border-bottom: 2px solid transparent; color: #94a3b8; }
+
+    /* spinner */
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* log */
+    #log-box { font-family: monospace; font-size: 12px; }
+    .log-ok   { color: #4ade80; }
+    .log-err  { color: #f87171; }
+    .log-info { color: #94a3b8; }
+
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .status-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+    /* manual curtain status */
+    .curtain-panel-on  { border-color:#ef4444; background:#450a0a33; }
+    .curtain-panel-off { border-color:#22c55e; background:#064e3b33; }
+    .curtain-panel-unk { border-color:#475569; background:#1e293b55; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- ===== HEADER ===== -->
+<div class="bg-slate-900 border-b border-slate-700 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+    </svg>
+    <span class="text-white font-semibold text-lg">WCS – Warehouse Test Tool</span>
+    <span class="text-xs bg-yellow-900 text-yellow-300 px-2 py-0.5 rounded">DEV / TEST</span>
+  </div>
+  <div class="flex items-center gap-4 text-sm">
+    <div class="flex items-center gap-2">
+      <span id="opc-dot" class="status-dot bg-gray-600"></span>
+      <span id="opc-status" class="text-slate-400">Chưa kết nối</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span id="spin-icon" class="hidden text-blue-400">
+        <svg class="w-4 h-4 spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+      </span>
+      <span id="last-refresh" class="text-slate-500 text-xs">-</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONFIG PANEL ===== -->
+<div class="bg-slate-800 border-b border-slate-700 px-6 py-3 flex flex-wrap items-center gap-4 text-sm">
+  <div class="flex items-center gap-2">
+    <label class="text-slate-400 whitespace-nowrap">API (Wcs.Api):</label>
+    <input id="api-url" type="text" value="http://10.178.28.13:2511"
+      class="bg-slate-700 border border-slate-600 rounded px-3 py-1 text-white w-56 focus:outline-none focus:border-blue-500" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label class="text-slate-400">Interval (s):</label>
+    <input id="interval-input" type="number" value="3" min="1" max="60"
+      class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white w-16 text-center focus:outline-none focus:border-blue-500" />
+  </div>
+  <button id="toggle-auto" onclick="toggleAutoRefresh()"
+    class="px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white transition">
+    ▶ Bật auto-refresh
+  </button>
+  <button onclick="fetchAll()"
+    class="px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white transition">
+    🔄 Refresh ngay
+  </button>
+  <button onclick="clearLog()"
+    class="px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition text-xs">
+    🗑 Xóa log
+  </button>
+  <div class="flex items-center gap-2 ml-auto">
+    <label class="text-slate-400 text-xs">Filter:</label>
+    <input id="filter-input" type="text" placeholder="tìm tag / mô tả..."
+      oninput="applyFilter()"
+      class="bg-slate-700 border border-slate-600 rounded px-3 py-1 text-white w-48 text-xs focus:outline-none focus:border-blue-500" />
+  </div>
+</div>
+
+<!-- ===== TABS ===== -->
+<div class="bg-slate-900 border-b border-slate-700 px-6 flex gap-6 text-sm">
+  <button class="tab-btn active py-3 px-1 font-medium transition" onclick="switchTab('crane')" id="tab-crane">
+    🏗 Crane Tags (<span id="cnt-crane">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('station')" id="tab-station">
+    🔄 Station CV/AGV (<span id="cnt-station">0</span>)
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('actions')" id="tab-actions">
+    🎮 Crane Actions
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('feedback')" id="tab-feedback">
+    📊 Crane Feedback
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('handshake')" id="tab-handshake">
+    🤝 Station Handshake
+  </button>
+  <button class="tab-btn py-3 px-1 font-medium transition" onclick="switchTab('log')" id="tab-log">
+    📋 Log
+  </button>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="p-4">
+
+  <!-- CRANE TAGS TAB -->
+  <div id="pane-crane" class="tab-pane">
+    <div id="crane-summary" class="flex gap-4 mb-3 text-sm"></div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 260px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left">Tag ID</th>
+            <th class="text-left">Mô tả</th>
+            <th class="text-center">Direction</th>
+            <th class="text-center">Category</th>
+            <th class="text-right">Giá trị</th>
+            <th class="text-right">Decoded</th>
+            <th class="text-right">Timestamp</th>
+            <th class="text-center">OK?</th>
+          </tr>
+        </thead>
+        <tbody id="crane-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- STATION TAGS TAB -->
+  <div id="pane-station" class="tab-pane hidden">
+    <div id="station-summary" class="flex gap-4 mb-3 text-sm"></div>
+    <div class="overflow-auto rounded-lg border border-slate-700" style="max-height: calc(100vh - 260px)">
+      <table class="tag-table w-full text-xs">
+        <thead>
+          <tr class="text-slate-400">
+            <th class="text-left">Tag ID</th>
+            <th class="text-left">Mô tả</th>
+            <th class="text-center">Direction</th>
+            <th class="text-center">Category</th>
+            <th class="text-right">Giá trị</th>
+            <th class="text-right">Decoded</th>
+            <th class="text-right">Timestamp</th>
+            <th class="text-center">OK?</th>
+          </tr>
+        </thead>
+        <tbody id="station-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ACTIONS TAB -->
+  <div id="pane-actions" class="tab-pane hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Inbound -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+        <h3 class="text-green-400 font-semibold text-sm mb-1 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+          Nhập kho (Inbound)
+        </h3>
+        <p class="text-xs text-slate-500 mb-4">Handshake → chờ D2021 → WMS Confirm → Crane → WMS Complete</p>
+
+        <!-- Chế độ thủ công / rèm an toàn (D2024) -->
+        <div id="manual-curtain-panel" class="curtain-panel-unk border-2 rounded-xl p-4 mb-4 transition-colors">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Rèm an toàn nhập kho</p>
+              <p id="manual-curtain-status" class="text-sm font-semibold text-slate-200 mt-1">Chưa đọc D2024</p>
+              <p id="manual-curtain-detail" class="text-xs text-slate-500 mt-1 font-mono">D2024: —</p>
+            </div>
+            <button onclick="refreshManualCurtainStatus()"
+              class="px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-xs transition whitespace-nowrap">
+              🔄 Refresh D2024
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 mb-3">0 = rèm bật · 1 = rèm tắt (chế độ thủ công, hiệu lực 5 phút)</p>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="setInboundManualMode(1)" id="btn-manual-open"
+              class="py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-medium transition text-sm">
+              🔓 Bật chế độ thủ công
+            </button>
+            <button onclick="setInboundManualMode(0)" id="btn-manual-close"
+              class="py-2 rounded-lg bg-rose-800 hover:bg-rose-700 text-white font-medium transition text-sm">
+              🔒 Tắt chế độ thủ công
+            </button>
+          </div>
+          <div id="manual-in-result" class="mt-3 text-xs font-mono hidden"></div>
+        </div>
+
+        <!-- Vị trí -->
+        <p class="text-xs text-slate-400 font-semibold mb-2">Vị trí đặt hàng (Put Position)</p>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div>
+            <label class="text-xs text-slate-500">Row (X)</label>
+            <input id="in-row" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-green-500" />
+          </div>
+          <div>
+            <label class="text-xs text-slate-500">Floor (Y)</label>
+            <input id="in-floor" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-green-500" />
+          </div>
+          <div>
+            <label class="text-xs text-slate-500">Position (Z)</label>
+            <input id="in-pos" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-green-500" />
+          </div>
+        </div>
+
+        <!-- WMS Confirm -->
+        <div class="border border-slate-700 rounded-lg p-3 mb-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <input id="in-wms-confirm" type="checkbox" checked class="accent-green-500" />
+            <label class="text-xs text-slate-300 font-semibold">WMS ConfirmPositionInbound</label>
+          </div>
+          <div id="in-wms-confirm-fields" class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-xs text-slate-500">StageCode</label>
+              <input id="in-stagecode" type="text" placeholder="vd: A1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-green-500" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-500">CassetteId</label>
+              <input id="in-cassetteid" type="text" placeholder="vd: CS-001" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-green-500" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-500">Size</label>
+              <input id="in-size" type="text" placeholder="vd: 300mm" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-green-500" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-500">Product</label>
+              <input id="in-product" type="text" placeholder="mã sản phẩm" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-green-500" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-500">Quantity</label>
+              <input id="in-qty" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-green-500" />
+            </div>
+          </div>
+        </div>
+
+        <!-- WMS Complete -->
+        <div class="flex items-center gap-2 mb-4">
+          <input id="in-wms-complete" type="checkbox" checked class="accent-green-500" />
+          <label class="text-xs text-slate-300 font-semibold">WMS CompleteTransferInbound (sau crane)</label>
+        </div>
+
+        <button onclick="sendInbound()" class="w-full py-2 rounded-lg bg-green-700 hover:bg-green-600 text-white font-medium transition text-sm">
+          ▶ Gửi lệnh Inbound
+        </button>
+        <div id="in-result" class="mt-3 text-xs font-mono hidden"></div>
+      </div>
+
+      <!-- Outbound -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+        <h3 class="text-orange-400 font-semibold text-sm mb-1 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+          Xuất kho (Outbound)
+        </h3>
+        <p class="text-xs text-slate-500 mb-4">Bật manual → WMS Confirm → Crane → lấy hàng → Tắt manual → WMS Complete</p>
+
+        <!-- Chế độ thủ công / rèm an toàn (D2026) -->
+        <div id="manual-out-curtain-panel" class="curtain-panel-unk border-2 rounded-xl p-4 mb-4 transition-colors">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Rèm an toàn xuất kho</p>
+              <p id="manual-out-curtain-status" class="text-sm font-semibold text-slate-200 mt-1">Chưa đọc D2026</p>
+              <p id="manual-out-curtain-detail" class="text-xs text-slate-500 mt-1 font-mono">D2026: —</p>
+            </div>
+            <button onclick="refreshOutboundManualCurtainStatus()"
+              class="px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-xs transition whitespace-nowrap">
+              🔄 Refresh D2026
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 mb-3">0 = rèm bật · 1 = rèm tắt (chế độ thủ công, hiệu lực 5 phút)</p>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="setOutboundManualMode(1)" id="btn-out-manual-open"
+              class="py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-medium transition text-sm">
+              🔓 Bật chế độ thủ công
+            </button>
+            <button onclick="setOutboundManualMode(0)" id="btn-out-manual-close"
+              class="py-2 rounded-lg bg-rose-800 hover:bg-rose-700 text-white font-medium transition text-sm">
+              🔒 Tắt chế độ thủ công
+            </button>
+          </div>
+          <div id="manual-out-result" class="mt-3 text-xs font-mono hidden"></div>
+        </div>
+
+        <!-- Vị trí -->
+        <p class="text-xs text-slate-400 font-semibold mb-2">Vị trí lấy hàng (Pick Position)</p>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div>
+            <label class="text-xs text-slate-500">Row (X)</label>
+            <input id="out-row" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-orange-500" />
+          </div>
+          <div>
+            <label class="text-xs text-slate-500">Floor (Y)</label>
+            <input id="out-floor" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-orange-500" />
+          </div>
+          <div>
+            <label class="text-xs text-slate-500">Position (Z)</label>
+            <input id="out-pos" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm mt-1 focus:outline-none focus:border-orange-500" />
+          </div>
+        </div>
+
+        <!-- WMS Confirm + Complete toggles -->
+        <div class="border border-slate-700 rounded-lg p-3 mb-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <input id="out-wms-confirm" type="checkbox" checked class="accent-orange-500" />
+            <label class="text-xs text-slate-300 font-semibold">WMS ConfirmPositionOutbound (trước crane)</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="out-wms-complete" type="checkbox" checked class="accent-orange-500" />
+            <label class="text-xs text-slate-300 font-semibold">WMS CompleteTransferOutbound (sau crane)</label>
+          </div>
+        </div>
+
+        <button onclick="sendOutbound()" class="w-full py-2 rounded-lg bg-orange-700 hover:bg-orange-600 text-white font-medium transition text-sm">
+          ▶ Gửi lệnh Outbound
+        </button>
+        <div id="out-result" class="mt-3 text-xs font-mono hidden"></div>
+      </div>
+
+      <!-- Internal Move -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+        <h3 class="text-purple-400 font-semibold text-sm mb-4 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+          </svg>
+          Di chuyển nội bộ (Internal Move)
+        </h3>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <p class="text-xs text-slate-400 mb-2">Vị trí lấy hàng (Pick)</p>
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <label class="text-xs text-slate-500">Row</label>
+                <input id="im-pick-row" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Floor</label>
+                <input id="im-pick-floor" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Pos</label>
+                <input id="im-pick-pos" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 mb-2">Vị trí đặt hàng (Put)</p>
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <label class="text-xs text-slate-500">Row</label>
+                <input id="im-put-row" type="number" value="2" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Floor</label>
+                <input id="im-put-floor" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Pos</label>
+                <input id="im-put-pos" type="number" value="1" min="1" class="w-full bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-xs mt-0.5 focus:outline-none focus:border-purple-500" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button onclick="sendInternalMove()" class="w-full py-2 rounded-lg bg-purple-700 hover:bg-purple-600 text-white font-medium transition text-sm">
+          ▶ Gửi lệnh Internal Move
+        </button>
+        <div id="im-result" class="mt-3 text-xs font-mono hidden"></div>
+      </div>
+
+      <!-- Cancel / OPC Control -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+        <h3 class="text-red-400 font-semibold text-sm mb-4 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+          </svg>
+          OPC / Crane Control
+        </h3>
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <button onclick="opcConnect()" class="flex-1 py-2 rounded-lg bg-blue-700 hover:bg-blue-600 text-white text-sm transition">
+              🔌 Kết nối OPC
+            </button>
+            <button onclick="opcDisconnect()" class="flex-1 py-2 rounded-lg bg-slate-600 hover:bg-slate-500 text-white text-sm transition">
+              🔌 Ngắt OPC
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-slate-400 whitespace-nowrap">Task No hủy:</label>
+            <input id="cancel-taskno" type="number" value="0"
+              class="bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-sm flex-1 focus:outline-none focus:border-red-500" />
+            <button onclick="cancelTask()" class="px-4 py-1.5 rounded-lg bg-red-700 hover:bg-red-600 text-white text-sm transition">
+              ✖ Hủy task
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <label class="text-xs text-slate-400 whitespace-nowrap">D3013 (taskFinishAffirm):</label>
+            <select id="d3013-value"
+              class="bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-sm focus:outline-none focus:border-yellow-500">
+              <option value="0">0 – None</option>
+              <option value="1">1 – AutoCompleted</option>
+              <option value="2">2 – ManualCompleted</option>
+              <option value="3">3 – Canceled</option>
+            </select>
+            <button onclick="writeTaskFinishAffirm()" class="px-4 py-1.5 rounded-lg bg-yellow-700 hover:bg-yellow-600 text-white text-sm transition">
+              ✎ Ghi D3013
+            </button>
+          </div>
+
+          <button onclick="clearTaskData()" class="w-full py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-sm transition border border-slate-600">
+            🧹 Clear task data (D3003–D3010, D3016)
+          </button>
+
+          <div id="ctrl-result" class="text-xs font-mono hidden"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FEEDBACK TAB -->
+  <div id="pane-feedback" class="tab-pane hidden">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="feedback-cards">
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Task No</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3056</span>
+        </div>
+        <p id="fb-taskno" class="text-2xl font-bold text-white">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_task</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Task Type</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3049</span>
+        </div>
+        <p id="fb-tasktype" class="text-lg font-semibold text-blue-300">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_taskType</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Crane Status</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3059</span>
+        </div>
+        <p id="fb-status" class="text-lg font-semibold text-green-300">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_pattern</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Execute Feedback</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3050</span>
+        </div>
+        <p id="fb-execfb" class="text-lg font-semibold text-yellow-300">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_taskExe</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Complete Status</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3053</span>
+        </div>
+        <p id="fb-complete" class="text-lg font-semibold text-purple-300">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_taskFinishState</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Special Error</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3054</span>
+        </div>
+        <p id="fb-special" class="text-lg font-semibold text-red-300">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_taskAbnormalFeedback</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Error Code</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3051</span>
+        </div>
+        <p id="fb-errcode" class="text-lg font-semibold text-red-400">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_error</p>
+      </div>
+      <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs text-slate-400">Error Note</p>
+          <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3052</span>
+        </div>
+        <p id="fb-errnote" class="text-sm font-medium text-slate-300 truncate">—</p>
+        <p class="text-xs text-slate-600 mt-1 font-mono">dev_taryType</p>
+      </div>
+    </div>
+
+    <!-- Position -->
+    <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+      <h3 class="text-slate-300 font-semibold text-sm mb-4">📍 Vị trí Crane</h3>
+      <div class="grid grid-cols-3 gap-6 text-center">
+        <div>
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <p class="text-xs text-slate-400">Row (X)</p>
+            <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3062</span>
+          </div>
+          <p id="fb-row" class="text-3xl font-bold text-blue-400 mt-1">—</p>
+          <p class="text-xs text-slate-600 mt-1 font-mono">dev_posY</p>
+        </div>
+        <div>
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <p class="text-xs text-slate-400">Floor (Y)</p>
+            <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3063</span>
+          </div>
+          <p id="fb-floor" class="text-3xl font-bold text-green-400 mt-1">—</p>
+          <p class="text-xs text-slate-600 mt-1 font-mono">dev_posZ</p>
+        </div>
+        <div>
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <p class="text-xs text-slate-400">Fork Position (Z)</p>
+            <span class="font-mono text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">D3068</span>
+          </div>
+          <p id="fb-forkpos" class="text-3xl font-bold text-orange-400 mt-1">—</p>
+          <p class="text-xs text-slate-600 mt-1 font-mono">dev_locatZ</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 flex items-center gap-3">
+      <button onclick="fetchFeedback()" class="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-600 text-white text-sm transition">
+        🔄 Refresh Feedback
+      </button>
+      <span id="fb-timestamp" class="text-xs text-slate-500">—</span>
+    </div>
+  </div>
+
+  <!-- STATION HANDSHAKE TAB -->
+  <div id="pane-handshake" class="tab-pane hidden">
+
+    <!-- Live tag monitor -->
+    <div class="mb-5">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-slate-200 font-semibold text-sm">📡 Tag Monitor – CV ↔ AGV (live)</h3>
+        <button onclick="fetchHandshakeTags()" class="text-xs px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition">🔄 Refresh tags</button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Has-box sensors (D2027–D2030) -->
+        <div class="md:col-span-2 bg-slate-800 rounded-xl border border-amber-900/60 p-4">
+          <p class="text-amber-300 font-semibold text-xs mb-3 uppercase tracking-wider">📦 Cảm biến có hàng – D2027 · D2028 · D2029 · D2030</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="hs-hasbox-cards"></div>
+        </div>
+
+        <!-- INBOUND tags -->
+        <div class="bg-slate-800 rounded-xl border border-slate-700 p-4">
+          <p class="text-green-400 font-semibold text-xs mb-3 uppercase tracking-wider">📥 Nhập kho (Inbound) – AGV drop / đặt hàng vào</p>
+          <div class="space-y-1.5" id="hs-tags-inbound"></div>
+          <div class="mt-3 pt-3 border-t border-slate-700">
+            <p class="text-xs text-slate-400 mb-1 font-semibold">✅ Điều kiện để bắt đầu:</p>
+            <div class="flex gap-2 flex-wrap text-xs" id="hs-cond-inbound"></div>
+          </div>
+        </div>
+
+        <!-- OUTBOUND tags -->
+        <div class="bg-slate-800 rounded-xl border border-slate-700 p-4">
+          <p class="text-orange-400 font-semibold text-xs mb-3 uppercase tracking-wider">📤 Xuất kho (Outbound) – AGV pick / lấy hàng ra</p>
+          <div class="space-y-1.5" id="hs-tags-outbound"></div>
+          <div class="mt-3 pt-3 border-t border-slate-700">
+            <p class="text-xs text-slate-400 mb-1 font-semibold">✅ Điều kiện để bắt đầu:</p>
+            <div class="flex gap-2 flex-wrap text-xs" id="hs-cond-outbound"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow panels -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+
+      <!-- INBOUND FLOW -->
+      <div class="bg-slate-800 rounded-xl border border-green-900 p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+          <h3 class="text-green-400 font-semibold text-sm">Nhập kho – Inbound Flow (AGV drop)</h3>
+        </div>
+        <p class="text-xs text-slate-500 mb-4">AGV mang hàng đến thả vào băng tải. CV đưa cassette vào → D2021=1 → WCS gọi crane.</p>
+
+        <!-- Timeout -->
+        <div class="flex items-center gap-4 mb-4 text-xs flex-wrap">
+          <div class="flex items-center gap-2">
+            <label class="text-slate-400">Timeout chờ CV handshake (s):</label>
+            <input id="hs-in-timeout" type="number" value="30" min="5" max="120"
+              class="w-16 bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-center focus:outline-none focus:border-green-500" />
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="text-slate-400">Timeout chờ D2021 (s):</label>
+            <input id="hs-in-crane-timeout" type="number" value="120" min="5" max="300"
+              class="w-16 bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-center focus:outline-none focus:border-green-500" />
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="space-y-2">
+          <div class="hs-step" id="hs-step-in-1">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">1</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Before Drop</p>
+                <p class="text-xs text-slate-500">Ghi D2102=1 (AGV Arrived), chờ D2001+D2002+D2003=1 và D2028=0 (CV Ready + không có hàng tại cửa nhập)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('inbound','before-drop',{timeoutSeconds:getHsTimeout('in')},'hs-step-in-1')"
+                class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-in-2">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">2</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Enter Drop Point</p>
+                <p class="text-xs text-slate-500">Ghi D2103=1 (HandoverInProgress), D2104=1 (Intrusion flag)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('inbound','enter-drop',{},'hs-step-in-2')"
+                class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-in-3">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">3</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Putdown Rack</p>
+                <p class="text-xs text-slate-500">Thả hàng xuống băng tải (hook point – hiện no-op)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('inbound','putdown-rack',{},'hs-step-in-3')"
+                class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-in-4">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">4</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Back to Waiting Point</p>
+                <p class="text-xs text-slate-500">Ghi D2103=0, D2104=0 – xóa cờ đang bàn giao</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('inbound','back-to-waiting',{},'hs-step-in-4')"
+                class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-in-5">
+            <div class="flex flex-col gap-2 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <div class="flex items-center gap-3">
+                <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">5</span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-xs font-semibold text-slate-200">After Drop</p>
+                  <p class="text-xs text-slate-500">Ghi D2102=0, đọc QR (D2361), kiểm tra khớp cassette, chờ D2021=1 (CraneReady)</p>
+                </div>
+                <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+                <button onclick="hsStepAfterDrop()"
+                  class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+              </div>
+              <div class="flex items-center gap-2 pl-9">
+                <label class="text-xs text-slate-500 whitespace-nowrap">Expected QR:</label>
+                <input id="hs-in-expected-qr" type="text" placeholder="để trống nếu không kiểm tra"
+                  class="flex-1 bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white text-xs focus:outline-none focus:border-green-500" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-in-6">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-green-800">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">6</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Wait Crane Ready (D2021)</p>
+                <p class="text-xs text-slate-500">Chờ CV báo cassette ở vị trí sẵn sàng cho crane lấy (D2021=1)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('inbound','wait-crane-ready',{timeoutSeconds:getHsCraneTimeout('in')},'hs-step-in-6')"
+                class="px-3 py-1.5 rounded-lg bg-green-800 hover:bg-green-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR -->
+        <div class="mt-4 pt-4 border-t border-slate-700">
+          <div class="flex items-center gap-3">
+            <button onclick="hsReadQr('inbound')"
+              class="px-3 py-1.5 rounded-lg bg-blue-800 hover:bg-blue-700 text-white text-xs transition">
+              🔍 Đọc QR (D2361)
+            </button>
+            <span id="hs-qr-inbound" class="text-xs font-mono text-yellow-300">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTBOUND FLOW -->
+      <div class="bg-slate-800 rounded-xl border border-orange-900 p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+          <h3 class="text-orange-400 font-semibold text-sm">Xuất kho – Outbound Flow (AGV pick)</h3>
+        </div>
+        <p class="text-xs text-slate-500 mb-4">Crane đặt hàng ra station → CV đưa ra → D2022=1 → AGV đến lấy.</p>
+
+        <!-- Timeout -->
+        <div class="flex items-center gap-4 mb-4 text-xs flex-wrap">
+          <div class="flex items-center gap-2">
+            <label class="text-slate-400">Timeout chờ CV handshake (s):</label>
+            <input id="hs-out-timeout" type="number" value="30" min="5" max="120"
+              class="w-16 bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-center focus:outline-none focus:border-orange-500" />
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="text-slate-400">Timeout chờ D2022 (s):</label>
+            <input id="hs-out-crane-timeout" type="number" value="120" min="5" max="300"
+              class="w-16 bg-slate-700 border border-slate-600 rounded px-2 py-1 text-white text-center focus:outline-none focus:border-orange-500" />
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="space-y-2">
+          <div class="hs-step" id="hs-step-out-0">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-orange-800">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">0</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Wait Crane Ready (D2022)</p>
+                <p class="text-xs text-slate-500">Chờ CV báo cassette ở vị trí sẵn sàng cho AGV lấy (sau crane xuất hàng)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','wait-crane-ready',{timeoutSeconds:getHsCraneTimeout('out')},'hs-step-out-0')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-out-1">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">1</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Before Pick</p>
+                <p class="text-xs text-slate-500">Ghi D2112=1 (AGV Arrived), chờ D2011+D2012+D2013=1 (D2022 đã chờ ở bước 0)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','before-pick',{timeoutSeconds:getHsTimeout('out')},'hs-step-out-1')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-out-2">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">2</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Enter Pickup Point</p>
+                <p class="text-xs text-slate-500">Ghi D2113=1 (MovingOrCarrying), D2114=1 (Intrusion flag)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','enter-pickup',{},'hs-step-out-2')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-out-3">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">3</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Lift Rack</p>
+                <p class="text-xs text-slate-500">Nâng hàng lên (hook point – hiện no-op)</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','lift-rack',{},'hs-step-out-3')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-out-4">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">4</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">Back to Waiting Point</p>
+                <p class="text-xs text-slate-500">Ghi D2113=0, D2114=0 – xóa cờ đang di chuyển</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','back-to-waiting',{},'hs-step-out-4')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+
+          <div class="hs-step" id="hs-step-out-5">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900 border border-slate-700">
+              <span class="step-badge text-xs font-bold w-6 h-6 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center flex-shrink-0">5</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-semibold text-slate-200">After Pickup</p>
+                <p class="text-xs text-slate-500">Ghi D2112=0 – kết thúc flow xuất kho</p>
+              </div>
+              <span class="step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400">–</span>
+              <button onclick="hsStep('outbound','after-pickup',{},'hs-step-out-5')"
+                class="px-3 py-1.5 rounded-lg bg-orange-800 hover:bg-orange-700 text-white text-xs transition whitespace-nowrap">▶ Run</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR -->
+        <div class="mt-4 pt-4 border-t border-slate-700">
+          <div class="flex items-center gap-3">
+            <button onclick="hsReadQr('outbound')"
+              class="px-3 py-1.5 rounded-lg bg-blue-800 hover:bg-blue-700 text-white text-xs transition">
+              🔍 Đọc QR (D2321)
+            </button>
+            <span id="hs-qr-outbound" class="text-xs font-mono text-yellow-300">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manual tag write panel -->
+    <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+      <h3 class="text-slate-300 font-semibold text-sm mb-4">🔧 Ghi tag thủ công (Manual Write)</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs mb-4" id="hs-manual-buttons">
+
+        <!-- INBOUND AGV→CV write tags -->
+        <div class="space-y-2">
+          <p class="text-green-400 font-semibold text-xs">Inbound – AGV→CV (WCS ghi)</p>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_ready','D2101',true)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2101=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_ready','D2101',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2101=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_arrived','D2102',true)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2102=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_arrived','D2102',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2102=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_handoverInProgress','D2103',true)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2103=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_handoverInProgress','D2103',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2103=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_intrusionDetected','D2104',true)"
+              class="flex-1 py-1 rounded bg-red-900 hover:bg-red-800 text-red-200 text-xs">D2104=1 ⚠</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_intrusionDetected','D2104',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2104=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_qrFinished','D2451',1)"
+              class="flex-1 py-1 rounded bg-blue-900 hover:bg-blue-800 text-blue-200 text-xs">D2451=1 ✓</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_in_qrFinished','D2451',2)"
+              class="flex-1 py-1 rounded bg-yellow-900 hover:bg-yellow-800 text-yellow-200 text-xs">D2451=2 ✗</button>
+          </div>
+        </div>
+
+        <!-- OUTBOUND AGV→CV write tags -->
+        <div class="space-y-2">
+          <p class="text-orange-400 font-semibold text-xs">Outbound – AGV→CV (WCS ghi)</p>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_ready','D2111',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2111=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_ready','D2111',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2111=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_arrived','D2112',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2112=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_arrived','D2112',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2112=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_movingOrCarrying','D2113',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2113=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_movingOrCarrying','D2113',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2113=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_intrusionDetected','D2114',true)"
+              class="flex-1 py-1 rounded bg-red-900 hover:bg-red-800 text-red-200 text-xs">D2114=1 ⚠</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_intrusionDetected','D2114',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2114=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_armOrReceiveAction','D2115',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2115=1</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.PLC.wcs_out_armOrReceiveAction','D2115',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2115=0</button>
+          </div>
+        </div>
+
+        <!-- INBOUND CV simulate (PLC→PC tags for test) -->
+        <div class="space-y-2">
+          <p class="text-green-400 font-semibold text-xs">Inbound – CV→AGV simulate (test D2021/D2028)</p>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_craneReady','D2021',true)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2021=1 ✓ CraneReady</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_craneReady','D2021',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2021=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_hasBox','D2028',false)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2028=0 ✓ Trống</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_hasBox','D2028',true)"
+              class="flex-1 py-1 rounded bg-yellow-900 hover:bg-yellow-800 text-yellow-200 text-xs">D2028=1 Có hàng</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_hasBox2','D2030',false)"
+              class="flex-1 py-1 rounded bg-green-900 hover:bg-green-800 text-green-200 text-xs">D2030=0 ✓ Trống</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_in_hasBox2','D2030',true)"
+              class="flex-1 py-1 rounded bg-yellow-900 hover:bg-yellow-800 text-yellow-200 text-xs">D2030=1 Có hàng</button>
+          </div>
+        </div>
+
+        <!-- OUTBOUND CV simulate -->
+        <div class="space-y-2">
+          <p class="text-orange-400 font-semibold text-xs">Outbound – CV→AGV simulate (test D2022/D2027/D2029)</p>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_craneReady','D2022',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2022=1 ✓ CraneReady</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_craneReady','D2022',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2022=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_hasBox','D2027',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2027=1 ✓ Có hàng</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_hasBox','D2027',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2027=0</button>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_hasBox2','D2029',true)"
+              class="flex-1 py-1 rounded bg-orange-900 hover:bg-orange-800 text-orange-200 text-xs">D2029=1 ✓ Có hàng</button>
+            <button onclick="hsWriteTag('DeviceM.CvAgv.OPC.dev_out_hasBox2','D2029',false)"
+              class="flex-1 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs">D2029=0</button>
+          </div>
+        </div>
+
+        <!-- Freeform write -->
+        <div class="col-span-2 space-y-2">
+          <p class="text-slate-400 font-semibold text-xs">Ghi bất kỳ tag (freeform)</p>
+          <div class="flex gap-2">
+            <input id="hs-node-input" type="text" placeholder="NodeId (ví dụ: DeviceM.CvAgv.PLC.wcs_in_ready)"
+              class="flex-1 bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-xs focus:outline-none focus:border-blue-500" />
+            <select id="hs-val-input"
+              class="bg-slate-700 border border-slate-600 rounded px-2 py-1.5 text-white text-xs focus:outline-none">
+              <option value="1">1 (true)</option>
+              <option value="0">0 (false)</option>
+            </select>
+            <button onclick="hsWriteFreeform()"
+              class="px-3 py-1.5 rounded bg-blue-700 hover:bg-blue-600 text-white text-xs transition">Ghi</button>
+          </div>
+          <div id="hs-write-result" class="text-xs font-mono text-slate-400"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOG TAB -->
+  <div id="pane-log" class="tab-pane hidden">
+    <div id="log-box" class="bg-slate-900 border border-slate-700 rounded-lg p-4 overflow-auto text-xs leading-relaxed"
+      style="max-height: calc(100vh - 220px)">
+      <p class="log-info">— Log trống —</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ---------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------
+  let autoRefresh = false;
+  let refreshTimer = null;
+  let filterText = '';
+  let currentTab = 'crane';
+  let craneData = [];
+  let stationData = [];
+
+  // ---------------------------------------------------------------
+  // Utils
+  // ---------------------------------------------------------------
+  function apiBase() {
+    return document.getElementById('api-url').value.replace(/\/$/, '');
+  }
+
+  function intervalMs() {
+    const v = parseInt(document.getElementById('interval-input').value, 10);
+    return Math.max(1, isNaN(v) ? 3 : v) * 1000;
+  }
+
+  function log(msg, type = 'info') {
+    const box = document.getElementById('log-box');
+    const time = new Date().toLocaleTimeString('vi-VN');
+    const p = document.createElement('p');
+    p.className = `log-${type}`;
+    p.textContent = `[${time}] ${msg}`;
+    box.appendChild(p);
+    box.scrollTop = box.scrollHeight;
+    if (box.children.length === 1 && box.children[0].textContent === '— Log trống —') {
+      box.innerHTML = '';
+      box.appendChild(p);
+    }
+    // Remove placeholder
+    const placeholder = box.querySelector('.log-info');
+    if (placeholder && placeholder.textContent === '— Log trống —') placeholder.remove();
+  }
+
+  function clearLog() {
+    document.getElementById('log-box').innerHTML = '<p class="log-info">— Log trống —</p>';
+  }
+
+  function showSpin(visible) {
+    document.getElementById('spin-icon').classList.toggle('hidden', !visible);
+  }
+
+  function setLastRefresh() {
+    document.getElementById('last-refresh').textContent =
+      'Updated: ' + new Date().toLocaleTimeString('vi-VN');
+  }
+
+  // ---------------------------------------------------------------
+  // Tabs
+  // ---------------------------------------------------------------
+  function switchTab(name) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('pane-' + name).classList.remove('hidden');
+    document.getElementById('tab-' + name).classList.add('active');
+    currentTab = name;
+  }
+
+  // ---------------------------------------------------------------
+  // Tag rendering
+  // ---------------------------------------------------------------
+  function dirClass(dir) {
+    if (dir === 'PC→PLC') return 'dir-pc-plc';
+    if (dir === 'PLC→PC') return 'dir-plc-pc';
+    if (dir === 'CV→AGV') return 'dir-cv-agv';
+    return 'dir-agv-cv';
+  }
+
+  function catClass(cat) {
+    const key = cat.replace('/', '').replace(' ', '');
+    return 'cat-' + key;
+  }
+
+  function valClass(tag) {
+    if (!tag.isGood) return 'val-error';
+    if (tag.rawValue === null || tag.rawValue === undefined) return 'val-null';
+    const n = Number(tag.rawValue);
+    if (!isNaN(n) && n !== 0) return 'val-nonzero';
+    return 'val-good';
+  }
+
+  function renderTagRow(tag) {
+    const valCls = valClass(tag);
+    const dispVal = tag.error ? `ERR: ${tag.error.substring(0, 40)}` :
+                   (tag.rawValue !== null && tag.rawValue !== undefined ? tag.rawValue : '—');
+    const decoded = tag.decodedValue ? `<span class="text-yellow-300">${tag.decodedValue}</span>` : '—';
+    const ts = tag.timestamp ? new Date(tag.timestamp).toLocaleTimeString('vi-VN') : '—';
+    const ok = tag.isGood
+      ? '<span class="text-green-400">✓</span>'
+      : '<span class="text-red-500">✗</span>';
+
+    return `<tr data-search="${tag.tagId.toLowerCase()} ${tag.description.toLowerCase()} ${tag.nodeId.toLowerCase()}">
+      <td class="font-mono font-bold text-slate-200">${tag.tagId}</td>
+      <td class="text-slate-300 max-w-xs truncate" title="${tag.description}">${tag.description}</td>
+      <td class="text-center"><span class="${dirClass(tag.direction)} text-xs font-mono">${tag.direction}</span></td>
+      <td class="text-center"><span class="px-1.5 py-0.5 rounded text-xs ${catClass(tag.category)}">${tag.category}</span></td>
+      <td class="text-right font-mono"><span class="px-2 py-0.5 rounded text-xs ${valCls}">${dispVal}</span></td>
+      <td class="text-right text-xs">${decoded}</td>
+      <td class="text-right text-slate-500 text-xs">${ts}</td>
+      <td class="text-center">${ok}</td>
+    </tr>`;
+  }
+
+  function renderTags(bodyId, tags) {
+    const tbody = document.getElementById(bodyId);
+    tbody.innerHTML = tags.map(renderTagRow).join('');
+  }
+
+  function updateSummary(elId, data) {
+    const good = data.filter(t => t.isGood).length;
+    const total = data.length;
+    const nonzero = data.filter(t => t.isGood && t.rawValue !== null && Number(t.rawValue) !== 0).length;
+    document.getElementById(elId).innerHTML = `
+      <span class="bg-slate-700 px-3 py-1 rounded-full text-slate-300">Tổng: <b>${total}</b></span>
+      <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full">OK: <b>${good}</b></span>
+      <span class="bg-red-900 text-red-300 px-3 py-1 rounded-full">Lỗi: <b>${total - good}</b></span>
+      <span class="bg-yellow-900 text-yellow-300 px-3 py-1 rounded-full">Non-zero: <b>${nonzero}</b></span>
+    `;
+  }
+
+  function applyFilter() {
+    filterText = document.getElementById('filter-input').value.toLowerCase();
+    document.querySelectorAll('#crane-body tr, #station-body tr').forEach(tr => {
+      const search = tr.getAttribute('data-search') || '';
+      tr.style.display = !filterText || search.includes(filterText) ? '' : 'none';
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // Fetch all tags
+  // ---------------------------------------------------------------
+  async function fetchAll() {
+    showSpin(true);
+    try {
+      const r = await fetch(`${apiBase()}/api/warehouse/tags`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+
+      craneData = data.crane?.tags ?? [];
+      stationData = data.station?.tags ?? [];
+
+      // Crane
+      renderTags('crane-body', craneData);
+      updateSummary('crane-summary', craneData);
+      document.getElementById('cnt-crane').textContent = craneData.length;
+
+      // Station
+      renderTags('station-body', stationData);
+      updateSummary('station-summary', stationData);
+      document.getElementById('cnt-station').textContent = stationData.length;
+
+      // Connection dot
+      const connected = data.isConnected;
+      const dot = document.getElementById('opc-dot');
+      dot.className = 'status-dot ' + (connected ? 'bg-green-500' : 'bg-red-500');
+      document.getElementById('opc-status').textContent = connected ? 'OPC Connected' : 'OPC Disconnected';
+
+      applyFilter();
+      setLastRefresh();
+      log(`Fetch tags OK – Crane: ${craneData.length}, Station: ${stationData.length}`, 'ok');
+    } catch (e) {
+      log(`Fetch tags FAIL: ${e.message}`, 'err');
+      document.getElementById('opc-dot').className = 'status-dot bg-yellow-500';
+      document.getElementById('opc-status').textContent = 'API Error';
+    }
+    showSpin(false);
+
+    // Also fetch feedback if on feedback tab
+    if (currentTab === 'feedback') await fetchFeedback();
+  }
+
+  // ---------------------------------------------------------------
+  // Crane feedback
+  // ---------------------------------------------------------------
+  async function fetchFeedback() {
+    try {
+      const r = await fetch(`${apiBase()}/api/warehouse/crane/feedback`);
+      const data = await r.json();
+      if (data.success && data.data) {
+        const d = data.data;
+        document.getElementById('fb-taskno').textContent = d.taskNo ?? '—';
+        document.getElementById('fb-tasktype').textContent = `${d.taskType} (${d.taskTypeCode})`;
+        document.getElementById('fb-status').textContent = `${d.status} (${d.statusCode})`;
+        document.getElementById('fb-execfb').textContent = `${d.executeFeedback} (${d.executeFeedbackCode})`;
+        document.getElementById('fb-complete').textContent = `${d.completeStatus} (${d.completeStatusCode})`;
+        document.getElementById('fb-special').textContent = `${d.specialError} (${d.specialErrorCode})`;
+        document.getElementById('fb-errcode').textContent = d.errorCode ?? '—';
+        document.getElementById('fb-errnote').textContent = d.errorNote || '—';
+        document.getElementById('fb-row').textContent = d.position?.row ?? '—';
+        document.getElementById('fb-floor').textContent = d.position?.floor ?? '—';
+        document.getElementById('fb-forkpos').textContent = d.position?.forkPosition ?? '—';
+        document.getElementById('fb-timestamp').textContent = 'Updated: ' + new Date(data.timestamp).toLocaleTimeString('vi-VN');
+      } else {
+        document.getElementById('fb-timestamp').textContent = `Lỗi: ${data.error}`;
+      }
+    } catch (e) {
+      log(`Fetch feedback FAIL: ${e.message}`, 'err');
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // Crane Actions
+  // ---------------------------------------------------------------
+  function showResult(elId, data, ok) {
+    const el = document.getElementById(elId);
+    el.classList.remove('hidden');
+    el.className = `mt-3 text-xs font-mono p-3 rounded ${ok ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}`;
+    el.textContent = JSON.stringify(data, null, 2);
+  }
+
+  async function apiPost(path, body) {
+    const r = await fetch(`${apiBase()}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return { ok: r.ok, status: r.status, data: await r.json() };
+  }
+
+  function updateManualCurtainUI(tag, ids) {
+    const panel = document.getElementById(ids.panel);
+    const statusEl = document.getElementById(ids.status);
+    const detailEl = document.getElementById(ids.detail);
+    if (!panel || !statusEl || !detailEl) return;
+
+    if (!tag || !tag.isGood) {
+      panel.className = 'curtain-panel-unk border-2 rounded-xl p-4 mb-4 transition-colors';
+      statusEl.className = 'text-sm font-semibold text-slate-400 mt-1';
+      statusEl.textContent = tag?.error ? 'Lỗi đọc OPC' : `Chưa đọc ${ids.tagLabel}`;
+      detailEl.textContent = tag?.error ? `${ids.tagLabel}: ERR – ${tag.error}` : `${ids.tagLabel}: —`;
+      return;
+    }
+
+    const val = Number(tag.rawValue);
+    detailEl.textContent = `${ids.tagLabel} = ${val} · cập nhật ${tag.timestamp ? new Date(tag.timestamp).toLocaleTimeString('vi-VN') : '—'}`;
+
+    if (val === 1) {
+      panel.className = 'curtain-panel-off border-2 rounded-xl p-4 mb-4 transition-colors';
+      statusEl.className = 'text-sm font-semibold text-green-300 mt-1';
+      statusEl.textContent = '🟢 Chế độ thủ công – Rèm TẮT (mute)';
+    } else {
+      panel.className = 'curtain-panel-on border-2 rounded-xl p-4 mb-4 transition-colors';
+      statusEl.className = 'text-sm font-semibold text-red-300 mt-1';
+      statusEl.textContent = '🔴 Rèm BẬT – Khu vực an toàn đang kích hoạt';
+    }
+  }
+
+  const INBOUND_MANUAL_UI = {
+    panel: 'manual-curtain-panel',
+    status: 'manual-curtain-status',
+    detail: 'manual-curtain-detail',
+    tagLabel: 'D2024',
+  };
+
+  const OUTBOUND_MANUAL_UI = {
+    panel: 'manual-out-curtain-panel',
+    status: 'manual-out-curtain-status',
+    detail: 'manual-out-curtain-detail',
+    tagLabel: 'D2026',
+  };
+
+  function updateInboundManualCurtainUI(tag) {
+    updateManualCurtainUI(tag, INBOUND_MANUAL_UI);
+  }
+
+  function updateOutboundManualCurtainUI(tag) {
+    updateManualCurtainUI(tag, OUTBOUND_MANUAL_UI);
+  }
+
+  async function refreshManualCurtainStatus() {
+    log('Refresh trạng thái D2024...', 'info');
+    try {
+      const r = await fetch(`${apiBase()}/api/crane/inbound/manual/status`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const res = await r.json();
+      const status = res.data;
+      if (status?.isGood) {
+        updateInboundManualCurtainUI({
+          isGood: true,
+          rawValue: status.safetySensorStatus,
+          timestamp: status.timestamp,
+        });
+        log(`D2024 = ${status.safetySensorStatus} (${status.description})`, 'ok');
+      } else {
+        updateInboundManualCurtainUI({
+          isGood: false,
+          error: status?.error || res.message || 'Không đọc được D2024',
+        });
+        log(`D2024 không đọc được: ${status?.error || res.message}`, 'err');
+      }
+    } catch (e) {
+      updateInboundManualCurtainUI(null);
+      log(`Refresh D2024 FAIL: ${e.message}`, 'err');
+    }
+  }
+
+  async function refreshOutboundManualCurtainStatus() {
+    log('Refresh trạng thái D2026...', 'info');
+    try {
+      const r = await fetch(`${apiBase()}/api/crane/outbound/manual/status`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const res = await r.json();
+      const status = res.data;
+      if (status?.isGood) {
+        updateOutboundManualCurtainUI({
+          isGood: true,
+          rawValue: status.safetySensorStatus,
+          timestamp: status.timestamp,
+        });
+        log(`D2026 = ${status.safetySensorStatus} (${status.description})`, 'ok');
+      } else {
+        updateOutboundManualCurtainUI({
+          isGood: false,
+          error: status?.error || res.message || 'Không đọc được D2026',
+        });
+        log(`D2026 không đọc được: ${status?.error || res.message}`, 'err');
+      }
+    } catch (e) {
+      updateOutboundManualCurtainUI(null);
+      log(`Refresh D2026 FAIL: ${e.message}`, 'err');
+    }
+  }
+
+  async function setInboundManualMode(open) {
+    const label = open === 1 ? 'Bật' : 'Tắt';
+    log(`${label} chế độ thủ công (open=${open})...`, 'info');
+    const openBtn = document.getElementById('btn-manual-open');
+    const closeBtn = document.getElementById('btn-manual-close');
+    openBtn.disabled = true;
+    closeBtn.disabled = true;
+    try {
+      const res = await apiPost('/api/crane/inbound/manual', { open });
+      showResult('manual-in-result', res.data, res.ok);
+      log(`Manual inbound ${res.ok ? 'OK' : 'FAIL'}: ${res.data?.message ?? JSON.stringify(res.data).substring(0, 80)}`, res.ok ? 'ok' : 'err');
+      await refreshManualCurtainStatus();
+    } catch (e) {
+      showResult('manual-in-result', { error: e.message }, false);
+      log(`Manual inbound ERROR: ${e.message}`, 'err');
+    } finally {
+      openBtn.disabled = false;
+      closeBtn.disabled = false;
+    }
+  }
+
+  async function setOutboundManualMode(open) {
+    const label = open === 1 ? 'Bật' : 'Tắt';
+    log(`${label} chế độ thủ công outbound (open=${open})...`, 'info');
+    const openBtn = document.getElementById('btn-out-manual-open');
+    const closeBtn = document.getElementById('btn-out-manual-close');
+    openBtn.disabled = true;
+    closeBtn.disabled = true;
+    try {
+      const res = await apiPost('/api/crane/outbound/manual', { open });
+      showResult('manual-out-result', res.data, res.ok);
+      log(`Outbound manual ${res.ok ? 'OK' : 'FAIL'}: ${res.data?.message ?? JSON.stringify(res.data).substring(0, 80)}`, res.ok ? 'ok' : 'err');
+      await refreshOutboundManualCurtainStatus();
+    } catch (e) {
+      showResult('manual-out-result', { error: e.message }, false);
+      log(`Outbound manual ERROR: ${e.message}`, 'err');
+    } finally {
+      openBtn.disabled = false;
+      closeBtn.disabled = false;
+    }
+  }
+
+  async function sendInbound() {
+    const row   = parseInt(document.getElementById('in-row').value);
+    const floor = parseInt(document.getElementById('in-floor').value);
+    const pos   = parseInt(document.getElementById('in-pos').value);
+    const callWmsConfirm  = document.getElementById('in-wms-confirm').checked;
+    const callWmsComplete = document.getElementById('in-wms-complete').checked;
+    const posCode = `F${floor}-R${row}-P${pos}`;
+    log(`Gửi Inbound: Pick=(1,1,1) Put=${posCode} | WmsConfirm=${callWmsConfirm} WmsComplete=${callWmsComplete}`, 'info');
+    try {
+      const body = {
+        putPosition: { row, floor, position: pos },
+        callWmsConfirm,
+        callWmsComplete,
+        stageCode:  document.getElementById('in-stagecode').value  || null,
+        cassetteId: document.getElementById('in-cassetteid').value || null,
+        size:       document.getElementById('in-size').value       || null,
+        product:    document.getElementById('in-product').value    || null,
+        quantity:   parseInt(document.getElementById('in-qty').value) || 1,
+      };
+      const res = await apiPost('/api/crane/inbound', body);
+      showResult('in-result', res.data, res.ok);
+      log(`Inbound ${res.ok ? 'OK' : 'FAIL'}: ${JSON.stringify(res.data).substring(0, 100)}`, res.ok ? 'ok' : 'err');
+    } catch (e) {
+      showResult('in-result', { error: e.message }, false);
+      log(`Inbound ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function sendOutbound() {
+    const row   = parseInt(document.getElementById('out-row').value);
+    const floor = parseInt(document.getElementById('out-floor').value);
+    const pos   = parseInt(document.getElementById('out-pos').value);
+    const callWmsConfirm  = document.getElementById('out-wms-confirm').checked;
+    const callWmsComplete = document.getElementById('out-wms-complete').checked;
+    const posCode = `F${floor}-R${row}-P${pos}`;
+    log(`Gửi Outbound: Pick=${posCode} Put=(1,1,18) | WmsConfirm=${callWmsConfirm} WmsComplete=${callWmsComplete}`, 'info');
+    try {
+      const res = await apiPost('/api/crane/outbound', {
+        pickPosition: { row, floor, position: pos },
+        callWmsConfirm,
+        callWmsComplete,
+      });
+      showResult('out-result', res.data, res.ok);
+      log(`Outbound ${res.ok ? 'OK' : 'FAIL'}: ${JSON.stringify(res.data).substring(0, 100)}`, res.ok ? 'ok' : 'err');
+    } catch (e) {
+      showResult('out-result', { error: e.message }, false);
+      log(`Outbound ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function sendInternalMove() {
+    const body = {
+      pickPosition: {
+        row: parseInt(document.getElementById('im-pick-row').value),
+        floor: parseInt(document.getElementById('im-pick-floor').value),
+        position: parseInt(document.getElementById('im-pick-pos').value)
+      },
+      putPosition: {
+        row: parseInt(document.getElementById('im-put-row').value),
+        floor: parseInt(document.getElementById('im-put-floor').value),
+        position: parseInt(document.getElementById('im-put-pos').value)
+      }
+    };
+    log(`Gửi InternalMove: Pick=(${body.pickPosition.row},${body.pickPosition.floor},${body.pickPosition.position}) Put=(${body.putPosition.row},${body.putPosition.floor},${body.putPosition.position})`, 'info');
+    try {
+      const res = await apiPost('/api/crane/internal-move', body);
+      showResult('im-result', res.data, res.ok);
+      log(`InternalMove ${res.ok ? 'OK' : 'FAIL'}: ${JSON.stringify(res.data).substring(0, 80)}`, res.ok ? 'ok' : 'err');
+    } catch (e) {
+      showResult('im-result', { error: e.message }, false);
+      log(`InternalMove ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function cancelTask() {
+    const taskNo = parseInt(document.getElementById('cancel-taskno').value);
+    log(`Hủy task #${taskNo}`, 'info');
+    try {
+      const res = await apiPost('/api/crane/cancel', { taskNo });
+      showResult('ctrl-result', res.data, res.ok);
+      log(`Cancel ${res.ok ? 'OK' : 'FAIL'}`, res.ok ? 'ok' : 'err');
+    } catch (e) {
+      showResult('ctrl-result', { error: e.message }, false);
+      log(`Cancel ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function clearTaskData() {
+    log('Clear task data (D3003–D3010, D3016)...', 'info');
+    try {
+      const res = await apiPost('/api/crane/clear-task-data', {});
+      showResult('ctrl-result', res.data, res.ok);
+      log(`ClearTaskData ${res.ok ? 'OK' : 'FAIL'}`, res.ok ? 'ok' : 'err');
+      await fetchAll();
+    } catch (e) {
+      showResult('ctrl-result', { error: e.message }, false);
+      log(`ClearTaskData ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function writeTaskFinishAffirm() {
+    const value = parseInt(document.getElementById('d3013-value').value);
+    log(`Ghi D3013=${value}`, 'info');
+    try {
+      const res = await apiPost('/api/crane/task-finish-affirm', { value });
+      showResult('ctrl-result', res.data, res.ok);
+      log(`D3013 ${res.ok ? 'OK' : 'FAIL'}`, res.ok ? 'ok' : 'err');
+      await fetchAll();
+    } catch (e) {
+      showResult('ctrl-result', { error: e.message }, false);
+      log(`D3013 ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function opcConnect() {
+    log('Kết nối OPC UA...', 'info');
+    try {
+      const r = await fetch(`${apiBase()}/api/opcua/connect`, { method: 'POST' });
+      const d = await r.json();
+      showResult('ctrl-result', d, r.ok);
+      log(`OPC Connect ${r.ok ? 'OK' : 'FAIL'}`, r.ok ? 'ok' : 'err');
+      await fetchAll();
+    } catch (e) {
+      log(`OPC Connect ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function opcDisconnect() {
+    log('Ngắt kết nối OPC UA...', 'info');
+    try {
+      const r = await fetch(`${apiBase()}/api/opcua/disconnect`, { method: 'POST' });
+      const d = await r.json();
+      showResult('ctrl-result', d, r.ok);
+      log(`OPC Disconnect ${r.ok ? 'OK' : 'FAIL'}`, r.ok ? 'ok' : 'err');
+    } catch (e) {
+      log(`OPC Disconnect ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // Auto refresh
+  // ---------------------------------------------------------------
+  function toggleAutoRefresh() {
+    autoRefresh = !autoRefresh;
+    const btn = document.getElementById('toggle-auto');
+    if (autoRefresh) {
+      btn.textContent = '⏸ Dừng auto-refresh';
+      btn.className = 'px-3 py-1 rounded bg-blue-700 hover:bg-blue-600 text-white transition';
+      scheduleRefresh();
+    } else {
+      btn.textContent = '▶ Bật auto-refresh';
+      btn.className = 'px-3 py-1 rounded bg-slate-600 hover:bg-slate-500 text-white transition';
+      clearTimeout(refreshTimer);
+    }
+  }
+
+  function scheduleRefresh() {
+    clearTimeout(refreshTimer);
+    if (!autoRefresh) return;
+    refreshTimer = setTimeout(async () => {
+      await fetchAll();
+      scheduleRefresh();
+    }, intervalMs());
+  }
+
+  // ---------------------------------------------------------------
+  // Station Handshake
+  // ---------------------------------------------------------------
+
+  // Tag definitions for the monitor panel
+  const HS_HASBOX_TAGS = [
+    { key:'out_cv_has_box',  tagId:'D2027', side:'outbound', label:'Cửa kho xuất', expect:'1', goodWhenOne:true  },
+    { key:'in_cv_has_box',   tagId:'D2028', side:'inbound',  label:'Cửa kho nhập', expect:'0', goodWhenOne:false },
+    { key:'out_cv_has_box2', tagId:'D2029', side:'outbound', label:'Cửa kho xuất #2', expect:'1', goodWhenOne:true  },
+    { key:'in_cv_has_box2',  tagId:'D2030', side:'inbound',  label:'Cửa kho nhập #2', expect:'0', goodWhenOne:false },
+  ];
+
+  const HS_INBOUND_TAGS = [
+    { key:'in_cv_ready',       label:'D2001 – CV Ready',           dir:'CV→AGV', role:'read',  color:'green'  },
+    { key:'in_cv_allow',       label:'D2002 – CV AllowHandover',   dir:'CV→AGV', role:'read',  color:'green'  },
+    { key:'in_cv_safety',      label:'D2003 – CV Safety OK',       dir:'CV→AGV', role:'read',  color:'green'  },
+    { key:'in_cv_conveyor',    label:'D2004 – CV Conveyor Running',dir:'CV→AGV', role:'read',  color:'green'  },
+    { key:'in_cv_crane_ready', label:'D2021 – CV CraneReady 🏗',  dir:'CV→AGV', role:'read',  color:'green'  },
+    { key:'in_cv_curtain',     label:'D2024 – Rèm an toàn (0=bật,1=mute)', dir:'CV→AGV', role:'read', color:'amber' },
+    { key:'in_cv_has_box',     label:'D2028 – Có hàng cửa nhập (0=trống,1=có)', dir:'CV→AGV', role:'read', color:'amber', goodWhenOne:false },
+    { key:'in_cv_has_box2',    label:'D2030 – Có hàng cửa nhập #2', dir:'CV→AGV', role:'read', color:'amber', goodWhenOne:false },
+    { key:'in_cv_qr_ready',    label:'D2361 – CV QR Ready',        dir:'CV→AGV', role:'read',  color:'blue'   },
+    { key:'in_agv_ready',      label:'D2101 – AGV Ready',          dir:'AGV→CV', role:'write', color:'slate'  },
+    { key:'in_agv_arrived',    label:'D2102 – AGV Arrived',        dir:'AGV→CV', role:'write', color:'slate'  },
+    { key:'in_agv_inprogress', label:'D2103 – AGV HandoverInProgress',dir:'AGV→CV',role:'write',color:'slate' },
+    { key:'in_agv_intrusion',  label:'D2104 – AGV Intrusion ⚠',   dir:'AGV→CV', role:'write', color:'red'    },
+    { key:'in_agv_qr_done',    label:'D2451 – AGV QR Finished',   dir:'AGV→CV', role:'write', color:'blue'   },
+  ];
+
+  const HS_OUTBOUND_TAGS = [
+    { key:'out_cv_ready',      label:'D2011 – CV Ready',           dir:'CV→AGV', role:'read',  color:'orange' },
+    { key:'out_cv_request',    label:'D2012 – CV RequestAgvArrive',dir:'CV→AGV', role:'read',  color:'orange' },
+    { key:'out_cv_safety',     label:'D2013 – CV Safety OK',       dir:'CV→AGV', role:'read',  color:'orange' },
+    { key:'out_cv_conveyor',   label:'D2014 – CV Conveyor Running',dir:'CV→AGV', role:'read',  color:'orange' },
+    { key:'out_cv_crane_ready',label:'D2022 – CV CraneReady 🏗',  dir:'CV→AGV', role:'read',  color:'orange' },
+    { key:'out_cv_has_box',    label:'D2027 – Có hàng cửa xuất (1=có,0=không)', dir:'CV→AGV', role:'read', color:'amber', goodWhenOne:true },
+    { key:'out_cv_has_box2',   label:'D2029 – Có hàng cửa xuất #2', dir:'CV→AGV', role:'read', color:'amber', goodWhenOne:true },
+    { key:'out_cv_curtain',    label:'D2026 – Rèm an toàn (0=bật,1=mute)', dir:'CV→AGV', role:'read', color:'amber' },
+    { key:'out_cv_qr_ready',   label:'D2321 – CV QR Ready',        dir:'CV→AGV', role:'read',  color:'blue'   },
+    { key:'out_agv_ready',     label:'D2111 – AGV Ready',          dir:'AGV→CV', role:'write', color:'slate'  },
+    { key:'out_agv_arrived',   label:'D2112 – AGV Arrived',        dir:'AGV→CV', role:'write', color:'slate'  },
+    { key:'out_agv_moving',    label:'D2113 – AGV MovingOrCarrying',dir:'AGV→CV',role:'write', color:'slate'  },
+    { key:'out_agv_intrusion', label:'D2114 – AGV Intrusion ⚠',   dir:'AGV→CV', role:'write', color:'red'    },
+    { key:'out_agv_receiving', label:'D2115 – AGV ArmOrReceive',   dir:'AGV→CV', role:'write', color:'slate'  },
+    { key:'out_agv_qr_done',   label:'D2411 – AGV QR Finished',   dir:'AGV→CV', role:'write', color:'blue'   },
+  ];
+
+  let hsTagData = {};
+
+  function getHsTimeout(side) {
+    return parseInt(document.getElementById(`hs-${side}-timeout`).value, 10) || 30;
+  }
+
+  function getHsCraneTimeout(side) {
+    return parseInt(document.getElementById(`hs-${side}-crane-timeout`).value, 10) || 120;
+  }
+
+  function hsTagIsOk(t, d) {
+    if (!d?.isGood) return false;
+    const raw = Number(d.raw);
+    if (Number.isNaN(raw)) return false;
+    if (t.goodWhenOne === false) return raw === 0;
+    if (t.goodWhenOne === true) return raw === 1;
+    return raw !== 0;
+  }
+
+  function renderHsHasBoxCards() {
+    const el = document.getElementById('hs-hasbox-cards');
+    if (!el) return;
+    el.innerHTML = HS_HASBOX_TAGS.map(t => {
+      const d = hsTagData[t.key];
+      const isGood = d?.isGood ?? false;
+      const raw = d?.raw ?? '?';
+      const ok = hsTagIsOk(t, d);
+      const sideCls = t.side === 'inbound' ? 'border-green-900/50' : 'border-orange-900/50';
+      const titleCls = t.side === 'inbound' ? 'text-green-400' : 'text-orange-400';
+      const valTxt = !isGood ? 'ERR' : (raw === 0 ? '0 – Trống' : '1 – Có hàng');
+      const cardCls = !isGood
+        ? 'bg-red-950/40 border-red-800'
+        : ok
+          ? 'bg-emerald-950/40 border-emerald-700'
+          : 'bg-amber-950/40 border-amber-700';
+      const statusTxt = !isGood ? 'Lỗi OPC' : ok ? '✓ OK' : '✗ Chưa đạt';
+      return `<div class="rounded-lg border p-3 ${cardCls} ${sideCls}">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-mono font-bold text-slate-100">${t.tagId}</span>
+          <span class="text-xs ${titleCls}">${t.side === 'inbound' ? 'Nhập' : 'Xuất'}</span>
+        </div>
+        <p class="text-xs text-slate-400 mb-2">${t.label}</p>
+        <p class="text-lg font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${valTxt}</p>
+        <p class="text-xs text-slate-500 mt-1">Mong đợi: ${t.expect} · ${statusTxt}</p>
+      </div>`;
+    }).join('');
+  }
+
+  function renderHsTags(containerId, tagDefs) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = tagDefs.map(t => {
+      const d = hsTagData[t.key];
+      const isTrue = d?.isTrue ?? false;
+      const isGood = d?.isGood ?? false;
+      const raw = d?.raw ?? '?';
+      const err = d?.error;
+      const isOk = hsTagIsOk(t, d);
+
+      let dotCls = 'bg-slate-600';
+      let valCls = 'text-slate-500';
+      let valTxt = '—';
+
+      if (!isGood && err) {
+        dotCls = 'bg-red-600';
+        valTxt = 'ERR';
+        valCls = 'text-red-400';
+      } else if (isGood) {
+        dotCls = isOk ? 'bg-green-500' : (isTrue ? 'bg-amber-500' : 'bg-slate-600');
+        valTxt = raw.toString();
+        valCls = isOk ? 'text-green-400 font-bold' : (isTrue ? 'text-amber-300 font-bold' : 'text-slate-500');
+      }
+
+      const dirCls = t.dir === 'CV→AGV' ? 'text-blue-400' : 'text-purple-400';
+      const roleCls = t.role === 'read' ? 'bg-slate-700 text-slate-400' : 'bg-indigo-900 text-indigo-300';
+
+      return `<div class="flex items-center gap-2 text-xs py-1">
+        <span class="status-dot flex-shrink-0 ${dotCls}"></span>
+        <span class="flex-1 text-slate-300 font-mono">${t.label}</span>
+        <span class="${dirCls} text-xs">${t.dir}</span>
+        <span class="px-1 rounded text-xs ${roleCls}">${t.role}</span>
+        <span class="w-6 text-right ${valCls}">${valTxt}</span>
+      </div>`;
+    }).join('');
+  }
+
+  function renderHsConditions(inboundAnalysis, outboundAnalysis) {
+    // Inbound conditions
+    const inEl = document.getElementById('hs-cond-inbound');
+    if (inEl) {
+      const conds = [
+        { label: 'CV Ready (D2001)', ok: inboundAnalysis?.cvReady },
+        { label: 'AllowHandover (D2002)', ok: inboundAnalysis?.cvAllow },
+        { label: 'Safety OK (D2003)', ok: inboundAnalysis?.cvSafety },
+        { label: 'Không có hàng (D2028=0)', ok: inboundAnalysis?.cvHasNoBox },
+        { label: 'Không có hàng #2 (D2030=0)', ok: inboundAnalysis?.cvHasNoBox2 },
+        { label: 'CraneReady (D2021)', ok: inboundAnalysis?.cvCraneReady },
+        { label: 'Rèm mute (D2024=1)', ok: inboundAnalysis?.cvCurtainMuted },
+      ];
+      const allOk = inboundAnalysis?.canStartHandshake;
+      const craneOk = inboundAnalysis?.canCallCrane;
+      inEl.innerHTML = conds.map(c =>
+        `<span class="px-2 py-0.5 rounded ${c.ok ? 'bg-green-900 text-green-300' : 'bg-red-950 text-red-400'}">${c.ok ? '✓' : '✗'} ${c.label}</span>`
+      ).join('')
+        + `<span class="ml-2 px-2 py-0.5 rounded font-bold ${allOk ? 'bg-green-800 text-green-200' : 'bg-red-900 text-red-300'}">${allOk ? '🟢 HANDSHAKE OK' : '🔴 CHƯA HANDSHAKE'}</span>`
+        + `<span class="ml-2 px-2 py-0.5 rounded font-bold ${craneOk ? 'bg-green-800 text-green-200' : 'bg-yellow-900 text-yellow-200'}">${craneOk ? '🟢 GỌI CRANE OK' : '🟡 CHỜ D2021'}</span>`;
+    }
+
+    // Outbound conditions
+    const outEl = document.getElementById('hs-cond-outbound');
+    if (outEl) {
+      const conds = [
+        { label: 'CV Ready (D2011)', ok: outboundAnalysis?.cvReady },
+        { label: 'RequestAgv (D2012)', ok: outboundAnalysis?.cvRequest },
+        { label: 'Safety OK (D2013)', ok: outboundAnalysis?.cvSafety },
+        { label: 'Có hàng (D2027=1)', ok: outboundAnalysis?.cvHasBox },
+        { label: 'Có hàng #2 (D2029=1)', ok: outboundAnalysis?.cvHasBox2 },
+        { label: 'CraneReady (D2022)', ok: outboundAnalysis?.cvCraneReady },
+        { label: 'Rèm mute (D2026=1)', ok: outboundAnalysis?.cvCurtainMuted },
+      ];
+      const allOk = outboundAnalysis?.canStartHandshake;
+      const pickOk = outboundAnalysis?.canStartAgvPick;
+      outEl.innerHTML = conds.map(c =>
+        `<span class="px-2 py-0.5 rounded ${c.ok ? 'bg-green-900 text-green-300' : 'bg-red-950 text-red-400'}">${c.ok ? '✓' : '✗'} ${c.label}</span>`
+      ).join('')
+        + `<span class="ml-2 px-2 py-0.5 rounded font-bold ${allOk ? 'bg-green-800 text-green-200' : 'bg-red-900 text-red-300'}">${allOk ? '🟢 HANDSHAKE OK' : '🔴 CHƯA HANDSHAKE'}</span>`
+        + `<span class="ml-2 px-2 py-0.5 rounded font-bold ${pickOk ? 'bg-green-800 text-green-200' : 'bg-yellow-900 text-yellow-200'}">${pickOk ? '🟢 AGV PICK OK' : '🟡 CHỜ D2022'}</span>`;
+    }
+  }
+
+  async function fetchHandshakeTags() {
+    try {
+      const r = await fetch(`${apiBase()}/api/station-handshake/tags/snapshot`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      hsTagData = data.tags ?? {};
+      renderHsHasBoxCards();
+      renderHsTags('hs-tags-inbound', HS_INBOUND_TAGS);
+      renderHsTags('hs-tags-outbound', HS_OUTBOUND_TAGS);
+      renderHsConditions(data.analysis?.inbound, data.analysis?.outbound);
+    } catch (e) {
+      log(`Fetch handshake tags FAIL: ${e.message}`, 'err');
+    }
+  }
+
+  function setStepStatus(stepId, status) {
+    const el = document.querySelector(`#${stepId} .step-status`);
+    if (!el) return;
+    if (status === 'running') {
+      el.className = 'step-status text-xs px-2 py-0.5 rounded bg-yellow-900 text-yellow-300';
+      el.textContent = '⏳';
+    } else if (status === 'ok') {
+      el.className = 'step-status text-xs px-2 py-0.5 rounded bg-green-900 text-green-300';
+      el.textContent = '✓ OK';
+    } else if (status === 'fail') {
+      el.className = 'step-status text-xs px-2 py-0.5 rounded bg-red-900 text-red-300';
+      el.textContent = '✗ Fail';
+    } else {
+      el.className = 'step-status text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400';
+      el.textContent = '–';
+    }
+  }
+
+  async function hsStep(flow, stepPath, params, stepId) {
+    setStepStatus(stepId, 'running');
+    const qs = new URLSearchParams(params).toString();
+    const url = `${apiBase()}/api/station-handshake/${flow}/${stepPath}${qs ? '?' + qs : ''}`;
+    log(`[${flow}/${stepPath}] Calling...`, 'info');
+    try {
+      const r = await fetch(url, { method: 'POST' });
+      const data = await r.json();
+      const ok = data.success === true;
+      setStepStatus(stepId, ok ? 'ok' : 'fail');
+      log(`[${flow}/${stepPath}] ${ok ? 'OK' : 'FAIL'}: ${data.error || 'success'}`, ok ? 'ok' : 'err');
+      await fetchHandshakeTags();
+    } catch (e) {
+      setStepStatus(stepId, 'fail');
+      log(`[${flow}/${stepPath}] ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function hsReadQr(flow) {
+    const el = document.getElementById(`hs-qr-${flow}`);
+    el.textContent = '⏳ đang đọc...';
+    try {
+      const r = await fetch(`${apiBase()}/api/station-handshake/${flow}/read-qr`);
+      const data = await r.json();
+      if (data.success && data.hasQr) {
+        el.textContent = `✓ ${data.qrCode}`;
+        log(`[QR-${flow}] OK: ${data.qrCode}`, 'ok');
+      } else if (data.success && !data.hasQr) {
+        el.textContent = '(QR chưa sẵn sàng – flag = 0)';
+        log(`[QR-${flow}] QR not ready`, 'info');
+      } else {
+        el.textContent = `✗ ${data.error}`;
+        log(`[QR-${flow}] FAIL: ${data.error}`, 'err');
+      }
+    } catch (e) {
+      el.textContent = `✗ ${e.message}`;
+      log(`[QR-${flow}] ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function hsWriteTag(nodeId, tagId, value) {
+    const intVal = typeof value === 'boolean' ? (value ? 1 : 0) : value;
+    log(`[Write] ${tagId} (${nodeId}) = ${intVal}`, 'info');
+    try {
+      const r = await fetch(`${apiBase()}/api/station-handshake/tags/write`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nodeId, value: intVal === 1 })
+      });
+      const data = await r.json();
+      const resultEl = document.getElementById('hs-write-result');
+      if (resultEl) resultEl.textContent = `${tagId} = ${intVal} → ${data.success ? '✓ OK' : '✗ ' + data.error}`;
+      log(`[Write] ${tagId}=${intVal} ${data.success ? 'OK' : 'FAIL: ' + data.error}`, data.success ? 'ok' : 'err');
+      await fetchHandshakeTags();
+    } catch (e) {
+      log(`[Write] ERROR: ${e.message}`, 'err');
+    }
+  }
+
+  async function hsStepAfterDrop() {
+    const expectedQr = document.getElementById('hs-in-expected-qr').value.trim();
+    const params = expectedQr ? { expectedQr } : {};
+    await hsStep('inbound', 'after-drop', params, 'hs-step-in-5');
+  }
+
+  async function hsWriteFreeform() {
+    const nodeId = document.getElementById('hs-node-input').value.trim();
+    const val = parseInt(document.getElementById('hs-val-input').value, 10);
+    if (!nodeId) return;
+    await hsWriteTag(nodeId, nodeId, val === 1);
+  }
+
+  // Extend fetchAll to also fetch handshake tags when on that tab
+  const _origFetchAll = fetchAll;
+  fetchAll = async function() {
+    await _origFetchAll();
+    if (currentTab === 'handshake') await fetchHandshakeTags();
+    if (currentTab === 'actions') {
+      await refreshManualCurtainStatus();
+      await refreshOutboundManualCurtainStatus();
+    }
+  };
+
+  // Extend switchTab to fetch handshake tags when switching to it
+  const _origSwitchTab = switchTab;
+  switchTab = function(name) {
+    _origSwitchTab(name);
+    if (name === 'handshake') fetchHandshakeTags();
+    if (name === 'actions') {
+      refreshManualCurtainStatus();
+      refreshOutboundManualCurtainStatus();
+    }
+  };
+
+  // ---------------------------------------------------------------
+  // Boot
+  // ---------------------------------------------------------------
+  (async () => {
+    log('Warehouse Test Tool khởi động...', 'info');
+  })();
+</script>
+</body>
+</html>

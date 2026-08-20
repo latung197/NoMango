@@ -1,0 +1,19 @@
+{
+  "Robots": [
+    {
+      "Code": "18006",
+      "Name": "Robot 18006",
+      "IsActive": true
+    },
+    {
+      "Code": "18007",
+      "Name": "Robot 18007",
+      "IsActive": true
+    },
+    {
+      "Code": "19898",
+      "Name": "Robot 19898",
+      "IsActive": true
+    }
+  ]
+}
