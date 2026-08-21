@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Enum\" />
+    <Folder Include="Features\Setting\" />
+    <Folder Include="Features\Warehouses\Categorys\dmdvt\" />
+    <Folder Include="Features\Warehouses\Categorys\dmlo\" />
+    <Folder Include="Features\Warehouses\Categorys\dmkho\" />
+    <Folder Include="Features\Warehouses\Categorys\dmvitri\" />
+    <Folder Include="Features\Warehouses\Categorys\Products\Mappings\" />
+    <Folder Include="Features\Warehouses\Categorys\Products\DTOs\" />
+    <Folder Include="Features\Warehouses\Categorys\Products\Queries\" />
+    <Folder Include="Features\Warehouses\Reports\" />
+    <Folder Include="Features\Warehouses\Vouchers\" />
+    <Folder Include="Features\Warehouses\Vouchers\Users\" />
+    <Folder Include="Interface\" />
+    <Folder Include="CustomsModels\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="BaseHttp\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Mapper\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Services\" />
+    <Folder Include="Wrapper\" />
+  </ItemGroup>
+
+</Project>
