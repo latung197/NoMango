@@ -5,7 +5,7 @@ using Core.Application.Interface;
 using Core.Domain.Interface;
 using Core.Utils;
 using Core.Utils.LogUtils;
-using AutoMapper;
+
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -19,20 +19,16 @@ namespace Core.Application.Services
         private readonly IBaseRepositoryWrapper _repo;
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
-        //Mapping model to entity
-        private readonly IMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         #endregion
         #region Constructor
         public BackupServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
-            , IMapper mapper
             , ILoggerManager logger)
         {
             _repo = repo;
             _configuration = configuration;
-            _mapper = mapper;
             _logger = logger;
         }
         #endregion

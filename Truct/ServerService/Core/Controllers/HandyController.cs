@@ -7,7 +7,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "FunctionAccess")]
     public class HandyController : BaseController
     {
 
@@ -26,7 +26,6 @@ namespace Core.Controllers
         #endregion
         #region Others
         [HttpPost("check-handy-info")]
-        [AllowAnonymous]
         public async Task<IActionResult> CheckHandyInfo(HandyInfo data)
         {
             var result = await _service.CheckHandyInfo(data);

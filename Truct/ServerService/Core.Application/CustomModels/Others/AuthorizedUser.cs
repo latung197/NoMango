@@ -10,5 +10,8 @@ namespace Core.Application.CustomModels.Others
         public string Email {  get; set; }
         public List<int> Role {  get; set; }
         public string Token {  get; set; }
+        public List<Core.Application.Security.PermissionGrantDto> Permissions { get; set; } = [];
+        public bool IsAdmin { get; set; }
+        public List<int> GroupRoleIds { get; set; } = [];
     }
 }

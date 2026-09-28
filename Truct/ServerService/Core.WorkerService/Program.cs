@@ -1,47 +1,28 @@
 using Core.WorkerService;
 using Microsoft.Extensions.Hosting.WindowsServices;
-using Worker.Application.Wrapper;
-using Worker.Application.AutoMapper;
 using NLog;
+using Worker.Application.Wrapper;
 
-WebApplicationOptions options = new WebApplicationOptions
+var builder = Host.CreateApplicationBuilder(new HostApplicationBuilderSettings
 {
     Args = args,
     ContentRootPath = WindowsServiceHelpers.IsWindowsService()
-                                     ? AppContext.BaseDirectory : default
-};
+        ? AppContext.BaseDirectory
+        : Directory.GetCurrentDirectory()
+});
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(options);
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    .AddCommandLine(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
-//Add config json file
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Services.AddWindowsService();
 
-//Config log
-string appBasePath = Directory.GetCurrentDirectory();
-GlobalDiagnosticsContext.Set("appbasepath", appBasePath);
-LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config")).GetCurrentClassLogger();
-builder.Services.AddHttpContextAccessor();
-//Add worker service
+var contentRoot = builder.Environment.ContentRootPath;
+GlobalDiagnosticsContext.Set("appbasepath", contentRoot);
+LogManager.Setup().LoadConfigurationFromFile(Path.Combine(contentRoot, "nlog.config"));
+
 builder.Services.AddHostedService<WorkerLine3>();
 builder.Services.AddHostedService<WorkerLine4>();
-//DI service
 builder.Services.DependencyInjectionService();
-//Run app as window service
-builder.Host.UseWindowsService();
-//Add mapping custom model - entity
-WorkerAutoMapper.Configure(builder.Services);
-WebApplication app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-app.UseStaticFiles();
-app.MapRazorPages();
-app.Run();
+await builder.Build().RunAsync();

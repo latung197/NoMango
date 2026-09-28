@@ -8,7 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "FunctionAccess")]
     public class EcuDataController : BaseController
     {
         #region Properties
@@ -29,7 +29,6 @@ namespace Core.Controllers
         }
         #endregion
         #region CRUD
-        [AllowAnonymous]
         [HttpPost("import-list-ecu-data")]
         public async Task<IActionResult> ImportListEcuData(List<EcuDataDto> data)
         {

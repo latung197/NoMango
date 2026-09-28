@@ -14,7 +14,6 @@ namespace Core.Application.CustomModels.Dtos
         [StringLength(100)] // ud_name thường là 100 ký tự
         public string UserName { get; set; } = string.Empty;
 
-        [Required]
         [Column("password_hash")]
         [StringLength(255)]
         public string PasswordHash { get; set; } = string.Empty;

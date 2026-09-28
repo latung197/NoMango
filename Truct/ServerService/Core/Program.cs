@@ -1,15 +1,22 @@
 using Microsoft.Extensions.Hosting.WindowsServices;
 using Core.Application.Wrapper;
+using Core.Infrastructure;
 using Core.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using Core.Application.AutoMapper;
 using NLog;
 using Core.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.CookiePolicy;
-using Core.Application.Middleware;
+using Core.Middleware;
+using Core.Security;
+using Microsoft.AspNetCore.Authorization;
+using Core.Application.Security;
+using Core.Features.Erp;
+using System.Security.Claims;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 
 WebApplicationOptions options = new WebApplicationOptions
 {
@@ -22,21 +29,34 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(options);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
+builder.Services.AddControllers();
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("login", context => RateLimitPartition.GetFixedWindowLimiter(
+        context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 10,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+});
 //Add config json file
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().AddCommandLine(args);
 //Add connect string to DBcontext
 string DbType = builder.Configuration.GetConnectionString("DatabaseType");
 switch (DbType)
 {
     case "1"://MSSQL
-        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));
+        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("CoreContext")));
         break;
     case "2"://Postgre
         builder.Services.AddDbContext<CoreContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("CoreContext")));
         break;
     default://MSSQL
-        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));
+        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("CoreContext")));
         break;
 }
 
@@ -70,22 +90,46 @@ builder.Services.AddAuthentication(options =>
 {
     cfg.RequireHttpsMetadata = false;
     cfg.SaveToken = true;
+    cfg.Events = new JwtBearerEvents
+    {
+        OnTokenValidated = async context =>
+        {
+            if (!int.TryParse(context.Principal?.FindFirstValue(ClaimTypes.NameIdentifier), out var userId)
+                || !await context.HttpContext.RequestServices.GetRequiredService<IAccessControlService>()
+                    .IsActiveAsync(userId, context.HttpContext.RequestAborted))
+                context.Fail("Account is inactive.");
+        }
+    };
 
     cfg.TokenValidationParameters = new TokenValidationParameters
     {
         ValidIssuer = builder.Configuration["Tokens:Issuer"],
         ValidAudience = builder.Configuration["Tokens:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Tokens:Key"])),
-        //Do not check the expiry of token
-        ValidateLifetime = false
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Tokens:Key"] ?? string.Empty)),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero,
+        ValidateLifetime = true
     };
 });
 //DI service
-builder.Services.DependencyInjectionService();
+builder.Services.AddCoreApplication();
+builder.Services.AddCoreInfrastructure();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("FunctionAccess", policy => policy.RequireAuthenticatedUser()
+        .AddRequirements(new FunctionRequirement()));
+    options.AddPolicy("AccessAdmin", policy => policy.RequireAuthenticatedUser()
+        .AddRequirements(new AdminRequirement()));
+    options.AddPolicy("ErpContext", policy => policy.RequireAuthenticatedUser()
+        .AddRequirements(new ErpContextRequirement()));
+});
+builder.Services.AddScoped<IAuthorizationHandler, FunctionAuthorizationHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, AdminAuthorizationHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, ErpContextAuthorizationHandler>();
 //Run app as window service
 builder.Host.UseWindowsService();
-//Add mapping custom model - entity
-CoreAutoMapper.Configure(builder.Services);
 WebApplication app = builder.Build();
 app.UseCookiePolicy(new CookiePolicyOptions
 {
@@ -102,13 +146,11 @@ if (!app.Environment.IsDevelopment())
 }
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 app.UseStaticFiles();
-app.UseAuthentication();
 app.UseRouting();
+app.UseRateLimiter();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 //Route for controller
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-app.UseMvc();
+app.MapControllers();
 app.Run();

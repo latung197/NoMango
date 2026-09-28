@@ -5,11 +5,10 @@ using Core.Application.CustomModels.SearchConditions;
 using Core.Application.Enum;
 using Core.Domain.Entity;
 using Core.Domain.Interface;
-using Core.Infrastructure.Constants;
-using Core.Infrastructure.ContextAccessors;
+using Core.Application.Security;
 using Core.Utils;
 using Core.Utils.LogUtils;
-using AutoMapper;
+using Core.Application.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
@@ -30,23 +29,29 @@ namespace Core.Application.Services.SysService
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
         //Mapping model to entity
-        private readonly IMapper _mapper;
+        private readonly CoreMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         private readonly IUserPrincipalService _userPrincipalService;
+        private readonly IAccessControlService _accessControl;
+        private readonly IPasswordService _passwords;
         #endregion
         #region Constructor
         public SysUserServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
-            , IMapper mapper
+            , CoreMapper mapper
             , ILoggerManager logger
-            , IUserPrincipalService userPrincipalService)
+            , IUserPrincipalService userPrincipalService
+            , IAccessControlService accessControl
+            , IPasswordService passwords)
         {
             _repo = repo;
             _configuration = configuration;
             _mapper = mapper;
             _logger = logger;
             _userPrincipalService = userPrincipalService;
+            _accessControl = accessControl;
+            _passwords = passwords;
         }
         #endregion
         #region Search
@@ -58,10 +63,10 @@ namespace Core.Application.Services.SysService
                            && (string.IsNullOrEmpty(condition.Email) || u.Email.ToLower().Contains(condition.Email.ToLower()))
                            && (string.IsNullOrEmpty(condition.Fullname) || u.FullName.ToLower().Contains(condition.Fullname.ToLower()))
                            && condition.Enable == u.EnableFl
-                           && (condition.Role == -1 || u.AuthFl.Contains(condition.Role.ToString()))
+                           && (condition.Role == -1 || ("," + u.AuthFl + ",").Contains("," + condition.Role + ","))
                            && u.ValidFlg == (int)EnumCommon.Status.Valid
                            orderby u.UserId descending, (u.UpdateTime ?? u.CreateTime) descending
-                           select _mapper.Map<SysUserDto>(u);
+                           select _mapper.ToSysUserDto(u);
 
             int total = await iqResult.CountAsync();
 
@@ -81,7 +86,7 @@ namespace Core.Application.Services.SysService
                 author.Employeecode = item.EmployeeCode;
                 author.Email = item.Email;
                 author.Token = string.Empty;
-                author.Role = string.IsNullOrEmpty(item.AuthFl) ? new List<int>() : item.AuthFl.Split(",").Select(x => int.Parse(x)).ToList();
+                author.Role = string.IsNullOrEmpty(item.AuthFl) ? new List<int>() : item.AuthFl.Split(",").Select(x => int.TryParse(x, out var role) ? role : -1).Where(x => x >= 0).ToList();
                 lstResult.Add(author);
             }
             return new GenericResponseResult<AuthorizedUser>(lstResult);
@@ -94,7 +99,8 @@ namespace Core.Application.Services.SysService
             var entity = await _repo.SysUser.GetAsync(id);
             if (entity is null) return new ServiceResultError("Nhân viên không tồn tại");
             if (entity.ValidFlg != (int)EnumCommon.Status.Valid) return new ServiceResultError("Nhân viên không hợp lệ!");
-            var dto = _mapper.Map<SysUserDto>(entity);
+            var dto = _mapper.ToSysUserDto(entity);
+            dto.PasswordHash = string.Empty;
 
             //if (string.IsNullOrEmpty(dto.auth_fl))
             //    dto.UserRoles = new List<int>();
@@ -152,15 +158,12 @@ namespace Core.Application.Services.SysService
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                var entity = _mapper.Map<SysUser>(dto);
+                var entity = _mapper.ToSysUser(dto);
                 entity.UpdateTime = DateTime.Now;
 
-                string pass = _configuration["DefaultPassword"];
-
-                if (!string.IsNullOrEmpty(dto.PasswordHash))
-                    pass = dto.PasswordHash;
-
-                entity.PasswordHash = StringUtils.Encrypt(pass);
+                string pass = dto.PasswordHash;
+                if (string.IsNullOrWhiteSpace(pass)) return new ServiceResultError("Cần nhập mật khẩu cho tài khoản mới.");
+                entity.PasswordHash = _passwords.Hash(entity, pass);
                 entity.ValidFlg = (int)EnumCommon.Status.Valid;
                 //if (dto.Role is null || dto.Role.Count == 0)
                 //    entity.auth_fl = string.Empty;
@@ -170,8 +173,7 @@ namespace Core.Application.Services.SysService
                 await _repo.SysUser.InsertAsync(entity);
                 await _repo.SaveAync();
 
-                var returnData = new Login { Username = dto.UserName, Password = pass };
-                return new ServiceResultSuccess($"Thêm nhân viên thành công!", returnData);
+                return new ServiceResultSuccess("Thêm nhân viên thành công!", new { entity.UserId });
             }
             catch (Exception ex)
             {
@@ -242,15 +244,9 @@ namespace Core.Application.Services.SysService
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                string pass = _configuration["DefaultPassword"];
-
-                if (!string.IsNullOrEmpty(dto.PasswordHash))
-                    pass = dto.PasswordHash;
-
                 entity.UserName = dto.UserName;
                 entity.EnableFl = dto.EnableFl;
                 entity.Email = dto.Email;
-                entity.AuthFl = dto.AuthFl;
                 entity.FullName = dto.FullName;
                 entity.EmployeeCode = dto.EmployeeCode;
                 entity.GenDer = dto.GenDer;
@@ -260,7 +256,8 @@ namespace Core.Application.Services.SysService
                 //    entity.AuthFl = string.Empty;
                 //else
                 //    entity.AuthFl = string.Join(",", dto.Role.Select(x => x.ToString()));
-                entity.PasswordHash = StringUtils.Encrypt(pass);
+                if (!string.IsNullOrWhiteSpace(dto.PasswordHash))
+                    entity.PasswordHash = _passwords.Hash(entity, dto.PasswordHash);
                 entity.ValidFlg = (int)EnumCommon.Status.Valid;
                 await _repo.SysUser.UpdateAsync(entity);
                 await _repo.SaveAync();
@@ -286,6 +283,8 @@ namespace Core.Application.Services.SysService
             var lstErr = new List<object>();
             try
             {
+                if (_userPrincipalService.UserId != dto.UserId)
+                    return new ServiceResultError("Bạn chỉ có thể đổi mật khẩu của chính mình.");
                 if (string.IsNullOrEmpty(dto.Password))
                     lstErr.Add(new { field = nameof(CustomModels.Others.ChangePassword.Password), message = "Mật khẩu không được để trống!", });
 
@@ -310,13 +309,13 @@ namespace Core.Application.Services.SysService
                 if (entity is not null && entity.ValidFlg != (int)EnumCommon.Status.Valid)
                     lstErr.Add(new { field = nameof(SysUserDto.UserName), message = "Tên đăng nhập không hợp lệ!", });
 
-                if (entity is not null && !entity.PasswordHash.Equals(StringUtils.Encrypt(dto.Password)))
+                if (entity is not null && !_passwords.Verify(entity, dto.Password, out _))
                     lstErr.Add(new { field = nameof(CustomModels.Others.ChangePassword.Password), message = "Mật khẩu không chính xác!", });
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
                 entity.UpdateTime = DateTime.Now;
-                entity.PasswordHash = StringUtils.Encrypt(dto.NewPassword);
+                entity.PasswordHash = _passwords.Hash(entity, dto.NewPassword);
                 await _repo.SysUser.UpdateAsync(entity);
                 await _repo.SaveAync();
 
@@ -337,7 +336,7 @@ namespace Core.Application.Services.SysService
                 //Không cho xóa chính mình
                 if (_userPrincipalService.UserId == id) return new ServiceResultError("Bạn không thể xóa tài khoản của mình!");
                 //Chỉ admin mới có quyền
-                if (!_userPrincipalService.Roles.Contains((int)EnumRole.Role.Admin)) return new ServiceResultError("Bạn không có quyền thực hiện thao tác này!");
+                if (!await _accessControl.IsAdminAsync(_userPrincipalService.UserId)) return new ServiceResultError("Bạn không có quyền thực hiện thao tác này!");
 
                 var entity = await _repo.SysUser.GetAsync(id);
                 if (entity is null) return new ServiceResultError("Nhân viên không tồn tại!");
@@ -372,31 +371,34 @@ namespace Core.Application.Services.SysService
 
                 SysUser user = await _repo.SysUser.FirstOrDefaultAsync(x => x.UserName.ToLower() == login.Username.Trim().ToLower() && x.ValidFlg == (int)EnumCommon.Status.Valid);
 
-                if (user is null)
-                    lstErr.Add(new { field = nameof(Login.Username), message = "Tên đăng nhập không tồn tại!" });
+                bool needsUpgrade = false;
+                if (user is null || user.EnableFl != (int)EnumCommon.Status.Valid || !user.IsActive
+                    || !_passwords.Verify(user, login.Password, out needsUpgrade))
+                    return new ServiceResultError("Tên đăng nhập hoặc mật khẩu không đúng.");
 
-                if (user is not null && user.EnableFl != (int)EnumCommon.Status.Valid)
-                    lstErr.Add(new { field = nameof(Login.Username), message = "Tên đăng nhập không hợp lệ!", });
+                if (needsUpgrade)
+                {
+                    user.PasswordHash = _passwords.Hash(user, login.Password);
+                    await _repo.SysUser.UpdateAsync(user);
+                    await _repo.SaveAync();
+                }
 
-                if (user is not null && user.PasswordHash != StringUtils.Encrypt(login.Password))
-                    lstErr.Add(new { field = nameof(Login.Password), message = "Mật khẩu sai!", });
-
-                if (lstErr.Count > 0) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
-
-                //To do: Other business
+                var access = await _accessControl.GetUserAccessAsync(user.UserId);
                 var claimsToken = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                     new Claim(ClaimTypeConst.USERNAME, user.UserName),
-                    new Claim(ClaimTypes.Role, user.AuthFl),
+                    new Claim(ClaimTypes.Role, user.AuthFl ?? string.Empty),
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+                var lifetimeMinutes = int.TryParse(_configuration["Tokens:LifetimeMinutes"], out var configuredLifetime)
+                    ? Math.Clamp(configuredLifetime, 5, 1440) : 480;
                 var token = new JwtSecurityToken(_configuration["Tokens:Issuer"],
                     _configuration["Tokens:Audience"],
                     claimsToken,
-                    expires: DateTime.Now.AddDays(30),
+                    expires: DateTime.UtcNow.AddMinutes(lifetimeMinutes),
                     signingCredentials: creds);
                 // create claims
                 string strToken = new JwtSecurityTokenHandler().WriteToken(token);
@@ -405,9 +407,12 @@ namespace Core.Application.Services.SysService
                 {
                     UserId = user.UserId,
                     Username = user.UserName,
-                    Role = string.IsNullOrEmpty(user.AuthFl) ? new List<int>() : user.AuthFl.Split(",").Select(x => int.Parse(x)).ToList(),
+                    Role = string.IsNullOrEmpty(user.AuthFl) ? new List<int>() : user.AuthFl.Split(",").Select(x => int.TryParse(x, out var role) ? role : -1).Where(x => x >= 0).ToList(),
                     Email = user.Email,
-                    Token = strToken
+                    Token = strToken,
+                    Permissions = access.EffectivePermissions,
+                    IsAdmin = access.IsAdmin,
+                    GroupRoleIds = access.RoleIds
                 };
 
                 return new ServiceResultSuccess("Xác thực thành công!", userInfo);
@@ -415,8 +420,7 @@ namespace Core.Application.Services.SysService
             catch (Exception ex)
             {
                 _logger.LogError(ex);
-                lstErr.Add(new { field = nameof(Login.Username), message = "Lỗi khi xác thực: " + ex.Message });
-                return new ServiceResultError("Lỗi khi xác thực: " + ex.Message, lstErr);
+                return new ServiceResultError("Không thể xác thực lúc này.");
             }
 
         }

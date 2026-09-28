@@ -2,10 +2,11 @@
 using Worker.Application.Interface;
 using Core.Utils;
 using Core.Utils.LogUtils;
-using AutoMapper;
+
 using Microsoft.Extensions.Configuration;
 using Worker.Application.CustomModels.Others;
 using Worker.Application.Enum;
+using Worker.Application.Constants;
 using Newtonsoft.Json;
 
 namespace Worker.Application.Services
@@ -15,8 +16,6 @@ namespace Worker.Application.Services
         #region Properties
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
-        //Mapping model to entity
-        private readonly IMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         private readonly IWorkerServiceClient _workerServiceClient;
@@ -26,12 +25,10 @@ namespace Worker.Application.Services
 
         #region Constructor
         public WorkerServiceImpl(IConfiguration configuration
-            , IMapper mapper
             , ILoggerManager logger
             , IWorkerServiceClient workerServiceClient)
         {
             _configuration = configuration;
-            _mapper = mapper;
             _logger = logger;
             _workerServiceClient = workerServiceClient;
             _fileNameLine3 = _configuration["FileNameLine3"];
@@ -80,16 +77,20 @@ namespace Worker.Application.Services
                         var response = await _workerServiceClient.ImportListEcuData(lstData);
                         _logger.LogInfo(JsonConvert.SerializeObject(lstData));
                         _logger.LogInfo(JsonConvert.SerializeObject(response));
+                        if (response?.Code == CommonConstant.SUCCESS)
+                        {
+                            _logger.LogInfo("Delete imported file " + file.FullName);
+                            File.Delete(file.FullName);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Import failed; keeping file " + file.FullName);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Error while read file line 4 " + file.Name);
-                }
-                finally
-                {
-                    _logger.LogInfo("Delete file line 4 " + file.FullName);
-                    File.Delete(file.FullName);
                 }
             }
         }
@@ -135,16 +136,20 @@ namespace Worker.Application.Services
                         var response = await _workerServiceClient.ImportListEcuData(lstData);
                         _logger.LogInfo(JsonConvert.SerializeObject(lstData));
                         _logger.LogInfo(JsonConvert.SerializeObject(response));
+                        if (response?.Code == CommonConstant.SUCCESS)
+                        {
+                            _logger.LogInfo("Delete imported file " + file.FullName);
+                            File.Delete(file.FullName);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Import failed; keeping file " + file.FullName);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Error while read file line 3 " + file.Name);
-                }
-                finally
-                {
-                    _logger.LogInfo("Delete file line 3 " + file.FullName);
-                    File.Delete(file.FullName);
                 }
             }
         }

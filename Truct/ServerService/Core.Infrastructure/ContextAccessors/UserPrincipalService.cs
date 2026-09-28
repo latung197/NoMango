@@ -1,4 +1,4 @@
-﻿using Core.Infrastructure.Constants;
+﻿using Core.Application.Security;
 using Core.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +17,7 @@ namespace Core.Infrastructure.ContextAccessors
             _httpContextAccessor = httpContextAccessor;
         }
         #endregion
-        public bool IsAuthenticated => _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated;
+        public bool IsAuthenticated => _httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated == true;
         public int UserId
         {
             get

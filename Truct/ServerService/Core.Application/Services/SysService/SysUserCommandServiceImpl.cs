@@ -5,11 +5,10 @@ using Core.Application.CustomModels.SearchConditions;
 using Core.Application.Enum;
 using Core.Domain.Entity;
 using Core.Domain.Interface;
-using Core.Infrastructure.Constants;
-using Core.Infrastructure.ContextAccessors;
+using Core.Application.Security;
 using Core.Utils;
 using Core.Utils.LogUtils;
-using AutoMapper;
+using Core.Application.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +30,7 @@ namespace Core.Application.Services
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
         //Mapping model to entity
-        private readonly IMapper _mapper;
+        private readonly CoreMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         private readonly IUserPrincipalService _userPrincipalService;
@@ -39,7 +38,7 @@ namespace Core.Application.Services
         #region Constructor
         public SysUserCommandServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
-            , IMapper mapper
+            , CoreMapper mapper
             , ILoggerManager logger
             , IUserPrincipalService userPrincipalService)
         {
@@ -62,7 +61,7 @@ namespace Core.Application.Services
                            && (condition.Role == -1 || u.AuthFl.Contains(condition.Role.ToString()))
                            && u.ValidFlg == (int)EnumCommon.Status.Valid
                            orderby u.UserId descending, (u.UpdateTime ?? u.CreateTime) descending
-                           select _mapper.Map<SysUserDto>(u);
+                           select _mapper.ToSysUserDto(u);
 
             int total = await iqResult.CountAsync();
 
@@ -94,7 +93,7 @@ namespace Core.Application.Services
             var entity = await _repo.SysUser.GetAsync(id);
             if (entity is null) return new ServiceResultError("Nhân viên không tồn tại");
             if (entity.ValidFlg != (int)EnumCommon.Status.Valid) return new ServiceResultError("Nhân viên không hợp lệ!");
-            var dto = _mapper.Map<SysUserDto>(entity);
+            var dto = _mapper.ToSysUserDto(entity);
 
             //if (string.IsNullOrEmpty(dto.auth_fl))
             //    dto.UserRoles = new List<int>();
@@ -152,7 +151,7 @@ namespace Core.Application.Services
 
                 if (lstErr.Any()) return new ServiceResultError("Đã có lỗi xảy ra!", lstErr);
 
-                var entity = _mapper.Map<SysUser>(dto);
+                var entity = _mapper.ToSysUser(dto);
                 entity.UpdateTime = DateTime.Now;
 
                 string pass = _configuration["DefaultPassword"];

@@ -15,6 +15,7 @@ namespace Worker.Application.BaseHttp.Implementations
         public BaseHttpClientImpl(HttpClient httpClient)
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient.Timeout = TimeSpan.FromMinutes(15);
         }
 
         #region Get
@@ -99,7 +100,7 @@ namespace Worker.Application.BaseHttp.Implementations
                 }
                 else
                 {
-                    throw new HttpRequestException($"{nameof(_httpClient)} :error on post async {JsonConvert.SerializeObject(response)}"); // request không thành công
+                    throw new HttpRequestException($"POST {apiEndpoint} failed with HTTP {(int)response.StatusCode}.");
                 }
             }
         }
@@ -300,9 +301,6 @@ namespace Worker.Application.BaseHttp.Implementations
 
         private void AddRequestHeader(HttpRequestMessage requestMessage, Dictionary<string, string> headers)
         {
-            //client.Timeout = TimeSpan.FromSeconds(GetRequestTimeout());
-            // The default value is 100,000 milliseconds (100 seconds).
-            _httpClient.Timeout = TimeSpan.FromMinutes(15);
             if (requestMessage != null && headers != null)
             {
                 foreach (var item in headers)

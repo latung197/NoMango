@@ -1,7 +1,8 @@
 ﻿using Core.Domain;
 using Core.Domain.Entity;
 using Core.Domain.Entity.SystemEntities;
-using Core.Infrastructure.ContextAccessors;
+using Core.Domain.Entity.Erp;
+using Core.Application.Security;
 using Core.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -57,12 +58,14 @@ namespace Core.Infrastructure.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            if (optionsBuilder.IsConfigured) return;
+            if (_configuration is null) throw new InvalidOperationException("CoreContext requires database configuration.");
             string DbType = _configuration.GetConnectionString("DatabaseType") ?? "2";
 
             // Lấy chuỗi kết nối
             string? connectionString = DbType == "2"
                 ? _configuration?.GetConnectionString("CoreContext")
-                : Environment.GetEnvironmentVariable("CoreContext");
+                : _configuration?.GetConnectionString("CoreContext");
 
             switch (DbType)
             {
@@ -79,7 +82,15 @@ namespace Core.Infrastructure.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<SysUserRole>().HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<SysRoleCommand>().HasKey(x => new { x.RoleId, x.MenuId0 });
+            modelBuilder.Entity<SysUserCommand>().HasKey(x => new { x.UserId, x.MenuId0 });
+            modelBuilder.Entity<Plant>().HasOne(x => x.Unit).WithMany().HasForeignKey(x => x.UnitCode).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<UserPlantAccess>().HasKey(x => new { x.UserId, x.PlantCode });
+            modelBuilder.Entity<UserPlantAccess>().HasOne(x => x.Plant).WithMany().HasForeignKey(x => x.PlantCode).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<ErpNotificationRead>().HasKey(x => new { x.NotificationId, x.UserId });
+            modelBuilder.Entity<ErpNotificationRead>().HasOne<ErpNotification>().WithMany().HasForeignKey(x => x.NotificationId).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ErpSetting>().HasIndex(x => new { x.Key, x.Scope }).IsUnique();
         }
 
         private object CreateWithValues(EntityEntry values)
@@ -141,6 +152,16 @@ namespace Core.Infrastructure.Context
         #region Declare entity here
         public DbSet<SysUser> SysUser { get; set; }
         public DbSet<SysUserCommand> SysUserCommand { get; set; }
+        public DbSet<SysRole> SysRole { get; set; }
+        public DbSet<SysCommand> SysCommand { get; set; }
+        public DbSet<SysUserRole> SysUserRole { get; set; }
+        public DbSet<SysRoleCommand> SysRoleCommand { get; set; }
+        public DbSet<OrganizationUnit> ErpUnits { get; set; }
+        public DbSet<Plant> ErpPlants { get; set; }
+        public DbSet<UserPlantAccess> ErpUserPlants { get; set; }
+        public DbSet<ErpNotification> ErpNotifications { get; set; }
+        public DbSet<ErpNotificationRead> ErpNotificationReads { get; set; }
+        public DbSet<ErpSetting> ErpSettings { get; set; }
         public DbSet<ExportListPlan> ExportListPlan { get; set; }
         public DbSet<ExportHistoryList> ExportHistoryList { get; set; }
         public DbSet<MstData> MstData { get; set; }

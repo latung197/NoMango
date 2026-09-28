@@ -6,7 +6,7 @@ using Core.Application.Interface;
 using Core.Domain.Entity;
 using Core.Domain.Interface;
 using Core.Utils.LogUtils;
-using AutoMapper;
+using Core.Application.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -20,14 +20,14 @@ namespace Core.Application.Services
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
         //Mapping model to entity
-        private readonly IMapper _mapper;
+        private readonly CoreMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         #endregion
         #region Constructor
         public MstDataServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
-            , IMapper mapper
+            , CoreMapper mapper
             , ILoggerManager logger)
         {
             _repo = repo;
@@ -48,7 +48,7 @@ namespace Core.Application.Services
                            && (string.IsNullOrEmpty(condition.ProductCode) || m.ProductCode.ToLower().Contains(condition.ProductCode.ToLower()))
                            && m.ValidFlg == (int)EnumCommon.Status.Valid
                            orderby m.ProductID ascending, (m.UpdateTime ?? m.CreateTime) ascending
-                           select _mapper.Map<MstDataDto>(m);
+                           select _mapper.ToMstDataDto(m);
 
             int total = await iqResult.CountAsync();
 
@@ -85,7 +85,7 @@ namespace Core.Application.Services
 
                 if (entity.ValidFlg != (int)EnumCommon.Status.Valid) return new ServiceResultError("Dữ liệu không hợp lệ");
 
-                var data = _mapper.Map<MstDataDto>(entity);
+                var data = _mapper.ToMstDataDto(entity);
                 return new ServiceResultSuccess("Lấy dữ liệu thành công!", data);
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace Core.Application.Services
 
                 //if (exist) return new ServiceResultError("Đã tồn tại mã bản vẽ và mã sản phẩm!");
 
-                var entities = _mapper.Map<List<MstData>>(lstData);
+                var entities = lstData.Select(_mapper.ToMstData).ToList();
                 await _repo.MstData.InsertAsync(entities);
                 await _repo.SaveAync();
                 return new ServiceResultSuccess("Thêm dữ liệu thành công!");
@@ -137,7 +137,7 @@ namespace Core.Application.Services
                     {
                         if (item.ProductID == entity.ProductID)
                         {
-                            _mapper.Map(item, entity);
+                            _mapper.UpdateMstData(item, entity);
                         }
                     }
                 }

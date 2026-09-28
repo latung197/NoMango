@@ -9,7 +9,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "FunctionAccess")]
     public class ExportPlanController : BaseController
     {
         #region Properties
@@ -87,7 +87,6 @@ namespace Core.Controllers
             return new ObjectResult(result);
         }
 
-        [AllowAnonymous]
         [HttpGet("get-list-export-plan-pre")]
         public async Task<IActionResult> GetListExportPlanPre()
         {
@@ -95,7 +94,6 @@ namespace Core.Controllers
             return new ObjectResult(result);
         }
 
-        [AllowAnonymous]
         [HttpGet("get-export-plan-stamp-info")]
         public async Task<IActionResult> GetExportPlanStampInfo(int id)
         {
@@ -103,7 +101,6 @@ namespace Core.Controllers
             return new ObjectResult(result);
         }
 
-        [AllowAnonymous]
         [HttpPost("get-special-stamp-info")]
         public async Task<IActionResult> GetSpecialStampInfo(SpecialStampInfo info)
         {
@@ -112,7 +109,6 @@ namespace Core.Controllers
         }
 
         [HttpGet("check-box-info")]
-        [AllowAnonymous]
         public async Task<IActionResult> CheckBoxInfo(string boxSerial)
         {
             var result = await _service.CheckBoxInfo(boxSerial);
@@ -154,7 +150,6 @@ namespace Core.Controllers
         }
 
         [HttpPost("insert-list-export-history")]
-        [AllowAnonymous]
         public async Task<IActionResult> InsertListExportHistory(List<ImportPlanHistory> lstData)
         {
             var result = await _service.InsertListExportHistory(lstData);
@@ -167,7 +162,6 @@ namespace Core.Controllers
         /// <param name="lstData"></param>
         /// <returns></returns>
         [HttpPost("insert-scan-box-result")]
-        [AllowAnonymous]
         public async Task<IActionResult> InsertScanBoxResult(List<ExportPlanScanBoxResult> lstData)
         {
             var result = await _service.InsertScanBoxResult(lstData);
@@ -175,7 +169,6 @@ namespace Core.Controllers
         }
 
         [HttpPost("add-scan-box-result")]
-        [AllowAnonymous]
         public async Task<IActionResult> AddScanBoxResult(List<ExportPlanScanBoxResult> lstData)
         {
             var result = await _service.AddScanBoxResult(lstData);
@@ -183,7 +176,6 @@ namespace Core.Controllers
         }
 
         [HttpPost("insert-scan-box-result-v2")]
-        [AllowAnonymous]
         public async Task<IActionResult> InsertScanBoxV2Result(List<ExportPlanScanBoxResult> lstData)
         {
             var result = await _service.InsertScanBoxV2Result(lstData);
@@ -191,7 +183,6 @@ namespace Core.Controllers
         }
 
         [HttpPost("add-scan-box-result-v2")]
-        [AllowAnonymous]
         public async Task<IActionResult> AddScanBoxV2Result(List<ExportPlanScanBoxResult> lstData)
         {
             var result = await _service.AddScanBoxV2Result(lstData);
@@ -210,7 +201,6 @@ namespace Core.Controllers
         }
 
         [HttpPost("update-export-history")]
-        [AllowAnonymous]
         public async Task<IActionResult> UpdateExportHistory(List<ExportHistoryListDto> lstData)
         {
             var result = await _service.UpdateListExportHistory(lstData);

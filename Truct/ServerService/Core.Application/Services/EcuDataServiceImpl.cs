@@ -7,7 +7,7 @@ using Core.Domain.Entity;
 using Core.Domain.Interface;
 using Core.Utils;
 using Core.Utils.LogUtils;
-using AutoMapper;
+using Core.Application.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -21,14 +21,14 @@ namespace Core.Application.Services
         //Get config from appsettings.json if need
         private readonly IConfiguration _configuration;
         //Mapping model to entity
-        private readonly IMapper _mapper;
+        private readonly CoreMapper _mapper;
         //Log
         private readonly ILoggerManager _logger;
         #endregion
         #region Constructor
         public EcuDataServiceImpl(IBaseRepositoryWrapper repo
             , IConfiguration configuration
-            , IMapper mapper
+            , CoreMapper mapper
             , ILoggerManager logger)
         {
             _repo = repo;
@@ -54,7 +54,7 @@ namespace Core.Application.Services
                            //Check valid
                            && e.ValidFlg == (int)EnumCommon.Status.Valid
                            orderby e.EcuDataID descending, (e.UpdateTime ?? e.CreateTime) descending
-                           select _mapper.Map<EcuDataDto>(e);
+                           select _mapper.ToEcuDataDto(e);
             var iqResult2 = from e in _repo.EcuExported.GetAll().AsNoTracking()
                             where (string.IsNullOrEmpty(condition.HUCode) || e.HUCode.ToLower().Contains(condition.HUCode.ToLower()))
                             && (string.IsNullOrEmpty(condition.LaserPrinting) || e.LaserPrinting.ToLower().Contains(condition.LaserPrinting.ToLower()))
@@ -66,7 +66,7 @@ namespace Core.Application.Services
                             //Check valid
                             && e.ValidFlg == (int)EnumCommon.Status.Valid
                             orderby e.EcuDataID descending, (e.UpdateTime ?? e.CreateTime) descending
-                            select _mapper.Map<EcuDataDto>(e);
+                            select _mapper.ToEcuDataDto(e);
             //count total record
             int total1 = await iqResult.CountAsync();
             int total2 = await iqResult2.CountAsync();
@@ -219,8 +219,7 @@ namespace Core.Application.Services
                     return new ServiceResultError(mes);
                 }
 
-                //var entities = _mapper.Map<List<EcuData>>(data);
-                var entities = _mapper.Map<List<EcuData>>(notExist);
+                var entities = notExist.Select(_mapper.ToEcuData).ToList();
                 await _repo.EcuData.BulkInsertAsync(entities);
                 await _repo.SaveAync();
                 return new ServiceResultSuccess($"Thêm dữ liệu thành công {notExist.Count} {notExist2.Count}!");

@@ -1,4 +1,5 @@
 using Core.Application.Wrapper;
+using Core.Infrastructure;
 using Core.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,19 +16,19 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 //Add config json file
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().AddCommandLine(args);
 //Add connect string to DBcontext
 string? DbType = builder.Configuration.GetConnectionString("DatabaseType");
 switch (DbType)
 {
     case "1"://MSSQL
-        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));
+        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("CoreContext")));
         break;
     case "2"://Postgre
         builder.Services.AddDbContext<CoreContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("CoreContext")));
         break;
     default://MSSQL 
-        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("CoreContext")));
+        builder.Services.AddDbContext<CoreContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("CoreContext")));
         break;
 }
 
@@ -68,11 +69,12 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["Tokens:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Tokens:Key"] ?? string.Empty)),
         //Do not check the expiry of token
-        ValidateLifetime = false
+        ValidateLifetime = true
     };
 });
 //DI service
-builder.Services.DependencyInjectionService();
+builder.Services.AddCoreApplication();
+builder.Services.AddCoreInfrastructure();
 
 
 var app = builder.Build();
@@ -85,6 +87,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

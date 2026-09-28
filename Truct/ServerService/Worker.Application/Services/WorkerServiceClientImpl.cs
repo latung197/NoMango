@@ -4,6 +4,8 @@ using Worker.Application.CustomModels.Dtos;
 using Worker.Application.Interface;
 using Core.Utils.LogUtils;
 using Microsoft.Extensions.Configuration;
+using Worker.Application.Constants;
+using Newtonsoft.Json.Linq;
 
 namespace Worker.Application.Services
 {
@@ -37,8 +39,22 @@ namespace Worker.Application.Services
             try
             {
                 var client = _clientFatory.Create();
+                var username = _configuration["WorkerUsername"];
+                var password = _configuration["WorkerPassword"];
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                    return new ServiceResultError("Worker credentials are not configured.");
+
+                var login = await client.PostAsync<ServiceResult>(_apiDomain, "api/sysuser/login",
+                    new { Username = username, Password = password });
+                var token = login?.Code == CommonConstant.SUCCESS
+                    ? (login.Data as JObject)?["token"]?.Value<string>()
+                    : null;
+                if (string.IsNullOrWhiteSpace(token))
+                    return new ServiceResultError("Worker login failed.");
+
                 var apiUrl = $"api/ecudata/import-list-ecu-data";
-                var response = await client.PostAsync<ServiceResult>(_apiDomain, apiUrl, data);
+                var response = await client.PostAsync<ServiceResult>(_apiDomain, apiUrl, data,
+                    accessToken: token);
                 return response;
             }
             catch (Exception ex)

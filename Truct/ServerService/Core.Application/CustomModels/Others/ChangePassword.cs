@@ -7,13 +7,13 @@ namespace Core.Application.CustomModels.Others
         [Required]
         public int UserId { get; set; }
         [Required]
-        [MaxLength(20)]
+        [MaxLength(128)]
         public string Password { get; set; }
         [Required]
-        [MaxLength(20)]
+        [MaxLength(128)]
         public string NewPassword { get; set; }
         [Required]
-        [MaxLength(20)]
+        [MaxLength(128)]
         public string NewPassword2 { get; set; }
     }
 }

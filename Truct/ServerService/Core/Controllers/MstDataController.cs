@@ -8,7 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "FunctionAccess")]
     public class MstDataController : BaseController
     {
         #region Properties
